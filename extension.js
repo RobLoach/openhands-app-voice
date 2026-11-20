@@ -4854,6 +4854,7 @@ function voiceChat(host) {
     },
     dispose() {
       listen(false);
+      removeReadAloud();
     },
   };
 }

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { A, B, flush, openSettings, setupPage, start } from './helpers.js';
+import { A, B, activateExtension, flush, openSettings, setupPage, start } from './helpers.js';
 
 // Canvas's message box with its mic, which toggles as Canvas's does, and its
 // send button, which sends your message and starts a run.
@@ -364,4 +364,19 @@ test("waits to send until it knows your last message, so it knows the reply", as
   host.agentServer.request = request;
   await reply(page, host);
   assert.deepEqual(page.utterances, ['Done.', 'All tests pass.']);
+});
+
+test('Read aloud buttons go with the app, and come back working', async (t) => {
+  const { page, host } = await voiceChat(t, { readAloud: true });
+  page.document.querySelector('[data-voice-read-aloud]').click();
+  page.dispose();
+  assert.equal(page.document.querySelector('[data-voice-read-aloud]'), null);
+  assert.equal(page.window.speechSynthesis.queue.length, 0);
+
+  await activateExtension(page, host);
+  page.document.querySelector('[data-voice-read-aloud]').click();
+  assert.equal(
+    page.document.querySelector('[data-voice-read-aloud]').getAttribute('aria-label'),
+    'Stop reading',
+  );
 });
