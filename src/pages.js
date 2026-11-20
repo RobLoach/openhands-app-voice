@@ -1,6 +1,7 @@
 // The settings page and the switches it shows.
 
-import { el, HAS_FOCUS_RING, OWN_ATTR, pageHeader, pageSection, textButton } from './dom.js';
+import { el, HAS_FOCUS_RING, pageHeader, pageSection, textButton } from './dom.js';
+import { customizeLayout } from './customize.js';
 import { STORAGE_KEY } from './storage.js';
 import { settings, SWITCH_GROUPS, SWITCHES } from './settings.js';
 import { speechProblem } from './audio.js';
@@ -140,12 +141,11 @@ function buildSwitch(item, onChange) {
 }
 
 // The app's settings page, as declared in canvas-extension.json, which Canvas
-// serves under /extensions/<app name>/ and links from its sidebar: the
-// switches under their groups, and a button putting every one back. Settings
-// changed in another tab, and voices the browser finds, redraw it.
-export const SETTINGS_PAGE = 'settings';
-
-export function settingsPage(onChange) {
+// serves under /extensions/<app name>/ and the app links from Customize's
+// menu: the switches under their groups, and a button putting every one
+// back. Settings changed in another tab, and voices the browser finds,
+// redraw it.
+export function settingsPage(host, onChange) {
   let list = null;
 
   function render() {
@@ -167,20 +167,14 @@ export function settingsPage(onChange) {
 
   function mount({ container }) {
     const own = el('div', 'flex min-w-0 flex-col gap-8');
-    const root = el(
-      'div',
-      'flex min-w-0 flex-col px-4 pt-8 pb-12 md:px-8',
-      el(
-        'div',
-        'mx-auto flex w-full min-w-0 max-w-200 flex-col gap-6',
-        pageHeader(
-          'Voice',
-          "Talk with the agent and hear its replies, with your browser's voices. Settings are kept in this browser.",
-        ),
-        own,
+    const root = customizeLayout(
+      host,
+      pageHeader(
+        'Voice',
+        "Talk with the agent and hear its replies, with your browser's voices. Settings are kept in this browser.",
       ),
+      own,
     );
-    root.setAttribute(OWN_ATTR, '');
     list = own;
     render();
     container.append(root);

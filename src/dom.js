@@ -4,6 +4,29 @@
 // Marks the elements this app adds to Canvas's page.
 export const OWN_ATTR = 'data-voice-own';
 
+// One of our own elements in <head>, by id, created on first use with these
+// attributes: Chromium only picks up a manifest link that has its rel when
+// it's added.
+export function headElement(id, tag, { first = false, attributes = {} } = {}) {
+  let element = document.getElementById(id);
+  if (!element) {
+    element = document.createElement(tag);
+    element.id = id;
+    for (const [name, value] of Object.entries(attributes)) {
+      element.setAttribute(name, value);
+    }
+    document.head[first ? 'prepend' : 'append'](element);
+  }
+  return element;
+}
+
+export const removeElement = (id) => document.getElementById(id)?.remove();
+
+export function setStyle(id, css) {
+  const element = headElement(id, 'style');
+  if (element.textContent !== css) element.textContent = css;
+}
+
 // An element with these classes, holding text or other nodes.
 export function el(tag, className, ...children) {
   const element = document.createElement(tag);

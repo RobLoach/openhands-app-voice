@@ -8,7 +8,8 @@
 // onDomChange(), onStorage(key) and dispose(), which activate() calls.
 import { STORAGE_KEY } from './storage.js';
 import { loadSettings, saveSettings, settings } from './settings.js';
-import { SETTINGS_PAGE, settingsPage } from './pages.js';
+import { settingsPage } from './pages.js';
+import { SETTINGS_PAGE, sidebarLinks, watchCustomizeMenu } from './customize.js';
 import { loadVoices } from './speech.js';
 import { voiceChat } from './voice.js';
 import { keyboardShortcut } from './shortcut.js';
@@ -27,7 +28,7 @@ export function activate(host) {
   let disposed = false;
   // A switch can finish changing after the app is disposed, e.g. once you
   // answer a permission prompt.
-  const settingsView = settingsPage((next) => {
+  const settingsView = settingsPage(host, (next) => {
     if (disposed) return;
     saveSettings(next);
     each('refresh');
@@ -36,6 +37,8 @@ export function activate(host) {
   // manifest doesn't declare.
   const unregisterSettings = host.registerPage(SETTINGS_PAGE, settingsView.mount);
   const features = [
+    watchCustomizeMenu(host),
+    sidebarLinks(host.extension.name),
     settingsView,
     voiceChat(host),
     keyboardShortcut(),

@@ -34,7 +34,7 @@ Voice needs a local Agent Server, as Canvas doesn't offer apps on OpenHands Clou
    ```
 4. Click **Install**
 5. **Enable** the Voice app
-6. Open **Voice** in the sidebar, and turn on the features you want
+6. Open **Customize > Voice**, under Apps, and turn on the features you want
 
 Voice chat uses Canvas's own mic. Without a **Voice input** server under Canvas's **Settings**, Chrome sends what you say to Google to transcribe, and some Linux builds of Chromium can't at all. A [Whisper-compatible server](https://github.com/hwdsl2/scribecrate) of your own, under **Settings > Voice input**, keeps it on your network and works in Firefox too.
 
@@ -42,7 +42,8 @@ Voice chat uses Canvas's own mic. Without a **Voice input** server under Canvas'
 
 - The app's source is in [`src/`](src), one module per feature, from [`src/index.js`](src/index.js). Canvas loads an app from one file, so `npm run build` bundles them, and [Readium Speech](https://github.com/readium/speech), with Rollup into [`extension.js`](extension.js), which is checked in. `npm test` builds it first, and CI checks it matches `src/`.
 - Readium Speech finds, rates and ranks the browser's voices, from its recommended voices. Only its English ones are bundled so far, as the app only reads English; `LANGUAGES` in [`rollup.config.js`](rollup.config.js) adds others. The licenses of what it bundles are in [`THIRD_PARTY_LICENSES.txt`](THIRD_PARTY_LICENSES.txt), which the build writes too.
-- Canvas has no app API for its mic or chat. The app works with Canvas's markup directly (its mic, message box, send and stop buttons and the agent's messages), so an OpenHands update that changes it can break a feature.
+- The settings page is an app page, which Canvas serves at `/extensions/openhands-app-voice/settings`, as it has no way for an app to add a page under Customize. The app adds the settings page to Customize's menu itself, after [Extras](https://github.com/RobLoach/agent-canvas-app-extras)' when that's installed too, and hides its own sidebar link.
+- Canvas has no app API for its mic, chat or menus. The app works with Canvas's markup directly (its mic, message box, send and stop buttons, the agent's messages and Customize's menu), so an OpenHands update that changes it can break a feature.
 - Settings are kept in the browser's `localStorage`, under `openhands-voice:settings`, so they're per browser rather than per backend.
 - While Voice chat waits for a reply, it asks the Agent Server about that one conversation every 2 seconds. Hands-free opens a second stream from the mic to hear when you've stopped talking, as Canvas's mic gives no sign of it.
 

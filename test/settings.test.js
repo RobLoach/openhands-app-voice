@@ -73,3 +73,50 @@ test('stops the copy already running when activated again', async (t) => {
   assert.equal(first.pages.size, 0);
   assert.equal(second.pages.size, 1);
 });
+
+// Customize's menu, as Canvas renders it, and Extras' link, which that app
+// puts right after Apps.
+const MENU =
+  '<div id="menu"><a data-testid="sidebar-extensions-/plugins" href="/plugins">Plugins</a><a data-testid="sidebar-extensions-/apps" href="/apps">Apps</a></div>';
+const EXTRAS = '<a data-testid="sidebar-extensions-extras" href="/extras">Extras</a>';
+const menuLinks = (page) =>
+  [...page.document.querySelectorAll('#menu > a')].map((link) => link.textContent);
+
+test("adds Voice under Apps in Customize's menu, and takes it away with the app", async (t) => {
+  const page = setupPage(t, { body: MENU });
+  const host = fakeHost();
+  const dispose = await activateExtension(page, host);
+
+  assert.deepEqual(menuLinks(page), ['Plugins', 'Apps', 'Voice']);
+  page.document.querySelector('[data-testid="sidebar-extensions-voice"]').click();
+  assert.deepEqual(host.navigations, ['/extensions/openhands-app-voice/settings']);
+
+  dispose();
+  assert.deepEqual(menuLinks(page), ['Plugins', 'Apps']);
+});
+
+test("puts Voice after Extras' link, whichever app comes first", async (t) => {
+  const page = setupPage(t, { body: MENU.replace('Apps</a>', `Apps</a>${EXTRAS}`) });
+  await activateExtension(page, fakeHost());
+  assert.deepEqual(menuLinks(page), ['Plugins', 'Apps', 'Extras', 'Voice']);
+
+  // Extras adds its link after Voice's, right after Apps.
+  page.document.querySelector('[data-testid="sidebar-extensions-extras"]').remove();
+  page.document
+    .querySelector('[data-testid="sidebar-extensions-/apps"]')
+    .insertAdjacentHTML('afterend', EXTRAS);
+  await flush();
+  assert.deepEqual(menuLinks(page), ['Plugins', 'Apps', 'Extras', 'Voice']);
+});
+
+test("hides the settings page's sidebar link, and shows Customize's menu on it", async (t) => {
+  const page = setupPage(t, { url: SETTINGS_URL });
+  await openSettings(page);
+
+  assert.match(
+    page.document.getElementById('openhands-voice-sidebar').textContent,
+    /sidebar-canvas-extension-openhands-app-voice-settings/,
+  );
+  const current = page.document.querySelector('aside [aria-current="page"]');
+  assert.equal(current.textContent, 'Voice');
+});

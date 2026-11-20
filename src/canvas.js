@@ -1,5 +1,5 @@
-// What this app reads from Canvas's page: the open conversation and its
-// language.
+// What this app reads from Canvas's page: the open conversation, its
+// language and base path.
 
 const CONVERSATION_PATH = /\/conversations\/([0-9a-f-]{32,36})(?:\/|$)/i;
 
@@ -13,3 +13,10 @@ export const openConversationId = () => {
 
 // Canvas keeps its UI language on <html lang>.
 export const canvasLanguage = () => document.documentElement.lang || 'en';
+
+// Canvas's mount point, as React Router has it, e.g. "/" or "/canvas/".
+export function canvasBase() {
+  const basename = window.__reactRouterContext?.basename ?? '/';
+  return new URL(basename.endsWith('/') ? basename : `${basename}/`, location.origin)
+    .href;
+}
