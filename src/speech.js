@@ -16,8 +16,10 @@ const QUALITY_LABELS = {
   veryHigh: 'very high',
 };
 
-const SPEEDS = SWITCHES.find(({ key }) => key === 'readingSpeed').options;
-const readingRate = () => SPEEDS.find(([value]) => value === settings.readingSpeed)?.[2] ?? 1;
+// A choice's value, e.g. Reading speed's rate.
+const chosen = (key) =>
+  SWITCHES.find((item) => item.key === key).options.find(([value]) => value === settings[key])?.[2] ?? 1;
+export const volume = () => chosen('volume');
 
 // What Readium found, once it has: the voices, best first, the one it
 // picks for your region, and its sample sentence. Until then, the browser
@@ -122,7 +124,8 @@ export function read(sentences, onDone, name) {
     const utterance = new window.SpeechSynthesisUtterance(sentence);
     utterance.lang = voice?.lang ?? canvasLanguage();
     if (voice) utterance.voice = voice;
-    utterance.rate = readingRate();
+    utterance.rate = chosen('readingSpeed');
+    utterance.volume = volume();
     return utterance;
   });
   const last = queued.at(-1);

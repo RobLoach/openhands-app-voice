@@ -63,6 +63,20 @@ export const SWITCHES = [
     ],
     default: '1',
   },
+  {
+    key: 'volume',
+    group: 'Reading aloud',
+    label: 'Volume',
+    description: "How loud replies and messages are read, as part of your device's volume.",
+    // Choices as [value, label, the volume].
+    options: [
+      ['0.25', '25%', 0.25],
+      ['0.5', '50%', 0.5],
+      ['0.75', '75%', 0.75],
+      ['1', '100%', 1],
+    ],
+    default: '1',
+  },
 ];
 const DEFAULT_SETTINGS = Object.fromEntries(
   SWITCHES.map((item) => [item.key, item.default ?? false]),

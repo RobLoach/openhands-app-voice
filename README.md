@@ -19,6 +19,7 @@ An [OpenHands](https://www.openhands.dev/) Agent Canvas app to talk with the age
 | **Read aloud buttons** | Adds a button beside the copy button on the agent's messages that reads the message aloud, or stops reading it. <kbd>Esc</kbd> stops it too. |
 | **Voice** | Which of your browser's English voices reads aloud. **Automatic** picks the best one for your region, as [Readium Speech](https://github.com/readium/speech) rates them. The list groups them by region, best first, hides novelty voices, marks the ones that send what they read online, and reads a sample in each voice you pick, which **Preview** plays again. |
 | **Reading speed** | How fast replies and messages are read, from 0.75× to 2×. |
+| **Volume** | How loud replies and messages are read, from 25% to 100% of your device's volume. |
 
 ## Install
 

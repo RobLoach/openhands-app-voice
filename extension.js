@@ -107,6 +107,20 @@ const SWITCHES = [
     ],
     default: '1',
   },
+  {
+    key: 'volume',
+    group: 'Reading aloud',
+    label: 'Volume',
+    description: "How loud replies and messages are read, as part of your device's volume.",
+    // Choices as [value, label, the volume].
+    options: [
+      ['0.25', '25%', 0.25],
+      ['0.5', '50%', 0.5],
+      ['0.75', '75%', 0.75],
+      ['1', '100%', 1],
+    ],
+    default: '1',
+  },
 ];
 const DEFAULT_SETTINGS = Object.fromEntries(
   SWITCHES.map((item) => [item.key, item.default ?? false]),
@@ -4002,8 +4016,10 @@ const QUALITY_LABELS = {
   veryHigh: 'very high',
 };
 
-const SPEEDS = SWITCHES.find(({ key }) => key === 'readingSpeed').options;
-const readingRate = () => SPEEDS.find(([value]) => value === settings.readingSpeed)?.[2] ?? 1;
+// A choice's value, e.g. Reading speed's rate.
+const chosen = (key) =>
+  SWITCHES.find((item) => item.key === key).options.find(([value]) => value === settings[key])?.[2] ?? 1;
+const volume = () => chosen('volume');
 
 // What Readium found, once it has: the voices, best first, the one it
 // picks for your region, and its sample sentence. Until then, the browser
@@ -4108,7 +4124,8 @@ function read(sentences, onDone, name) {
     const utterance = new window.SpeechSynthesisUtterance(sentence);
     utterance.lang = voice?.lang ?? canvasLanguage();
     if (voice) utterance.voice = voice;
-    utterance.rate = readingRate();
+    utterance.rate = chosen('readingSpeed');
+    utterance.volume = volume();
     return utterance;
   });
   const last = queued.at(-1);

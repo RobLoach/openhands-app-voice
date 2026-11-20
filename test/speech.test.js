@@ -119,6 +119,7 @@ test('reads with the best rated voice by default', async (t) => {
 
   assert.equal(utterance.voice, EMMA);
   assert.equal(utterance.rate, 1);
+  assert.equal(utterance.volume, 1);
 });
 
 test("picks the best voice Chrome preloads, over the system's", async (t) => {
@@ -134,6 +135,12 @@ test('reads with the chosen voice and speed', async (t) => {
   assert.equal(utterance.voice, DANIEL);
   assert.equal(utterance.lang, 'en-GB');
   assert.equal(utterance.rate, 1.5);
+});
+
+test('reads at the chosen volume', async (t) => {
+  const utterance = await readMessage(t, { volume: '0.5' });
+
+  assert.equal(utterance.volume, 0.5);
 });
 
 test('falls back to the best rated voice when the chosen one is missing', async (t) => {
