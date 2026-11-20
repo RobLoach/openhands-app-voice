@@ -56,8 +56,10 @@ export function loadVoices() {
 }
 
 // Online voices send what they read to Google or Microsoft, which On-device
-// voices only leaves out.
-const onDevice = (voice) => voice.offlineAvailability !== false;
+// voices only leaves out. Readium's voices and the browser's own say so
+// differently.
+const isOnline = (voice) => voice.offlineAvailability === false || voice.localService === false;
+const onDevice = (voice) => !isOnline(voice);
 const usable = () => (settings.onDeviceOnly ? ranked.filter(onDevice) : ranked);
 const automatic = () => automatics[settings.onDeviceOnly ? 'onDevice' : 'all'];
 
@@ -84,7 +86,7 @@ const describe = (voice) => ({
   label: voice.quality ? voice.label : nameOf(voice),
   details: [
     QUALITY_LABELS[voice.quality] ?? 'Not rated',
-    voice.offlineAvailability === false && 'Online',
+    isOnline(voice) && 'Online',
   ]
     .filter(Boolean)
     .join(' · '),
@@ -113,7 +115,7 @@ export const automaticLabel = () => (automatic() ? describe(automatic()).label :
 export function chosenVoice(name = settings.voice) {
   const saved = name && browserVoice(name);
   return (
-    (saved && (saved.localService !== false || !settings.onDeviceOnly) && saved) ||
+    (saved && (onDevice(saved) || !settings.onDeviceOnly) && saved) ||
     (automatic() && manager?.convertToSpeechSynthesisVoice(automatic())) ||
     null
   );
