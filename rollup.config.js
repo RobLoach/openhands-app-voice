@@ -1,12 +1,34 @@
 // Canvas loads an app from one file, so the modules in src/ and Readium
-// Speech, with the voice data it loads per language, are built into
-// extension.js, which is checked in for Canvas to install. The licenses of
+// Speech, with the voice data it loads for the app's languages, are built
+// into extension.js, which is checked in for Canvas to install. The licenses of
 // the packages it bundles go beside it, in THIRD_PARTY_LICENSES.txt.
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 const LICENSES = 'THIRD_PARTY_LICENSES.txt';
+
+// Readium Speech loads its recommended voices one language at a time, from
+// build files named for it, e.g. fi-Dk-5Fhhl.js. The app only reads English
+// so far, so the others are left empty; add a language here to bundle it.
+const LANGUAGES = ['en'];
+const READIUM_LANGUAGE = /@readium\/speech\/build\/([a-z]{2,3})-[\w-]{8}\.js$/;
+
+function onlyLanguages() {
+  return {
+    name: 'only-languages',
+    load(id) {
+      const language = id.match(READIUM_LANGUAGE)?.[1];
+      if (!language || LANGUAGES.includes(language)) return null;
+      return `const voices = [];
+export const language = ${JSON.stringify(language)};
+export const defaultRegion = language;
+export const testUtterance = '';
+export { voices };
+export default { language, defaultRegion, testUtterance, voices };`;
+    },
+  };
+}
 
 // A package's license file, or else what its package.json says.
 function licenseOf(name) {
@@ -41,7 +63,7 @@ function thirdPartyLicenses() {
 
 export default {
   input: 'src/index.js',
-  plugins: [nodeResolve({ browser: true }), thirdPartyLicenses()],
+  plugins: [nodeResolve({ browser: true }), onlyLanguages(), thirdPartyLicenses()],
   // Readium's own dependencies warn about their circular imports and their
   // TypeScript helpers' "this", which they don't rely on.
   onwarn(warning, warn) {

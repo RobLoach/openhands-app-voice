@@ -3042,7 +3042,7 @@ const O = (n) => {
     ],
     testUtterance: "你好，我叫 {name}，係越中文聲。"
   }
-}, Et = /* @__PURE__ */ new Map(), oa = /* @__PURE__ */ Object.assign({ "../../json/ar.json": () => Promise.resolve().then(function () { return arBGKtJRyt; }), "../../json/bg.json": () => Promise.resolve().then(function () { return bgD9Q1JriY; }), "../../json/bho.json": () => Promise.resolve().then(function () { return bhoCpuLBMN3; }), "../../json/bn.json": () => Promise.resolve().then(function () { return bnBpn_lzoe; }), "../../json/ca.json": () => Promise.resolve().then(function () { return ca5hzouNcE; }), "../../json/cmn.json": () => Promise.resolve().then(function () { return cmnDlnYMCd8; }), "../../json/cs.json": () => Promise.resolve().then(function () { return csCDpMkMNO; }), "../../json/da.json": () => Promise.resolve().then(function () { return daXWCfWAwB; }), "../../json/de.json": () => Promise.resolve().then(function () { return deDU0USiOh; }), "../../json/el.json": () => Promise.resolve().then(function () { return elClBwbIAW; }), "../../json/en.json": () => Promise.resolve().then(function () { return enL3wcpTw3; }), "../../json/es.json": () => Promise.resolve().then(function () { return esDwOFJY07; }), "../../json/eu.json": () => Promise.resolve().then(function () { return euDxWirHU_; }), "../../json/fa.json": () => Promise.resolve().then(function () { return faMl9KtIw1; }), "../../json/fi.json": () => Promise.resolve().then(function () { return fiDk5Fhhl; }), "../../json/fr.json": () => Promise.resolve().then(function () { return frMfhjukJ4; }), "../../json/gl.json": () => Promise.resolve().then(function () { return glDwtzWds9; }), "../../json/he.json": () => Promise.resolve().then(function () { return heCfajFNE_; }), "../../json/hi.json": () => Promise.resolve().then(function () { return hiPv2ttBoh; }), "../../json/hr.json": () => Promise.resolve().then(function () { return hrMRApcEKR; }), "../../json/hu.json": () => Promise.resolve().then(function () { return huDGRDZdHH; }), "../../json/id.json": () => Promise.resolve().then(function () { return idDZUuUiTG; }), "../../json/it.json": () => Promise.resolve().then(function () { return itDJUYnjyj; }), "../../json/ja.json": () => Promise.resolve().then(function () { return jaBpFcZRMu; }), "../../json/kk.json": () => Promise.resolve().then(function () { return kkC480t1iH; }), "../../json/kn.json": () => Promise.resolve().then(function () { return knBVqs26qv; }), "../../json/ko.json": () => Promise.resolve().then(function () { return koTNoPZd6N; }), "../../json/mr.json": () => Promise.resolve().then(function () { return mrDstAHTvT; }), "../../json/ms.json": () => Promise.resolve().then(function () { return msBceBSDJ; }), "../../json/nb.json": () => Promise.resolve().then(function () { return nbCwPbwGI; }), "../../json/nl.json": () => Promise.resolve().then(function () { return nlBmWDmw5; }), "../../json/pl.json": () => Promise.resolve().then(function () { return plCH8qoDu8; }), "../../json/pt.json": () => Promise.resolve().then(function () { return ptCjCENn24; }), "../../json/ro.json": () => Promise.resolve().then(function () { return roBlJN7qkA; }), "../../json/ru.json": () => Promise.resolve().then(function () { return ruUdzq1D5e; }), "../../json/sk.json": () => Promise.resolve().then(function () { return skVAEHsTWJ; }), "../../json/sl.json": () => Promise.resolve().then(function () { return slDaZQ1gp0; }), "../../json/sv.json": () => Promise.resolve().then(function () { return svCicHwXe4; }), "../../json/ta.json": () => Promise.resolve().then(function () { return taCvpRY89g; }), "../../json/te.json": () => Promise.resolve().then(function () { return teD5TcdW9V; }), "../../json/th.json": () => Promise.resolve().then(function () { return thCYakoFVa; }), "../../json/tr.json": () => Promise.resolve().then(function () { return trBfYrcAz7; }), "../../json/uk.json": () => Promise.resolve().then(function () { return ukBVs6lQbX; }), "../../json/vi.json": () => Promise.resolve().then(function () { return viDP1xN9KL; }), "../../json/wuu.json": () => Promise.resolve().then(function () { return wuuC6uQvT6g; }), "../../json/yue.json": () => Promise.resolve().then(function () { return yueC8kEWdfv; }) });
+}, Et = /* @__PURE__ */ new Map(), oa = /* @__PURE__ */ Object.assign({ "../../json/ar.json": () => Promise.resolve().then(function () { return arBGKtJRyt$1; }), "../../json/bg.json": () => Promise.resolve().then(function () { return bgD9Q1JriY$1; }), "../../json/bho.json": () => Promise.resolve().then(function () { return bhoCpuLBMN3$1; }), "../../json/bn.json": () => Promise.resolve().then(function () { return bnBpn_lzoe$1; }), "../../json/ca.json": () => Promise.resolve().then(function () { return ca5hzouNcE$1; }), "../../json/cmn.json": () => Promise.resolve().then(function () { return cmnDlnYMCd8$1; }), "../../json/cs.json": () => Promise.resolve().then(function () { return csCDpMkMNO$1; }), "../../json/da.json": () => Promise.resolve().then(function () { return daXWCfWAwB$1; }), "../../json/de.json": () => Promise.resolve().then(function () { return deDU0USiOh$1; }), "../../json/el.json": () => Promise.resolve().then(function () { return elClBwbIAW$1; }), "../../json/en.json": () => Promise.resolve().then(function () { return enL3wcpTw3; }), "../../json/es.json": () => Promise.resolve().then(function () { return esDwOFJY07$1; }), "../../json/eu.json": () => Promise.resolve().then(function () { return euDxWirHU_$1; }), "../../json/fa.json": () => Promise.resolve().then(function () { return faMl9KtIw1$1; }), "../../json/fi.json": () => Promise.resolve().then(function () { return fiDk5Fhhl$1; }), "../../json/fr.json": () => Promise.resolve().then(function () { return frMfhjukJ4$1; }), "../../json/gl.json": () => Promise.resolve().then(function () { return glDwtzWds9$1; }), "../../json/he.json": () => Promise.resolve().then(function () { return heCfajFNE_$1; }), "../../json/hi.json": () => Promise.resolve().then(function () { return hiPv2ttBoh$1; }), "../../json/hr.json": () => Promise.resolve().then(function () { return hrMRApcEKR$1; }), "../../json/hu.json": () => Promise.resolve().then(function () { return huDGRDZdHH$1; }), "../../json/id.json": () => Promise.resolve().then(function () { return idDZUuUiTG$1; }), "../../json/it.json": () => Promise.resolve().then(function () { return itDJUYnjyj$1; }), "../../json/ja.json": () => Promise.resolve().then(function () { return jaBpFcZRMu$1; }), "../../json/kk.json": () => Promise.resolve().then(function () { return kkC480t1iH$1; }), "../../json/kn.json": () => Promise.resolve().then(function () { return knBVqs26qv$1; }), "../../json/ko.json": () => Promise.resolve().then(function () { return koTNoPZd6N$1; }), "../../json/mr.json": () => Promise.resolve().then(function () { return mrDstAHTvT$1; }), "../../json/ms.json": () => Promise.resolve().then(function () { return msBceBSDJ$1; }), "../../json/nb.json": () => Promise.resolve().then(function () { return nbCwPbwGI$1; }), "../../json/nl.json": () => Promise.resolve().then(function () { return nlBmWDmw5$1; }), "../../json/pl.json": () => Promise.resolve().then(function () { return plCH8qoDu8$1; }), "../../json/pt.json": () => Promise.resolve().then(function () { return ptCjCENn24$1; }), "../../json/ro.json": () => Promise.resolve().then(function () { return roBlJN7qkA$1; }), "../../json/ru.json": () => Promise.resolve().then(function () { return ruUdzq1D5e$1; }), "../../json/sk.json": () => Promise.resolve().then(function () { return skVAEHsTWJ$1; }), "../../json/sl.json": () => Promise.resolve().then(function () { return slDaZQ1gp0$1; }), "../../json/sv.json": () => Promise.resolve().then(function () { return svCicHwXe4$1; }), "../../json/ta.json": () => Promise.resolve().then(function () { return taCvpRY89g$1; }), "../../json/te.json": () => Promise.resolve().then(function () { return teD5TcdW9V$1; }), "../../json/th.json": () => Promise.resolve().then(function () { return thCYakoFVa$1; }), "../../json/tr.json": () => Promise.resolve().then(function () { return trBfYrcAz7$1; }), "../../json/uk.json": () => Promise.resolve().then(function () { return ukBVs6lQbX$1; }), "../../json/vi.json": () => Promise.resolve().then(function () { return viDP1xN9KL$1; }), "../../json/wuu.json": () => Promise.resolve().then(function () { return wuuC6uQvT6g$1; }), "../../json/yue.json": () => Promise.resolve().then(function () { return yueC8kEWdfv$1; }) });
 async function la(n) {
   try {
     const e = n.split("-")[0], t = oa[`../../json/${e}.json`];
@@ -4976,740 +4976,695 @@ function activate(host) {
   return dispose;
 }
 
-const l$z = "ar", a$J = "ar-SA", e$J = "مرحبًا، اسمي {name} وأنا صوت عربي.", r$a = [{ label: "Amina", name: "Microsoft Amina Online (Natural) - Arabic (Algeria)", language: "ar-DZ", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ismael", name: "Microsoft Ismael Online (Natural) - Arabic (Algeria)", language: "ar-DZ", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Laila", name: "Microsoft Laila Online (Natural) - Arabic (Bahrain)", language: "ar-BH", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ali", name: "Microsoft Ali Online (Natural) - Arabic (Bahrain)", language: "ar-BH", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Salma", name: "Microsoft Salma Online (Natural) - Arabic (Egypt)", language: "ar-EG", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Shakir", name: "Microsoft Shakir Online (Natural) - Arabic (Egypt)", language: "ar-EG", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Rana", name: "Microsoft Rana Online (Natural) - Arabic (Iraq)", language: "ar-IQ", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Bassel", name: "Microsoft Bassel Online (Natural) - Arabic (Iraq)", language: "ar-IQ", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Sana", name: "Microsoft Sana Online (Natural) - Arabic (Jordan)", language: "ar-JO", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Taim", name: "Microsoft Taim Online (Natural) - Arabic (Jordan)", language: "ar-JO", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Noura", name: "Microsoft Noura Online (Natural) - Arabic (Kuwait)", language: "ar-KW", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Fahed", name: "Microsoft Fahed Online (Natural) - Arabic (Kuwait)", language: "ar-KW", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Layla", name: "Microsoft Layla Online (Natural) - Arabic (Lebanon)", language: "ar-LB", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Rami", name: "Microsoft Rami Online (Natural) - Arabic (Lebanon)", language: "ar-LB", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Iman", name: "Microsoft Iman Online (Natural) - Arabic (Libya)", language: "ar-LY", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Omar", name: "Microsoft Omar Online (Natural) - Arabic (Libya)", language: "ar-LY", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Mouna", name: "Microsoft Mouna Online (Natural) - Arabic (Morocco)", language: "ar-MA", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Jamal", name: "Microsoft Jamal Online (Natural) - Arabic (Morocco)", language: "ar-MA", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Aysha", name: "Microsoft Aysha Online (Natural) - Arabic (Oman)", language: "ar-OM", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Abdullah", name: "Microsoft Abdullah Online (Natural) - Arabic (Oman)", language: "ar-OM", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Amal", name: "Microsoft Amal Online (Natural) - Arabic (Qatar)", language: "ar-QA", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Moaz", name: "Microsoft Moaz Online (Natural) - Arabic (Qatar)", language: "ar-QA", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Zariyah", name: "Microsoft Zariyah Online (Natural) - Arabic (Saudi Arabia)", language: "ar-SA", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Hamed", name: "Microsoft Hamed Online (Natural) - Arabic (Saudi Arabia)", language: "ar-SA", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Amany", name: "Microsoft Amany Online (Natural) - Arabic (Syria)", language: "ar-SY", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Laith", name: "Microsoft Laith Online (Natural) - Arabic (Syria)", language: "ar-SY", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Reem", name: "Microsoft Reem Online (Natural) - Arabic (Tunisia)", language: "ar-TN", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Hedi", name: "Microsoft Hedi Online (Natural) - Arabic (Tunisia)", language: "ar-TN", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Fatima", name: "Microsoft Fatima Online (Natural) - Arabic (United Arab Emirates)", language: "ar-AE", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Hamdan", name: "Microsoft Hamdan Online (Natural) - Arabic (United Arab Emirates)", language: "ar-AE", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Maryam", name: "Microsoft Maryam Online (Natural) - Arabic (Yemen)", language: "ar-YE", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Saleh", name: "Microsoft Saleh Online (Natural) - Arabic (Yemen)", language: "ar-YE", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Mariam", name: "Mariam", localizedName: "apple", language: "ar-001", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Apple Laila", name: "Laila", localizedName: "apple", language: "ar-001", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Tarik", name: "Tarik", localizedName: "apple", language: "ar-001", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Majed", name: "Majed", localizedName: "apple", language: "ar-001", gender: "male", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Hoda", name: "Microsoft Hoda - Arabic (Arabic )", language: "ar-EG", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Naayf", name: "Microsoft Naayf - Arabic (Saudi Arabia)", language: "ar-AS", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "صوت انثوي 1", name: "Android Speech Recognition and Synthesis from Google ar-xa-x-arc-network", altNames: ["Android Speech Recognition and Synthesis from Google ar-xa-x-arc-local", "Android Speech Recognition and Synthesis from Google ar-language"], nativeID: ["ar-xa-x-arc-network", "ar-xa-x-arc-local"], language: "ar", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "صوت انثوي 2", name: "Android Speech Recognition and Synthesis from Google ar-xa-x-arz-network", altNames: ["Android Speech Recognition and Synthesis from Google ar-xa-x-arz-local"], nativeID: ["ar-xa-x-arz-network", "ar-xa-x-arz-local"], language: "ar", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "صوت ذكر 1", name: "Android Speech Recognition and Synthesis from Google ar-xa-x-ard-network", altNames: ["Android Speech Recognition and Synthesis from Google ar-xa-x-ard-local"], nativeID: ["ar-xa-x-ard-network", "ar-xa-x-ard-local"], language: "ar", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "صوت ذكر 2", name: "Android Speech Recognition and Synthesis from Google ar-xa-x-are-network", altNames: ["Android Speech Recognition and Synthesis from Google ar-xa-x-are-local"], nativeID: ["ar-xa-x-are-network", "ar-xa-x-are-local"], language: "ar", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], o$A = {
-  language: "ar",
-  defaultRegion: a$J,
-  testUtterance: e$J,
-  voices: r$a
-};
+const voices$I = [];
+const language$I = "ar";
+const defaultRegion$I = language$I;
+const testUtterance$I = '';
+var arBGKtJRyt = { language: language$I, defaultRegion: defaultRegion$I, testUtterance: testUtterance$I, voices: voices$I };
 
-var arBGKtJRyt = /*#__PURE__*/Object.freeze({
+var arBGKtJRyt$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: o$A,
-  defaultRegion: a$J,
-  language: l$z,
-  testUtterance: e$J,
-  voices: r$a
+  default: arBGKtJRyt,
+  defaultRegion: defaultRegion$I,
+  language: language$I,
+  testUtterance: testUtterance$I,
+  voices: voices$I
 });
 
-const n$C = "bg", a$I = "bg-BG", e$I = "Здравейте, казвам се {name} и съм български глас.", l$y = [{ label: "Kalina", name: "Microsoft Kalina Online (Natural) - Bulgarian (Bulgaria)", language: "bg-BG", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Borislav", name: "Microsoft Borislav Online (Natural) - Bulgarian (Bulgaria)", language: "bg-BG", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Daria", name: "Daria", localizedName: "apple", language: "bg-BG", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Ivan", name: "Microsoft Ivan - Bulgarian (Bulgaria)", language: "bg-BG", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Женски глас", name: "Android Speech Recognition and Synthesis from Google bg-bg-x-ifk-network", altNames: ["Android Speech Recognition and Synthesis from Google bg-bg-x-ifk-local", "Android Speech Recognition and Synthesis from Google bg-bg-language"], nativeID: ["bg-bg-x-ifk-network", "bg-bg-x-ifk-local"], language: "bg-BG", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], o$z = {
-  language: "bg",
-  defaultRegion: a$I,
-  testUtterance: e$I,
-  voices: l$y
-};
+const voices$H = [];
+const language$H = "bg";
+const defaultRegion$H = language$H;
+const testUtterance$H = '';
+var bgD9Q1JriY = { language: language$H, defaultRegion: defaultRegion$H, testUtterance: testUtterance$H, voices: voices$H };
 
-var bgD9Q1JriY = /*#__PURE__*/Object.freeze({
+var bgD9Q1JriY$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: o$z,
-  defaultRegion: a$I,
-  language: n$C,
-  testUtterance: e$I,
-  voices: l$y
+  default: bgD9Q1JriY,
+  defaultRegion: defaultRegion$H,
+  language: language$H,
+  testUtterance: testUtterance$H,
+  voices: voices$H
 });
 
-const t$8 = "bho", a$H = "bho-IN", e$H = "नमस्कार, हमार नाम {name} ह आ हम भोजपुरी आवाज हईं", o$y = [{ label: "Jaya", name: "Jaya", localizedName: "apple", language: "bho-IN", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }], l$x = {
-  language: "bho",
-  defaultRegion: a$H,
-  testUtterance: e$H,
-  voices: o$y
-};
+const voices$G = [];
+const language$G = "bho";
+const defaultRegion$G = language$G;
+const testUtterance$G = '';
+var bhoCpuLBMN3 = { language: language$G, defaultRegion: defaultRegion$G, testUtterance: testUtterance$G, voices: voices$G };
 
-var bhoCpuLBMN3 = /*#__PURE__*/Object.freeze({
+var bhoCpuLBMN3$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: l$x,
-  defaultRegion: a$H,
-  language: t$8,
-  testUtterance: e$H,
-  voices: o$y
+  default: bhoCpuLBMN3,
+  defaultRegion: defaultRegion$G,
+  language: language$G,
+  testUtterance: testUtterance$G,
+  voices: voices$G
 });
 
-const o$x = "bn", e$G = "bn-IN", n$B = "হ্যালো, আমার নাম {name} এবং আমি একজন বাংলা ভয়েস।", a$G = [{ label: "Tanishaa", name: "Microsoft Tanishaa Online (Natural) - Bengali (India)", language: "bn-IN", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Bashkar", name: "Microsoft Bashkar Online (Natural) - Bangla (India)", language: "bn-IN", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Nabanita", name: "Microsoft Nabanita Online (Natural) - Bangla (Bangladesh)", language: "bn-BD", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Pradeep", name: "Microsoft Pradeep Online (Natural) - Bangla (Bangladesh)", language: "bn-BD", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Piya", name: "Piya", localizedName: "apple", language: "bn-IN", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "মহিলা কণ্ঠস্বর 1", name: "Android Speech Recognition and Synthesis from Google bn-in-x-bnf-network", altNames: ["Android Speech Recognition and Synthesis from Google bn-in-x-bnf-local", "Android Speech Recognition and Synthesis from Google bn-IN-language"], nativeID: ["bn-in-x-bnf-network", "bn-in-x-bnf-local"], language: "bn-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "মহিলা কণ্ঠস্বর 2", name: "Android Speech Recognition and Synthesis from Google bn-in-x-bnx-network", altNames: ["Android Speech Recognition and Synthesis from Google bn-in-x-bnx-local"], nativeID: ["bn-in-x-bnx-network", "bn-in-x-bnx-local"], language: "bn-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "পুরুষ কন্ঠ 1", name: "Android Speech Recognition and Synthesis from Google bn-in-x-bin-network", altNames: ["Android Speech Recognition and Synthesis from Google bn-in-x-bin-local"], nativeID: ["bn-in-x-bin-network", "bn-in-x-bin-local"], language: "bn-IN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "পুরুষ কন্ঠ 2", name: "Android Speech Recognition and Synthesis from Google bn-in-x-bnm-network", altNames: ["Android Speech Recognition and Synthesis from Google bn-in-x-bnm-local"], nativeID: ["bn-in-x-bnm-network", "bn-in-x-bnm-local"], language: "bn-IN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "পুরুষ কন্ঠ", name: "Google বাংলা (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google bn-bd-x-ban-network", "Chrome OS বাংলা", "Android Speech Recognition and Synthesis from Google bn-bd-x-ban-local", "Android Speech Recognition and Synthesis from Google bn-BD-language"], nativeID: ["bn-bd-x-ban-network", "bn-bd-x-ban-local"], language: "bn-BD", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$w = {
-  language: "bn",
-  defaultRegion: e$G,
-  testUtterance: n$B,
-  voices: a$G
-};
+const voices$F = [];
+const language$F = "bn";
+const defaultRegion$F = language$F;
+const testUtterance$F = '';
+var bnBpn_lzoe = { language: language$F, defaultRegion: defaultRegion$F, testUtterance: testUtterance$F, voices: voices$F };
 
-var bnBpn_lzoe = /*#__PURE__*/Object.freeze({
+var bnBpn_lzoe$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: l$w,
-  defaultRegion: e$G,
-  language: o$x,
-  testUtterance: n$B,
-  voices: a$G
+  default: bnBpn_lzoe,
+  defaultRegion: defaultRegion$F,
+  language: language$F,
+  testUtterance: testUtterance$F,
+  voices: voices$F
 });
 
-const n$A = "ca", a$F = "ca-ES", e$F = "Hola, em dic {name} i sóc una veu catalana", l$v = [{ label: "Joana (Català)", name: "Microsoft Joana Online (Natural) - Catalan", language: "ca-ES", otherLanguages: ["es"], gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Enric (Català)", name: "Microsoft Enric Online (Natural) - Catalan", language: "ca-ES", otherLanguages: ["es"], gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Montse (Català)", name: "Montse", localizedName: "apple", language: "ca-ES", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Pau (Valencià)", name: "Pau", localizedName: "apple", language: "ca-ES-u-sd-esvc", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Jordi (Català)", name: "Jordi", localizedName: "apple", language: "ca-ES", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Herena (Català)", name: "Microsoft Herena - Catalan (Spain)", language: "ca-ES", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Veu femenina catalana", name: "Android Speech Recognition and Synthesis from Google ca-es-x-caf-network", altNames: ["Android Speech Recognition and Synthesis from Google ca-es-x-caf-local", "Android Speech Recognition and Synthesis from Google ca-ES-language"], nativeID: ["ca-es-x-caf-network", "ca-es-x-caf-local"], language: "ca-ES", otherLanguages: ["es"], gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], o$w = {
-  language: "ca",
-  defaultRegion: a$F,
-  testUtterance: e$F,
-  voices: l$v
-};
+const voices$E = [];
+const language$E = "ca";
+const defaultRegion$E = language$E;
+const testUtterance$E = '';
+var ca5hzouNcE = { language: language$E, defaultRegion: defaultRegion$E, testUtterance: testUtterance$E, voices: voices$E };
 
-var ca5hzouNcE = /*#__PURE__*/Object.freeze({
+var ca5hzouNcE$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: o$w,
-  defaultRegion: a$F,
-  language: n$A,
-  testUtterance: e$F,
-  voices: l$v
+  default: ca5hzouNcE,
+  defaultRegion: defaultRegion$E,
+  language: language$E,
+  testUtterance: testUtterance$E,
+  voices: voices$E
 });
 
-const l$u = "cmn", a$E = "cmn-CN", e$E = "你好，我的名字是 {name}，我是普通话配音。", n$z = /* @__PURE__ */ JSON.parse(`[{"label":"Xiaoxiao","name":"Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Xiaoyi","name":"Microsoft Xiaoyi Online (Natural) - Chinese (Mainland)","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Yunxi","name":"Microsoft Yunxi Online (Natural) - Chinese (Mainland)","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Yunxia","name":"Microsoft Yunxia Online (Natural) - Chinese (Mainland)","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Xiaobei","name":"Microsoft Xiaobei Online (Natural) - Chinese (Northeastern Mandarin)","language":"cmn-CN-liaoning","altLanguage":"zh-CN-liaoning","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Xiaoni","name":"Microsoft Xiaoni Online (Natural) - Chinese (Zhongyuan Mandarin Shaanxi)","language":"cmn-CN-shaanxi","altLanguage":"zh-CN-shaanxi","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Yunjian","name":"Microsoft Yunjian Online (Natural) - Chinese (Mainland)","language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Yunyang","name":"Microsoft Yunyang Online (Natural) - Chinese (Mainland)","language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"HsiaoChen","name":"Microsoft HsiaoChen Online (Natural) - Chinese (Taiwan)","language":"cmn-TW","altLanguage":"zh-TW","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"HsiaoYu","name":"Microsoft HsiaoYu Online (Natural) - Chinese (Taiwanese Mandarin)","language":"cmn-TW","altLanguage":"zh-TW","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"YunJhe","name":"Microsoft YunJhe Online (Natural) - Chinese (Taiwan)","language":"cmn-TW","altLanguage":"zh-TW","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Google 女声","name":"Google 普通话（中国大陆）","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Google 女聲","name":"Google 國語（臺灣）","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"cmn-TW","altLanguage":"zh-TW","gender":"female","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Lilian","name":"Lilian","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Tiantian","name":"Tiantian","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Shasha","name":"Shasha","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Lili","name":"Lili","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Lisheng","name":"Lisheng","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Lanlan","name":"Lanlan","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Shanshan","name":"Shanshan","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Yue","name":"Yue","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Tingting","name":"Tingting","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Yu-shu","name":"Yu-shu","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Dongmei","name":"Dongmei","localizedName":"apple","language":"cmn-CN-liaoning","altLanguage":"zh-CN-liaoning","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Panpan","name":"Panpan","localizedName":"apple","language":"cmn-CN-sichuan","altLanguage":"zh-CN-sichuan","gender":"female","quality":["low","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Meijia","name":"Meijia","localizedName":"apple","language":"cmn-TW","altLanguage":"zh-TW","gender":"female","quality":["low","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Han","name":"Han","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Bobo","name":"Bobo","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Taotao","name":"Taotao","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Binbin","name":"Binbin","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Li-Mu","name":"Li-Mu","localizedName":"apple","language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Haohao","name":"Haohao","localizedName":"apple","language":"cmn-CN-shaanxi","altLanguage":"zh-CN-shaanxi","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Huihui","name":"Microsoft Huihui - Chinese (Simplified, PRC)","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Yaoyao","name":"Microsoft Yaoyao - Chinese (Simplified, PRC)","language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Kangkang","name":"Microsoft Kangkang - Chinese (Simplified, PRC)","language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Yating","name":"Microsoft Yating - Chinese (Traditional, Taiwan)","language":"cmn-TW","altLanguage":"zh-TW","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Hanhan","name":"Microsoft Hanhan - Chinese (Traditional, Taiwan)","language":"cmn-TW","altLanguage":"zh-TW","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Zhiwei","name":"Microsoft Zhiwei - Chinese (Traditional, Taiwan)","language":"cmn-TW","altLanguage":"zh-TW","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"女声1","name":"Android Speech Recognition and Synthesis from Google cmn-CN-x-ccc-network","altNames":["Android Speech Recognition and Synthesis from Google cmn-CN-x-ccc-local","Android Speech Recognition and Synthesis from Google zh-CN-language"],"nativeID":["cmn-CN-x-ccc-network","cmn-CN-x-ccc-local"],"language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"女声2","name":"Android Speech Recognition and Synthesis from Google cmn-CN-x-ssa-network","altNames":["Android Speech Recognition and Synthesis from Google cmn-CN-x-ssa-local"],"nativeID":["cmn-CN-x-ssa-network","cmn-CN-x-ssa-local"],"language":"cmn-CN","altLanguage":"zh-CN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"男声1","name":"Android Speech Recognition and Synthesis from Google cmn-CN-x-ccd-network","altNames":["Android Speech Recognition and Synthesis from Google cmn-CN-x-ccd-local"],"nativeID":["cmn-CN-x-ccd-network","cmn-CN-x-ccd-local"],"language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"男声2","name":"Android Speech Recognition and Synthesis from Google cmn-CN-x-cce-network","altNames":["Android Speech Recognition and Synthesis from Google cmn-CN-x-cce-local"],"nativeID":["cmn-CN-x-cce-network","cmn-CN-x-cce-local"],"language":"cmn-CN","altLanguage":"zh-CN","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"女聲","name":"Android Speech Recognition and Synthesis from Google cmn-TW-x-ctc-network","altNames":["Android Speech Recognition and Synthesis from Google cmn-TW-x-ctc-local","Android Speech Recognition and Synthesis from Google zh-TW-language"],"nativeID":["cmn-TW-x-ctc-network","cmn-TW-x-ctc-local"],"language":"cmn-TW","altLanguage":"zh-TW","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"男聲1","name":"Android Speech Recognition and Synthesis from Google cmn-TW-x-ctd-network","altNames":["Chrome OS 粵語 1","Android Speech Recognition and Synthesis from Google cmn-TW-x-ctd-local"],"nativeID":["cmn-TW-x-ctd-network","cmn-TW-x-ctd-local"],"language":"cmn-TW","altLanguage":"zh-TW","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"男聲2","name":"Android Speech Recognition and Synthesis from Google cmn-TW-x-cte-network","altNames":["Chrome OS 粵語 1","Android Speech Recognition and Synthesis from Google cmn-TW-x-cte-local"],"nativeID":["cmn-TW-x-cte-network","cmn-TW-x-cte-local"],"language":"cmn-CTW","altLanguage":"zh-TW","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}}]`), o$v = {
-  language: "cmn",
-  defaultRegion: a$E,
-  testUtterance: e$E,
-  voices: n$z
-};
+const voices$D = [];
+const language$D = "cmn";
+const defaultRegion$D = language$D;
+const testUtterance$D = '';
+var cmnDlnYMCd8 = { language: language$D, defaultRegion: defaultRegion$D, testUtterance: testUtterance$D, voices: voices$D };
 
-var cmnDlnYMCd8 = /*#__PURE__*/Object.freeze({
+var cmnDlnYMCd8$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: o$v,
-  defaultRegion: a$E,
-  language: l$u,
-  testUtterance: e$E,
-  voices: n$z
+  default: cmnDlnYMCd8,
+  defaultRegion: defaultRegion$D,
+  language: language$D,
+  testUtterance: testUtterance$D,
+  voices: voices$D
 });
 
-const n$y = "cs", e$D = "cs-CZ", a$D = "Dobrý den, jmenuji se {name} a jsem český hlas.", l$t = [{ label: "Vlasta", name: "Microsoft Vlasta Online (Natural) - Czech (Czech)", language: "cs-CZ", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Antonin", name: "Microsoft Antonin Online (Natural) - Czech (Czech)", language: "cs-CZ", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Zuzana", name: "Zuzana", localizedName: "apple", language: "cs-CZ", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Iveta", name: "Iveta", localizedName: "apple", language: "cs-CZ", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Jakub", name: "Microsoft Jakub - Czech (Czech)", language: "cs-CZ", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Ženský hlas", name: "Google čeština (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google cs-cz-x-jfs-network", "Chrome OS čeština", "Android Speech Recognition and Synthesis from Google cs-cz-x-jfs-local", "Android Speech Recognition and Synthesis from Google cs-CZ-language"], nativeID: ["cs-cz-x-jfs-network", "cs-cz-x-jfs-local"], language: "cs-CZ", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], o$u = {
-  language: "cs",
-  defaultRegion: e$D,
-  testUtterance: a$D,
-  voices: l$t
-};
+const voices$C = [];
+const language$C = "cs";
+const defaultRegion$C = language$C;
+const testUtterance$C = '';
+var csCDpMkMNO = { language: language$C, defaultRegion: defaultRegion$C, testUtterance: testUtterance$C, voices: voices$C };
 
-var csCDpMkMNO = /*#__PURE__*/Object.freeze({
+var csCDpMkMNO$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: o$u,
-  defaultRegion: e$D,
-  language: n$y,
-  testUtterance: a$D,
-  voices: l$t
+  default: csCDpMkMNO,
+  defaultRegion: defaultRegion$C,
+  language: language$C,
+  testUtterance: testUtterance$C,
+  voices: voices$C
 });
 
-const n$x = "da", e$C = "da-DK", a$C = "Hej, mit navn er {name} og jeg er en dansk stemme.", o$t = [{ label: "Christel", name: "Microsoft Christel Online (Natural) - Danish (Denmark)", language: "da-DK", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Jeppe", name: "Microsoft Jeppe Online (Natural) - Danish (Denmark)", language: "da-DK", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Sara", name: "Sara", localizedName: "apple", language: "da-DK", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Magnus", name: "Magnus", localizedName: "apple", language: "da-DK", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Helle", name: "Microsoft Helle - Danish (Denmark)", language: "da-DK", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Kvindestemme 1", name: "Google Dansk 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google da-dk-x-kfm-network", "Chrome OS Dansk 1", "Android Speech Recognition and Synthesis from Google da-dk-x-kfm-local", "Android Speech Recognition and Synthesis from Google da-DK-language"], nativeID: ["da-dk-x-kfm-network", "da-dk-x-kfm-local"], language: "da-DK", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Kvindestemme 2", name: "Google Dansk 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google da-dk-x-sfp-network", "Chrome OS Dansk 3", "Android Speech Recognition and Synthesis from Google da-dk-x-sfp-local"], nativeID: ["da-dk-x-sfp-network", "da-dk-x-sfp-local"], language: "da-DK", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Kvindestemme 3", name: "Google Dansk 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google da-dk-x-vfb-network", "Chrome OS Dansk 4", "Android Speech Recognition and Synthesis from Google da-dk-x-vfb-local"], nativeID: ["da-dk-x-vfb-network", "da-dk-x-vfb-local"], language: "da-DK", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Mandsstemme", name: "Google Dansk 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google da-dk-x-nmm-network", "Chrome OS Dansk 2", "Android Speech Recognition and Synthesis from Google da-dk-x-nmm-local"], nativeID: ["da-dk-x-nmm-network", "da-dk-x-nmm-local"], language: "da-DK", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$s = {
-  language: "da",
-  defaultRegion: e$C,
-  testUtterance: a$C,
-  voices: o$t
-};
+const voices$B = [];
+const language$B = "da";
+const defaultRegion$B = language$B;
+const testUtterance$B = '';
+var daXWCfWAwB = { language: language$B, defaultRegion: defaultRegion$B, testUtterance: testUtterance$B, voices: voices$B };
 
-var daXWCfWAwB = /*#__PURE__*/Object.freeze({
+var daXWCfWAwB$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: l$s,
-  defaultRegion: e$C,
-  language: n$x,
-  testUtterance: a$C,
-  voices: o$t
+  default: daXWCfWAwB,
+  defaultRegion: defaultRegion$B,
+  language: language$B,
+  testUtterance: testUtterance$B,
+  voices: voices$B
 });
 
-const n$w = "de", e$B = "de-DE", a$B = "Hallo, mein Name ist {name} und ich bin eine deutsche Stimme.", l$r = [{ label: "Seraphina", name: "Microsoft SeraphinaMultilingual Online (Natural) - German (Germany)", language: "de-DE", multiLingual: true, gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Amala", name: "Microsoft Amala Online (Natural) - German (Germany)", language: "de-DE", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Katja", name: "Microsoft Katja Online (Natural) - German (Germany)", language: "de-DE", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Florian", name: "Microsoft FlorianMultilingual Online (Natural) - German (Germany)", language: "de-DE", multiLingual: true, gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Conrad", name: "Microsoft Conrad Online (Natural) - German (Germany)", language: "de-DE", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Killian", name: "Microsoft Killian Online (Natural) - German (Germany)", language: "de-DE", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ingrid", name: "Microsoft Ingrid Online (Natural) - German (Austria)", language: "de-AT", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Jonas", name: "Microsoft Jonas Online (Natural) - German (Austria)", language: "de-AT", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Leni", name: "Microsoft Leni Online (Natural) - German (Switzerland)", language: "de-CH", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Jan", name: "Microsoft Jan Online (Natural) - German (Switzerland)", language: "de-CH", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Weibliche Google-Stimme", name: "Google Deutsch", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "de-DE", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Petra", name: "Petra", localizedName: "apple", language: "de-DE", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Anna", name: "Anna", localizedName: "apple", language: "de-DE", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Helena", name: "Helena", localizedName: "apple", note: "This is a compact version of a preloaded Siri voice on macOS.", language: "de-DE", gender: "female", quality: ["low"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Markus", name: "Markus", localizedName: "apple", language: "de-DE", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Viktor", name: "Viktor", localizedName: "apple", language: "de-DE", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Yannick", name: "Yannick", localizedName: "apple", language: "de-DE", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Martin", name: "Martin", localizedName: "apple", note: "This is a compact version of a preloaded Siri voice on macOS.", language: "de-DE", gender: "male", quality: ["low"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Hedda", name: "Microsoft Hedda - German (Germany)", language: "de-DE", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Katja", name: "Microsoft Katja - German (Germany)", language: "de-DE", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Stefan", name: "Microsoft Stefan - German (Germany)", language: "de-DE", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Michael", name: "Microsoft Michael - German (Austria)", language: "de-AT", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Karsten", name: "Microsoft Karsten - German (Switzerland)", language: "de-CH", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Weibliche Stimme 1 (Deutschland)", name: "Google Deutsch 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google de-de-x-dea-network", "Chrome OS Deutsch 2", "Android Speech Recognition and Synthesis from Google de-de-x-dea-local", "Android Speech Recognition and Synthesis from Google de-DE-language"], nativeID: ["de-de-x-dea-network", "de-de-x-dea-local"], language: "de-DE", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Weibliche Stimme 2 (Deutschland)", name: "Google Deutsch 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google de-de-x-nfh-network", "Chrome OS Deutsch 1", "Android Speech Recognition and Synthesis from Google de-de-x-nfh-local"], nativeID: ["de-de-x-nfh-network", "de-de-x-nfh-local"], language: "de-DE", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Männliche Stimme 1 (Deutschland)", name: "Google Deutsch 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google de-de-x-deb-network", "Chrome OS Deutsch 3", "Android Speech Recognition and Synthesis from Google de-de-x-deb-local"], nativeID: ["de-de-x-deb-network", "de-de-x-deb-local"], language: "de-DE", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Männliche Stimme 2 (Deutschland)", name: "Google Deutsch 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google de-de-x-deg-network", "Chrome OS Deutsch 4", "Android Speech Recognition and Synthesis from Google de-de-x-deg-local"], nativeID: ["de-de-x-deg-network", "de-de-x-deg-local"], language: "de-DE", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], r$9 = {
-  language: "de",
-  defaultRegion: e$B,
-  testUtterance: a$B,
-  voices: l$r
-};
+const voices$A = [];
+const language$A = "de";
+const defaultRegion$A = language$A;
+const testUtterance$A = '';
+var deDU0USiOh = { language: language$A, defaultRegion: defaultRegion$A, testUtterance: testUtterance$A, voices: voices$A };
 
-var deDU0USiOh = /*#__PURE__*/Object.freeze({
+var deDU0USiOh$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: r$9,
-  defaultRegion: e$B,
-  language: n$w,
-  testUtterance: a$B,
-  voices: l$r
+  default: deDU0USiOh,
+  defaultRegion: defaultRegion$A,
+  language: language$A,
+  testUtterance: testUtterance$A,
+  voices: voices$A
 });
 
-const o$s = "el", e$A = "el-GR", a$A = "Γεια σας, με λένε {name} και είμαι ελληνική φωνή.", l$q = [{ label: "Athina", name: "Microsoft Athina Online (Natural) - Greek (Greece)", language: "el-GR", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Nestoras", name: "Microsoft Nestoras Online (Natural) - Greek (Greece)", language: "el-GR", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Melina", name: "Melina", localizedName: "apple", language: "el-GR", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Nikos", name: "Nikos", localizedName: "apple", language: "el-GR", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Stefanos", name: "Microsoft Stefanos - Greek (Greece)", language: "el-GR", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Γυναικεία φωνή", name: "Google Ελληνικά (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google el-gr-x-vfz-network", "Chrome OS Ελληνικά", "Android Speech Recognition and Synthesis from Google el-gr-x-vfz-local", "Android Speech Recognition and Synthesis from Google el-GR-language"], nativeID: ["el-gr-x-vfz-network", "el-gr-x-vfz-local"], language: "el-GR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$v = {
-  language: "el",
-  defaultRegion: e$A,
-  testUtterance: a$A,
-  voices: l$q
-};
+const voices$z = [];
+const language$z = "el";
+const defaultRegion$z = language$z;
+const testUtterance$z = '';
+var elClBwbIAW = { language: language$z, defaultRegion: defaultRegion$z, testUtterance: testUtterance$z, voices: voices$z };
 
-var elClBwbIAW = /*#__PURE__*/Object.freeze({
+var elClBwbIAW$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: n$v,
-  defaultRegion: e$A,
-  language: o$s,
-  testUtterance: a$A,
-  voices: l$q
+  default: elClBwbIAW,
+  defaultRegion: defaultRegion$z,
+  language: language$z,
+  testUtterance: testUtterance$z,
+  voices: voices$z
 });
 
-const n$u = "en", e$z = "en-US", a$z = "Hello, my name is {name} and I am an English voice.", l$p = /* @__PURE__ */ JSON.parse(`[{"label":"Emma","name":"Microsoft EmmaMultilingual Online (Natural) - English (United States)","altNames":["Microsoft Emma Online (Natural) - English (United States)"],"language":"en-US","multiLingual":true,"gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Microsoft Ava","name":"Microsoft AvaMultilingual Online (Natural) - English (United States)","altNames":["Microsoft Ava Online (Natural) - English (United States)"],"language":"en-US","multiLingual":true,"gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Jenny","name":"Microsoft Jenny Online (Natural) - English (United States)","language":"en-US","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Aria","name":"Microsoft Aria Online (Natural) - English (United States)","language":"en-US","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Michelle","name":"Microsoft Michelle Online (Natural) - English (United States)","language":"en-US","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ana","name":"Microsoft Ana Online (Natural) - English (United States)","language":"en-US","gender":"female","children":true,"quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Andrew","name":"Microsoft AndrewMultilingual Online (Natural) - English (United States)","altNames":["Microsoft Andrew Online (Natural) - English (United States)"],"language":"en-US","multiLingual":true,"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Brian","name":"Microsoft BrianMultilingual Online (Natural) - English (United States)","altNames":["Microsoft Brian Online (Natural) - English (United States)"],"language":"en-US","multiLingual":true,"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Guy","name":"Microsoft Guy Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Eric","name":"Microsoft Eric Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Steffan","name":"Microsoft Steffan Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Christopher","name":"Microsoft Christopher Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Roger","name":"Microsoft Roger Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Sonia","name":"Microsoft Sonia Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Libby","name":"Microsoft Libby Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Maisie","name":"Microsoft Maisie Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"female","children":true,"quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ryan","name":"Microsoft Ryan Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Thomas","name":"Microsoft Thomas Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Natasha","name":"Microsoft Natasha Online (Natural) - English (Australia)","language":"en-AU","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Hayley","name":"Microsoft Hayley Online - English (Australia)","language":"en-AU","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"William","name":"Microsoft William Online (Natural) - English (Australia)","altNames":["Microsoft WilliamMultilingual Online (Natural) - English (Australia)"],"language":"en-AU","multiLingual":true,"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Clara","name":"Microsoft Clara Online (Natural) - English (Canada)","language":"en-CA","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Heather","name":"Microsoft Heather Online - English (Canada)","language":"en-CA","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Liam","name":"Microsoft Liam Online (Natural) - English (Canada)","language":"en-CA","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Neerja","name":"Microsoft Neerja Online (Natural) - English (India)","altNames":["Microsoft Neerja Online (Natural) - English (India) (Preview)"],"language":"en-IN","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Prabhat","name":"Microsoft Prabhat Online (Natural) - English (India)","language":"en-IN","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Emily","name":"Microsoft Emily Online (Natural) - English (Ireland)","language":"en-IE","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Connor","name":"Microsoft Connor Online (Natural) - English (Ireland)","language":"en-IE","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Leah","name":"Microsoft Leah Online (Natural) - English (South Africa)","language":"en-ZA","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Luke","name":"Microsoft Luke Online (Natural) - English (South Africa)","language":"en-ZA","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Yan","name":"Microsoft Yan Online (Natural) - English (Hong Kong SAR)","language":"en-HK","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Sam","name":"Microsoft Sam Online (Natural) - English (Hongkong)","language":"en-HK","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Asilia","name":"Microsoft Asilia Online (Natural) - English (Kenya)","language":"en-KE","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Chilemba","name":"Microsoft Chilemba Online (Natural) - English (Kenya)","language":"en-KE","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Molly","name":"Microsoft Molly Online (Natural) - English (New Zealand)","language":"en-NZ","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Mitchell","name":"Microsoft Mitchell Online (Natural) - English (New Zealand)","language":"en-NZ","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ezinne","name":"Microsoft Ezinne Online (Natural) - English (Nigeria)","language":"en-NG","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Abeo","name":"Microsoft Abeo Online (Natural) - English (Nigeria)","language":"en-NG","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Rosa","name":"Microsoft Rosa Online (Natural) - English (Philippines)","language":"en-PH","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"James","name":"Microsoft James Online (Natural) - English (Philippines)","language":"en-PH","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Luna","name":"Microsoft Luna Online (Natural) - English (Singapore)","language":"en-SG","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Wayne","name":"Microsoft Wayne Online (Natural) - English (Singapore)","language":"en-SG","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Imani","name":"Microsoft Imani Online (Natural) - English (Tanzania)","language":"en-TZ","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Elimu","name":"Microsoft Elimu Online (Natural) - English (Tanzania)","language":"en-TZ","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Female Google voice (US)","name":"Google US English","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Female Google voice (UK)","name":"Google UK English Female","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"en-GB","gender":"female","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Male Google voice (UK)","name":"Google UK English Male","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"en-GB","gender":"male","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Apple Ava","name":"Ava","localizedName":"apple","language":"en-US","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Zoe","name":"Zoe","localizedName":"apple","language":"en-US","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Allison","name":"Allison","localizedName":"apple","language":"en-US","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Nicky","name":"Nicky","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS. Unlike other Siri voices, a higher quality version can be installed and used.","language":"en-US","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Samantha","name":"Samantha","localizedName":"apple","language":"en-US","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Joelle","name":"Joelle","localizedName":"apple","language":"en-US","gender":"female","children":true,"quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Evan","name":"Evan","localizedName":"apple","language":"en-US","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Nathan","name":"Nathan","localizedName":"apple","language":"en-US","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Tom","name":"Tom","localizedName":"apple","language":"en-US","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Alex","name":"Alex","localizedName":"apple","language":"en-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Aaron","name":"Aaron","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-US","gender":"male","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Kate","name":"Kate","localizedName":"apple","language":"en-GB","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Stephanie","name":"Stephanie","localizedName":"apple","language":"en-GB","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Serena","name":"Serena","localizedName":"apple","language":"en-GB","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Martha","name":"Martha","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-GB","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Jamie","name":"Jamie","localizedName":"apple","language":"en-GB","gender":"male","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Oliver","name":"Oliver","localizedName":"apple","language":"en-GB","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Daniel","name":"Daniel","localizedName":"apple","language":"en-GB","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Arthur","name":"Arthur","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-GB","gender":"male","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Matilda","name":"Matilda","localizedName":"apple","language":"en-AU","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Karen","name":"Karen","localizedName":"apple","language":"en-AU","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Catherine","name":"Catherine","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-AU","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Lee","name":"Lee","localizedName":"apple","language":"en-AU","gender":"male","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Gordon","name":"Gordon","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-AU","gender":"male","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Aman","name":"Aman","nativeID":["com.apple.voice.Aman"],"localizedName":"apple","language":"en-IN","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Tara","name":"Tara","nativeID":["com.apple.voice.Tara"],"localizedName":"apple","language":"en-IN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Isha","name":"Isha","localizedName":"apple","language":"en-IN","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Sangeeta","name":"Sangeeta","localizedName":"apple","language":"en-IN","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Veena ","name":"Veena","localizedName":"apple","language":"en-IN","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Rishi","name":"Rishi","localizedName":"apple","language":"en-IN","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Moira","name":"Moira","localizedName":"apple","language":"en-IE","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Tessa","name":"Tessa","localizedName":"apple","language":"en-ZA","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Fiona","name":"Fiona","localizedName":"apple","language":"en-GB-u-sd-gbsct","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Zira","name":"Microsoft Zira - English (United States)","language":"en-US","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"David","name":"Microsoft David - English (United States)","language":"en-US","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Mark","name":"Microsoft Mark - English (United States)","language":"en-US","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Hazel","name":"Microsoft Hazel - English (Great Britain)","language":"en-GB","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Susan","name":"Microsoft Susan - English (Great Britain)","language":"en-GB","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"George","name":"Microsoft George - English (Great Britain)","language":"en-GB","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Catherine","name":"Microsoft Catherine - English (Austalia)","language":"en-AU","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"James","name":"Microsoft Richard - English (Australia)","language":"en-AU","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Linda","name":"Microsoft Linda - English (Canada)","language":"en-CA","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Richard","name":"Microsoft Richard - English (Canada)","language":"en-CA","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Heera","name":"Microsoft Heera - English (India)","language":"en-IN","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Ravi","name":"Microsoft Ravi - English (India)","language":"en-IN","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Sean","name":"Microsoft Sean - English (Ireland)","language":"en-IE","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Female voice 1 (US)","name":"Google US English 5 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-tpc-network","Chrome OS US English 5","Android Speech Recognition and Synthesis from Google en-us-x-tpc-local","Android Speech Recognition and Synthesis from Google en-US-language"],"nativeID":["en-us-x-tpc-network","en-us-x-tpc-local"],"language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 2 (US)","name":"Google US English 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-iob-network","Chrome OS US English 1","Android Speech Recognition and Synthesis from Google en-us-x-iob-local"],"nativeID":["en-us-x-iob-network","en-us-x-iob-local"],"language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 3 (US)","name":"Google US English 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-iog-network","Chrome OS US English 2","Android Speech Recognition and Synthesis from Google en-us-x-iog-local"],"nativeID":["en-us-x-iog-network","en-us-x-iog-local"],"language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 4 (US)","name":"Google US English 7 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-tpf-network","Chrome OS US English 7","Android Speech Recognition and Synthesis from Google en-us-x-tpf-local"],"nativeID":["en-us-x-tpf-network","en-us-x-tpf-local"],"language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 5 (US)","name":"Android Speech Recognition and Synthesis from Google en-us-x-sfg-network","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-sfg-local"],"nativeID":["en-us-x-sfg-network","en-us-x-sfg-local"],"language":"en-US","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 6 (US)","name":"Chrome OS US English 8","language":"en-US","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 1 (US)","name":"Google US English 4 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-iom-network","Chrome OS US English 4","Android Speech Recognition and Synthesis from Google en-us-x-iom-local"],"nativeID":["en-us-x-iom-network","en-us-x-iom-local"],"language":"en-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 2 (US)","name":"Google US English 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-iol-network","Chrome OS US English 3","Android Speech Recognition and Synthesis from Google en-us-x-iol-local"],"nativeID":["en-us-x-iol-network","en-us-x-iol-local"],"language":"en-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 3 (US)","name":"Google US English 6 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-tpd-network","Chrome OS US English 6","Android Speech Recognition and Synthesis from Google en-us-x-tpd-local"],"nativeID":["en-us-x-tpd-network","en-us-x-tpd-local"],"language":"en-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 1 (UK)","name":"Google UK English 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gba-network","Chrome OS UK English 2","Android Speech Recognition and Synthesis from Google en-gb-x-gba-local","Android Speech Recognition and Synthesis from Google en-GB-language"],"nativeID":["en-gb-x-gba-network","en-gb-x-gba-local"],"language":"en-GB","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 2 (UK)","name":"Google UK English 4 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gbc-network","Chrome OS UK English 4","Android Speech Recognition and Synthesis from Google en-gb-x-gbc-local"],"nativeID":["en-gb-x-gbc-network","en-gb-x-gbc-local"],"language":"en-GB","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 3 (UK)","name":"Google UK English 6 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gbg-network","Chrome OS UK English 6","Android Speech Recognition and Synthesis from Google en-gb-x-gbg-local"],"nativeID":["en-gb-x-gbg-network","en-gb-x-gbg-local"],"language":"en-GB","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 4 (UK)","name":"Chrome OS UK English 7","language":"en-GB","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 1 (UK)","name":"Google UK English 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-rjs-network","Chrome OS UK English 1","Android Speech Recognition and Synthesis from Google en-gb-x-rjs-local"],"nativeID":["en-gb-x-rjs-network","en-gb-x-rjs-local"],"language":"en-GB","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 2 (UK)","name":"Google UK English 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gbb-network","Chrome OS UK English 3","Android Speech Recognition and Synthesis from Google en-gb-x-gbb-local"],"nativeID":["en-gb-x-gbb-network","en-gb-x-gbb-local"],"language":"en-GB","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 3 (UK)","name":"Google UK English 5 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gbd-network","Chrome OS UK English 5","Android Speech Recognition and Synthesis from Google en-gb-x-gbd-local"],"nativeID":["en-gb-x-gbd-network","en-gb-x-gbd-local"],"language":"en-GB","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 1 (Australia)","name":"Google Australian English 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-au-x-aua-network","Chrome OS Australian English 1","Android Speech Recognition and Synthesis from Google en-au-x-aua-local","Android Speech Recognition and Synthesis from Google en-AU-language"],"nativeID":["en-au-x-aua-network","en-au-x-aua-local"],"language":"en-AU","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 2 (Australia)","name":"Google Australian English 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-au-x-auc-network","Chrome OS Australian English 3","Android Speech Recognition and Synthesis from Google en-au-x-auc-local"],"nativeID":["en-au-x-auc-network","en-au-x-auc-local"],"language":"en-AU","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 1 (Australia)","name":"Google Australian English 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-au-x-aub-network","Chrome OS Australian English 2","Android Speech Recognition and Synthesis from Google en-au-x-aub-local"],"nativeID":["en-au-x-aub-network","en-au-x-aub-local"],"language":"en-AU","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 2 (Australia)","name":"Google Australian English 4 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-au-x-aud-network","Chrome OS Australian English 4","Android Speech Recognition and Synthesis from Google en-au-x-aud-local"],"nativeID":["en-au-x-aud-network","en-au-x-aud-local"],"language":"en-AU","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 3 (Australia)","name":"Chrome OS Australian English 5","language":"en-AU","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 1 (India)","name":"Android Speech Recognition and Synthesis from Google en-in-x-ena-network","altNames":["Android Speech Recognition and Synthesis from Google en-in-x-ena-local","Android Speech Recognition and Synthesis from Google en-IN-language"],"nativeID":["en-in-x-ena-network","en-in-x-ena-local"],"language":"en-IN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 2 (India)","name":"Android Speech Recognition and Synthesis from Google en-in-x-enc-network","altNames":["Android Speech Recognition and Synthesis from Google en-in-x-enc-local"],"nativeID":["en-in-x-enc-network","en-in-x-enc-local"],"language":"en-IN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 1 (India)","name":"Android Speech Recognition and Synthesis from Google en-in-x-end-network","altNames":["Android Speech Recognition and Synthesis from Google en-in-x-end-local"],"nativeID":["en-in-x-end-network","en-in-x-end-local"],"language":"en-IN","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 2 (India)","name":"Android Speech Recognition and Synthesis from Google en-in-x-ene-network","altNames":["Android Speech Recognition and Synthesis from Google en-in-x-ene-local"],"nativeID":["en-in-x-ene-network","en-in-x-ene-local"],"language":"en-IN","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}}]`), o$r = {
+const n = "en", e = "en-US", a = "Hello, my name is {name} and I am an English voice.", l = /* @__PURE__ */ JSON.parse(`[{"label":"Emma","name":"Microsoft EmmaMultilingual Online (Natural) - English (United States)","altNames":["Microsoft Emma Online (Natural) - English (United States)"],"language":"en-US","multiLingual":true,"gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Microsoft Ava","name":"Microsoft AvaMultilingual Online (Natural) - English (United States)","altNames":["Microsoft Ava Online (Natural) - English (United States)"],"language":"en-US","multiLingual":true,"gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Jenny","name":"Microsoft Jenny Online (Natural) - English (United States)","language":"en-US","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Aria","name":"Microsoft Aria Online (Natural) - English (United States)","language":"en-US","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Michelle","name":"Microsoft Michelle Online (Natural) - English (United States)","language":"en-US","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ana","name":"Microsoft Ana Online (Natural) - English (United States)","language":"en-US","gender":"female","children":true,"quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Andrew","name":"Microsoft AndrewMultilingual Online (Natural) - English (United States)","altNames":["Microsoft Andrew Online (Natural) - English (United States)"],"language":"en-US","multiLingual":true,"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Brian","name":"Microsoft BrianMultilingual Online (Natural) - English (United States)","altNames":["Microsoft Brian Online (Natural) - English (United States)"],"language":"en-US","multiLingual":true,"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Guy","name":"Microsoft Guy Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Eric","name":"Microsoft Eric Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Steffan","name":"Microsoft Steffan Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Christopher","name":"Microsoft Christopher Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Roger","name":"Microsoft Roger Online (Natural) - English (United States)","language":"en-US","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Sonia","name":"Microsoft Sonia Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Libby","name":"Microsoft Libby Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Maisie","name":"Microsoft Maisie Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"female","children":true,"quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ryan","name":"Microsoft Ryan Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Thomas","name":"Microsoft Thomas Online (Natural) - English (United Kingdom)","language":"en-GB","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Natasha","name":"Microsoft Natasha Online (Natural) - English (Australia)","language":"en-AU","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Hayley","name":"Microsoft Hayley Online - English (Australia)","language":"en-AU","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"William","name":"Microsoft William Online (Natural) - English (Australia)","altNames":["Microsoft WilliamMultilingual Online (Natural) - English (Australia)"],"language":"en-AU","multiLingual":true,"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Clara","name":"Microsoft Clara Online (Natural) - English (Canada)","language":"en-CA","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Heather","name":"Microsoft Heather Online - English (Canada)","language":"en-CA","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Liam","name":"Microsoft Liam Online (Natural) - English (Canada)","language":"en-CA","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Neerja","name":"Microsoft Neerja Online (Natural) - English (India)","altNames":["Microsoft Neerja Online (Natural) - English (India) (Preview)"],"language":"en-IN","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Prabhat","name":"Microsoft Prabhat Online (Natural) - English (India)","language":"en-IN","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Emily","name":"Microsoft Emily Online (Natural) - English (Ireland)","language":"en-IE","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Connor","name":"Microsoft Connor Online (Natural) - English (Ireland)","language":"en-IE","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Leah","name":"Microsoft Leah Online (Natural) - English (South Africa)","language":"en-ZA","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Luke","name":"Microsoft Luke Online (Natural) - English (South Africa)","language":"en-ZA","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Yan","name":"Microsoft Yan Online (Natural) - English (Hong Kong SAR)","language":"en-HK","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Sam","name":"Microsoft Sam Online (Natural) - English (Hongkong)","language":"en-HK","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Asilia","name":"Microsoft Asilia Online (Natural) - English (Kenya)","language":"en-KE","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Chilemba","name":"Microsoft Chilemba Online (Natural) - English (Kenya)","language":"en-KE","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Molly","name":"Microsoft Molly Online (Natural) - English (New Zealand)","language":"en-NZ","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Mitchell","name":"Microsoft Mitchell Online (Natural) - English (New Zealand)","language":"en-NZ","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ezinne","name":"Microsoft Ezinne Online (Natural) - English (Nigeria)","language":"en-NG","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Abeo","name":"Microsoft Abeo Online (Natural) - English (Nigeria)","language":"en-NG","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Rosa","name":"Microsoft Rosa Online (Natural) - English (Philippines)","language":"en-PH","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"James","name":"Microsoft James Online (Natural) - English (Philippines)","language":"en-PH","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Luna","name":"Microsoft Luna Online (Natural) - English (Singapore)","language":"en-SG","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Wayne","name":"Microsoft Wayne Online (Natural) - English (Singapore)","language":"en-SG","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Imani","name":"Microsoft Imani Online (Natural) - English (Tanzania)","language":"en-TZ","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Elimu","name":"Microsoft Elimu Online (Natural) - English (Tanzania)","language":"en-TZ","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Female Google voice (US)","name":"Google US English","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Female Google voice (UK)","name":"Google UK English Female","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"en-GB","gender":"female","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Male Google voice (UK)","name":"Google UK English Male","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"en-GB","gender":"male","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Apple Ava","name":"Ava","localizedName":"apple","language":"en-US","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Zoe","name":"Zoe","localizedName":"apple","language":"en-US","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Allison","name":"Allison","localizedName":"apple","language":"en-US","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Nicky","name":"Nicky","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS. Unlike other Siri voices, a higher quality version can be installed and used.","language":"en-US","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Samantha","name":"Samantha","localizedName":"apple","language":"en-US","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Joelle","name":"Joelle","localizedName":"apple","language":"en-US","gender":"female","children":true,"quality":["normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Evan","name":"Evan","localizedName":"apple","language":"en-US","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Nathan","name":"Nathan","localizedName":"apple","language":"en-US","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Tom","name":"Tom","localizedName":"apple","language":"en-US","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Alex","name":"Alex","localizedName":"apple","language":"en-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Aaron","name":"Aaron","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-US","gender":"male","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Kate","name":"Kate","localizedName":"apple","language":"en-GB","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Stephanie","name":"Stephanie","localizedName":"apple","language":"en-GB","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Serena","name":"Serena","localizedName":"apple","language":"en-GB","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Martha","name":"Martha","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-GB","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Jamie","name":"Jamie","localizedName":"apple","language":"en-GB","gender":"male","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Oliver","name":"Oliver","localizedName":"apple","language":"en-GB","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Daniel","name":"Daniel","localizedName":"apple","language":"en-GB","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Arthur","name":"Arthur","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-GB","gender":"male","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Matilda","name":"Matilda","localizedName":"apple","language":"en-AU","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Karen","name":"Karen","localizedName":"apple","language":"en-AU","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Catherine","name":"Catherine","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-AU","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Lee","name":"Lee","localizedName":"apple","language":"en-AU","gender":"male","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Gordon","name":"Gordon","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"en-AU","gender":"male","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Aman","name":"Aman","nativeID":["com.apple.voice.Aman"],"localizedName":"apple","language":"en-IN","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Tara","name":"Tara","nativeID":["com.apple.voice.Tara"],"localizedName":"apple","language":"en-IN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Isha","name":"Isha","localizedName":"apple","language":"en-IN","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Sangeeta","name":"Sangeeta","localizedName":"apple","language":"en-IN","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Veena ","name":"Veena","localizedName":"apple","language":"en-IN","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Rishi","name":"Rishi","localizedName":"apple","language":"en-IN","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Moira","name":"Moira","localizedName":"apple","language":"en-IE","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Tessa","name":"Tessa","localizedName":"apple","language":"en-ZA","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Fiona","name":"Fiona","localizedName":"apple","language":"en-GB-u-sd-gbsct","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Zira","name":"Microsoft Zira - English (United States)","language":"en-US","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"David","name":"Microsoft David - English (United States)","language":"en-US","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Mark","name":"Microsoft Mark - English (United States)","language":"en-US","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Hazel","name":"Microsoft Hazel - English (Great Britain)","language":"en-GB","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Susan","name":"Microsoft Susan - English (Great Britain)","language":"en-GB","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"George","name":"Microsoft George - English (Great Britain)","language":"en-GB","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Catherine","name":"Microsoft Catherine - English (Austalia)","language":"en-AU","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"James","name":"Microsoft Richard - English (Australia)","language":"en-AU","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Linda","name":"Microsoft Linda - English (Canada)","language":"en-CA","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Richard","name":"Microsoft Richard - English (Canada)","language":"en-CA","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Heera","name":"Microsoft Heera - English (India)","language":"en-IN","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Ravi","name":"Microsoft Ravi - English (India)","language":"en-IN","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Sean","name":"Microsoft Sean - English (Ireland)","language":"en-IE","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Female voice 1 (US)","name":"Google US English 5 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-tpc-network","Chrome OS US English 5","Android Speech Recognition and Synthesis from Google en-us-x-tpc-local","Android Speech Recognition and Synthesis from Google en-US-language"],"nativeID":["en-us-x-tpc-network","en-us-x-tpc-local"],"language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 2 (US)","name":"Google US English 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-iob-network","Chrome OS US English 1","Android Speech Recognition and Synthesis from Google en-us-x-iob-local"],"nativeID":["en-us-x-iob-network","en-us-x-iob-local"],"language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 3 (US)","name":"Google US English 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-iog-network","Chrome OS US English 2","Android Speech Recognition and Synthesis from Google en-us-x-iog-local"],"nativeID":["en-us-x-iog-network","en-us-x-iog-local"],"language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 4 (US)","name":"Google US English 7 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-tpf-network","Chrome OS US English 7","Android Speech Recognition and Synthesis from Google en-us-x-tpf-local"],"nativeID":["en-us-x-tpf-network","en-us-x-tpf-local"],"language":"en-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 5 (US)","name":"Android Speech Recognition and Synthesis from Google en-us-x-sfg-network","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-sfg-local"],"nativeID":["en-us-x-sfg-network","en-us-x-sfg-local"],"language":"en-US","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 6 (US)","name":"Chrome OS US English 8","language":"en-US","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 1 (US)","name":"Google US English 4 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-iom-network","Chrome OS US English 4","Android Speech Recognition and Synthesis from Google en-us-x-iom-local"],"nativeID":["en-us-x-iom-network","en-us-x-iom-local"],"language":"en-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 2 (US)","name":"Google US English 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-iol-network","Chrome OS US English 3","Android Speech Recognition and Synthesis from Google en-us-x-iol-local"],"nativeID":["en-us-x-iol-network","en-us-x-iol-local"],"language":"en-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 3 (US)","name":"Google US English 6 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-us-x-tpd-network","Chrome OS US English 6","Android Speech Recognition and Synthesis from Google en-us-x-tpd-local"],"nativeID":["en-us-x-tpd-network","en-us-x-tpd-local"],"language":"en-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 1 (UK)","name":"Google UK English 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gba-network","Chrome OS UK English 2","Android Speech Recognition and Synthesis from Google en-gb-x-gba-local","Android Speech Recognition and Synthesis from Google en-GB-language"],"nativeID":["en-gb-x-gba-network","en-gb-x-gba-local"],"language":"en-GB","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 2 (UK)","name":"Google UK English 4 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gbc-network","Chrome OS UK English 4","Android Speech Recognition and Synthesis from Google en-gb-x-gbc-local"],"nativeID":["en-gb-x-gbc-network","en-gb-x-gbc-local"],"language":"en-GB","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 3 (UK)","name":"Google UK English 6 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gbg-network","Chrome OS UK English 6","Android Speech Recognition and Synthesis from Google en-gb-x-gbg-local"],"nativeID":["en-gb-x-gbg-network","en-gb-x-gbg-local"],"language":"en-GB","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 4 (UK)","name":"Chrome OS UK English 7","language":"en-GB","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 1 (UK)","name":"Google UK English 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-rjs-network","Chrome OS UK English 1","Android Speech Recognition and Synthesis from Google en-gb-x-rjs-local"],"nativeID":["en-gb-x-rjs-network","en-gb-x-rjs-local"],"language":"en-GB","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 2 (UK)","name":"Google UK English 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gbb-network","Chrome OS UK English 3","Android Speech Recognition and Synthesis from Google en-gb-x-gbb-local"],"nativeID":["en-gb-x-gbb-network","en-gb-x-gbb-local"],"language":"en-GB","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 3 (UK)","name":"Google UK English 5 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-gb-x-gbd-network","Chrome OS UK English 5","Android Speech Recognition and Synthesis from Google en-gb-x-gbd-local"],"nativeID":["en-gb-x-gbd-network","en-gb-x-gbd-local"],"language":"en-GB","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 1 (Australia)","name":"Google Australian English 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-au-x-aua-network","Chrome OS Australian English 1","Android Speech Recognition and Synthesis from Google en-au-x-aua-local","Android Speech Recognition and Synthesis from Google en-AU-language"],"nativeID":["en-au-x-aua-network","en-au-x-aua-local"],"language":"en-AU","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 2 (Australia)","name":"Google Australian English 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-au-x-auc-network","Chrome OS Australian English 3","Android Speech Recognition and Synthesis from Google en-au-x-auc-local"],"nativeID":["en-au-x-auc-network","en-au-x-auc-local"],"language":"en-AU","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 1 (Australia)","name":"Google Australian English 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-au-x-aub-network","Chrome OS Australian English 2","Android Speech Recognition and Synthesis from Google en-au-x-aub-local"],"nativeID":["en-au-x-aub-network","en-au-x-aub-local"],"language":"en-AU","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 2 (Australia)","name":"Google Australian English 4 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google en-au-x-aud-network","Chrome OS Australian English 4","Android Speech Recognition and Synthesis from Google en-au-x-aud-local"],"nativeID":["en-au-x-aud-network","en-au-x-aud-local"],"language":"en-AU","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 3 (Australia)","name":"Chrome OS Australian English 5","language":"en-AU","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 1 (India)","name":"Android Speech Recognition and Synthesis from Google en-in-x-ena-network","altNames":["Android Speech Recognition and Synthesis from Google en-in-x-ena-local","Android Speech Recognition and Synthesis from Google en-IN-language"],"nativeID":["en-in-x-ena-network","en-in-x-ena-local"],"language":"en-IN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Female voice 2 (India)","name":"Android Speech Recognition and Synthesis from Google en-in-x-enc-network","altNames":["Android Speech Recognition and Synthesis from Google en-in-x-enc-local"],"nativeID":["en-in-x-enc-network","en-in-x-enc-local"],"language":"en-IN","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 1 (India)","name":"Android Speech Recognition and Synthesis from Google en-in-x-end-network","altNames":["Android Speech Recognition and Synthesis from Google en-in-x-end-local"],"nativeID":["en-in-x-end-network","en-in-x-end-local"],"language":"en-IN","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Male voice 2 (India)","name":"Android Speech Recognition and Synthesis from Google en-in-x-ene-network","altNames":["Android Speech Recognition and Synthesis from Google en-in-x-ene-local"],"nativeID":["en-in-x-ene-network","en-in-x-ene-local"],"language":"en-IN","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}}]`), o = {
   language: "en",
-  defaultRegion: e$z,
-  testUtterance: a$z,
-  voices: l$p
+  defaultRegion: e,
+  testUtterance: a,
+  voices: l
 };
 
 var enL3wcpTw3 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: o$r,
-  defaultRegion: e$z,
-  language: n$u,
-  testUtterance: a$z,
-  voices: l$p
-});
-
-const o$q = "es", e$y = "es-ES", a$y = "Hola, mi nombre es {name} y soy una voz española.", l$o = /* @__PURE__ */ JSON.parse(`[{"label":"Elvira","name":"Microsoft Elvira Online (Natural) - Spanish (Spain)","language":"es-ES","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Alvaro","name":"Microsoft Alvaro Online (Natural) - Spanish (Spain)","language":"es-ES","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Dalia","name":"Microsoft Dalia Online (Natural) - Spanish (Mexico)","language":"es-MX","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Microsoft Jorge","name":"Microsoft Jorge Online (Natural) - Spanish (Mexico)","language":"es-MX","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Elena","name":"Microsoft Elena Online (Natural) - Spanish (Argentina)","language":"es-AR","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Tomas","name":"Microsoft Tomas Online (Natural) - Spanish (Argentina)","language":"es-AR","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Sofia","name":"Microsoft Sofia Online (Natural) - Spanish (Bolivia)","language":"es-BO","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Marcelo","name":"Microsoft Marcelo Online (Natural) - Spanish (Bolivia)","language":"es-BO","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Catalina","name":"Microsoft Catalina Online (Natural) - Spanish (Chile)","language":"es-CL","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Lorenzo","name":"Microsoft Lorenzo Online (Natural) - Spanish (Chile)","language":"es-CL","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ximena","name":"Microsoft Ximena Online (Natural) - Spanish (Colombia)","language":"es-CO","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Salome","name":"Microsoft Salome Online (Natural) - Spanish (Colombia)","language":"es-CO","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Gonzalo","name":"Microsoft Gonzalo Online (Natural) - Spanish (Colombia)","language":"es-CO","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Maria","name":"Microsoft Maria Online (Natural) - Spanish (Costa Rica)","language":"es-CR","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Juan","name":"Microsoft Juan Online (Natural) - Spanish (Costa Rica)","language":"es-CR","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Belkys","name":"Microsoft Belkys Online (Natural) - Spanish (Cuba)","language":"es-CU","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Manuel","name":"Microsoft Manuel Online (Natural) - Spanish (Cuba)","language":"es-CU","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Andrea","name":"Microsoft Andrea Online (Natural) - Spanish (Ecuador)","language":"es-EC","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Luis","name":"Microsoft Luis Online (Natural) - Spanish (Ecuador)","language":"es-EC","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Lorena","name":"Microsoft Lorena Online (Natural) - Spanish (El Salvador)","language":"es-SV","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Rodrigo","name":"Microsoft Rodrigo Online (Natural) - Spanish (El Salvador)","language":"es-SV","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Paloma","name":"Microsoft Paloma Online (Natural) - Spanish (United States)","language":"es-US","otherLanguages":["en"],"gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Alonso","name":"Microsoft Alonso Online (Natural) - Spanish (United States)","language":"es-US","otherLanguages":["en"],"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Marta","name":"Microsoft Marta Online (Natural) - Spanish (Guatemala)","language":"es-GT","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Andres","name":"Microsoft Andres Online (Natural) - Spanish (Guatemala)","language":"es-GT","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Teresa","name":"Microsoft Teresa Online (Natural) - Spanish (Equatorial Guinea)","language":"es-GQ","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Javier","name":"Microsoft Javier Online (Natural) - Spanish (Equatorial Guinea)","language":"es-GQ","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Karla","name":"Microsoft Karla Online (Natural) - Spanish (Honduras)","language":"es-HN","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Carlos","name":"Microsoft Carlos Online (Natural) - Spanish (Honduras)","language":"es-HN","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Yolanda","name":"Microsoft Yolanda Online (Natural) - Spanish (Nicaragua)","language":"es-NI","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Federico","name":"Microsoft Federico Online (Natural) - Spanish (Nicaragua)","language":"es-NI","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Margarita","name":"Microsoft Margarita Online (Natural) - Spanish (Panama)","language":"es-PA","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Roberto","name":"Microsoft Roberto Online (Natural) - Spanish (Panama)","language":"es-PA","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Tania","name":"Microsoft Tania Online (Natural) - Spanish (Paraguay)","language":"es-PY","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Mario","name":"Microsoft Mario Online (Natural) - Spanish (Paraguay)","language":"es-PY","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Camila","name":"Microsoft Camila Online (Natural) - Spanish (Peru)","language":"es-PE","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Alex","name":"Microsoft Alex Online (Natural) - Spanish (Peru)","language":"es-PE","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Karina","name":"Microsoft Karina Online (Natural) - Spanish (Puerto Rico)","language":"es-PR","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Victor","name":"Microsoft Victor Online (Natural) - Spanish (Puerto Rico)","language":"es-PR","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ramona","name":"Microsoft Ramona Online (Natural) - Spanish (Dominican Republic)","language":"es-DO","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Emilio","name":"Microsoft Emilio Online (Natural) - Spanish (Dominican Republic)","language":"es-DO","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Valentina","name":"Microsoft Valentina Online (Natural) - Spanish (Uruguay)","language":"es-UY","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Mateo","name":"Microsoft Mateo Online (Natural) - Spanish (Uruguay)","language":"es-UY","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Paola","name":"Microsoft Paola Online (Natural) - Spanish (Venezuela)","language":"es-VE","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Sebastian","name":"Microsoft Sebastian Online (Natural) - Spanish (Venezuela)","language":"es-VE","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Voz Google masculina (España)","name":"Google español","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"es-ES","gender":"male","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Voz Google femenina (Estados Unidos)","name":"Google español de Estados Unidos","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"es-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Marisol","name":"Marisol","localizedName":"apple","language":"es-ES","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Mónica","name":"Mónica","localizedName":"apple","language":"es-ES","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Apple Jorge","name":"Jorge","localizedName":"apple","language":"es-ES","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Angelica","name":"Angelica","localizedName":"apple","language":"es-MX","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Paulina","name":"Paulina","localizedName":"apple","language":"es-MX","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Juan","name":"Juan","localizedName":"apple","language":"es-MX","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Isabela","name":"Isabela","localizedName":"apple","language":"es-AR","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Diego","name":"Diego","localizedName":"apple","language":"es-AR","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Francisca","name":"Francisca","nativeID":["com.apple.voice.enhanced.es-CL.Francisca"],"localizedName":"apple","language":"es-CL","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Soledad","name":"Soledad","localizedName":"apple","language":"es-CO","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Jimena","name":"Jimena","localizedName":"apple","language":"es-CO","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Carlos","name":"Carlos","localizedName":"apple","language":"es-CO","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Helena","name":"Microsoft Helena - Spanish (Spain)","language":"es-ES","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Laura","name":"Microsoft Laura - Spanish (Spain)","language":"es-ES","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Pablo","name":"Microsoft Pablo - Spanish (Spain)","language":"es-ES","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Sabina","name":"Microsoft Sabina - Spanish (Mexico)","language":"es-MX","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Raul","name":"Microsoft Raul - Spanish (Mexico)","language":"es-MX","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Voz femenina 1 (España)","name":"Google español 4 (Natural)","altNames":["Chrome OS español 4","Android Speech Recognition and Synthesis from Google es-es-x-eee-local","Android Speech Recognition and Synthesis from Google es-ES-language"],"nativeID":["es-es-x-eee-local"],"language":"es-ES","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voz femenina 2 (España)","name":"Google español 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google es-es-x-eea-network","Chrome OS español 1","Android Speech Recognition and Synthesis from Google es-es-x-eea-local"],"nativeID":["es-es-x-eea-network","es-es-x-eea-local"],"language":"es-ES","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voz femenina 3 (España)","name":"Google español 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google es-es-x-eec-network","Chrome OS español 2","Android Speech Recognition and Synthesis from Google es-es-x-eec-local"],"nativeID":["es-es-x-eec-network","es-es-x-eec-local"],"language":"es-ES","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voz masculina 1 (España)","name":"Google español 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google es-es-x-eed-network","Chrome OS español 3","Android Speech Recognition and Synthesis from Google es-es-x-eed-local"],"nativeID":["es-es-x-eed-network","es-es-x-eed-local"],"language":"es-ES","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voz masculina 2 (España)","name":"Google español 5 (Natural)","altNames":["Chrome OS español 5","Android Speech Recognition and Synthesis from Google es-es-x-eef-local"],"nativeID":["es-es-x-eef-local"],"language":"es-ES","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voz femenina 1 (Estados Unidos)","name":"Google español de Estados Unidos 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google es-us-x-esc-network","Chrome OS español de Estados Unidos","Android Speech Recognition and Synthesis from Google es-us-x-esc-local","Android Speech Recognition and Synthesis from Google es-US-language"],"nativeID":["es-us-x-esc-network","es-us-x-esc-local"],"language":"es-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voz femenina 2 (Estados Unidos)","name":"Google español de Estados Unidos 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google es-us-x-sfb-network","Android Speech Recognition and Synthesis from Google es-us-x-sfb-local"],"nativeID":["es-us-x-sfb-network","es-us-x-sfb-local"],"language":"es-US","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voz masculina 1 (Estados Unidos)","name":"Google español de Estados Unidos 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google es-us-x-esd-network","Android Speech Recognition and Synthesis from Google es-us-x-esd-local"],"nativeID":["es-us-x-esd-network","es-us-x-esd-local"],"language":"es-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voz masculina 2 (Estados Unidos)","name":"Google español de Estados Unidos 4 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google es-us-x-esf-network","Android Speech Recognition and Synthesis from Google es-us-x-esf-local"],"nativeID":["es-us-x-esf-network","es-us-x-esf-local"],"language":"es-US","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}}]`), r$8 = {
-  language: "es",
-  defaultRegion: e$y,
-  testUtterance: a$y,
-  voices: l$o
-};
-
-var esDwOFJY07 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: r$8,
-  defaultRegion: e$y,
-  language: o$q,
-  testUtterance: a$y,
-  voices: l$o
-});
-
-const t$7 = "eu", e$x = "eu-ES", a$x = "Kaixo, nire izena {name} da eta euskal ahotsa naiz.", n$t = [{ label: "Miren", name: "Miren", localizedName: "apple", language: "eu-ES", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }], l$n = {
-  language: "eu",
-  defaultRegion: e$x,
-  testUtterance: a$x,
-  voices: n$t
-};
-
-var euDxWirHU_ = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: l$n,
-  defaultRegion: e$x,
-  language: t$7,
-  testUtterance: a$x,
-  voices: n$t
-});
-
-const r$7 = "fa", a$w = "fa-IR", e$w = "سلام اسم من {name} و صدای فارسی هستم", l$m = [{ label: "Dilara", name: "Microsoft Dilara Online (Natural) - Persian (Iran)", language: "fa-IR", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Farid", name: "Microsoft Farid Online (Natural) - Persian (Iran)", language: "fa-IR", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Dariush", name: "Dariush", localizedName: "apple", language: "fa-IR", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }], n$s = {
-  language: "fa",
-  defaultRegion: a$w,
-  testUtterance: e$w,
-  voices: l$m
-};
-
-var faMl9KtIw1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$s,
-  defaultRegion: a$w,
-  language: r$7,
-  testUtterance: e$w,
-  voices: l$m
-});
-
-const n$r = "fi", e$v = "fi-FI", a$v = "Hei, nimeni on {name} ja olen suomalainen ääni.", i$4 = [{ label: "Noora", name: "Microsoft Noora Online (Natural) - Finnish (Finland)", language: "fi-FI", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Harri", name: "Microsoft Harri Online (Natural) - Finnish (Finland)", language: "fi-FI", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Satu", name: "Satu", localizedName: "apple", language: "fi-FI", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Onni", name: "Onni", localizedName: "apple", language: "fi-FI", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Heidi", name: "Microsoft Heidi - Finnish (Finland)", language: "fi-FI", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Suomalainen naisääni", name: "Google Suomi (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google fi-fi-x-afi-network", "Chrome OS Suomi", "Android Speech Recognition and Synthesis from Google fi-fi-x-afi-local", "Android Speech Recognition and Synthesis from Google fi-FI-language"], nativeID: ["fi-fi-x-afi-network", "fi-fi-x-afi-local"], language: "fi-FI", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$l = {
-  language: "fi",
-  defaultRegion: e$v,
-  testUtterance: a$v,
-  voices: i$4
-};
-
-var fiDk5Fhhl = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: l$l,
-  defaultRegion: e$v,
-  language: n$r,
-  testUtterance: a$v,
-  voices: i$4
-});
-
-const l$k = "fr", e$u = "fr-FR", a$u = "Bonjour, mon nom est {name} et je suis une voix française.", r$6 = /* @__PURE__ */ JSON.parse(`[{"label":"Vivienne","name":"Microsoft VivienneMultilingual Online (Natural) - French (France)","language":"fr-FR","multiLingual":true,"gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Denise","name":"Microsoft Denise Online (Natural) - French (France)","language":"fr-FR","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Charline","name":"Microsoft Charline Online (Natural) - French (Belgium)","language":"fr-BE","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Ariane","name":"Microsoft Ariane Online (Natural) - French (Switzerland)","language":"fr-CH","gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Eloise","name":"Microsoft Eloise Online (Natural) - French (France)","language":"fr-FR","gender":"female","children":true,"quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Remy","name":"Microsoft RemyMultilingual Online (Natural) - French (France)","language":"fr-FR","multiLingual":true,"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Henri","name":"Microsoft Henri Online (Natural) - French (France)","language":"fr-FR","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Gerard","name":"Microsoft Gerard Online (Natural) - French (Belgium)","language":"fr-BE","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Fabrice","name":"Microsoft Fabrice Online (Natural) - French (Switzerland)","language":"fr-CH","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Sylvie","name":"Microsoft Sylvie Online (Natural) - French (Canada)","language":"fr-CA","otherLanguages":["en"],"gender":"female","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Antoine","name":"Microsoft Antoine Online (Natural) - French (Canada)","language":"fr-CA","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Jean","name":"Microsoft Jean Online (Natural) - French (Canada)","language":"fr-CA","gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Thierry","name":"Microsoft Thierry Online (Natural) - French (Canada)","language":"fr-CA","otherLanguages":["en"],"gender":"male","quality":["veryHigh"],"rate":1,"browser":["Edge"],"preloaded":true,"controls":{"pitch":false,"boundary":false}},{"label":"Voix Google féminine (France)","name":"Google français","note":"This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.","language":"fr-FR","gender":"female","quality":["high"],"rate":1,"pitch":1,"controls":{"boundary":false},"browser":["ChromeDesktop"],"preloaded":true},{"label":"Audrey","name":"Audrey","localizedName":"apple","language":"fr-FR","gender":"female","quality":["low","normal","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Aurélie","name":"Aurélie","localizedName":"apple","language":"fr-FR","gender":"female","quality":["low","normal"],"rate":0.9,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Marie","name":"Marie","localizedName":"apple","note":"This is a compact version of a preloaded Siri voice on macOS.","language":"fr-FR","gender":"female","quality":["low"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Thomas","name":"Thomas","localizedName":"apple","language":"fr-FR","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Aude","name":"Aude","localizedName":"apple","language":"fr-BE","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Chantal","name":"Chantal","localizedName":"apple","language":"fr-CA","gender":"female","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Amélie","name":"Amélie","localizedName":"apple","language":"fr-CA","gender":"female","quality":["low","high"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"],"preloaded":true},{"label":"Nicolas","name":"Nicolas","localizedName":"apple","language":"fr-CA","gender":"male","quality":["low","normal"],"rate":1,"pitch":1,"os":["macOS","iOS","iPadOS"]},{"label":"Julie","name":"Microsoft Julie - French (France)","language":"fr-FR","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Hortence","name":"Microsoft Hortence - French (France)","language":"fr-FR","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Paul","name":"Microsoft Paul - French (France)","language":"fr-FR","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Caroline","name":"Microsoft Caroline - French (Canada)","language":"fr-CA","gender":"female","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Claude","name":"Microsoft Claude - French (Canada)","language":"fr-CA","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Guillaume","name":"Microsoft Claude - French (Switzerland)","language":"fr-CH","gender":"male","quality":["normal"],"rate":1,"pitch":1,"os":["Windows"],"preloaded":true},{"label":"Voix féminine 1 (France)","name":"Google français 4 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google fr-fr-x-frc-network","Chrome OS français 4","Android Speech Recognition and Synthesis from Google fr-fr-x-frc-local","Android Speech Recognition and Synthesis from Google fr-FR-language"],"nativeID":["fr-fr-x-frc-network","fr-fr-x-frc-local"],"language":"fr-FR","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voix féminine 2 (France)","name":"Google français 2 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google fr-fr-x-fra-network","Chrome OS français 2","Android Speech Recognition and Synthesis from Google fr-fr-x-fra-local"],"nativeID":["fr-fr-x-fra-network","fr-fr-x-fra-local"],"language":"fr-FR","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voix féminine 3 (France)","name":"Google français 1 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google fr-fr-x-vlf-network","Chrome OS français 1","Android Speech Recognition and Synthesis from Google fr-fr-x-vlf-local"],"nativeID":["fr-fr-x-vlf-network","fr-fr-x-vlf-local"],"language":"fr-FR","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voix masculine 1 (France)","name":"Google français 5 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google fr-fr-x-frd-network","Chrome OS français 5","Android Speech Recognition and Synthesis from Google fr-fr-x-frd-local"],"nativeID":["fr-fr-x-frd-network","fr-fr-x-frd-local"],"language":"fr-FR","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voix masculine 2 (France)","name":"Google français 3 (Natural)","altNames":["Android Speech Recognition and Synthesis from Google fr-fr-x-frb-network","Chrome OS français 3","Android Speech Recognition and Synthesis from Google fr-fr-x-frb-local"],"nativeID":["fr-fr-x-frb-network","fr-fr-x-frb-local"],"language":"fr-FR","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voix féminine 1 (Canada)","name":"Android Speech Recognition and Synthesis from Google fr-ca-x-caa-network","altNames":["Android Speech Recognition and Synthesis from Google fr-ca-x-caa-local","Android Speech Recognition and Synthesis from Google fr-CA-language"],"nativeID":["fr-ca-x-caa-network","fr-ca-x-caa-local"],"language":"fr-CA","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voix féminine 2 (Canada)","name":"Android Speech Recognition and Synthesis from Google fr-ca-x-cac-network","altNames":["Android Speech Recognition and Synthesis from Google fr-ca-x-cac-local"],"nativeID":["fr-ca-x-cac-network","fr-ca-x-cac-local"],"language":"fr-CA","gender":"female","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voix masculine 1 (Canada)","name":"Android Speech Recognition and Synthesis from Google fr-ca-x-cab-network","altNames":["Android Speech Recognition and Synthesis from Google fr-ca-x-cab-local"],"nativeID":["fr-ca-x-cab-network","fr-ca-x-cab-local"],"language":"fr-CA","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}},{"label":"Voix masculine 2 (Canada)","name":"Android Speech Recognition and Synthesis from Google fr-ca-x-cad-network","altNames":["Android Speech Recognition and Synthesis from Google fr-ca-x-cad-local"],"nativeID":["fr-ca-x-cad-network","fr-ca-x-cad-local"],"language":"fr-CA","gender":"male","quality":["high"],"rate":1,"pitch":1,"os":["Android","ChromeOS"],"preloaded":true,"controls":{"boundary":false}}]`), n$q = {
-  language: "fr",
-  defaultRegion: e$u,
-  testUtterance: a$u,
-  voices: r$6
-};
-
-var frMfhjukJ4 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$q,
-  defaultRegion: e$u,
-  language: l$k,
-  testUtterance: a$u,
-  voices: r$6
-});
-
-const n$p = "gl", a$t = "gl-ES", e$t = "Ola, chámome {name} e son unha voz galega.", l$j = [{ label: "Sabela", name: "Microsoft Sabela Online (Natural) - Galician", language: "gl-ES", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Roi", name: "Microsoft Roi Online (Natural) - Galician", language: "gl-ES", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Carmela", name: "Carmela", localizedName: "apple", language: "gl-ES", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }], o$p = {
-  language: "gl",
-  defaultRegion: a$t,
-  testUtterance: e$t,
-  voices: l$j
-};
-
-var glDwtzWds9 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: o$p,
-  defaultRegion: a$t,
-  language: n$p,
-  testUtterance: e$t,
-  voices: l$j
-});
-
-const o$o = "he", e$s = "he-IL", a$s = "שלום, שמי {name} ואני קול עברי.", l$i = [{ label: "Hila", name: "Microsoft Hila Online (Natural) - Hebrew (Israel)", language: "he-IL", altLanguage: "iw-IL", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Avri", name: "Microsoft Avri Online (Natural) - Hebrew (Israel)", language: "he-IL", altLanguage: "iw-IL", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Carmit", name: "Carmit", localizedName: "apple", language: "he-IL", altLanguage: "iw-IL", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Asaf", name: "Microsoft Asaf - Hebrew (Israel)", language: "he-IL", altLanguage: "iw-IL", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "קול גברי 1", name: "Android Speech Recognition and Synthesis from Google he-il-x-heb-network", altNames: ["Android Speech Recognition and Synthesis from Google he-il-x-heb-local", "Android Speech Recognition and Synthesis from Google he-IL-language"], nativeID: ["he-il-x-heb-network", "he-il-x-heb-local"], language: "he-IL", altLanguage: "iw-IL", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "קול נשי 1", name: "Android Speech Recognition and Synthesis from Google he-il-x-hec-network", altNames: ["Android Speech Recognition and Synthesis from Google he-il-x-hec-local"], nativeID: ["he-il-x-hec-network", "he-il-x-hec-local"], language: "he-IL", altLanguage: "iw-IL", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "קול גברי 2", name: "Android Speech Recognition and Synthesis from Google he-il-x-hed-network", altNames: ["Android Speech Recognition and Synthesis from Google he-il-x-hed-local"], nativeID: ["he-il-x-hed-network", "he-il-x-hed-local"], language: "he-IL", altLanguage: "iw-IL", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "קול נשי 2", name: "Android Speech Recognition and Synthesis from Google he-il-x-hee-network", altNames: ["Android Speech Recognition and Synthesis from Google he-il-x-hee-local"], nativeID: ["he-il-x-hee-network", "he-il-x-hee-local"], language: "he-IL", altLanguage: "iw-IL", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$o = {
-  language: "he",
-  defaultRegion: e$s,
-  testUtterance: a$s,
-  voices: l$i
-};
-
-var heCfajFNE_ = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$o,
-  defaultRegion: e$s,
-  language: o$o,
-  testUtterance: a$s,
-  voices: l$i
-});
-
-const i$3 = "hi", e$r = "hi-IN", a$r = "नमस्कार, मेरा नाम {name} है और मैं एक हिंदी आवाज़ हूँ।", o$n = [{ label: "Swara", name: "Microsoft Swara Online (Natural) - Hindi (India)", language: "hi-IN", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Madhur", name: "Microsoft Madhur Online (Natural) - Hindi (India)", language: "hi-IN", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "महिला Google आवाज़", name: "Google हिन्दी", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "hi-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Kiyara", name: "Kiyara", localizedName: "apple", language: "hi-IN", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Lekha", name: "Lekha", localizedName: "apple", language: "hi-IN", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Neel", name: "Neel", localizedName: "apple", language: "hi-IN", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Kalpana", name: "Microsoft Kalpana - Hindi (India)", language: "hi-IN", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Hemant", name: "Microsoft Hemant - Hindi (India)", language: "hi-IN", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "महिला आवाज़ 1", name: "Google हिन्दी 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google hi-in-x-hia-network", "Chrome OS हिन्दी 2", "Android Speech Recognition and Synthesis from Google hi-in-x-hia-local", "Android Speech Recognition and Synthesis from Google hi-IN-language"], nativeID: ["hi-in-x-hia-network", "hi-in-x-hia-local"], language: "hi-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "महिला आवाज़ 2", name: "Google हिन्दी 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google hi-in-x-hic-network", "Chrome OS हिन्दी 3", "Android Speech Recognition and Synthesis from Google hi-in-x-hic-local"], nativeID: ["hi-in-x-hic-network", "hi-in-x-hic-local"], language: "hi-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "महिला आवाज़ 3", name: "Chrome OS हिन्दी 1", language: "hi-IN", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "पुरुष आवाज 1", name: "Google हिन्दी 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google hi-in-x-hid-network", "Chrome OS हिन्दी 4", "Android Speech Recognition and Synthesis from Google hi-in-x-hid-local"], nativeID: ["hi-in-x-hid-network", "hi-in-x-hid-local"], language: "hi-IN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "पुरुष आवाज 2", name: "Google हिन्दी 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google hi-in-x-hie-network", "Chrome OS हिन्दी 5", "Android Speech Recognition and Synthesis from Google hi-in-x-hie-local"], nativeID: ["hi-in-x-hie-network", "hi-in-x-hie-local"], language: "hi-IN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$n = {
-  language: "hi",
-  defaultRegion: e$r,
-  testUtterance: a$r,
-  voices: o$n
-};
-
-var hiPv2ttBoh = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$n,
-  defaultRegion: e$r,
-  language: i$3,
-  testUtterance: a$r,
-  voices: o$n
-});
-
-const o$m = "hr", a$q = "hr-HR", e$q = "Pozdrav, ja sam {name} i hrvatski sam glas.", r$5 = [{ label: "Gabrijela", name: "Microsoft Gabrijela Online (Natural) - Croatian (Croatia)", language: "hr-HR", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Srecko", name: "Microsoft Srecko Online (Natural) - Croatian (Croatia)", language: "hr-HR", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Lana", name: "Lana", localizedName: "apple", altNames: ["Lana (poboljšani)", "Lana (hrvatski (Hrvatska))"], language: "hr-HR", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Matej", name: "Microsoft Matej - Croatian (Croatia)", language: "hr-HR", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Ženski glas", name: "Android Speech Recognition and Synthesis from Google hr-hr-x-hra-network", altNames: ["Android Speech Recognition and Synthesis from Google hr-hr-x-hra-local"], nativeID: ["hr-hr-x-hra-network", "hr-hr-x-hra-local"], language: "hr-HR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Muški glas", name: "Android Speech Recognition and Synthesis from Google hr-hr-x-hrb-network", altNames: ["Android Speech Recognition and Synthesis from Google hr-hr-x-hrb-local", "Android Speech Recognition and Synthesis from Google hr-HR-language"], nativeID: ["hr-hr-x-hrb-network", "hr-hr-x-hrb-local"], language: "hr-HR", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$m = {
-  language: "hr",
-  defaultRegion: a$q,
-  testUtterance: e$q,
-  voices: r$5
-};
-
-var hrMRApcEKR = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$m,
-  defaultRegion: a$q,
-  language: o$m,
-  testUtterance: e$q,
-  voices: r$5
-});
-
-const l$h = "hu", e$p = "hu-HU", a$p = "Helló, a nevem {name} és magyar hangú vagyok.", n$l = [{ label: "Noemi", name: "Microsoft Noemi Online (Natural) - Hungarian (Hungary)", language: "hu-HU", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Tamas", name: "Microsoft Tamas Online (Natural) - Hungarian (Hungary)", language: "hu-HU", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Tünde", name: "Tünde", localizedName: "apple", language: "hu-HU", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Szabolcs", name: "Microsoft Szabolcs - Hungarian (Hungary)", language: "hu-HU", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Női hang", name: "Google Magyar (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google hu-hu-x-kfl-network", "Chrome OS Magyar", "Android Speech Recognition and Synthesis from Google hu-hu-x-kfl-local", "Android Speech Recognition and Synthesis from Google hu-HU-language"], nativeID: ["hu-hu-x-kfl-network", "hu-hu-x-kfl-local"], language: "hu-HU", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], o$l = {
-  language: "hu",
-  defaultRegion: e$p,
-  testUtterance: a$p,
-  voices: n$l
-};
-
-var huDGRDZdHH = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: o$l,
-  defaultRegion: e$p,
-  language: l$h,
-  testUtterance: a$p,
-  voices: n$l
-});
-
-const i$2 = "id", e$o = "id-ID", a$o = "Halo, nama saya {name} dan saya suara Indonesia.", o$k = [{ label: "Gadis", name: "Microsoft Gadis Online (Natural) - Indonesian (Indonesia)", language: "id-ID", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ardi", name: "Microsoft Ardi Online (Natural) - Indonesian (Indonesia)", language: "id-ID", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Suara Google wanita", name: "Google Bahasa Indonesia", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "id-ID", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Damayanti", name: "Damayanti", localizedName: "apple", language: "id-ID", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Andika", name: "Microsoft Andika - Indonesian (Indonesia)", language: "id-ID", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Suara wanita 1", name: "Google Bahasa Indonesia 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google id-id-x-idc-network", "Chrome OS Bahasa Indonesia 1", "Android Speech Recognition and Synthesis from Google id-id-x-idc-local", "Android Speech Recognition and Synthesis from Google id-ID-language"], nativeID: ["id-id-x-idc-network", "id-id-x-idc-local"], language: "id-ID", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Suara wanita 2", name: "Google Bahasa Indonesia 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google id-id-x-idd-network", "Chrome OS Bahasa Indonesia 2", "Android Speech Recognition and Synthesis from Google id-id-x-idd-local"], nativeID: ["id-id-x-idd-network", "id-id-x-idd-local"], language: "id-ID", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Suara laki-laki 1", name: "Google Bahasa Indonesia 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google id-id-x-ide-network", "Chrome OS Bahasa Indonesia 3", "Android Speech Recognition and Synthesis from Google id-id-x-ide-local"], nativeID: ["id-id-x-ide-network", "id-id-x-ide-local"], language: "id-ID", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Suara laki-laki 2", name: "Google Bahasa Indonesia 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google id-id-x-dfz-network", "Chrome OS Bahasa Indonesia 4", "Android Speech Recognition and Synthesis from Google id-id-x-dfz-local"], nativeID: ["id-id-x-dfz-network", "id-id-x-dfz-local"], language: "id-ID", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$k = {
-  language: "id",
-  defaultRegion: e$o,
-  testUtterance: a$o,
-  voices: o$k
-};
-
-var idDZUuUiTG = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$k,
-  defaultRegion: e$o,
-  language: i$2,
-  testUtterance: a$o,
-  voices: o$k
-});
-
-const l$g = "it", e$n = "it-IT", a$n = "Ciao, mi chiamo {name} e sono una voce italiana.", i$1 = [{ label: "Elsa (Alta qualita)", name: "Microsoft Elsa Online (Natural) - Italian (Italy)", language: "it-IT", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Isabella", name: "Microsoft Isabella Online (Natural) - Italian (Italy)", language: "it-IT", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Giuseppe", name: "Microsoft GiuseppeMultilingual Online (Natural) - Italian (Italy)", language: "it-IT", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Diego", name: "Microsoft Diego Online (Natural) - Italian (Italy)", language: "it-IT", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Voce Google femminile", name: "Google italiano", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "it-IT", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Federica", name: "Federica", localizedName: "apple", language: "it-IT", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Emma", name: "Emma", localizedName: "apple", language: "it-IT", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Alice", name: "Alice", localizedName: "apple", language: "it-IT", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Paola", name: "Paola", localizedName: "apple", language: "it-IT", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Luca", name: "Luca", localizedName: "apple", language: "it-IT", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Elsa", name: "Microsoft Elsa - Italian (Italy)", language: "it-IT", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Cosimo", name: "Microsoft Cosimo - Italian (Italy)", language: "it-IT", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Voce femminile 1", name: "Google italiano 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google it-it-x-itb-network", "Chrome OS italiano 2", "Android Speech Recognition and Synthesis from Google it-it-x-itb-local", "Android Speech Recognition and Synthesis from Google it-IT-language"], nativeID: ["it-it-x-itb-network", "it-it-x-itb-local"], language: "it-IT", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voce femminile 2", name: "Google italiano 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google it-it-x-kda-network", "Chrome OS italiano 1", "Android Speech Recognition and Synthesis from Google it-it-x-kda-local"], nativeID: ["it-it-x-kda-network", "it-it-x-kda-local"], language: "it-IT", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voce maschile 1", name: "Google italiano 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google it-it-x-itc-network", "Chrome OS italiano 3", "Android Speech Recognition and Synthesis from Google it-it-x-itc-local"], nativeID: ["it-it-x-itc-network", "it-it-x-itc-local"], language: "it-IT", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voce maschile 2", name: "Google italiano 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google it-it-x-itd-network", "Chrome OS italiano 4", "Android Speech Recognition and Synthesis from Google it-it-x-itd-local"], nativeID: ["it-it-x-itd-network", "it-it-x-itd-local"], language: "it-IT", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], t$6 = {
-  language: "it",
-  defaultRegion: e$n,
-  testUtterance: a$n,
-  voices: i$1
-};
-
-var itDJUYnjyj = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: t$6,
-  defaultRegion: e$n,
-  language: l$g,
-  testUtterance: a$n,
-  voices: i$1
-});
-
-const l$f = "ja", e$m = "ja-JP", a$m = "こんにちは。私の名前は{name}で、日本語の声を担当しています。", o$j = [{ label: "Nanami", name: "Microsoft Nanami Online (Natural) - Japanese (Japan)", language: "ja-JP", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Keita", name: "Microsoft Keita Online (Natural) - Japanese (Japan)", language: "ja-JP", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Hattori", name: "Hattori", nativeID: ["com.apple.ttsbundle.siri_Hattori_ja-JP_premium"], localizedName: "apple", language: "ja-JP", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Google の女性の声", name: "Google 日本語", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "ja-JP", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "O-Ren", name: "O-Ren", localizedName: "apple", language: "ja-JP", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Kyoko", name: "Kyoko", localizedName: "apple", language: "ja-JP", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Otoya", name: "Otoya", localizedName: "apple", language: "ja-JP", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Ayumi", name: "Microsoft Ayumi - Japanese (Japan)", language: "ja-JP", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Haruka", name: "Microsoft Haruka - Japanese (Japan)", language: "ja-JP", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Ichiro", name: "Microsoft Ichiro - Japanese (Japan)", language: "ja-JP", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "女性の声1", name: "Google 日本語 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google ja-jp-x-htm-network", "Chrome OS 日本語 1", "Android Speech Recognition and Synthesis from Google ja-jp-x-htm-local", "Android Speech Recognition and Synthesis from Google ja-JP-language"], nativeID: ["ja-jp-x-htm-network", "ja-jp-x-htm-local"], language: "ja-JP", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "女性の声2", name: "Chrome OS 日本語 2", altNames: ["Android Speech Recognition and Synthesis from Google ja-jp-x-jab-network", "Android Speech Recognition and Synthesis from Google ja-jp-x-jab-local"], nativeID: ["ja-jp-x-jab-network", "ja-jp-x-jab-local"], language: "ja-JP", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "男性の声1", name: "Google 日本語 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google ja-jp-x-jac-network", "Chrome OS 日本語 3", "Android Speech Recognition and Synthesis from Google ja-jp-x-jac-local"], nativeID: ["ja-jp-x-jac-network", "ja-jp-x-jac-local"], language: "ja-JP", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "男性の声2", name: "Google 日本語 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google ja-jp-x-jad-network", "Chrome OS 日本語 4", "Android Speech Recognition and Synthesis from Google ja-jp-x-jad-local"], nativeID: ["ja-jp-x-jad-network", "ja-jp-x-jad-local"], language: "ja-JP", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$j = {
-  language: "ja",
-  defaultRegion: e$m,
-  testUtterance: a$m,
-  voices: o$j
-};
-
-var jaBpFcZRMu = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$j,
-  defaultRegion: e$m,
-  language: l$f,
-  testUtterance: a$m,
-  voices: o$j
-});
-
-const t$5 = "kk", a$l = "kk-KZ", e$l = "Сәлеметсіз бе, менің атым {name} және мен қазақ дауыстымын.", l$e = [{ label: "Aigul", name: "Microsoft Aigul Online (Natural) - Kazakh (Kazakhstan)", language: "kk-KZ", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Daulet", name: "Microsoft Daulet Online (Natural) - Kazakh (Kazakhstan)", language: "kk-KZ", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Aru", name: "Aru", nativeID: ["com.apple.voice.Aru"], localizedName: "apple", language: "kk-KZ", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }], n$i = {
-  language: "kk",
-  defaultRegion: a$l,
-  testUtterance: e$l,
-  voices: l$e
-};
-
-var kkC480t1iH = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$i,
-  defaultRegion: a$l,
-  language: t$5,
-  testUtterance: e$l,
-  voices: l$e
-});
-
-const o$i = "kn", e$k = "kn-IN", n$h = "ಹಲೋ, ನನ್ನ ಹೆಸರು {name} ಮತ್ತು ನಾನು ಕನ್ನಡ ಧ್ವನಿ.", a$k = [{ label: "Sapna", name: "Microsoft Sapna Online (Natural) - Kannada (India)", language: "kn-IN", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Gagan", name: "Microsoft Gagan Online (Natural) - Kannada (India)", language: "kn-IN", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Soumya", name: "Soumya", localizedName: "apple", language: "kn-IN", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "ಸ್ತ್ರೀ ಧ್ವನಿ", name: "Android Speech Recognition and Synthesis from Google kn-in-x-knf-network", altNames: ["Android Speech Recognition and Synthesis from Google kn-in-x-knf-local", "Android Speech Recognition and Synthesis from Google kn-IN-language"], nativeID: ["kn-in-x-knf-network", "kn-in-x-knf-local"], language: "kn-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "ಪುರುಷ ಧ್ವನಿ", name: "Android Speech Recognition and Synthesis from Google kn-in-x-knm-network", altNames: ["Android Speech Recognition and Synthesis from Google kn-in-x-knm-local"], nativeID: ["kn-in-x-knm-network", "kn-in-x-knm-local"], language: "kn-IN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$d = {
-  language: "kn",
-  defaultRegion: e$k,
-  testUtterance: n$h,
-  voices: a$k
-};
-
-var knBVqs26qv = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: l$d,
-  defaultRegion: e$k,
-  language: o$i,
-  testUtterance: n$h,
-  voices: a$k
-});
-
-const l$c = "ko", e$j = "ko-KR", o$h = "안녕하세요, 저는 {name}이고 한국어 음성입니다.", a$j = [{ label: "SunHi", name: "Microsoft SunHi Online (Natural) - Korean (Korea)", language: "ko-KR", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Hyunsu", name: "Microsoft HyunsuMultilingual Online (Natural) - Korean (Korea)", altNames: ["Microsoft Hyunsu Online (Natural) - Korean (Korea)"], language: "ko-KR", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "InJoon", name: "Microsoft InJoon Online (Natural) - Korean (Korea)", language: "ko-KR", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Google 여성 음성", name: "Google 한국의", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "ko-KR", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Yuna", name: "Yuna", localizedName: "apple", language: "ko-KR", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Jian", name: "Jian", localizedName: "apple", language: "ko-KR", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Suhyun", name: "Suhyun", localizedName: "apple", language: "ko-KR", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Sora", name: "Sora", localizedName: "apple", language: "ko-KR", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Minsu", name: "Minsu", localizedName: "apple", language: "ko-KR", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Heami", name: "Microsoft Heami - Korean (Korea)", language: "ko-KR", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "여성 목소리 1", name: "Google 한국어 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google ko-kr-x-kob-network", "Chrome OS 한국어 2", "Android Speech Recognition and Synthesis from Google ko-kr-x-kob-local", "Android Speech Recognition and Synthesis from Google ko-KR-language"], nativeID: ["ko-kr-x-kob-network", "ko-kr-x-kob-local"], language: "ko-KR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "여성 목소리 2", name: "Google 한국어 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google ko-kr-x-ism-network", "Chrome OS 한국어 1", "Android Speech Recognition and Synthesis from Google ko-kr-x-ism-local"], nativeID: ["ko-kr-x-ism-network", "ko-kr-x-ism-local"], language: "ko-KR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "남성 1", name: "Google 한국어 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google ko-kr-x-koc-network", "Chrome OS 한국어 3", "Android Speech Recognition and Synthesis from Google ko-kr-x-koc-local"], nativeID: ["ko-kr-x-koc-network", "ko-kr-x-koc-local"], language: "ko-KR", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "남성 2", name: "Google 한국어 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google ko-kr-x-kod-network", "Chrome OS 한국어 4", "Android Speech Recognition and Synthesis from Google ko-kr-x-kod-local"], nativeID: ["ko-kr-x-kod-network", "ko-kr-x-kod-local"], language: "ko-KR", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$g = {
-  language: "ko",
-  defaultRegion: e$j,
-  testUtterance: o$h,
-  voices: a$j
-};
-
-var koTNoPZd6N = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$g,
-  defaultRegion: e$j,
-  language: l$c,
-  testUtterance: o$h,
-  voices: a$j
-});
-
-const n$f = "mr", e$i = "mr-IN", a$i = "नमस्कार, माझे नाव {name} आहे आणि मी एक मराठी आवाज आहे.", r$4 = [{ label: "Aarohi", name: "Microsoft Aarohi Online (Natural) - Marathi (India)", language: "mr-IN", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Manohar", name: "Microsoft Manohar Online (Natural) - Marathi (India)", language: "mr-IN", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ananya", name: "Ananya", localizedName: "apple", language: "mr-IN", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "स्त्री आवाज", name: "Android Speech Recognition and Synthesis from Google mr-in-x-mrf-network", altNames: ["Android Speech Recognition and Synthesis from Google mr-in-x-mrf-local", "Android Speech Recognition and Synthesis from Google mr-IN-language"], nativeID: ["mr-in-x-mrf-network", "mr-in-x-mrf-local"], language: "mr-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["ChromeOS"], preloaded: true, controls: { boundary: false } }], o$g = {
-  language: "mr",
-  defaultRegion: e$i,
-  testUtterance: a$i,
-  voices: r$4
-};
-
-var mrDstAHTvT = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: o$g,
-  defaultRegion: e$i,
-  language: n$f,
-  testUtterance: a$i,
-  voices: r$4
-});
-
-const n$e = "ms", e$h = "ms-MY", a$h = "Hello, nama saya {name} dan saya suara Melayu.", o$f = [{ label: "Yasmin", name: "Microsoft Yasmin Online (Natural) - Malay (Malaysia)", language: "ms-MY", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Osman", name: "Microsoft Osman Online (Natural) - Malay (Malaysia)", language: "ms-MY", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Amira", name: "Amira", localizedName: "apple", language: "ms-MY", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Rizwan", name: "Microsoft Rizwan - Malay (Malaysia)", language: "ms-MY", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Suara perempuan 1", name: "Android Speech Recognition and Synthesis from Google ms-my-x-msc-network", altNames: ["Android Speech Recognition and Synthesis from Google ms-my-x-msc-local", "Android Speech Recognition and Synthesis from Google ms-MY-language"], nativeID: ["ms-my-x-msc-network", "ms-my-x-msc-local"], language: "ms-MY", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Suara perempuan 2", name: "Android Speech Recognition and Synthesis from Google ms-my-x-mse-network", altNames: ["Android Speech Recognition and Synthesis from Google ms-my-x-mse-local"], nativeID: ["ms-my-x-mse-network", "ms-my-x-mse-local"], language: "ms-MY", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Suara lelaki 1", name: "Android Speech Recognition and Synthesis from Google ms-my-x-msd-network", altNames: ["Android Speech Recognition and Synthesis from Google ms-my-x-msd-local"], nativeID: ["ms-my-x-msd-network", "ms-my-x-msd-local"], language: "ms-MY", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Suara lelaki 2", name: "Android Speech Recognition and Synthesis from Google ms-my-x-msg-network", altNames: ["Android Speech Recognition and Synthesis from Google ms-my-x-msg-local"], nativeID: ["ms-my-x-msg-network", "ms-my-x-msg-local"], language: "ms-MY", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$b = {
-  language: "ms",
-  defaultRegion: e$h,
-  testUtterance: a$h,
-  voices: o$f
-};
-
-var msBceBSDJ = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: l$b,
-  defaultRegion: e$h,
-  language: n$e,
-  testUtterance: a$h,
-  voices: o$f
-});
-
-const a$g = "nb", e$g = "nb-NO", o$e = "Hei, jeg heter {name} og er en norsk stemme.", n$d = [{ label: "Pernille", name: "Microsoft Pernille Online (Natural) - Norwegian (Bokmål, Norway)", language: "nb-NO", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Finn", name: "Microsoft Finn Online (Natural) - Norwegian (Bokmål Norway)", language: "nb-NO", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Nora", name: "Nora", localizedName: "apple", language: "nb-NO", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Henrik", name: "Henrik", localizedName: "apple", language: "nb-NO", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Jon", name: "Microsoft Jon - Norwegian (Bokmål Norway)", language: "nb-NO", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Kvinnestemme 1", name: "Google Norsk Bokmål 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nb-no-x-cfl-network", "Chrome OS Norsk Bokmål 2", "Android Speech Recognition and Synthesis from Google nb-no-x-cfl-local", "Android Speech Recognition and Synthesis from Google nb-NO-language"], nativeID: ["nb-no-x-cfl-network", "nb-no-x-cfl-local"], language: "nb-NO", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Kvinnestemme 2", name: "Google Norsk Bokmål 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nb-no-x-rfj-network", "Chrome OS Norsk Bokmål 1", "Android Speech Recognition and Synthesis from Google nb-no-x-rfj-local"], nativeID: ["nb-no-x-rfj-network", "nb-no-x-rfj-local"], language: "nb-NO", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Kvinnestemme 3", name: "Google Norsk Bokmål 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nb-no-x-tfs-network", "Chrome OS Norsk Bokmål 4", "Android Speech Recognition and Synthesis from Google nb-no-x-tfs-local"], nativeID: ["nb-no-x-tfs-network", "nb-no-x-tfs-local"], language: "nb-NO", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Mannsstemme 1", name: "Google Norsk Bokmål 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nb-no-x-cmj-network", "Chrome OS Norsk Bokmål 3", "Android Speech Recognition and Synthesis from Google nb-no-x-cmj-local"], nativeID: ["nb-no-x-cmj-network", "nb-no-x-cmj-local"], language: "nb-NO", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Mannsstemme 2", name: "Google Norsk Bokmål 5 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nb-no-x-tmg-network", "Chrome OS Norsk Bokmål 5", "Android Speech Recognition and Synthesis from Google nb-no-x-tmg-local"], nativeID: ["nb-no-x-tmg-network", "nb-no-x-tmg-local"], language: "nb-NO", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$a = {
-  language: "nb",
-  defaultRegion: e$g,
-  testUtterance: o$e,
-  voices: n$d
-};
-
-var nbCwPbwGI = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: l$a,
-  defaultRegion: e$g,
-  language: a$g,
-  testUtterance: o$e,
-  voices: n$d
-});
-
-const a$f = "nl", e$f = "nl-NL", l$9 = "Hallo, mijn naam is {name} en ik ben een Nederlandse stem.", n$c = [{ label: "Colette", name: "Microsoft Colette Online (Natural) - Dutch (Netherlands)", language: "nl-NL", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Fenna", name: "Microsoft Fenna Online (Natural) - Dutch (Netherlands)", language: "nl-NL", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Hanna", name: "Microsoft Hanna Online - Dutch (Netherlands)", language: "nl-NL", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Maarten", name: "Microsoft Maarten Online (Natural) - Dutch (Netherlands)", language: "nl-NL", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Dena", name: "Microsoft Dena Online (Natural) - Dutch (Belgium)", language: "nl-BE", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Arnaud", name: "Microsoft Arnaud Online (Natural) - Dutch (Belgium)", language: "nl-BE", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Google mannelijke stem", name: "Google Nederlands", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "nl-NL", gender: "male", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Claire", name: "Claire", localizedName: "apple", language: "nl-NL", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Xander", name: "Xander", localizedName: "apple", language: "nl-NL", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Ellen", name: "Ellen", localizedName: "apple", language: "nl-BE", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Frank", name: "Microsoft Frank - Dutch (Netherlands)", language: "nl-NL", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Vrouwelijke stem 1 (Nederland)", name: "Google Nederlands 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nl-nl-x-lfc-network", "Chrome OS Nederlands 4", "Android Speech Recognition and Synthesis from Google nl-nl-x-lfc-local", "Android Speech Recognition and Synthesis from Google nl-NL-language"], nativeID: ["nl-nl-x-lfc-network", "nl-nl-x-lfc-local"], language: "nl-NL", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Vrouwelijke stem 2 (Nederland)", name: "Google Nederlands 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nl-nl-x-tfb-network", "Chrome OS Nederlands 1", "Android Speech Recognition and Synthesis from Google nl-nl-x-tfb-local"], nativeID: ["nl-nl-x-tfb-network", "nl-nl-x-tfb-local"], language: "nl-NL", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Vrouwelijke stem 3 (Nederland)", name: "Google Nederlands 5 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nl-nl-x-yfr-network", "Chrome OS Nederlands 5", "Android Speech Recognition and Synthesis from Google nl-nl-x-yfr-local"], nativeID: ["nl-nl-x-yfr-network", "nl-nl-x-yfr-local"], language: "nl-NL", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Mannelijke stem 1 (Nederland)", name: "Google Nederlands 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nl-nl-x-bmh-network", "Chrome OS Nederlands 2", "Android Speech Recognition and Synthesis from Google nl-nl-x-bmh-local"], nativeID: ["nl-nl-x-bmh-network", "nl-nl-x-bmh-local"], language: "nl-NL", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Mannelijke stem 2 (Nederland)", name: "Google Nederlands 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google nl-nl-x-dma-network", "Chrome OS Nederlands 3", "Android Speech Recognition and Synthesis from Google nl-nl-x-dma-local"], nativeID: ["nl-nl-x-dma-network", "nl-nl-x-dma-local"], language: "nl-NL", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Vrouwelijke stem (België)", name: "Android Speech Recognition and Synthesis from Google nl-be-x-bec-network", altNames: ["Android Speech Recognition and Synthesis from Google nl-be-x-bec-local", "Android Speech Recognition and Synthesis from Google nl-BE-language"], nativeID: ["nl-be-x-bec-network", "nl-be-x-bec-local"], language: "nl-BE", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Mannelijke stem (België)", name: "Android Speech Recognition and Synthesis from Google nl-be-x-bed-network", altNames: ["Android Speech Recognition and Synthesis from Google nl-be-x-bed-local"], nativeID: ["nl-be-x-bed-network", "nl-be-x-bed-local"], language: "nl-BE", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], o$d = {
-  language: "nl",
-  defaultRegion: e$f,
-  testUtterance: l$9,
-  voices: n$c
-};
-
-var nlBmWDmw5 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: o$d,
-  defaultRegion: e$f,
-  language: a$f,
-  testUtterance: l$9,
-  voices: n$c
-});
-
-const a$e = "pl", e$e = "pl-PL", l$8 = "Cześć, nazywam się {name} i mam polski głos.", o$c = [{ label: "Zofia", name: "Microsoft Zofia Online (Natural) - Polish (Poland)", language: "pl-PL", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Paulina", name: "Microsoft Paulina Online - Polish (Poland)", language: "pl-PL", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Marek", name: "Microsoft Marek Online (Natural) - Polish (Poland)", language: "pl-PL", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Żeński głos Google’a", name: "Google polski", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "pl-PL", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Ewa", name: "Ewa", localizedName: "apple", language: "pl-PL", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Zosia", name: "Zosia", localizedName: "apple", language: "pl-PL", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Krzysztof", name: "Krzysztof", localizedName: "apple", language: "pl-PL", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Paulina", name: "Microsoft Paulina - Polish (Poland)", language: "pl-PL", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Adam", name: "Microsoft Adam - Polish (Poland)", language: "pl-PL", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Głos żeński 1", name: "Google Polski 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pl-pl-x-afb-network", "Chrome OS Polski 2", "Android Speech Recognition and Synthesis from Google pl-pl-x-afb-local", "Android Speech Recognition and Synthesis from Google pl-PL-language"], nativeID: ["pl-pl-x-afb-network", "pl-pl-x-afb-local"], language: "pl-PL", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Głos żeński 2", name: "Google Polski 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pl-pl-x-oda-network", "Chrome OS Polski 1", "Android Speech Recognition and Synthesis from Google pl-pl-x-oda-local"], nativeID: ["pl-pl-x-oda-network", "pl-pl-x-oda-local"], language: "pl-PL", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Głos żeński 3", name: "Google Polski 5 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pl-pl-x-zfg-network", "Chrome OS Polski 5", "Android Speech Recognition and Synthesis from Google pl-pl-x-zfg-local"], nativeID: ["pl-pl-x-zfg-network", "pl-pl-x-zfg-local"], language: "pl-PL", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Głos męski 1", name: "Google Polski 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pl-pl-x-bmg-network", "Chrome OS Polski 3", "Android Speech Recognition and Synthesis from Google pl-pl-x-bmg-local"], nativeID: ["pl-pl-x-bmg-network", "pl-pl-x-bmg-local"], language: "pl-PL", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Głos męski 2", name: "Google Polski 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pl-pl-x-jmk-network", "Chrome OS Polski 4", "Android Speech Recognition and Synthesis from Google pl-pl-x-jmk-local"], nativeID: ["pl-pl-x-jmk-network", "pl-pl-x-jmk-local"], language: "pl-PL", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$b = {
-  language: "pl",
-  defaultRegion: e$e,
-  testUtterance: l$8,
-  voices: o$c
-};
-
-var plCH8qoDu8 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$b,
-  defaultRegion: e$e,
-  language: a$e,
-  testUtterance: l$8,
-  voices: o$c
-});
-
-const t$4 = "pt", e$d = "pt-BR", a$d = "Olá, o meu nome é {name} e sou uma voz portuguesa.", o$b = [{ label: "Raquel", name: "Microsoft Raquel Online (Natural) - Portuguese (Portugal)", language: "pt-PT", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Duarte", name: "Microsoft Duarte Online (Natural) - Portuguese (Portugal)", language: "pt-PT", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Francisca", name: "Microsoft Francisca Online (Natural) - Portuguese (Brazil)", language: "pt-BR", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Thalita", name: "Microsoft ThalitaMultilingual Online (Natural) - Portuguese (Brazil)", language: "pt-BR", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Antonio", name: "Microsoft Antonio Online (Natural) - Portuguese (Brazil)", language: "pt-BR", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Voz feminina do Google", name: "Google português do Brasil", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "pt-BR", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Catarina", name: "Catarina", localizedName: "apple", language: "pt-PT", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Joana", name: "Joana", localizedName: "apple", language: "pt-PT", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Joaquim", name: "Joaquim", localizedName: "apple", language: "pt-PT", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Fernanda", name: "Fernanda", localizedName: "apple", language: "pt-BR", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Luciana", name: "Luciana", localizedName: "apple", language: "pt-BR", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Felipe", name: "Felipe", localizedName: "apple", language: "pt-BR", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Helia", name: "Microsoft Helia - Portuguese (Portugal)", language: "pt-PT", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Maria", name: "Microsoft Maria - Portuguese (Brazil)", language: "pt-BR", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Daniel", name: "Microsoft Daniel - Portuguese (Brazil)", language: "pt-BR", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Voz feminina 1 (Portugal)", name: "Google português de Portugal 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pt-pt-x-jfb-network", "Android Speech Recognition and Synthesis from Google pt-pt-x-jfb-local", "Android Speech Recognition and Synthesis from Google pt-PT-language"], nativeID: ["pt-pt-x-jfb-network", "pt-pt-x-jfb-local"], language: "pt-PT", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voz feminina 2 (Portugal)", name: "Google português de Portugal 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pt-pt-x-sfs-network", "Chrome OS português de Portugal", "Android Speech Recognition and Synthesis from Google pt-pt-x-sfs-local"], nativeID: ["pt-pt-x-sfs-network", "pt-pt-x-sfs-local"], language: "pt-PT", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voz masculina 1 (Portugal)", name: "Google português de Portugal 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pt-pt-x-jmn-network", "Android Speech Recognition and Synthesis from Google pt-pt-x-jmn-local"], nativeID: ["pt-pt-x-jmn-network", "pt-pt-x-jmn-local"], language: "pt-PT", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voz masculina 2 (Portugal)", name: "Google português de Portugal 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pt-pt-x-pmj-network", "Android Speech Recognition and Synthesis from Google pt-pt-x-pmj-local"], nativeID: ["pt-pt-x-pmj-network", "pt-pt-x-pmj-local"], language: "pt-PT", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voz feminina 1 (Brasil)", name: "Google português do Brasil 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pt-br-x-afs-network", "Chrome OS português do Brasil", "Android Speech Recognition and Synthesis from Google pt-br-x-afs-local", "Android Speech Recognition and Synthesis from Google pt-BR-language"], nativeID: ["pt-br-x-afs-network", "pt-br-x-afs-local"], language: "pt-BR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voz feminina 2 (Brasil)", name: "Google português do Brasil 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pt-br-x-pte-network", "Android Speech Recognition and Synthesis from Google pt-br-x-pte-local"], nativeID: ["pt-br-x-pte-network", "pt-br-x-pte-local"], language: "pt-BR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Voz masculina  (Brasil)", name: "Google português do Brasil 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google pt-br-x-ptd-network", "Android Speech Recognition and Synthesis from Google pt-br-x-ptd-local"], nativeID: ["pt-br-x-ptd-network", "pt-br-x-ptd-local"], language: "pt-BR", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$7 = {
-  language: "pt",
-  defaultRegion: e$d,
-  testUtterance: a$d,
-  voices: o$b
-};
-
-var ptCjCENn24 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: l$7,
-  defaultRegion: e$d,
-  language: t$4,
-  testUtterance: a$d,
-  voices: o$b
-});
-
-const n$a = "ro", e$c = "ro-RO", a$c = "Buna ziua, ma numesc {name} si sunt o voce romaneasca.", o$a = [{ label: "Alina", name: "Microsoft Alina Online (Natural) - Romanian (Romania)", language: "ro-RO", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Emil", name: "Microsoft Emil Online (Natural) - Romanian (Romania)", language: "ro-RO", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ioana", name: "Ioana", localizedName: "apple", language: "ro-RO", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Andrei", name: "Microsoft Andrei - Romanian (Romania)", language: "ro-RO", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Voce feminină", name: "Android Speech Recognition and Synthesis from Google ro-ro-x-vfv-network", altNames: ["Android Speech Recognition and Synthesis from Google ro-ro-x-vfv-local", "Android Speech Recognition and Synthesis from Google ro-RO-language"], nativeID: ["ro-ro-x-vfv-network", "ro-ro-x-vfv-local"], language: "ro-RO", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], r$3 = {
-  language: "ro",
-  defaultRegion: e$c,
-  testUtterance: a$c,
-  voices: o$a
-};
-
-var roBlJN7qkA = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: r$3,
-  defaultRegion: e$c,
-  language: n$a,
-  testUtterance: a$c,
-  voices: o$a
-});
-
-const o$9 = "ru", e$b = "ru-RU", a$b = "Здравствуйте, меня зовут {name} и я русский голос.", r$2 = [{ label: "Svetlana", name: "Microsoft Svetlana Online (Natural) - Russian (Russia)", language: "ru-RU", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ekaterina", name: "Microsoft Ekaterina Online - Russian (Russia)", language: "ru-RU", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Dmitry", name: "Microsoft Dmitry Online (Natural) - Russian (Russia)", language: "ru-RU", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Google женский голос", name: "Google русский", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "ru-RU", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Katya", name: "Katya", localizedName: "apple", language: "ru-RU", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Milena", name: "Milena", localizedName: "apple", language: "ru-RU", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Yuri", name: "Yuri", localizedName: "apple", language: "ru-RU", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Irina", name: "Microsoft Irina - Russian (Russian)", language: "ru-RU", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Pavel", name: "Microsoft Pavel - Russian (Russian)", language: "ru-RU", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Женский голос 1", name: "Android Speech Recognition and Synthesis from Google ru-ru-x-dfc-network", altNames: ["Android Speech Recognition and Synthesis from Google ru-ru-x-dfc-local"], nativeID: ["ru-ru-x-dfc-network", "ru-ru-x-dfc-local"], language: "ru-RU", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Женский голос 2", name: "Android Speech Recognition and Synthesis from Google ru-ru-x-ruc-network", altNames: ["Android Speech Recognition and Synthesis from Google ru-ru-x-ruc-local"], nativeID: ["ru-ru-x-ruc-network", "ru-ru-x-ruc-local"], language: "ru-RU", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Женский голос 3", name: "Android Speech Recognition and Synthesis from Google ru-ru-x-rue-network", altNames: ["Android Speech Recognition and Synthesis from Google ru-ru-x-rue-local"], nativeID: ["ru-ru-x-rue-network", "ru-ru-x-rue-local"], language: "ru-RU", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Мужской голос 1", name: "Android Speech Recognition and Synthesis from Google ru-ru-x-rud-network", altNames: ["Android Speech Recognition and Synthesis from Google ru-ru-x-rud-local"], nativeID: ["ru-ru-x-rud-network", "ru-ru-x-rud-local"], language: "ru-RU", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Мужской голос 2", name: "Android Speech Recognition and Synthesis from Google ru-ru-x-ruf-network", altNames: ["Android Speech Recognition and Synthesis from Google ru-ru-x-ruf-local"], nativeID: ["ru-ru-x-ruf-network", "ru-ru-x-ruf-local"], language: "ru-RU", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$9 = {
-  language: "ru",
-  defaultRegion: e$b,
-  testUtterance: a$b,
-  voices: r$2
-};
-
-var ruUdzq1D5e = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$9,
-  defaultRegion: e$b,
-  language: o$9,
-  testUtterance: a$b,
-  voices: r$2
-});
-
-const l$6 = "sk", e$a = "sk-SK", a$a = "Dobrý deň, volám sa {name} a som slovenský hlas.", o$8 = [{ label: "Viktoria", name: "Microsoft Viktoria Online (Natural) - Slovak (Slovakia)", language: "sk-SK", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Lukas", name: "Microsoft Lukas Online (Natural) - Slovak (Slovakia)", language: "sk-SK", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Laura", name: "Laura", localizedName: "apple", language: "sk-SK", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Filip", name: "Microsoft Filip - Slovak (Slovakia)", language: "sk-SK", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Ženský hlas", name: "Google Slovenčina (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google sk-sk-x-sfk-network", "Android Speech Recognition and Synthesis from Google sk-sk-x-sfk-local", "Chrome OS Slovenčina", "Android Speech Recognition and Synthesis from Google sk-SK-language"], nativeID: ["sk-sk-x-sfk-network", "sk-sk-x-sfk-local"], language: "sk-SK", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$8 = {
-  language: "sk",
-  defaultRegion: e$a,
-  testUtterance: a$a,
-  voices: o$8
-};
-
-var skVAEHsTWJ = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$8,
-  defaultRegion: e$a,
-  language: l$6,
-  testUtterance: a$a,
-  voices: o$8
-});
-
-const o$7 = "sl", e$9 = "sl-SI", a$9 = "Pozdravljeni, moje ime je {name} in sem slovenski glas.", l$5 = [{ label: "Petra", name: "Microsoft Petra Online (Natural) - Slovenian (Slovenia)", language: "sl-SI", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Rok", name: "Microsoft Rok Online (Natural) - Slovenian (Slovenia)", language: "sl-SI", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Tina", name: "Tina", localizedName: "apple", language: "sl-SI", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Lado", name: "Microsoft Lado - Slovenian (Slovenia)", language: "sl-SI", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Ženski glas", name: "Android Speech Recognition and Synthesis from Google sl-si-x-frm-local", altNames: ["Android Speech Recognition and Synthesis from Google sl-SI-language"], nativeID: ["sl-si-x-frm-local"], language: "sl-SI", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$7 = {
-  language: "sl",
-  defaultRegion: e$9,
-  testUtterance: a$9,
-  voices: l$5
-};
-
-var slDaZQ1gp0 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$7,
-  defaultRegion: e$9,
-  language: o$7,
-  testUtterance: a$9,
-  voices: l$5
-});
-
-const n$6 = "sv", e$8 = "sv-SE", a$8 = "Hej, jag heter {name} och jag är en svensk röst.", o$6 = [{ label: "Sofie", name: "Microsoft Sofie Online (Natural) - Swedish (Sweden)", language: "sv-SE", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Mattias", name: "Microsoft Mattias Online (Natural) - Swedish (Sweden)", language: "sv-SE", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Klara", name: "Klara", localizedName: "apple", language: "sv-SE", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Alva", name: "Alva", localizedName: "apple", language: "sv-SE", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Oskar", name: "Oskar", note: "This voice can be installed on all Apple devices and offers two variants. Like all voices that can be installed on Apple devices, it suffers from inconsistent naming due to localization.", language: "sv-SE", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Bengt", name: "Microsoft Bengt - Swedish (Sweden)", language: "sv-SE", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Kvinnlig röst 1", name: "Google Svenska 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google sv-se-x-lfs-network", "Chrome OS Svenska", "Android Speech Recognition and Synthesis from Google sv-se-x-lfs-local", "Android Speech Recognition and Synthesis from Google sv-SE-language"], nativeID: ["sv-se-x-lfs-network", "sv-se-x-lfs-local"], language: "sv-SE", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Kvinnlig röst 2", name: "Google Svenska 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google sv-se-x-afp-network", "Android Speech Recognition and Synthesis from Google sv-se-x-afp-local"], nativeID: ["sv-se-x-afp-network", "sv-se-x-afp-local"], language: "sv-SE", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Kvinnlig röst 3", name: "Google Svenska 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google sv-se-x-cfg-network", "Android Speech Recognition and Synthesis from Google sv-se-x-cfg-local"], nativeID: ["sv-se-x-cfg-network", "sv-se-x-cfg-local"], language: "sv-SE", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Mansröst 1", name: "Google Svenska 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google sv-se-x-cmh-network", "Android Speech Recognition and Synthesis from Google sv-se-x-cmh-local"], nativeID: ["sv-se-x-cmh-network", "sv-se-x-cmh-local"], language: "sv-SE", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Mansröst 2", name: "Google Svenska 5 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google sv-se-x-dmc-network", "Android Speech Recognition and Synthesis from Google sv-se-x-dmc-local"], nativeID: ["sv-se-x-dmc-network", "sv-se-x-dmc-local"], language: "sv-SE", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$4 = {
-  language: "sv",
-  defaultRegion: e$8,
-  testUtterance: a$8,
-  voices: o$6
-};
-
-var svCicHwXe4 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: l$4,
-  defaultRegion: e$8,
-  language: n$6,
-  testUtterance: a$8,
-  voices: o$6
-});
-
-const r$1 = "ta", a$7 = "ta-IN", e$7 = "வணக்கம், என் பெயர் {name} மற்றும் நான் ஒரு தமிழ் குரல்", l$3 = [{ label: "Pallavi", name: "Microsoft Pallavi Online (Natural) - Tamil (India)", language: "ta-IN", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Valluvar", name: "Microsoft Valluvar Online (Natural) - Tamil (India)", language: "ta-IN", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Saranya", name: "Microsoft Saranya Online (Natural) - Tamil (Sri Lanka)", language: "ta-LK", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Kumar", name: "Microsoft Kumar Online (Natural) - Tamil (Sri Lanka)", language: "ta-LK", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Kani", name: "Microsoft Kani Online (Natural) - Tamil (Malaysia)", language: "ta-MY", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Surya", name: "Microsoft Surya Online (Natural) - Tamil (Malaysia)", language: "ta-MY", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Venba", name: "Microsoft Venba Online (Natural) - Tamil (Singapore)", language: "ta-SG", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Anbu", name: "Microsoft Anbu Online (Natural) - Tamil (Singapore)", language: "ta-SG", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Vani", name: "Vani", localizedName: "apple", language: "ta-IN", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Valluvar", name: "Microsoft Valluvar - Tamil (India)", language: "ta-IN", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "பெண் குரல்", name: "Android Speech Recognition and Synthesis from Google ta-in-x-tac-network", altNames: ["Android Speech Recognition and Synthesis from Google ta-in-x-tac-local", "Android Speech Recognition and Synthesis from Google ta-IN-language"], nativeID: ["ta-in-x-tac-network", "ta-in-x-tac-local"], language: "ta-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "ஆண் குரல்", name: "Android Speech Recognition and Synthesis from Google ta-in-x-tad-network", altNames: ["Android Speech Recognition and Synthesis from Google ta-in-x-tad-local"], nativeID: ["ta-in-x-tad-network", "ta-in-x-tad-local"], language: "ta-IN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], n$5 = {
-  language: "ta",
-  defaultRegion: a$7,
-  testUtterance: e$7,
-  voices: l$3
-};
-
-var taCvpRY89g = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: n$5,
-  defaultRegion: a$7,
-  language: r$1,
-  testUtterance: e$7,
-  voices: l$3
-});
-
-const n$4 = "te", e$6 = "te-IN", a$6 = "హలో, నా పేరు {name} మరియు నేను తెలుగు వాణిని.", t$3 = [{ label: "Shruti", name: "Microsoft Shruti Online (Natural) - Telugu (India)", language: "te-IN", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Mohan", name: "Microsoft Mohan Online (Natural) - Telugu (India)", language: "te-IN", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Geeta", name: "Geeta", localizedName: "apple", language: "te-IN", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "స్త్రీ స్వరం", name: "Android Speech Recognition and Synthesis from Google te-in-x-tef-network", altNames: ["Android Speech Recognition and Synthesis from Google te-in-x-tef-local", "Android Speech Recognition and Synthesis from Google te-IN-language"], nativeID: ["te-in-x-tef-network", "te-in-x-tef-local"], language: "te-IN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "పురుష స్వరం", name: "Android Speech Recognition and Synthesis from Google te-in-x-tem-network", altNames: ["Android Speech Recognition and Synthesis from Google te-in-x-tem-local"], nativeID: ["te-in-x-tem-network", "te-in-x-tem-local"], language: "te-IN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], o$5 = {
-  language: "te",
-  defaultRegion: e$6,
-  testUtterance: a$6,
-  voices: t$3
-};
-
-var teD5TcdW9V = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: o$5,
-  defaultRegion: e$6,
-  language: n$4,
-  testUtterance: a$6,
-  voices: t$3
-});
-
-const t$2 = "th", a$5 = "th-TH", e$5 = "สวัสดีค่ะ ฉันชื่อ {name} และฉันเป็นคนมีเสียงภาษาไทย", l$2 = [{ label: "Premwadee", name: "Microsoft Premwadee Online (Natural) - Thai (Thailand)", language: "th-TH", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Niwat", name: "Microsoft Niwat Online (Natural) - Thai (Thailand)", language: "th-TH", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Narisa", name: "Narisa", localizedName: "apple", language: "th-TH", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Kanya", name: "Kanya", localizedName: "apple", language: "th-TH", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Pattara", name: "Microsoft Pattara - Thai (Thailand)", language: "th-TH", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "เสียงผู้หญิง", name: "Google ไทย (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google th-th-x-mol-network", "Chrome OS ไทย", "Android Speech Recognition and Synthesis from Google th-th-x-mol-local", "Android Speech Recognition and Synthesis from Google th-TH-language"], nativeID: ["th-th-x-mol-network", "th-th-x-mol-local"], language: "th-TH", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], o$4 = {
-  language: "th",
-  defaultRegion: a$5,
-  testUtterance: e$5,
-  voices: l$2
-};
-
-var thCYakoFVa = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: o$4,
-  defaultRegion: a$5,
-  language: t$2,
-  testUtterance: e$5,
-  voices: l$2
-});
-
-const o$3 = "tr", e$4 = "tr-TR", r = "Merhaba, adım {name} ve Türk sesiyim.", a$4 = [{ label: "Emel", name: "Microsoft Emel Online (Natural) - Turkish (Turkey)", language: "tr-TR", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ahmet", name: "Microsoft Ahmet Online (Natural) - Turkish (Türkiye)", language: "tr-TR", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Yelda", name: "Yelda", localizedName: "apple", altNames: ["Yelda (Geliştirilmiş)", "Yelda (Türkçe (Türkiye))"], language: "tr-TR", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Cem", name: "Cem", localizedName: "apple", language: "tr-TR", gender: "male", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"] }, { label: "Tolga", name: "Microsoft Tolga - Turkish (Turkey)", language: "tr-TR", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Kadın sesi 1", name: "Google Türkçe 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google tr-tr-x-cfs-network", "Chrome OS Türkçe 3", "Android Speech Recognition and Synthesis from Google tr-tr-x-cfs-local", "Android Speech Recognition and Synthesis from Google tr-TR-language"], nativeID: ["tr-tr-x-cfs-network", "tr-tr-x-cfs-local"], language: "tr-TR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Kadın sesi 2", name: "Google Türkçe 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google tr-tr-x-efu-network", "Chrome OS Türkçe 4", "Android Speech Recognition and Synthesis from Google tr-tr-x-efu-local"], nativeID: ["tr-tr-x-efu-network", "tr-tr-x-efu-local"], language: "tr-TR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Kadın sesi 3", name: "Google Türkçe 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google tr-tr-x-mfm-network", "Chrome OS Türkçe 1", "Android Speech Recognition and Synthesis from Google tr-tr-x-mfm-local"], nativeID: ["tr-tr-x-mfm-network", "tr-tr-x-mfm-local"], language: "tr-TR", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Erkek sesi 1", name: "Google Türkçe 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google tr-tr-x-ama-network", "Chrome OS Türkçe 2", "Android Speech Recognition and Synthesis from Google tr-tr-x-ama-local"], nativeID: ["tr-tr-x-ama-network", "tr-tr-x-ama-local"], language: "tr-TR", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Erkek sesi 2", name: "Google Türkçe 5 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google tr-tr-x-tmc-network", "Chrome OS Türkçe 5", "Android Speech Recognition and Synthesis from Google tr-tr-x-tmc-local"], nativeID: ["tr-tr-x-tmc-network", "tr-tr-x-tmc-local"], language: "tr-TR", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], t$1 = {
-  language: "tr",
-  defaultRegion: e$4,
-  testUtterance: r,
-  voices: a$4
-};
-
-var trBfYrcAz7 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: t$1,
-  defaultRegion: e$4,
-  language: o$3,
-  testUtterance: r,
-  voices: a$4
-});
-
-const o$2 = "uk", e$3 = "uk-UA", a$3 = "Здравствуйте, меня зовут {name} и я украинский голос.", n$3 = [{ label: "Polina", name: "Microsoft Polina Online (Natural) - Ukrainian (Ukraine)", language: "uk-UA", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Ostap", name: "Microsoft Ostap Online (Natural) - Ukrainian (Ukraine)", language: "uk-UA", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Lesya", name: "Lesya", localizedName: "apple", language: "uk-UA", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Жіночий голос", name: "Google українська (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google uk-ua-x-hfd-network", "Chrome OS українська", "Android Speech Recognition and Synthesis from Google uk-ua-x-hfd-local", "Android Speech Recognition and Synthesis from Google uk-UA-language"], nativeID: ["uk-ua-x-hfd-network", "uk-ua-x-hfd-local"], language: "uk-UA", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l$1 = {
-  language: "uk",
-  defaultRegion: e$3,
-  testUtterance: a$3,
-  voices: n$3
-};
-
-var ukBVs6lQbX = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: l$1,
-  defaultRegion: e$3,
-  language: o$2,
-  testUtterance: a$3,
-  voices: n$3
-});
-
-const o$1 = "vi", e$2 = "vi-VN", n$2 = "Xin chào, tôi tên là {name} và tôi là giọng nói tiếng Việt.", i = [{ label: "HoaiMy", name: "Microsoft HoaiMy Online (Natural) - Vietnamese (Vietnam)", language: "vi-VN", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "NamMinh", name: "Microsoft NamMinh Online (Natural) - Vietnamese (Vietnam)", language: "vi-VN", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Linh", name: "Linh", localizedName: "apple", language: "vi-VN", gender: "female", quality: ["low", "normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "An", name: "Microsoft An - Vietnamese (Vietnam)", language: "vi-VN", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Giọng nữ 1", name: "Google Tiếng Việt 1 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google vi-vn-x-vic-network", "Chrome OS Tiếng Việt 1", "Android Speech Recognition and Synthesis from Google vi-vn-x-vic-local", "Android Speech Recognition and Synthesis from Google vi-VN-language"], nativeID: ["vi-vn-x-vic-network", "vi-vn-x-vic-local"], language: "vi-VN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Giọng nữ 2", name: "Google Tiếng Việt 2 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google vi-vn-x-vid-network", "Chrome OS Tiếng Việt 2", "Android Speech Recognition and Synthesis from Google vi-vn-x-vid-local"], nativeID: ["vi-vn-x-vid-network", "vi-vn-x-vid-local"], language: "vi-VN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Giọng nữ 3", name: "Google Tiếng Việt 4 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google vi-vn-x-vif-network", "Chrome OS Tiếng Việt 4", "Android Speech Recognition and Synthesis from Google vi-vn-x-vif-local"], nativeID: ["vi-vn-x-vif-network", "vi-vn-x-vif-local"], language: "vi-VN", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Giọng nam 1", name: "Google Tiếng Việt 3 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google vi-vn-x-vie-network", "Chrome OS Tiếng Việt 3", "Android Speech Recognition and Synthesis from Google vi-vn-x-vie-local"], nativeID: ["vi-vn-x-vie-network", "vi-vn-x-vie-local"], language: "vi-VN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "Giọng nam 2", name: "Google Tiếng Việt 5 (Natural)", altNames: ["Android Speech Recognition and Synthesis from Google vi-vn-x-gft-network", "Chrome OS Tiếng Việt 5", "Android Speech Recognition and Synthesis from Google vi-vn-x-gft-local"], nativeID: ["vi-vn-x-gft-network", "vi-vn-x-gft-local"], language: "vi-VN", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], a$2 = {
-  language: "vi",
-  defaultRegion: e$2,
-  testUtterance: n$2,
-  voices: i
-};
-
-var viDP1xN9KL = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: a$2,
-  defaultRegion: e$2,
-  language: o$1,
-  testUtterance: n$2,
-  voices: i
-});
-
-const t = "wuu", a$1 = "wuu-CN", e$1 = "你好，我的名字是 {name}，我是吴语配音。", n$1 = [{ label: "Nannan", name: "Nannan", localizedName: "apple", language: "wuu-CN", altLanguage: "zh-CN", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }], u = {
-  language: "wuu",
-  defaultRegion: a$1,
-  testUtterance: e$1,
-  voices: n$1
-};
-
-var wuuC6uQvT6g = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: u,
-  defaultRegion: a$1,
-  language: t,
-  testUtterance: e$1,
-  voices: n$1
-});
-
-const o = "yue", e = "yue-HK", a = "你好，我叫 {name}，係越中文聲。", n = [{ label: "HiuGaai", name: "Microsoft HiuGaai Online (Natural) - Chinese (Cantonese Traditional)", language: "yue-HK", altLanguage: "zh-HK", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "HiuMaan", name: "Microsoft HiuMaan Online (Natural) - Chinese (Hong Kong SAR)", language: "yue-HK", altLanguage: "zh-HK", gender: "female", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "WanLung", name: "Microsoft WanLung Online (Natural) - Chinese (Hong Kong SAR)", language: "yue-HK", altLanguage: "zh-HK", gender: "male", quality: ["veryHigh"], rate: 1, browser: ["Edge"], preloaded: true, controls: { pitch: false, boundary: false } }, { label: "Google 女聲", name: "Google 粤語（香港）", note: "This voice is pre-loaded in Chrome on desktop. Utterances that are longer than 14 seconds long can trigger a bug with this voice, check the notes in the project's README for more information.", language: "yue-HK", altLanguage: "zh-HK", gender: "female", quality: ["high"], rate: 1, pitch: 1, controls: { boundary: false }, browser: ["ChromeDesktop"], preloaded: true }, { label: "Sinji", name: "Sinji", localizedName: "apple", language: "yue-HK", altLanguage: "zh-HK", gender: "female", quality: ["low", "normal", "high"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Aasing", name: "Aasing", localizedName: "apple", language: "yue-HK", altLanguage: "zh-HK", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["macOS", "iOS", "iPadOS"], preloaded: true }, { label: "Tracy", name: "Microsoft Tracy - Chinese (Traditional, Hong Kong S.A.R.)", language: "cmn-HK", altLanguage: "zh-HK", gender: "female", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "Danny", name: "Microsoft Danny - Chinese (Traditional, Hong Kong S.A.R.)", language: "cmn-HK", altLanguage: "zh-HK", gender: "male", quality: ["normal"], rate: 1, pitch: 1, os: ["Windows"], preloaded: true }, { label: "女聲1", name: "Android Speech Recognition and Synthesis from Google yue-hk-x-jar-network", altNames: ["Chrome OS 粵語 1", "Android Speech Recognition and Synthesis from Google yue-HK-x-jar-local", "Android Speech Recognition and Synthesis from Google yue-HK-language"], nativeID: ["yue-hk-x-jar-network", "yue-hk-x-jar-local"], language: "yue-HK", altLanguage: "zh-HK", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "女聲2", name: "Android Speech Recognition and Synthesis from Google yue-hk-x-yuc-network", altNames: ["Chrome OS 粵語 2", "Android Speech Recognition and Synthesis from Google yue-HK-x-yuc-local"], nativeID: ["yue-hk-x-yuc-network", "yue-hk-x-yuc-local"], language: "yue-HK", altLanguage: "zh-HK", gender: "female", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "男聲1", name: "Android Speech Recognition and Synthesis from Google yue-hk-x-yud-network", altNames: ["Chrome OS 粵語 3", "Android Speech Recognition and Synthesis from Google yue-HK-x-yud-local"], nativeID: ["yue-hk-x-yud-network", "yue-hk-x-yud-local"], language: "yue-HK", altLanguage: "zh-HK", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "男聲2", name: "Android Speech Recognition and Synthesis from Google yue-hk-x-yue-network", altNames: ["Chrome OS 粵語 5", "Android Speech Recognition and Synthesis from Google yue-HK-x-yue-local"], nativeID: ["yue-hk-x-yue-network", "yue-hk-x-yue-local"], language: "yue-HK", altLanguage: "zh-HK", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }, { label: "男聲3", name: "Android Speech Recognition and Synthesis from Google yue-hk-x-yuf-network", altNames: ["Chrome OS 粵語 5", "Android Speech Recognition and Synthesis from Google yue-HK-x-yuf-local"], nativeID: ["yue-hk-x-yuf-network", "yue-hk-x-yuf-local"], language: "yue-HK", altLanguage: "zh-HK", gender: "male", quality: ["high"], rate: 1, pitch: 1, os: ["Android", "ChromeOS"], preloaded: true, controls: { boundary: false } }], l = {
-  language: "yue",
+  default: o,
   defaultRegion: e,
+  language: n,
   testUtterance: a,
-  voices: n
-};
+  voices: l
+});
 
-var yueC8kEWdfv = /*#__PURE__*/Object.freeze({
+const voices$y = [];
+const language$y = "es";
+const defaultRegion$y = language$y;
+const testUtterance$y = '';
+var esDwOFJY07 = { language: language$y, defaultRegion: defaultRegion$y, testUtterance: testUtterance$y, voices: voices$y };
+
+var esDwOFJY07$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: l,
-  defaultRegion: e,
-  language: o,
-  testUtterance: a,
-  voices: n
+  default: esDwOFJY07,
+  defaultRegion: defaultRegion$y,
+  language: language$y,
+  testUtterance: testUtterance$y,
+  voices: voices$y
+});
+
+const voices$x = [];
+const language$x = "eu";
+const defaultRegion$x = language$x;
+const testUtterance$x = '';
+var euDxWirHU_ = { language: language$x, defaultRegion: defaultRegion$x, testUtterance: testUtterance$x, voices: voices$x };
+
+var euDxWirHU_$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: euDxWirHU_,
+  defaultRegion: defaultRegion$x,
+  language: language$x,
+  testUtterance: testUtterance$x,
+  voices: voices$x
+});
+
+const voices$w = [];
+const language$w = "fa";
+const defaultRegion$w = language$w;
+const testUtterance$w = '';
+var faMl9KtIw1 = { language: language$w, defaultRegion: defaultRegion$w, testUtterance: testUtterance$w, voices: voices$w };
+
+var faMl9KtIw1$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: faMl9KtIw1,
+  defaultRegion: defaultRegion$w,
+  language: language$w,
+  testUtterance: testUtterance$w,
+  voices: voices$w
+});
+
+const voices$v = [];
+const language$v = "fi";
+const defaultRegion$v = language$v;
+const testUtterance$v = '';
+var fiDk5Fhhl = { language: language$v, defaultRegion: defaultRegion$v, testUtterance: testUtterance$v, voices: voices$v };
+
+var fiDk5Fhhl$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: fiDk5Fhhl,
+  defaultRegion: defaultRegion$v,
+  language: language$v,
+  testUtterance: testUtterance$v,
+  voices: voices$v
+});
+
+const voices$u = [];
+const language$u = "fr";
+const defaultRegion$u = language$u;
+const testUtterance$u = '';
+var frMfhjukJ4 = { language: language$u, defaultRegion: defaultRegion$u, testUtterance: testUtterance$u, voices: voices$u };
+
+var frMfhjukJ4$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: frMfhjukJ4,
+  defaultRegion: defaultRegion$u,
+  language: language$u,
+  testUtterance: testUtterance$u,
+  voices: voices$u
+});
+
+const voices$t = [];
+const language$t = "gl";
+const defaultRegion$t = language$t;
+const testUtterance$t = '';
+var glDwtzWds9 = { language: language$t, defaultRegion: defaultRegion$t, testUtterance: testUtterance$t, voices: voices$t };
+
+var glDwtzWds9$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: glDwtzWds9,
+  defaultRegion: defaultRegion$t,
+  language: language$t,
+  testUtterance: testUtterance$t,
+  voices: voices$t
+});
+
+const voices$s = [];
+const language$s = "he";
+const defaultRegion$s = language$s;
+const testUtterance$s = '';
+var heCfajFNE_ = { language: language$s, defaultRegion: defaultRegion$s, testUtterance: testUtterance$s, voices: voices$s };
+
+var heCfajFNE_$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: heCfajFNE_,
+  defaultRegion: defaultRegion$s,
+  language: language$s,
+  testUtterance: testUtterance$s,
+  voices: voices$s
+});
+
+const voices$r = [];
+const language$r = "hi";
+const defaultRegion$r = language$r;
+const testUtterance$r = '';
+var hiPv2ttBoh = { language: language$r, defaultRegion: defaultRegion$r, testUtterance: testUtterance$r, voices: voices$r };
+
+var hiPv2ttBoh$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: hiPv2ttBoh,
+  defaultRegion: defaultRegion$r,
+  language: language$r,
+  testUtterance: testUtterance$r,
+  voices: voices$r
+});
+
+const voices$q = [];
+const language$q = "hr";
+const defaultRegion$q = language$q;
+const testUtterance$q = '';
+var hrMRApcEKR = { language: language$q, defaultRegion: defaultRegion$q, testUtterance: testUtterance$q, voices: voices$q };
+
+var hrMRApcEKR$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: hrMRApcEKR,
+  defaultRegion: defaultRegion$q,
+  language: language$q,
+  testUtterance: testUtterance$q,
+  voices: voices$q
+});
+
+const voices$p = [];
+const language$p = "hu";
+const defaultRegion$p = language$p;
+const testUtterance$p = '';
+var huDGRDZdHH = { language: language$p, defaultRegion: defaultRegion$p, testUtterance: testUtterance$p, voices: voices$p };
+
+var huDGRDZdHH$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: huDGRDZdHH,
+  defaultRegion: defaultRegion$p,
+  language: language$p,
+  testUtterance: testUtterance$p,
+  voices: voices$p
+});
+
+const voices$o = [];
+const language$o = "id";
+const defaultRegion$o = language$o;
+const testUtterance$o = '';
+var idDZUuUiTG = { language: language$o, defaultRegion: defaultRegion$o, testUtterance: testUtterance$o, voices: voices$o };
+
+var idDZUuUiTG$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: idDZUuUiTG,
+  defaultRegion: defaultRegion$o,
+  language: language$o,
+  testUtterance: testUtterance$o,
+  voices: voices$o
+});
+
+const voices$n = [];
+const language$n = "it";
+const defaultRegion$n = language$n;
+const testUtterance$n = '';
+var itDJUYnjyj = { language: language$n, defaultRegion: defaultRegion$n, testUtterance: testUtterance$n, voices: voices$n };
+
+var itDJUYnjyj$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: itDJUYnjyj,
+  defaultRegion: defaultRegion$n,
+  language: language$n,
+  testUtterance: testUtterance$n,
+  voices: voices$n
+});
+
+const voices$m = [];
+const language$m = "ja";
+const defaultRegion$m = language$m;
+const testUtterance$m = '';
+var jaBpFcZRMu = { language: language$m, defaultRegion: defaultRegion$m, testUtterance: testUtterance$m, voices: voices$m };
+
+var jaBpFcZRMu$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: jaBpFcZRMu,
+  defaultRegion: defaultRegion$m,
+  language: language$m,
+  testUtterance: testUtterance$m,
+  voices: voices$m
+});
+
+const voices$l = [];
+const language$l = "kk";
+const defaultRegion$l = language$l;
+const testUtterance$l = '';
+var kkC480t1iH = { language: language$l, defaultRegion: defaultRegion$l, testUtterance: testUtterance$l, voices: voices$l };
+
+var kkC480t1iH$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: kkC480t1iH,
+  defaultRegion: defaultRegion$l,
+  language: language$l,
+  testUtterance: testUtterance$l,
+  voices: voices$l
+});
+
+const voices$k = [];
+const language$k = "kn";
+const defaultRegion$k = language$k;
+const testUtterance$k = '';
+var knBVqs26qv = { language: language$k, defaultRegion: defaultRegion$k, testUtterance: testUtterance$k, voices: voices$k };
+
+var knBVqs26qv$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: knBVqs26qv,
+  defaultRegion: defaultRegion$k,
+  language: language$k,
+  testUtterance: testUtterance$k,
+  voices: voices$k
+});
+
+const voices$j = [];
+const language$j = "ko";
+const defaultRegion$j = language$j;
+const testUtterance$j = '';
+var koTNoPZd6N = { language: language$j, defaultRegion: defaultRegion$j, testUtterance: testUtterance$j, voices: voices$j };
+
+var koTNoPZd6N$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: koTNoPZd6N,
+  defaultRegion: defaultRegion$j,
+  language: language$j,
+  testUtterance: testUtterance$j,
+  voices: voices$j
+});
+
+const voices$i = [];
+const language$i = "mr";
+const defaultRegion$i = language$i;
+const testUtterance$i = '';
+var mrDstAHTvT = { language: language$i, defaultRegion: defaultRegion$i, testUtterance: testUtterance$i, voices: voices$i };
+
+var mrDstAHTvT$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: mrDstAHTvT,
+  defaultRegion: defaultRegion$i,
+  language: language$i,
+  testUtterance: testUtterance$i,
+  voices: voices$i
+});
+
+const voices$h = [];
+const language$h = "ms";
+const defaultRegion$h = language$h;
+const testUtterance$h = '';
+var msBceBSDJ = { language: language$h, defaultRegion: defaultRegion$h, testUtterance: testUtterance$h, voices: voices$h };
+
+var msBceBSDJ$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: msBceBSDJ,
+  defaultRegion: defaultRegion$h,
+  language: language$h,
+  testUtterance: testUtterance$h,
+  voices: voices$h
+});
+
+const voices$g = [];
+const language$g = "nb";
+const defaultRegion$g = language$g;
+const testUtterance$g = '';
+var nbCwPbwGI = { language: language$g, defaultRegion: defaultRegion$g, testUtterance: testUtterance$g, voices: voices$g };
+
+var nbCwPbwGI$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: nbCwPbwGI,
+  defaultRegion: defaultRegion$g,
+  language: language$g,
+  testUtterance: testUtterance$g,
+  voices: voices$g
+});
+
+const voices$f = [];
+const language$f = "nl";
+const defaultRegion$f = language$f;
+const testUtterance$f = '';
+var nlBmWDmw5 = { language: language$f, defaultRegion: defaultRegion$f, testUtterance: testUtterance$f, voices: voices$f };
+
+var nlBmWDmw5$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: nlBmWDmw5,
+  defaultRegion: defaultRegion$f,
+  language: language$f,
+  testUtterance: testUtterance$f,
+  voices: voices$f
+});
+
+const voices$e = [];
+const language$e = "pl";
+const defaultRegion$e = language$e;
+const testUtterance$e = '';
+var plCH8qoDu8 = { language: language$e, defaultRegion: defaultRegion$e, testUtterance: testUtterance$e, voices: voices$e };
+
+var plCH8qoDu8$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: plCH8qoDu8,
+  defaultRegion: defaultRegion$e,
+  language: language$e,
+  testUtterance: testUtterance$e,
+  voices: voices$e
+});
+
+const voices$d = [];
+const language$d = "pt";
+const defaultRegion$d = language$d;
+const testUtterance$d = '';
+var ptCjCENn24 = { language: language$d, defaultRegion: defaultRegion$d, testUtterance: testUtterance$d, voices: voices$d };
+
+var ptCjCENn24$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ptCjCENn24,
+  defaultRegion: defaultRegion$d,
+  language: language$d,
+  testUtterance: testUtterance$d,
+  voices: voices$d
+});
+
+const voices$c = [];
+const language$c = "ro";
+const defaultRegion$c = language$c;
+const testUtterance$c = '';
+var roBlJN7qkA = { language: language$c, defaultRegion: defaultRegion$c, testUtterance: testUtterance$c, voices: voices$c };
+
+var roBlJN7qkA$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: roBlJN7qkA,
+  defaultRegion: defaultRegion$c,
+  language: language$c,
+  testUtterance: testUtterance$c,
+  voices: voices$c
+});
+
+const voices$b = [];
+const language$b = "ru";
+const defaultRegion$b = language$b;
+const testUtterance$b = '';
+var ruUdzq1D5e = { language: language$b, defaultRegion: defaultRegion$b, testUtterance: testUtterance$b, voices: voices$b };
+
+var ruUdzq1D5e$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ruUdzq1D5e,
+  defaultRegion: defaultRegion$b,
+  language: language$b,
+  testUtterance: testUtterance$b,
+  voices: voices$b
+});
+
+const voices$a = [];
+const language$a = "sk";
+const defaultRegion$a = language$a;
+const testUtterance$a = '';
+var skVAEHsTWJ = { language: language$a, defaultRegion: defaultRegion$a, testUtterance: testUtterance$a, voices: voices$a };
+
+var skVAEHsTWJ$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: skVAEHsTWJ,
+  defaultRegion: defaultRegion$a,
+  language: language$a,
+  testUtterance: testUtterance$a,
+  voices: voices$a
+});
+
+const voices$9 = [];
+const language$9 = "sl";
+const defaultRegion$9 = language$9;
+const testUtterance$9 = '';
+var slDaZQ1gp0 = { language: language$9, defaultRegion: defaultRegion$9, testUtterance: testUtterance$9, voices: voices$9 };
+
+var slDaZQ1gp0$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: slDaZQ1gp0,
+  defaultRegion: defaultRegion$9,
+  language: language$9,
+  testUtterance: testUtterance$9,
+  voices: voices$9
+});
+
+const voices$8 = [];
+const language$8 = "sv";
+const defaultRegion$8 = language$8;
+const testUtterance$8 = '';
+var svCicHwXe4 = { language: language$8, defaultRegion: defaultRegion$8, testUtterance: testUtterance$8, voices: voices$8 };
+
+var svCicHwXe4$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: svCicHwXe4,
+  defaultRegion: defaultRegion$8,
+  language: language$8,
+  testUtterance: testUtterance$8,
+  voices: voices$8
+});
+
+const voices$7 = [];
+const language$7 = "ta";
+const defaultRegion$7 = language$7;
+const testUtterance$7 = '';
+var taCvpRY89g = { language: language$7, defaultRegion: defaultRegion$7, testUtterance: testUtterance$7, voices: voices$7 };
+
+var taCvpRY89g$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: taCvpRY89g,
+  defaultRegion: defaultRegion$7,
+  language: language$7,
+  testUtterance: testUtterance$7,
+  voices: voices$7
+});
+
+const voices$6 = [];
+const language$6 = "te";
+const defaultRegion$6 = language$6;
+const testUtterance$6 = '';
+var teD5TcdW9V = { language: language$6, defaultRegion: defaultRegion$6, testUtterance: testUtterance$6, voices: voices$6 };
+
+var teD5TcdW9V$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: teD5TcdW9V,
+  defaultRegion: defaultRegion$6,
+  language: language$6,
+  testUtterance: testUtterance$6,
+  voices: voices$6
+});
+
+const voices$5 = [];
+const language$5 = "th";
+const defaultRegion$5 = language$5;
+const testUtterance$5 = '';
+var thCYakoFVa = { language: language$5, defaultRegion: defaultRegion$5, testUtterance: testUtterance$5, voices: voices$5 };
+
+var thCYakoFVa$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: thCYakoFVa,
+  defaultRegion: defaultRegion$5,
+  language: language$5,
+  testUtterance: testUtterance$5,
+  voices: voices$5
+});
+
+const voices$4 = [];
+const language$4 = "tr";
+const defaultRegion$4 = language$4;
+const testUtterance$4 = '';
+var trBfYrcAz7 = { language: language$4, defaultRegion: defaultRegion$4, testUtterance: testUtterance$4, voices: voices$4 };
+
+var trBfYrcAz7$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: trBfYrcAz7,
+  defaultRegion: defaultRegion$4,
+  language: language$4,
+  testUtterance: testUtterance$4,
+  voices: voices$4
+});
+
+const voices$3 = [];
+const language$3 = "uk";
+const defaultRegion$3 = language$3;
+const testUtterance$3 = '';
+var ukBVs6lQbX = { language: language$3, defaultRegion: defaultRegion$3, testUtterance: testUtterance$3, voices: voices$3 };
+
+var ukBVs6lQbX$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ukBVs6lQbX,
+  defaultRegion: defaultRegion$3,
+  language: language$3,
+  testUtterance: testUtterance$3,
+  voices: voices$3
+});
+
+const voices$2 = [];
+const language$2 = "vi";
+const defaultRegion$2 = language$2;
+const testUtterance$2 = '';
+var viDP1xN9KL = { language: language$2, defaultRegion: defaultRegion$2, testUtterance: testUtterance$2, voices: voices$2 };
+
+var viDP1xN9KL$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: viDP1xN9KL,
+  defaultRegion: defaultRegion$2,
+  language: language$2,
+  testUtterance: testUtterance$2,
+  voices: voices$2
+});
+
+const voices$1 = [];
+const language$1 = "wuu";
+const defaultRegion$1 = language$1;
+const testUtterance$1 = '';
+var wuuC6uQvT6g = { language: language$1, defaultRegion: defaultRegion$1, testUtterance: testUtterance$1, voices: voices$1 };
+
+var wuuC6uQvT6g$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: wuuC6uQvT6g,
+  defaultRegion: defaultRegion$1,
+  language: language$1,
+  testUtterance: testUtterance$1,
+  voices: voices$1
+});
+
+const voices = [];
+const language = "yue";
+const defaultRegion = language;
+const testUtterance = '';
+var yueC8kEWdfv = { language, defaultRegion, testUtterance, voices };
+
+var yueC8kEWdfv$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: yueC8kEWdfv,
+  defaultRegion: defaultRegion,
+  language: language,
+  testUtterance: testUtterance,
+  voices: voices
 });
 
 export { activate };
