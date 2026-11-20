@@ -340,3 +340,22 @@ test('says when there are no voices on this device', async (t) => {
 
   assert.deepEqual(voiceChoices(page), [['Automatic', 'No voices on this device']]);
 });
+
+test("counts voices as online by their names and ids too, not only by what the browser says", async (t) => {
+  const page = setupPage(t, {
+    url: 'https://canvas.test/extensions/openhands-app-voice/settings',
+  });
+  // Each on this device, as far as the browser says.
+  page.voices = [
+    voice('Microsoft Ava Online (Natural) - English (United States)', 'en-US'),
+    voice('English United States', 'en-US', { voiceURI: 'en-us-x-iol-network' }),
+    voice('Google US English', 'en-US'),
+    voice('Google US English 5 (Natural)', 'en-US', { voiceURI: 'en-us-x-tpc-local' }),
+    ESPEAK,
+  ];
+  await openSettings(page);
+
+  const listed = voiceChoices(page).slice(1).flatMap(([, voices]) => voices.map(([label]) => label));
+  assert.equal(listed.length, 2, listed.join());
+  assert.ok(listed.includes('English (America)'), listed.join());
+});

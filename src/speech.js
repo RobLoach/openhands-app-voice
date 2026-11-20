@@ -57,8 +57,20 @@ export function loadVoices() {
 
 // Online voices send what they read to Google or Microsoft, which On-device
 // voices only leaves out. Readium's voices and the browser's own say so
-// differently.
-const isOnline = (voice) => voice.offlineAvailability === false || voice.localService === false;
+// differently, and as a browser may not say so at all, voices named as
+// Microsoft's online ones, with network ids, or Google's but those with a
+// local id, as Android's on-device ones have, count as online too.
+export const isOnline = (voice) => {
+  const name = voice.originalName ?? voice.name ?? '';
+  const id = voice.voiceURI ?? '';
+  return (
+    voice.offlineAvailability === false ||
+    voice.localService === false ||
+    /\bOnline\b/.test(name) ||
+    /[-_]network$/i.test(id) ||
+    (/^Google\b/.test(name) && !/[-_]local$/i.test(id))
+  );
+};
 const onDevice = (voice) => !isOnline(voice);
 const usable = () => (settings.onDeviceOnly ? ranked.filter(onDevice) : ranked);
 const automatic = () => automatics[settings.onDeviceOnly ? 'onDevice' : 'all'];
