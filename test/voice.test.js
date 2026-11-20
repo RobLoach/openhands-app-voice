@@ -277,7 +277,7 @@ test('keeps the screen awake while a turn goes', async (t) => {
 });
 
 test('Alt+V presses the mic, from the message box too', async (t) => {
-  const { page } = await voiceChat(t, { micShortcut: true });
+  const { page } = await voiceChat(t, { keyboardShortcut: true });
   const composer = page.document.querySelector('[data-testid="chat-input"]');
   const event = new page.window.KeyboardEvent('keydown', {
     key: '√',

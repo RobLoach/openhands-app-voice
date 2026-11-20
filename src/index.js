@@ -11,7 +11,7 @@ import { loadSettings, saveSettings, settings } from './settings.js';
 import { SETTINGS_PAGE, settingsPage } from './pages.js';
 import { loadVoices } from './speech.js';
 import { voiceChat } from './voice.js';
-import { micShortcut } from './shortcut.js';
+import { keyboardShortcut } from './shortcut.js';
 
 // The running copy's dispose, on the page's window. Canvas disposes an app
 // before activating it again; should a copy still be running anyway, the new
@@ -38,7 +38,7 @@ export function activate(host) {
   const features = [
     settingsView,
     voiceChat(host),
-    micShortcut(),
+    keyboardShortcut(),
     // Readium finds the voices ahead of time, so reading starts at once.
     {
       refresh() {

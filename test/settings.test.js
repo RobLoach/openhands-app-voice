@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { activateExtension, fakeHost, flush, openSettings, setupPage } from './helpers.js';
 
 const SETTINGS_URL = 'https://canvas.test/extensions/openhands-app-voice/settings';
-const SWITCH_KEYS = ['voiceChat', 'handsFree', 'listeningChime', 'micShortcut', 'readAloud'];
+const SWITCH_KEYS = ['voiceChat', 'handsFree', 'listeningChime', 'keyboardShortcut', 'readAloud'];
 const switchFor = (page, key) =>
   page.document.querySelector(`[data-testid="voice-${key}-switch"]`);
 const stored = (page) =>
@@ -42,7 +42,7 @@ test('shows settings changed in another tab', async (t) => {
   assert.equal(switchFor(page, 'voiceChat').checked, true);
 });
 
-test('leaves Alt+V alone while the Mic shortcut is off', async (t) => {
+test('leaves Alt+V alone while the Keyboard shortcut is off', async (t) => {
   const page = setupPage(t, {
     url: 'https://canvas.test/conversations/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     body: '<button type="button" data-testid="chat-dictation-button" aria-pressed="false"></button>',

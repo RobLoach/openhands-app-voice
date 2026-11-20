@@ -32,9 +32,9 @@ export const SWITCHES = [
     description: 'Play a short chime when Voice chat turns the mic back on, so you know when to talk.',
   },
   {
-    key: 'micShortcut',
+    key: 'keyboardShortcut',
     group: 'Talking',
-    label: 'Mic shortcut',
+    label: 'Keyboard shortcut',
     description: "Press Alt+V to start or stop Canvas's mic, from the message box too.",
   },
   {

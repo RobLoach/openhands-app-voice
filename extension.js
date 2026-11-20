@@ -106,9 +106,9 @@ const SWITCHES = [
     description: 'Play a short chime when Voice chat turns the mic back on, so you know when to talk.',
   },
   {
-    key: 'micShortcut',
+    key: 'keyboardShortcut',
     group: 'Talking',
-    label: 'Mic shortcut',
+    label: 'Keyboard shortcut',
     description: "Press Alt+V to start or stop Canvas's mic, from the message box too.",
   },
   {
@@ -4936,15 +4936,15 @@ function voiceChat(host) {
   };
 }
 
-// Mic shortcut: Alt+V presses Canvas's mic, from the message box too, on any
-// keyboard layout, unless one of Canvas's dialogs is open.
+// Keyboard shortcut: Alt+V presses Canvas's mic, from the message box too, on
+// any keyboard layout, unless one of Canvas's dialogs is open.
 
 
 const MIC = '[data-testid="chat-dictation-button"]';
 
-function micShortcut() {
+function keyboardShortcut() {
   function onKeyDown(event) {
-    if (!settings.micShortcut || event.defaultPrevented || event.isComposing) return;
+    if (!settings.keyboardShortcut || event.defaultPrevented || event.isComposing) return;
     if (!event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.code !== 'KeyV' || document.querySelector('[aria-modal="true"]')) return;
     const mic = document.querySelector(MIC);
@@ -4993,7 +4993,7 @@ function activate(host) {
   const features = [
     settingsView,
     voiceChat(host),
-    micShortcut(),
+    keyboardShortcut(),
     // Readium finds the voices ahead of time, so reading starts at once.
     {
       refresh() {
