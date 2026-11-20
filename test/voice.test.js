@@ -302,11 +302,22 @@ test('Alt+V presses the mic, from the message box too', async (t) => {
 
 const readAloud = (page) => page.document.querySelector('[data-voice-read-aloud]');
 
+// A Read aloud button shows it's playing with aria-pressed, its tooltip and
+// a stop icon.
+function assertPlaying(button, playing) {
+  const label = playing ? 'Stop reading' : 'Read aloud';
+  assert.equal(button.getAttribute('aria-pressed'), String(playing));
+  assert.equal(button.title, label);
+  assert.equal(button.getAttribute('aria-label'), label);
+  assert.equal(button.querySelector('svg rect') !== null, playing);
+}
+
 test("Read aloud buttons read the agent's messages, leaving code on screen", async (t) => {
   const { page } = await voiceChat(t, { readAloud: true });
   const button = readAloud(page);
   assert.equal(button.getAttribute('aria-label'), 'Read aloud');
   assert.equal(button.parentElement, page.document.querySelector('article > div.absolute'));
+  assertPlaying(button, false);
 
   button.click();
   assert.deepEqual(page.utterances, [
@@ -317,10 +328,41 @@ test("Read aloud buttons read the agent's messages, leaving code on screen", asy
     'One file',
   ]);
   assert.equal(button.getAttribute('aria-label'), 'Stop reading');
+  assertPlaying(button, true);
 
   button.click();
   assert.equal(page.window.speechSynthesis.queue.length, 0);
   assert.equal(button.getAttribute('aria-label'), 'Read aloud');
+  assertPlaying(button, false);
+});
+
+test('Esc stops a Read aloud button', async (t) => {
+  const { page } = await voiceChat(t, { readAloud: true });
+  const button = readAloud(page);
+  button.click();
+  page.window.dispatchEvent(new page.window.KeyboardEvent('keydown', { key: 'Escape' }));
+
+  assert.equal(page.window.speechSynthesis.queue.length, 0);
+  assertPlaying(button, false);
+});
+
+test('Read aloud buttons stay playing when Canvas draws the message again', async (t) => {
+  const { page } = await voiceChat(t, { readAloud: true });
+  readAloud(page).click();
+  const article = page.document.querySelector('article');
+  const again = article.cloneNode(true);
+  again.querySelector('[data-voice-read-aloud]').remove();
+  article.replaceWith(again);
+  await flush();
+
+  const button = readAloud(page);
+  assert.equal(button.closest('article'), again);
+  assertPlaying(button, true);
+  const read = page.utterances.length;
+  button.click();
+  assert.equal(page.window.speechSynthesis.queue.length, 0);
+  assert.equal(page.utterances.length, read);
+  assertPlaying(button, false);
 });
 
 test('Read aloud buttons go when turned off', async (t) => {

@@ -14,32 +14,49 @@ const READ_ALOUD_ATTR = 'data-voice-read-aloud';
 const SPEAKER_ICON =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>';
 
+// A stop square, drawn the same way, while a message is being read.
+const STOP_ICON =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>';
+
 const buttons = () => document.querySelectorAll(`[${READ_ALOUD_ATTR}]`);
 
+// What a message reads as, which stays the same when Canvas draws it again.
+const textOf = (article) => messageSentences(article).join(' ');
+
+// Shows on a button whether its message is being read.
+function show(button, on) {
+  const label = on ? 'Stop reading' : 'Read aloud';
+  button.setAttribute('aria-label', label);
+  button.setAttribute('aria-pressed', String(on));
+  button.title = label;
+  button.innerHTML = on ? STOP_ICON : SPEAKER_ICON;
+  button.classList.toggle('text-contrast', on);
+}
+
 export function readAloudButtons() {
-  // The message being read.
+  // The text of the message being read, rather than its article, as Canvas
+  // may draw the message again while it's read.
   let reading = null;
   let listening = false;
 
+  const isReading = (article) => reading !== null && textOf(article) === reading;
+
   // Shows which message is being read on its button.
-  function setReading(article) {
-    for (const button of buttons()) {
-      const on = button.closest(AGENT_MESSAGE) === article;
-      button.setAttribute('aria-label', on ? 'Stop reading' : 'Read aloud');
-      button.classList.toggle('text-contrast', on);
-    }
-    reading = article;
+  function setReading(text) {
+    reading = text;
+    for (const button of buttons()) show(button, isReading(button.closest(AGENT_MESSAGE)));
   }
 
   function onReadAloud(article) {
-    if (reading === article) {
+    if (isReading(article)) {
       stopSpeaking();
       return;
     }
+    const text = textOf(article);
     const done = () => {
-      if (reading === article) setReading(null);
+      if (reading === text) setReading(null);
     };
-    setReading(article);
+    setReading(text);
     read(messageSentences(article), { onDone: done, onStopped: done });
   }
 
@@ -51,20 +68,19 @@ export function readAloudButtons() {
       button.type = 'button';
       button.setAttribute(OWN_ATTR, '');
       button.setAttribute(READ_ALOUD_ATTR, '');
-      button.setAttribute('aria-label', reading === article ? 'Stop reading' : 'Read aloud');
-      button.innerHTML = SPEAKER_ICON;
+      show(button, isReading(article));
       button.addEventListener('click', () => onReadAloud(article));
       actions.prepend(button);
     }
   }
 
   function remove() {
-    if (reading) stopSpeaking();
+    if (reading !== null) stopSpeaking();
     for (const button of buttons()) button.remove();
   }
 
   function onKeyDown(event) {
-    if (reading && event.key === 'Escape') stopSpeaking();
+    if (reading !== null && event.key === 'Escape') stopSpeaking();
   }
 
   function listen(next) {
