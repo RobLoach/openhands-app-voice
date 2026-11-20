@@ -34,22 +34,52 @@ let sample = 'Hello, my name is {name} and I am an English voice.';
 
 // While Readium waits for the browser's voices, it sets speechSynthesis's
 // onvoiceschanged itself, replacing whatever Canvas or another app had
-// there. The app keeps what was there before Readium first set it, and
-// Readium's own, which it sets at once as it's asked.
+// there. The app keeps what was there before Readium first set it running
+// beside Readium's, and Readium's, which it sets at once as it's asked, to
+// put back what was there once Readium's done, or as the app is disposed.
 let handlers = null;
 
+// Readium's start, which it keeps even when it fails at once, e.g. as the
+// browser throws listing its voices, so a failure is made to start afresh
+// next time.
 function initialize() {
   const synth = window.speechSynthesis;
   const before = synth?.onvoiceschanged ?? null;
   handlers ??= { original: before, readium: null };
-  const found = WebSpeechVoiceManager.initialize({ languages: [LANGUAGE] });
-  if (synth && synth.onvoiceschanged !== before) handlers.readium = synth.onvoiceschanged;
-  return found;
+  let started;
+  try {
+    started = WebSpeechVoiceManager.initialize({ languages: [LANGUAGE] });
+  } catch (error) {
+    started = Promise.reject(error);
+  }
+  if (synth && synth.onvoiceschanged !== before) {
+    const readium = synth.onvoiceschanged;
+    const { original } = handlers;
+    handlers.readium = original
+      ? function (event) {
+          readium?.call(this, event);
+          original.call(this, event);
+        }
+      : readium;
+    synth.onvoiceschanged = handlers.readium;
+  }
+  return started.then(
+    (found) => {
+      restoreVoicesHandler();
+      return found;
+    },
+    (error) => {
+      restoreVoicesHandler();
+      WebSpeechVoiceManager.instance = null;
+      WebSpeechVoiceManager.initializationPromise = null;
+      throw error;
+    },
+  );
 }
 
-// Puts back what onvoiceschanged was before Readium, as the app is
-// disposed, but only while Readium's is still there: one set since is
-// someone else's, and theirs to keep.
+// Puts back what onvoiceschanged was before Readium, once it's done or as
+// the app is disposed, but only while Readium's is still there: one set
+// since is someone else's, and theirs to keep.
 export function restoreVoicesHandler() {
   const synth = window.speechSynthesis;
   if (synth && handlers?.readium && synth.onvoiceschanged === handlers.readium) {
@@ -71,13 +101,19 @@ export function loadVoices() {
         WebSpeechVoiceManager.initializationPromise = null;
         throw new Error('No voices yet');
       }
+      // Readium removes duplicates by its shortened names unless told not
+      // to, which merges voices such as espeak's for one region, so only
+      // the browser's own duplicates go.
       const voices = found.getVoices({
         languages: LANGUAGE,
         excludeNovelty: true,
         excludeVeryLowQuality: true,
-        removeDuplicates: true,
+        removeDuplicates: false,
       });
-      ranked = await found.sortVoicesByQuality(voices);
+      const unique = voices.filter(
+        (voice, index) => voices.findIndex((other) => nameOf(other) === nameOf(voice)) === index,
+      );
+      ranked = await found.sortVoicesByQuality(unique);
       const region = /^en-/i.test(window.navigator.language) ? window.navigator.language : 'en-US';
       const pick = (voices) => found.getDefaultVoice([region, LANGUAGE], voices);
       automatics = { all: await pick(ranked), onDevice: await pick(ranked.filter(onDevice)) };
@@ -90,6 +126,7 @@ export function loadVoices() {
     });
   return loading;
 }
+
 
 // Voices the browser finds after Readium gave up waiting for them: Readium
 // reads them, once it's been asked to, and then onFound runs. Returns what
@@ -139,12 +176,22 @@ const regionName = (language) => {
   }
 };
 
-// A voice as the Voice setting lists it: Readium's label for a voice it
-// rates, or else the browser's name, which Readium shortens, e.g. espeak's
-// "English (America)" to "English", and its quality and whether it's online.
+// A voice's name as the Voice setting shows it: Readium's label for a voice
+// it rates, but for Microsoft's, whose own name it doesn't match, e.g.
+// "James" for "Microsoft Richard - English (Australia)"; or else the
+// browser's name, which Readium shortens, e.g. espeak's "English (America)"
+// to "English".
+function labelOf(voice) {
+  if (!voice.quality) return nameOf(voice);
+  const microsoft = nameOf(voice).match(/^Microsoft (\p{Lu}\p{Ll}+)/u)?.[1];
+  return microsoft && !voice.label.includes(microsoft) ? microsoft : voice.label;
+}
+
+// A voice as the Voice setting lists it, with its quality and whether it's
+// online.
 const describe = (voice) => ({
   name: nameOf(voice),
-  label: voice.quality ? voice.label : nameOf(voice),
+  label: labelOf(voice),
   details: [
     QUALITY_LABELS[voice.quality] ?? 'Not rated',
     isOnline(voice) && 'Online',
@@ -162,7 +209,8 @@ export function voiceGroups() {
     if (!groups.has(group)) groups.set(group, []);
     groups.get(group).push(describe(voice));
   }
-  const other = groups.get('Other voices');
+  // Unrated voices by their own names, as Readium's are alike for some.
+  const other = groups.get('Other voices')?.sort((a, b) => a.label.localeCompare(b.label));
   groups.delete('Other voices');
   if (other) groups.set('Other voices', other);
   return [...groups];
@@ -263,8 +311,7 @@ export function read(sentences, { onDone, onStopped, name } = {}) {
 // Readium's sample sentence in a voice, by its name, or the chosen one.
 export function previewVoice(name) {
   const voice = chosenVoice(name);
-  const label = voice
-    ? (ranked.find((item) => nameOf(item) === voice.name)?.label ?? voice.name)
-    : 'your browser';
+  const known = voice && ranked.find((item) => nameOf(item) === voice.name);
+  const label = known ? labelOf(known) : (voice?.name ?? 'your browser');
   read([sample.replace('{name}', label)], { name });
 }

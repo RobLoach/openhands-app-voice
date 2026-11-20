@@ -454,3 +454,71 @@ test("counts voices as online by their names and ids too, not only by what the b
   assert.equal(listed.length, 2, listed.join());
   assert.ok(listed.includes('English (America)'), listed.join());
 });
+
+test('finds the voices after the browser throws listing them at first', async (t) => {
+  const page = setupPage(t, {
+    url: 'https://canvas.test/extensions/openhands-app-voice/settings',
+  });
+  let fail = true;
+  page.window.speechSynthesis.getVoices = () => {
+    if (fail) throw new Error('Not ready');
+    return [DANIEL];
+  };
+  const host = fakeHost();
+  await openSettings(page, host);
+
+  fail = false;
+  page.document.querySelector('[data-voice-own]').remove();
+  await mountPage(page, host, 'settings');
+  assert.deepEqual(voiceChoices(page)[1], ['English (United Kingdom)', [['Daniel', 'Low quality']]]);
+});
+
+test("keeps the page's own voiceschanged handler while Readium waits for voices", async (t) => {
+  const page = setupPage(t, {
+    url: 'https://canvas.test/extensions/openhands-app-voice/settings',
+  });
+  let heard = 0;
+  const handler = () => (heard += 1);
+  page.window.speechSynthesis.onvoiceschanged = handler;
+  await openSettings(page);
+  await page.setVoices([DANIEL]);
+
+  assert.equal(heard, 1);
+  assert.equal(page.window.speechSynthesis.onvoiceschanged, handler);
+  assert.deepEqual(voiceChoices(page)[1], ['English (United Kingdom)', [['Daniel', 'Low quality']]]);
+});
+
+test('lists voices whose names Readium shortens alike, and previews them by their own names', async (t) => {
+  const page = setupPage(t, {
+    url: 'https://canvas.test/extensions/openhands-app-voice/settings',
+  });
+  const city = voice('English (America, New York City)', 'en-US');
+  page.voices = [ESPEAK, city];
+  await openSettings(page);
+
+  assert.deepEqual(voiceChoices(page)[1], [
+    'Other voices',
+    [
+      ['English (America, New York City)', 'Not rated'],
+      ['English (America)', 'Not rated'],
+    ],
+  ]);
+  pick(page, city.name);
+  await page.wait(400);
+  assert.deepEqual(page.utterances, [
+    'Hello, my name is English (America, New York City) and I am an English voice.',
+  ]);
+});
+
+test("names Microsoft's voices as they do, where Readium's label differs", async (t) => {
+  const page = setupPage(t, {
+    url: 'https://canvas.test/extensions/openhands-app-voice/settings',
+  });
+  page.voices = [voice('Microsoft Richard - English (Australia)', 'en-AU')];
+  await openSettings(page);
+
+  assert.deepEqual(voiceChoices(page)[1], [
+    'English (Australia)',
+    [['Richard', 'Normal quality']],
+  ]);
+});
