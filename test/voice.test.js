@@ -29,6 +29,12 @@ async function voiceChat(t, settings = { voiceChat: true }) {
     statuses: { [A]: 'finished' },
     turns: { [A]: { user: 'm1', leaf: 'e1' } },
     finalResponse: 'Done. All **tests** pass.',
+    // A voice on this device to read with.
+    before: (page) => {
+      page.voices = [
+        { name: 'English (America)', lang: 'en-US', voiceURI: 'en-us', localService: true, default: true },
+      ];
+    },
   });
   page.sent = [];
   mic(page).addEventListener('click', () => {

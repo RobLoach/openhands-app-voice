@@ -5,7 +5,7 @@ import { customizeLayout } from './customize.js';
 import { STORAGE_KEY } from './storage.js';
 import { settings, SWITCH_GROUPS, SWITCHES } from './settings.js';
 import { speechProblem } from './audio.js';
-import { automaticLabel, loadVoices, previewVoice, voiceGroups } from './speech.js';
+import { automaticDetails, loadVoices, previewVoice, unlistedVoice, voiceGroups } from './speech.js';
 
 // Class strings mirror Canvas's ToggleSwitchVisual (src/ui/toggle-switch.tsx)
 // so the switch picks up the same compiled Tailwind styles. The checkbox it
@@ -84,15 +84,18 @@ function buildVoiceChoice(item, onChange) {
       el('legend', 'px-3 pt-3 pb-1 text-xs font-semibold uppercase text-tertiary-light', title),
       ...rows,
     );
+  const unlisted = (name) => {
+    const { label, details } = unlistedVoice(name);
+    return option(name, label, details);
+  };
   const groups = voiceGroups();
   const known = groups.some(([, voices]) => voices.some(({ name }) => name === settings.voice));
-  const automatic = automaticLabel();
   // Long lists scroll, as voices can number in the dozens.
   const box = el(
     'div',
     'flex min-w-0 max-w-2xl flex-col rounded-lg border border-control bg-base-secondary p-1',
-    option('', 'Automatic', automatic ? `Best for your region: ${automatic}` : 'Your browser picks'),
-    ...(settings.voice && !known ? [option(settings.voice, settings.voice, 'Not on this device')] : []),
+    option('', 'Automatic', automaticDetails()),
+    ...(settings.voice && !known ? [unlisted(settings.voice)] : []),
     ...groups.map(([title, voices]) =>
       group(title, ...voices.map(({ name, label, details }) => option(name, label, details))),
     ),

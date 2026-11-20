@@ -107,16 +107,42 @@ export function voiceGroups() {
   return [...groups];
 }
 
-// The voice Automatic reads with, by its label, if Readium has picked one.
-export const automaticLabel = () => (automatic() ? describe(automatic()).label : null);
+// What Automatic reads with, as the Voice setting describes it.
+export function automaticDetails() {
+  if (automatic()) return `Best for your region: ${describe(automatic()).label}`;
+  if (!manager) return 'Finding voices…';
+  return settings.onDeviceOnly ? 'No voices on this device' : 'Your browser picks';
+}
+
+// A saved voice the Voice setting doesn't list: one this device has, but
+// online while On-device voices only is on, or one it doesn't have.
+export function unlistedVoice(name) {
+  const known = ranked.find((voice) => nameOf(voice) === name);
+  return browserVoice(name)
+    ? {
+        label: known ? describe(known).label : name,
+        details: 'Online · Skipped while On-device voices only is on',
+      }
+    : { label: name, details: 'Not on this device' };
+}
+
+// An English voice the browser has on this device, for On-device voices
+// only to read with until Readium has picked one: its default if it's one.
+const onDeviceFallback = () =>
+  (window.speechSynthesis?.getVoices?.() ?? [])
+    .filter((voice) => onDevice(voice) && /^en\b/i.test(voice.lang.replace('_', '-')))
+    .sort((a, b) => Number(b.default) - Number(a.default))[0] ?? null;
 
 // The Voice setting's voice, but an online one while On-device voices only
-// is on, or else the one Readium picks, or none, for the browser to choose.
+// is on, or else the one Readium picks. Without one, the browser chooses,
+// but for On-device voices only, which can't trust it not to pick an online
+// one: then there's one from this device, or none at all.
 export function chosenVoice(name = settings.voice) {
   const saved = name && browserVoice(name);
   return (
     (saved && (onDevice(saved) || !settings.onDeviceOnly) && saved) ||
     (automatic() && manager?.convertToSpeechSynthesisVoice(automatic())) ||
+    (settings.onDeviceOnly && !manager && onDeviceFallback()) ||
     null
   );
 }
@@ -129,12 +155,13 @@ let queued = [];
 // onDone once the last is read or fails, at once for none. Cancelling the
 // queue skips onDone.
 export function read(sentences, onDone, name) {
-  if (speechProblem()) {
+  const voice = speechProblem() ? null : chosenVoice(name);
+  // Nothing on this device can read it, and the browser's choice may not be.
+  if (speechProblem() || (!voice && settings.onDeviceOnly)) {
     onDone?.();
     return;
   }
   const synth = window.speechSynthesis;
-  const voice = chosenVoice(name);
   synth.cancel();
   queued = sentences.map((sentence) => {
     const utterance = new window.SpeechSynthesisUtterance(sentence);

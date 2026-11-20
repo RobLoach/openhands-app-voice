@@ -67,7 +67,7 @@ const voiceChoices = (page) =>
   );
 const pick = (page, name) =>
   page.document.querySelector(`[data-testid="voice-voice-list"] input[value="${name}"]`).click();
-const AUTOMATIC = ['Automatic', 'Your browser picks'];
+const AUTOMATIC = ['Automatic', 'Finding voices…'];
 
 test("lists the browser's English voices, the rated ones by region, best first, with their quality, without novelty ones", async (t) => {
   const page = await settingsPage(t, ONLINE);
@@ -176,8 +176,8 @@ test('picks a voice even when none of them is rated', async (t) => {
   assert.equal(utterance.lang, 'en-US');
 });
 
-test('leaves the voice to the browser until it has some', async (t) => {
-  const utterance = await readMessage(t, {}, []);
+test('leaves the voice to the browser until it has some, with online voices allowed', async (t) => {
+  const utterance = await readMessage(t, ONLINE, []);
 
   assert.equal(utterance.voice, undefined);
   assert.equal(utterance.lang, 'en');
@@ -280,4 +280,63 @@ test('lists online voices as soon as On-device voices only is turned off', async
     page.document.activeElement.dataset.testid,
     'voice-onDeviceOnly-switch',
   );
+});
+
+test('shows a saved online voice as skipped, rather than missing', async (t) => {
+  const page = await settingsPage(t, { voice: EMMA.name });
+
+  assert.deepEqual(voiceChoices(page)[1], [
+    'Emma',
+    'Online · Skipped while On-device voices only is on',
+  ]);
+  assert.equal(
+    page.document.querySelector('[data-testid="voice-voice-list"] input:checked').value,
+    EMMA.name,
+  );
+});
+
+test('reads with a voice on this device before Readium has found them', async (t) => {
+  const { page } = await start(t, {
+    path: '/conversations/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    body: MESSAGE,
+    settings: { readAloud: true },
+    // Readium asks first, before the browser has any, and waits for more.
+    before: (page) => {
+      let asked = false;
+      page.window.speechSynthesis.getVoices = () => {
+        const voices = asked ? [EMMA, ESPEAK] : [];
+        asked = true;
+        return voices;
+      };
+    },
+  });
+  page.document.querySelector('[data-voice-read-aloud]').click();
+
+  assert.equal(page.spoken[0].voice, ESPEAK);
+});
+
+test('reads nothing when only online voices could, while On-device voices only is on', async (t) => {
+  const { page } = await start(t, {
+    path: '/conversations/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    body: MESSAGE,
+    settings: { readAloud: true },
+    before: (page) => {
+      page.voices = [EMMA];
+    },
+  });
+  const button = page.document.querySelector('[data-voice-read-aloud]');
+  button.click();
+
+  assert.deepEqual(page.utterances, []);
+  assert.equal(button.getAttribute('aria-label'), 'Read aloud');
+});
+
+test('says when there are no voices on this device', async (t) => {
+  const page = setupPage(t, {
+    url: 'https://canvas.test/extensions/openhands-app-voice/settings',
+  });
+  page.voices = [EMMA];
+  await openSettings(page);
+
+  assert.deepEqual(voiceChoices(page), [['Automatic', 'No voices on this device']]);
 });
