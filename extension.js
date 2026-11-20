@@ -5026,7 +5026,8 @@ function silenceDetector(onSilence) {
   return stop;
 }
 
-// Replies are Markdown, which is read out as raw text. Strip the syntax and
+// Replies are Markdown, which is read out as raw text. Strip the syntax,
+// keeping a line break between lines, such as list items and headings, and
 // cut on a word boundary without splitting an emoji.
 function plainText(markdown, max = 200) {
   const text = markdown
@@ -5035,12 +5036,13 @@ function plainText(markdown, max = 200) {
     .replace(/^\s*([-*_])(?:\s*\1){2,}\s*$/gm, ' ')
     .replace(/^\s{0,3}(?:#{1,6}|>|[-*+]|\d+[.)])\s+/gm, '')
     .replace(/\*+|~~|`+/g, '')
-    .replace(/\s+/g, ' ')
+    .replace(/[^\S\n]+/g, ' ')
+    .replace(/\s*\n\s*/g, '\n')
     .trim();
   const chars = Array.from(text);
   if (chars.length <= max) return text;
   const cut = chars.slice(0, max).join('');
-  const space = cut.lastIndexOf(' ');
+  const space = Math.max(cut.lastIndexOf(' '), cut.lastIndexOf('\n'));
   return `${(space > cut.length / 2 ? cut.slice(0, space) : cut).trimEnd()}…`;
 }
 
@@ -5052,8 +5054,27 @@ function plainText(markdown, max = 200) {
 // as Chrome stops reading a long utterance after about 15 seconds.
 const MAX_SPOKEN = 1500;
 
+// Sentences longer than this are read in pieces, for the same reason.
+const MAX_SENTENCE = 200;
+
+// A long sentence in pieces, broken at its last comma or semicolon that
+// leaves a piece at least half as long, else at a space.
+function piecesOf(sentence) {
+  const pieces = [];
+  let rest = sentence;
+  while (rest.length > MAX_SENTENCE) {
+    const head = rest.slice(0, MAX_SENTENCE);
+    const pause = Math.max(head.lastIndexOf(', '), head.lastIndexOf('; '));
+    const space = head.lastIndexOf(' ');
+    const end = pause > MAX_SENTENCE / 2 ? pause + 1 : space > 0 ? space : MAX_SENTENCE;
+    pieces.push(rest.slice(0, end).trim());
+    rest = rest.slice(end).trim();
+  }
+  return [...pieces, rest];
+}
+
 // Text split into sentences in Canvas's language, or in one go for a
-// language the browser doesn't know.
+// language the browser doesn't know, with long ones in pieces.
 function sentencesOf(text) {
   let segments;
   try {
@@ -5061,14 +5082,15 @@ function sentencesOf(text) {
   } catch {
     segments = [{ segment: text }];
   }
-  return segments.map(({ segment }) => segment.trim()).filter(Boolean);
+  return segments.map(({ segment }) => segment.trim()).filter(Boolean).flatMap(piecesOf);
 }
 
-// A reply as speech: Markdown stripped and code left on screen.
+// A reply as speech: Markdown stripped, code left on screen, and lines,
+// such as list items and headings, as separate sentences.
 const spokenSentences = (markdown) =>
-  sentencesOf(
-    plainText(markdown.replace(/```[\s\S]*?(?:```|$)/g, ' The code is in the chat. '), MAX_SPOKEN),
-  );
+  plainText(markdown.replace(/```[\s\S]*?(?:```|$)/g, ' The code is in the chat. '), MAX_SPOKEN)
+    .split('\n')
+    .flatMap(sentencesOf);
 
 // One of the agent's messages on the page as speech, read in full, with
 // paragraphs, items and cells as separate sentences.

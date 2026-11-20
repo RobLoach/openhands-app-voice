@@ -116,6 +116,48 @@ test('reads a reply a sentence at a time, leaving code on screen', async (t) => 
   assert.equal(listening(page), true);
 });
 
+test("reads a reply's headings and list items as separate sentences", async (t) => {
+  const { page, host } = await voiceChat(t);
+  host.finalResponse = '## Changes\n\n- One file\n- Two tests\n- Three docs\n* Four fixes\n1. Five more';
+  await say(page, 'Explain');
+  await reply(page, host);
+
+  assert.deepEqual(page.utterances, [
+    'Changes',
+    'One file',
+    'Two tests',
+    'Three docs',
+    'Four fixes',
+    'Five more',
+  ]);
+});
+
+// A 500 character sentence, of clauses between commas.
+const LONG = `${Array.from({ length: 18 }, (_, i) => `then clause number ${i + 10} runs`).join(', ')}.`;
+
+test('reads a long sentence in pieces, broken at commas', async (t) => {
+  const { page, host } = await voiceChat(t);
+  host.finalResponse = LONG;
+  await say(page, 'Explain');
+  await reply(page, host);
+
+  assert.ok(page.utterances.length > 2);
+  for (const piece of page.utterances) assert.ok(piece.length <= 200, piece);
+  for (const piece of page.utterances.slice(0, -1)) assert.ok(piece.endsWith(','), piece);
+  assert.equal(page.utterances.join(' '), LONG);
+});
+
+test('reads a long sentence without commas in pieces, broken at spaces', async (t) => {
+  const { page, host } = await voiceChat(t);
+  host.finalResponse = LONG.replaceAll(',', '');
+  await say(page, 'Explain');
+  await reply(page, host);
+
+  assert.ok(page.utterances.length > 2);
+  for (const piece of page.utterances) assert.ok(piece.length <= 200, piece);
+  assert.equal(page.utterances.join(' '), LONG.replaceAll(',', ''));
+});
+
 test('says when the agent needs your confirmation, without listening again', async (t) => {
   const { page, host } = await voiceChat(t);
   await say(page, 'Delete the branch');
@@ -363,6 +405,16 @@ test('Read aloud buttons stay playing when Canvas draws the message again', asyn
   assert.equal(page.window.speechSynthesis.queue.length, 0);
   assert.equal(page.utterances.length, read);
   assertPlaying(button, false);
+});
+
+test('Read aloud buttons read a long sentence in pieces', async (t) => {
+  const { page } = await voiceChat(t, { readAloud: true });
+  page.document.querySelector('article > div:not(.absolute)').innerHTML = `<p>${LONG}</p>`;
+  readAloud(page).click();
+
+  assert.ok(page.utterances.length > 2);
+  for (const piece of page.utterances) assert.ok(piece.length <= 200, piece);
+  assert.equal(page.utterances.join(' '), LONG);
 });
 
 test('Read aloud buttons go when turned off', async (t) => {
