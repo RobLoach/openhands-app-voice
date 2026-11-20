@@ -1,5 +1,5 @@
-// On-device voices only, for Canvas's mic: what you say is recognised on this
-// device too, or not at all. Without a Voice input server, Canvas's mic uses
+// Keep voice on this device, for Canvas's mic: what you say is recognised on
+// this device too, or not at all. Without a Voice input server, Canvas's mic uses
 // the browser's own speech recognition, which sends what you say to Google
 // unless asked to process it locally, as Chrome 139 and later can.
 

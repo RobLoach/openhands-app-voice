@@ -121,7 +121,7 @@ const SWITCHES = [
   {
     key: 'onDeviceOnly',
     group: 'Reading aloud',
-    label: 'On-device voices only',
+    label: 'Keep voice on this device',
     description:
       "Only read aloud with voices that run on this device, and only recognise what you say to Canvas's mic on it, so neither goes to Google or Microsoft.",
     default: true,
@@ -423,8 +423,8 @@ function customizeLayout(host, header, content) {
   return root;
 }
 
-// On-device voices only, for Canvas's mic: what you say is recognised on this
-// device too, or not at all. Without a Voice input server, Canvas's mic uses
+// Keep voice on this device, for Canvas's mic: what you say is recognised on
+// this device too, or not at all. Without a Voice input server, Canvas's mic uses
 // the browser's own speech recognition, which sends what you say to Google
 // unless asked to process it locally, as Chrome 139 and later can.
 
@@ -4389,8 +4389,8 @@ function loadVoices() {
   return loading;
 }
 
-// Online voices send what they read to Google or Microsoft, which On-device
-// voices only leaves out. Readium's voices and the browser's own say so
+// Online voices send what they read to Google or Microsoft, which Keep voice
+// on this device leaves out. Readium's voices and the browser's own say so
 // differently, and as a browser may not say so at all, voices named as
 // Microsoft's online ones, with network ids, or Google's but those with a
 // local id, as Android's on-device ones have, count as online too.
@@ -4461,28 +4461,29 @@ function automaticDetails() {
 }
 
 // A saved voice the Voice setting doesn't list: one this device has, but
-// online while On-device voices only is on, or one it doesn't have.
+// online while Keep voice on this device is on, or one it doesn't have.
 function unlistedVoice(name) {
   const known = ranked.find((voice) => nameOf(voice) === name);
   return browserVoice(name)
     ? {
         label: known ? describe(known).label : name,
-        details: 'Online · Skipped while On-device voices only is on',
+        details: 'Online · Skipped to keep voice on this device',
       }
     : { label: name, details: 'Not on this device' };
 }
 
-// An English voice the browser has on this device, for On-device voices
-// only to read with until Readium has picked one: its default if it's one.
+// An English voice the browser has on this device, to read with until
+// Readium has picked one while Keep voice on this device is on: its default
+// if it's one.
 const onDeviceFallback = () =>
   (window.speechSynthesis?.getVoices?.() ?? [])
     .filter((voice) => onDevice(voice) && /^en\b/i.test(voice.lang.replace('_', '-')))
     .sort((a, b) => Number(b.default) - Number(a.default))[0] ?? null;
 
-// The Voice setting's voice, but an online one while On-device voices only
-// is on, or else the one Readium picks. Without one, the browser chooses,
-// but for On-device voices only, which can't trust it not to pick an online
-// one: then there's one from this device, or none at all.
+// The Voice setting's voice, but an online one while Keep voice on this
+// device is on, or else the one Readium picks. Without one, the browser chooses,
+// but to keep voice on this device, as it can't be trusted not to pick an
+// online one: then there's one from this device, or none at all.
 function chosenVoice(name = settings.voice) {
   const saved = name && browserVoice(name);
   return (
@@ -4699,8 +4700,8 @@ function buildSwitch(item, onChange) {
   return block;
 }
 
-// What happens to what you say to Canvas's mic while On-device voices only
-// is on, found out after it's drawn, with a button to download the
+// What happens to what you say to Canvas's mic while Keep voice on this
+// device is on, found out after it's drawn, with a button to download the
 // language when the browser can recognise it on this device once it has.
 function recognitionNote() {
   const text = el('p', 'text-xs leading-relaxed text-tertiary-light');
@@ -4732,7 +4733,7 @@ function recognitionNote() {
 function settingsPage(host, onChange) {
   let list = null;
 
-  // The voices listed depend on On-device voices only, as last drawn.
+  // The voices listed depend on Keep voice on this device, as last drawn.
   let onDeviceOnly = null;
 
   // Redraws the page, keeping focus where it was, e.g. on a switch just
@@ -5265,8 +5266,8 @@ function voiceChat(host) {
 
   // Browsers only let a page speak after a click or key press on it, and
   // Safari only from one, so the first press of the mic says nothing, in the
-  // voice replies will be read in: never an online one while On-device voices
-  // only is on.
+  // voice replies will be read in: never an online one while Keep voice on
+  // this device is on.
   function onPointerDown(event) {
     if (unlocked || !settings.voiceChat || !event.target?.closest?.(MIC$1)) return;
     if (speechProblem()) return;

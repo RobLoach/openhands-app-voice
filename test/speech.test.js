@@ -254,7 +254,7 @@ test('reads with the best on-device voice by default', async (t) => {
   assert.equal(utterance.voice, SAMANTHA);
 });
 
-test('skips a chosen online voice while On-device voices only is on', async (t) => {
+test('skips a chosen online voice while keeping voice on this device', async (t) => {
   const utterance = await readMessage(t, { voice: EMMA.name });
 
   assert.equal(utterance.voice, SAMANTHA);
@@ -267,7 +267,7 @@ test("doesn't pick Chrome's online voice by default", async (t) => {
   assert.equal(utterance.voice, ESPEAK);
 });
 
-test('lists online voices as soon as On-device voices only is turned off', async (t) => {
+test('lists online voices as soon as Keep voice on this device is turned off', async (t) => {
   const page = await settingsPage(t);
   const toggle = page.document.querySelector('[data-testid="voice-onDeviceOnly-switch"]');
   assert.equal(toggle.checked, true);
@@ -287,7 +287,7 @@ test('shows a saved online voice as skipped, rather than missing', async (t) => 
 
   assert.deepEqual(voiceChoices(page)[1], [
     'Emma',
-    'Online · Skipped while On-device voices only is on',
+    'Online · Skipped to keep voice on this device',
   ]);
   assert.equal(
     page.document.querySelector('[data-testid="voice-voice-list"] input:checked').value,
@@ -315,7 +315,7 @@ test('reads with a voice on this device before Readium has found them', async (t
   assert.equal(page.spoken[0].voice, ESPEAK);
 });
 
-test('reads nothing when only online voices could, while On-device voices only is on', async (t) => {
+test('reads nothing when only online voices could, while keeping voice on this device', async (t) => {
   const { page } = await start(t, {
     path: '/conversations/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     body: MESSAGE,

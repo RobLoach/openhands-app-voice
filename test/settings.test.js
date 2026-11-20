@@ -19,7 +19,7 @@ test('lists every switch under its group, off at first but one', async (t) => {
     assert.equal(switchFor(page, key).checked, false, key);
     assert.ok(page.document.getElementById(`voice-${key}-hint`).textContent, key);
   }
-  // But for On-device voices only, which keeps what's read on this device.
+  // But for Keep voice on this device.
   assert.equal(switchFor(page, 'onDeviceOnly').checked, true);
 });
 

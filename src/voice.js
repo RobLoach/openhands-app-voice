@@ -459,8 +459,8 @@ export function voiceChat(host) {
 
   // Browsers only let a page speak after a click or key press on it, and
   // Safari only from one, so the first press of the mic says nothing, in the
-  // voice replies will be read in: never an online one while On-device voices
-  // only is on.
+  // voice replies will be read in: never an online one while Keep voice on
+  // this device is on.
   function onPointerDown(event) {
     if (unlocked || !settings.voiceChat || !event.target?.closest?.(MIC)) return;
     if (speechProblem()) return;

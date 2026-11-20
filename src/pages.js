@@ -166,8 +166,8 @@ function buildSwitch(item, onChange) {
   return block;
 }
 
-// What happens to what you say to Canvas's mic while On-device voices only
-// is on, found out after it's drawn, with a button to download the
+// What happens to what you say to Canvas's mic while Keep voice on this
+// device is on, found out after it's drawn, with a button to download the
 // language when the browser can recognise it on this device once it has.
 function recognitionNote() {
   const text = el('p', 'text-xs leading-relaxed text-tertiary-light');
@@ -199,7 +199,7 @@ function recognitionNote() {
 export function settingsPage(host, onChange) {
   let list = null;
 
-  // The voices listed depend on On-device voices only, as last drawn.
+  // The voices listed depend on Keep voice on this device, as last drawn.
   let onDeviceOnly = null;
 
   // Redraws the page, keeping focus where it was, e.g. on a switch just

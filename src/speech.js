@@ -55,8 +55,8 @@ export function loadVoices() {
   return loading;
 }
 
-// Online voices send what they read to Google or Microsoft, which On-device
-// voices only leaves out. Readium's voices and the browser's own say so
+// Online voices send what they read to Google or Microsoft, which Keep voice
+// on this device leaves out. Readium's voices and the browser's own say so
 // differently, and as a browser may not say so at all, voices named as
 // Microsoft's online ones, with network ids, or Google's but those with a
 // local id, as Android's on-device ones have, count as online too.
@@ -127,28 +127,29 @@ export function automaticDetails() {
 }
 
 // A saved voice the Voice setting doesn't list: one this device has, but
-// online while On-device voices only is on, or one it doesn't have.
+// online while Keep voice on this device is on, or one it doesn't have.
 export function unlistedVoice(name) {
   const known = ranked.find((voice) => nameOf(voice) === name);
   return browserVoice(name)
     ? {
         label: known ? describe(known).label : name,
-        details: 'Online · Skipped while On-device voices only is on',
+        details: 'Online · Skipped to keep voice on this device',
       }
     : { label: name, details: 'Not on this device' };
 }
 
-// An English voice the browser has on this device, for On-device voices
-// only to read with until Readium has picked one: its default if it's one.
+// An English voice the browser has on this device, to read with until
+// Readium has picked one while Keep voice on this device is on: its default
+// if it's one.
 const onDeviceFallback = () =>
   (window.speechSynthesis?.getVoices?.() ?? [])
     .filter((voice) => onDevice(voice) && /^en\b/i.test(voice.lang.replace('_', '-')))
     .sort((a, b) => Number(b.default) - Number(a.default))[0] ?? null;
 
-// The Voice setting's voice, but an online one while On-device voices only
-// is on, or else the one Readium picks. Without one, the browser chooses,
-// but for On-device voices only, which can't trust it not to pick an online
-// one: then there's one from this device, or none at all.
+// The Voice setting's voice, but an online one while Keep voice on this
+// device is on, or else the one Readium picks. Without one, the browser chooses,
+// but to keep voice on this device, as it can't be trusted not to pick an
+// online one: then there's one from this device, or none at all.
 export function chosenVoice(name = settings.voice) {
   const saved = name && browserVoice(name);
   return (

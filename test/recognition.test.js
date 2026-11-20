@@ -63,7 +63,7 @@ test("blocks Canvas's mic where the browser can only recognise speech online", a
   assert.deepEqual(page.recognitions, []);
 });
 
-test("leaves Canvas's mic alone with On-device voices only off, and once the app's gone", async (t) => {
+test("leaves Canvas's mic alone with Keep voice on this device off, and once the app's gone", async (t) => {
   const page = setupPage(t, { settings: { onDeviceOnly: false } });
   const Fake = fakeRecognition(page, { local: false });
   const dispose = await activateExtension(page, fakeHost());
@@ -121,7 +121,7 @@ test("says Canvas's mic uses your Voice input server when it has one", async (t)
   assert.match(status(page), /your Voice input server/);
 });
 
-test('shows no mic status with On-device voices only off', async (t) => {
+test('shows no mic status with Keep voice on this device off', async (t) => {
   const page = setupPage(t, { url: SETTINGS_URL, settings: { onDeviceOnly: false } });
   fakeRecognition(page);
   await openSettings(page);
