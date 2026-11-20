@@ -380,3 +380,28 @@ test('Read aloud buttons go with the app, and come back working', async (t) => {
     'Stop reading',
   );
 });
+
+test('plays the listening chime, then listens again', async (t) => {
+  const { page, host } = await voiceChat(t, { voiceChat: true, listeningChime: true, volume: '0.5' });
+  await say(page, 'Run the tests');
+  await reply(page, host);
+  await page.finishSpeaking();
+
+  assert.deepEqual(page.tones, [
+    [660, 0.075],
+    [880, 0.075],
+  ]);
+  assert.equal(listening(page), false);
+  await page.wait(350);
+  assert.equal(listening(page), true);
+});
+
+test('listens again without a chime while the Listening chime is off', async (t) => {
+  const { page, host } = await voiceChat(t);
+  await say(page, 'Run the tests');
+  await reply(page, host);
+  await page.finishSpeaking();
+
+  assert.deepEqual(page.tones, []);
+  assert.equal(listening(page), true);
+});

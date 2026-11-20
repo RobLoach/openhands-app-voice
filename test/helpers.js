@@ -43,6 +43,8 @@ export function setupPage(
     micLevel: 0,
     micStreams: 0,
     micAnswer: true,
+    // The listening chime's tones, by frequency and volume.
+    tones: [],
     // Screen wake locks held.
     wakeLocks: 0,
   };
@@ -50,10 +52,32 @@ export function setupPage(
   Object.defineProperty(window.document, 'hidden', { get: () => page.hidden });
   Object.defineProperty(window, 'isSecureContext', { value: true });
 
-  // jsdom has no Web Audio: Hands-free hears the mic at page.micLevel.
+  // jsdom has no Web Audio: Hands-free hears the mic at page.micLevel, and
+  // the chime's tones are recorded in page.tones.
   window.AudioContext = class {
+    currentTime = 0;
+    destination = {};
+    resume() {}
     close() {
       return Promise.resolve();
+    }
+    createGain() {
+      const gain = { value: 0, setValueAtTime: (value) => (gain.value = value) };
+      gain.exponentialRampToValueAtTime = () => {};
+      return { gain, connect: (node) => node };
+    }
+    createOscillator() {
+      const oscillator = {
+        frequency: {},
+        connect(gainNode) {
+          oscillator.gainNode = gainNode;
+          return gainNode;
+        },
+        start: () =>
+          page.tones.push([oscillator.frequency.value, oscillator.gainNode.gain.value]),
+        stop() {},
+      };
+      return oscillator;
     }
     createAnalyser() {
       return {

@@ -23,7 +23,37 @@ function writeJson(key, value) {
   }
 }
 
-// What Voice chat, Hands-free and Read aloud buttons need from the browser.
+// What Voice chat, Hands-free and Read aloud buttons need from the browser,
+// and the listening chime.
+
+// Two short rising tones, made on the fly so the app needs no sound file,
+// and how long they last.
+const CHIME_MS = 350;
+let chimes = null;
+
+function playChime(volume = 1) {
+  const Context = window.AudioContext ?? window.webkitAudioContext;
+  if (!Context) return;
+  chimes ??= new Context();
+  chimes.resume?.();
+  const start = chimes.currentTime;
+  [660, 880].forEach((frequency, index) => {
+    const at = start + index * 0.15;
+    const oscillator = chimes.createOscillator();
+    const gain = chimes.createGain();
+    oscillator.frequency.value = frequency;
+    gain.gain.setValueAtTime(0.15 * volume, at);
+    gain.gain.exponentialRampToValueAtTime(0.001, at + 0.14);
+    oscillator.connect(gain).connect(chimes.destination);
+    oscillator.start(at);
+    oscillator.stop(at + 0.14);
+  });
+}
+
+function closeChimes() {
+  Promise.resolve(chimes?.close?.()).catch(() => {});
+  chimes = null;
+}
 
 function speechProblem() {
   return window.speechSynthesis && window.SpeechSynthesisUtterance
@@ -70,6 +100,12 @@ const SWITCHES = [
     enable: requestMic,
   },
   {
+    key: 'listeningChime',
+    group: 'Talking',
+    label: 'Listening chime',
+    description: 'Play a short chime when Voice chat turns the mic back on, so you know when to talk.',
+  },
+  {
     key: 'micShortcut',
     group: 'Talking',
     label: 'Mic shortcut',
@@ -111,7 +147,7 @@ const SWITCHES = [
     key: 'volume',
     group: 'Reading aloud',
     label: 'Volume',
-    description: "How loud replies and messages are read, as part of your device's volume.",
+    description: "How loud replies, messages and the listening chime are, as part of your device's volume.",
     // Choices as [value, label, the volume].
     options: [
       ['0.25', '25%', 0.25],
@@ -4758,13 +4794,22 @@ function voiceChat(host) {
     });
   }
 
+  // Presses the mic, after the listening chime when it's on, so the chime
+  // isn't heard as you talking.
   function listenAgain() {
     const { id } = turn;
     end();
-    if (!settings.voiceChat) return;
-    const mic = findMic();
-    if (document.hidden || openConversationId() !== id) return;
-    if (mic && !mic.disabled && !pressed(mic) && !busy(mic)) mic.click();
+    const press = () => {
+      const mic = findMic();
+      if (!settings.voiceChat || document.hidden || openConversationId() !== id) return;
+      if (mic && !mic.disabled && !pressed(mic) && !busy(mic)) mic.click();
+    };
+    if (!settings.listeningChime) {
+      press();
+      return;
+    }
+    playChime(volume());
+    timer = setTimeout(press, CHIME_MS);
   }
 
   // A Read aloud button reads its message, or stops when it's reading, which
@@ -4886,6 +4931,7 @@ function voiceChat(host) {
     dispose() {
       listen(false);
       removeReadAloud();
+      closeChimes();
     },
   };
 }

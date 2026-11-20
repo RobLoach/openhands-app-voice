@@ -26,6 +26,12 @@ export const SWITCHES = [
     enable: requestMic,
   },
   {
+    key: 'listeningChime',
+    group: 'Talking',
+    label: 'Listening chime',
+    description: 'Play a short chime when Voice chat turns the mic back on, so you know when to talk.',
+  },
+  {
     key: 'micShortcut',
     group: 'Talking',
     label: 'Mic shortcut',
@@ -67,7 +73,7 @@ export const SWITCHES = [
     key: 'volume',
     group: 'Reading aloud',
     label: 'Volume',
-    description: "How loud replies and messages are read, as part of your device's volume.",
+    description: "How loud replies, messages and the listening chime are, as part of your device's volume.",
     // Choices as [value, label, the volume].
     options: [
       ['0.25', '25%', 0.25],

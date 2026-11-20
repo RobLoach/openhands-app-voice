@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { activateExtension, fakeHost, flush, openSettings, setupPage } from './helpers.js';
 
 const SETTINGS_URL = 'https://canvas.test/extensions/openhands-app-voice/settings';
-const SWITCH_KEYS = ['voiceChat', 'handsFree', 'micShortcut', 'readAloud'];
+const SWITCH_KEYS = ['voiceChat', 'handsFree', 'listeningChime', 'micShortcut', 'readAloud'];
 const switchFor = (page, key) =>
   page.document.querySelector(`[data-testid="voice-${key}-switch"]`);
 const stored = (page) =>

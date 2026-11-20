@@ -2,12 +2,12 @@
 // with Canvas's mic, send it, read the agent's reply aloud and listen again,
 // stop the mic once you stop talking, and read any of the agent's messages.
 
-import { speechProblem } from './audio.js';
+import { CHIME_MS, closeChimes, playChime, speechProblem } from './audio.js';
 import { el, OWN_ATTR } from './dom.js';
 import { canvasLanguage, conversationKey, openConversationId } from './canvas.js';
 import { plainText } from './markdown.js';
 import { settings } from './settings.js';
-import { read } from './speech.js';
+import { read, volume } from './speech.js';
 
 // Canvas's mic, which says it's recording with aria-pressed and starting or
 // transcribing with aria-busy, and puts what you said in the message box.
@@ -396,13 +396,22 @@ export function voiceChat(host) {
     });
   }
 
+  // Presses the mic, after the listening chime when it's on, so the chime
+  // isn't heard as you talking.
   function listenAgain() {
     const { id } = turn;
     end();
-    if (!settings.voiceChat) return;
-    const mic = findMic();
-    if (document.hidden || openConversationId() !== id) return;
-    if (mic && !mic.disabled && !pressed(mic) && !busy(mic)) mic.click();
+    const press = () => {
+      const mic = findMic();
+      if (!settings.voiceChat || document.hidden || openConversationId() !== id) return;
+      if (mic && !mic.disabled && !pressed(mic) && !busy(mic)) mic.click();
+    };
+    if (!settings.listeningChime) {
+      press();
+      return;
+    }
+    playChime(volume());
+    timer = setTimeout(press, CHIME_MS);
   }
 
   // A Read aloud button reads its message, or stops when it's reading, which
@@ -524,6 +533,7 @@ export function voiceChat(host) {
     dispose() {
       listen(false);
       removeReadAloud();
+      closeChimes();
     },
   };
 }

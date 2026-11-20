@@ -10,6 +10,7 @@ An [OpenHands](https://www.openhands.dev/) Agent Canvas app to talk with the age
 | :-- | :-- |
 | **Voice chat** | After you speak a message with Canvas's mic, sends it, reads the agent's reply aloud, then turns the mic back on for your next message, keeping a phone's screen awake meanwhile. Code stays in the chat rather than being read out, and it tells you when the agent needs your confirmation or stops with an error. Say "stop" to press Canvas's Stop, "never mind" to send nothing, "repeat that" to hear the last reply again, or "new chat" to start one. Pressing a key or opening another conversation stops it. |
 | **Hands-free** | Stops Canvas's mic once you stop talking, or after 10 seconds of silence, so with Voice chat you never have to tap it. |
+| **Listening chime** | Plays a short chime when Voice chat turns the mic back on, so you know when to talk. |
 | **Mic shortcut** | <kbd>Alt</kbd>+<kbd>V</kbd> starts or stops Canvas's mic, from the message box too. |
 
 ### Reading aloud
@@ -19,7 +20,7 @@ An [OpenHands](https://www.openhands.dev/) Agent Canvas app to talk with the age
 | **Read aloud buttons** | Adds a button beside the copy button on the agent's messages that reads the message aloud, or stops reading it. <kbd>Esc</kbd> stops it too. |
 | **Voice** | Which of your browser's English voices reads aloud. **Automatic** picks the best one for your region, as [Readium Speech](https://github.com/readium/speech) rates them. The list groups them by region, best first, hides novelty voices, marks the ones that send what they read online, and reads a sample in each voice you pick, which **Preview** plays again. |
 | **Reading speed** | How fast replies and messages are read, from 0.75× to 2×. |
-| **Volume** | How loud replies and messages are read, from 25% to 100% of your device's volume. |
+| **Volume** | How loud replies, messages and the listening chime are, from 25% to 100% of your device's volume. |
 
 ## Install
 
