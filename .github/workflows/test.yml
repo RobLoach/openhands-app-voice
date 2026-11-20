@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+      - run: npm ci
+      - run: npm test
+      # extension.js is what Canvas installs, so it must match src/, and
+      # carry the licenses of what it bundles.
+      - name: Check extension.js is built from src/
+        run: git diff --exit-code extension.js THIRD_PARTY_LICENSES.txt

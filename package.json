@@ -1,0 +1,21 @@
+{
+  "name": "openhands-app-voice",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "pretest": "npm run build",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "dependencies": {
+    "@readium/speech": "0.21.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "jsdom": "^29.1.1",
+    "rollup": "^4.63.4"
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
+  }
+}
