@@ -10,7 +10,7 @@ import { STORAGE_KEY } from './storage.js';
 import { loadSettings, saveSettings, settings } from './settings.js';
 import { settingsPage } from './pages.js';
 import { SETTINGS_PAGE, sidebarLinks, watchCustomizeMenu } from './customize.js';
-import { loadVoices } from './speech.js';
+import { loadVoices, watchVoices } from './speech.js';
 import { voiceChat } from './voice.js';
 import { readAloudButtons } from './read-aloud.js';
 import { keyboardShortcut } from './shortcut.js';
@@ -48,11 +48,13 @@ export function activate(host) {
     keyboardShortcut(),
     onDeviceRecognition(),
     watchCanvas(),
-    // Readium finds the voices ahead of time, so reading starts at once.
+    // Readium finds the voices ahead of time, so reading starts at once, and
+    // any the browser finds later, which the settings page then lists.
     {
       refresh() {
         if (settings.voiceChat || settings.readAloud) loadVoices();
       },
+      dispose: watchVoices(() => settingsView.voicesFound()),
     },
   ];
   function each(method, ...args) {

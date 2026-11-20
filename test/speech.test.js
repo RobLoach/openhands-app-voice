@@ -265,6 +265,41 @@ test('finds the voices again after failing to', async (t) => {
   ]);
 });
 
+// Readium gives up waiting for the browser's voices after 10 seconds, with
+// the settings page open or not.
+async function voicesTooLate(t, settings = {}, { settingsOpen = false } = {}) {
+  const { page, host } = await start(t, {
+    path: '/conversations/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    body: MESSAGE,
+    settings: { readAloud: true, ...settings },
+  });
+  if (settingsOpen) await mountPage(page, host, 'settings');
+  await page.wait(10000);
+  return page;
+}
+
+test('reads with a voice on this device when Readium found none in time', async (t) => {
+  const page = await voicesTooLate(t);
+  page.voices = [ESPEAK, EMMA];
+  page.document.querySelector('[data-voice-read-aloud]').click();
+
+  assert.equal(page.spoken[0].voice, ESPEAK);
+});
+
+test('uses and lists voices the browser finds after Readium gave up', async (t) => {
+  const page = await voicesTooLate(t, ONLINE, { settingsOpen: true });
+  assert.deepEqual(voiceChoices(page), [AUTOMATIC]);
+  await page.setVoices([DANIEL, EMMA]);
+
+  assert.deepEqual(voiceChoices(page), [
+    ['Automatic', 'Best for your region: Emma'],
+    ['English (United States)', [['Emma', 'Very high quality · Online']]],
+    ['English (United Kingdom)', [['Daniel', 'Low quality']]],
+  ]);
+  page.document.querySelector('[data-voice-read-aloud]').click();
+  assert.equal(page.spoken[0].voice, EMMA);
+});
+
 test('lists only on-device voices by default', async (t) => {
   const page = await settingsPage(t);
 

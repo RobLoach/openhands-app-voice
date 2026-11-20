@@ -289,5 +289,6 @@ export function settingsPage(host, onChange) {
       if (key === STORAGE_KEY) render();
     },
     dispose: cancelSample,
+    voicesFound: render,
   };
 }

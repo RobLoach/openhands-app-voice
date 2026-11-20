@@ -4430,9 +4430,11 @@ const chosen = (key) =>
   SWITCHES.find((item) => item.key === key).options.find(([value]) => value === settings[key])?.[2] ?? 1;
 const volume = () => chosen('volume');
 
-// What Readium found, once it has: the voices, best first, the one it
-// picks for your region among them all and among those on this device, and
-// its sample sentence. Until then, the browser picks.
+// Whether Readium's been asked to find the voices, and what it found, once
+// it has: the voices, best first, the one it picks for your region among
+// them all and among those on this device, and its sample sentence. Until
+// then, the browser picks.
+let asked = false;
 let loading = null;
 let manager = null;
 let ranked = [];
@@ -4442,8 +4444,16 @@ let sample = 'Hello, my name is {name} and I am an English voice.';
 // Readium reads the browser's voices once, as soon as it has some, which
 // Chrome only gives after the page loads.
 function loadVoices() {
+  asked = true;
   loading ??= A.initialize({ languages: [LANGUAGE] })
     .then(async (found) => {
+      // Readium gives up waiting after 10 seconds with no voices, and keeps
+      // that, so it's made to start afresh next time.
+      if (!found.browserVoices.length) {
+        A.instance = null;
+        A.initializationPromise = null;
+        throw new Error('No voices yet');
+      }
       const voices = found.getVoices({
         languages: LANGUAGE,
         excludeNovelty: true,
@@ -4462,6 +4472,19 @@ function loadVoices() {
       loading = null;
     });
   return loading;
+}
+
+// Voices the browser finds after Readium gave up waiting for them: Readium
+// reads them, once it's been asked to, and then onFound runs. Returns what
+// stops watching.
+function watchVoices(onFound) {
+  const synth = window.speechSynthesis;
+  const changed = () => {
+    if (!asked || manager || !synth.getVoices().length) return;
+    loadVoices().then(() => manager && onFound());
+  };
+  synth?.addEventListener?.('voiceschanged', changed);
+  return () => synth?.removeEventListener?.('voiceschanged', changed);
 }
 
 // Online voices send what they read to Google or Microsoft, which Keep voice
@@ -4912,6 +4935,7 @@ function settingsPage(host, onChange) {
       if (key === STORAGE_KEY) render();
     },
     dispose: cancelSample,
+    voicesFound: render,
   };
 }
 
@@ -5598,11 +5622,13 @@ function activate(host) {
     keyboardShortcut(),
     onDeviceRecognition(),
     watchCanvas(),
-    // Readium finds the voices ahead of time, so reading starts at once.
+    // Readium finds the voices ahead of time, so reading starts at once, and
+    // any the browser finds later, which the settings page then lists.
     {
       refresh() {
         if (settings.voiceChat || settings.readAloud) loadVoices();
       },
+      dispose: watchVoices(() => settingsView.voicesFound()),
     },
   ];
   function each(method, ...args) {

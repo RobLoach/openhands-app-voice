@@ -21,9 +21,11 @@ const chosen = (key) =>
   SWITCHES.find((item) => item.key === key).options.find(([value]) => value === settings[key])?.[2] ?? 1;
 export const volume = () => chosen('volume');
 
-// What Readium found, once it has: the voices, best first, the one it
-// picks for your region among them all and among those on this device, and
-// its sample sentence. Until then, the browser picks.
+// Whether Readium's been asked to find the voices, and what it found, once
+// it has: the voices, best first, the one it picks for your region among
+// them all and among those on this device, and its sample sentence. Until
+// then, the browser picks.
+let asked = false;
 let loading = null;
 let manager = null;
 let ranked = [];
@@ -33,8 +35,16 @@ let sample = 'Hello, my name is {name} and I am an English voice.';
 // Readium reads the browser's voices once, as soon as it has some, which
 // Chrome only gives after the page loads.
 export function loadVoices() {
+  asked = true;
   loading ??= WebSpeechVoiceManager.initialize({ languages: [LANGUAGE] })
     .then(async (found) => {
+      // Readium gives up waiting after 10 seconds with no voices, and keeps
+      // that, so it's made to start afresh next time.
+      if (!found.browserVoices.length) {
+        WebSpeechVoiceManager.instance = null;
+        WebSpeechVoiceManager.initializationPromise = null;
+        throw new Error('No voices yet');
+      }
       const voices = found.getVoices({
         languages: LANGUAGE,
         excludeNovelty: true,
@@ -53,6 +63,19 @@ export function loadVoices() {
       loading = null;
     });
   return loading;
+}
+
+// Voices the browser finds after Readium gave up waiting for them: Readium
+// reads them, once it's been asked to, and then onFound runs. Returns what
+// stops watching.
+export function watchVoices(onFound) {
+  const synth = window.speechSynthesis;
+  const changed = () => {
+    if (!asked || manager || !synth.getVoices().length) return;
+    loadVoices().then(() => manager && onFound());
+  };
+  synth?.addEventListener?.('voiceschanged', changed);
+  return () => synth?.removeEventListener?.('voiceschanged', changed);
 }
 
 // Online voices send what they read to Google or Microsoft, which Keep voice
