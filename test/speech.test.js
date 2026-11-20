@@ -53,21 +53,32 @@ const settingsPage = async (t, settings) => {
   return page;
 };
 
+// The Voice list: each choice as [label, details], under its region.
+const choice = (row) => [...row.querySelectorAll('span > span')].map((span) => span.textContent);
 const voiceChoices = (page) =>
-  [...page.document.querySelector('[data-testid="voice-voice-select"]').children].map((child) =>
-    child.tagName === 'OPTGROUP'
-      ? [child.label, [...child.children].map((option) => option.textContent)]
-      : child.textContent,
+  [...page.document.querySelector('[data-testid="voice-voice-list"] > div').children].map((child) =>
+    child.tagName === 'FIELDSET'
+      ? [child.querySelector('legend').textContent, [...child.querySelectorAll('label')].map(choice)]
+      : choice(child),
   );
+const pick = (page, name) =>
+  page.document.querySelector(`[data-testid="voice-voice-list"] input[value="${name}"]`).click();
+const AUTOMATIC = ['Automatic', 'Your browser picks'];
 
-test("lists the browser's English voices, the rated ones by region, best first, without novelty ones", async (t) => {
+test("lists the browser's English voices, the rated ones by region, best first, with their quality, without novelty ones", async (t) => {
   const page = await settingsPage(t);
 
   assert.deepEqual(voiceChoices(page), [
-    'Automatic (best available)',
-    ['English (United States)', ['Emma · very high · online', 'Samantha · normal']],
-    ['English (United Kingdom)', ['Daniel · low']],
-    ['Other voices', ['English (America)']],
+    ['Automatic', 'Best for your region: Emma'],
+    [
+      'English (United States)',
+      [
+        ['Emma', 'Very high quality · Online'],
+        ['Samantha', 'Normal quality'],
+      ],
+    ],
+    ['English (United Kingdom)', [['Daniel', 'Low quality']]],
+    ['Other voices', [['English (America)', 'Not rated']]],
   ]);
 });
 
@@ -76,28 +87,33 @@ test('lists voices the browser finds after the page loads', async (t) => {
     url: 'https://canvas.test/extensions/openhands-app-voice/settings',
   });
   await openSettings(page);
-  assert.deepEqual(voiceChoices(page), ['Automatic (best available)']);
+  assert.deepEqual(voiceChoices(page), [AUTOMATIC]);
   await page.setVoices([ZIRA, DANIEL]);
 
   assert.deepEqual(voiceChoices(page), [
-    'Automatic (best available)',
-    ['English (United States)', ['Zira · normal']],
-    ['English (United Kingdom)', ['Daniel · low']],
+    ['Automatic', 'Best for your region: Zira'],
+    ['English (United States)', [['Zira', 'Normal quality']]],
+    ['English (United Kingdom)', [['Daniel', 'Low quality']]],
   ]);
 });
 
 test('keeps a voice this device does not have', async (t) => {
   const page = await settingsPage(t, { voice: 'Karen' });
 
-  assert.equal(voiceChoices(page)[1], 'Karen (not on this device)');
-  assert.equal(page.document.querySelector('[data-testid="voice-voice-select"]').value, 'Karen');
+  assert.deepEqual(voiceChoices(page)[1], ['Karen', 'Not on this device']);
+  assert.equal(
+    page.document.querySelector('[data-testid="voice-voice-list"] input:checked').value,
+    'Karen',
+  );
 });
 
 test('saves the voice and previews it as soon as it is picked', async (t) => {
   const page = await settingsPage(t);
-  const select = page.document.querySelector('[data-testid="voice-voice-select"]');
-  select.value = 'Daniel';
-  select.dispatchEvent(new page.window.Event('change'));
+  pick(page, 'Daniel');
+  const highlighted = [
+    ...page.document.querySelectorAll('[data-testid="voice-voice-option"].bg-tertiary'),
+  ];
+  assert.deepEqual(highlighted.map(choice), [['Daniel', 'Low quality']]);
 
   assert.equal(
     JSON.parse(page.window.localStorage.getItem('openhands-voice:settings')).voice,
@@ -181,9 +197,9 @@ test("offers no voices when the browser can't read aloud", async (t) => {
   });
   delete page.window.speechSynthesis;
   await openSettings(page);
-  const select = page.document.querySelector('[data-testid="voice-voice-select"]');
+  const list = page.document.querySelector('[data-testid="voice-voice-list"]');
 
-  assert.equal(select.disabled, true);
+  assert.equal(list.disabled, true);
   assert.equal(
     page.document.getElementById('voice-voice-hint').textContent,
     "Your browser can't read text aloud.",
@@ -206,13 +222,13 @@ test('finds the voices again after failing to', async (t) => {
   page.voices = [flaky];
   const host = fakeHost();
   await openSettings(page, host);
-  assert.deepEqual(voiceChoices(page), ['Automatic (best available)']);
+  assert.deepEqual(voiceChoices(page), [AUTOMATIC]);
 
   fail = false;
   page.document.querySelector('[data-voice-own]').remove();
   await mountPage(page, host, 'settings');
   assert.deepEqual(voiceChoices(page), [
-    'Automatic (best available)',
-    ['English (United Kingdom)', ['Daniel · low']],
+    ['Automatic', 'Best for your region: Daniel'],
+    ['English (United Kingdom)', [['Daniel', 'Low quality']]],
   ]);
 });

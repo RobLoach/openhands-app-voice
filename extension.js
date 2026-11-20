@@ -4221,11 +4221,11 @@ new Set(ko);
 // Only English voices so far.
 const LANGUAGE = 'en';
 const QUALITY_LABELS = {
-  veryLow: 'very low',
-  low: 'low',
-  normal: 'normal',
-  high: 'high',
-  veryHigh: 'very high',
+  veryLow: 'Very low quality',
+  low: 'Low quality',
+  normal: 'Normal quality',
+  high: 'High quality',
+  veryHigh: 'Very high quality',
 };
 
 // A choice's value, e.g. Reading speed's rate.
@@ -4281,31 +4281,37 @@ const regionName = (language) => {
   }
 };
 
-// Readium's label for a voice it rates, or else the browser's name, which
-// Readium shortens, e.g. espeak's "English (America)" to "English".
-const describe = (voice) =>
-  [
-    voice.quality ? voice.label : nameOf(voice),
-    QUALITY_LABELS[voice.quality],
-    voice.offlineAvailability === false && 'online',
+// A voice as the Voice setting lists it: Readium's label for a voice it
+// rates, or else the browser's name, which Readium shortens, e.g. espeak's
+// "English (America)" to "English", and its quality and whether it's online.
+const describe = (voice) => ({
+  name: nameOf(voice),
+  label: voice.quality ? voice.label : nameOf(voice),
+  details: [
+    QUALITY_LABELS[voice.quality] ?? 'Not rated',
+    voice.offlineAvailability === false && 'Online',
   ]
     .filter(Boolean)
-    .join(' · ');
+    .join(' · '),
+});
 
 // The Voice setting's choices: rated voices by region, the best region
-// first, then the rest, each as [name, description].
+// first, then the rest.
 function voiceGroups() {
   const groups = new Map();
   for (const voice of ranked) {
     const group = voice.quality ? regionName(voice.language) : 'Other voices';
     if (!groups.has(group)) groups.set(group, []);
-    groups.get(group).push([nameOf(voice), describe(voice)]);
+    groups.get(group).push(describe(voice));
   }
   const other = groups.get('Other voices');
   groups.delete('Other voices');
   if (other) groups.set('Other voices', other);
   return [...groups];
 }
+
+// The voice Automatic reads with, by its label, if Readium has picked one.
+const automaticLabel = () => (automatic ? describe(automatic).label : null);
 
 // The Voice setting's voice, or else the one Readium picks, or none, for the
 // browser to choose.
@@ -4406,58 +4412,80 @@ function buildChoice(item, onChange) {
   return el('div', 'flex min-w-0 flex-col gap-2', label, select, hint);
 }
 
-// The browser's voices as a dropdown, with Automatic first and a saved voice
-// this device doesn't have kept as it is. Picking one reads a sample in it,
-// as does the button beside it.
+// The browser's voices as a list to pick from, each with its quality and
+// whether it's online underneath, under their region, with Automatic first
+// and a saved voice this device doesn't have kept as it is. Picking one
+// reads a sample in it, as does the button below.
 function buildVoiceChoice(item, onChange) {
   const id = `voice-${item.key}`;
-  const option = (value, text) => {
-    const element = el('option', '', text);
-    element.value = value;
-    return element;
+  const options = [];
+  const option = (value, label, details) => {
+    const input = el('input', 'mt-1 shrink-0 cursor-pointer');
+    input.type = 'radio';
+    input.name = id;
+    input.value = value;
+    input.checked = value === settings.voice;
+    options.push(input);
+    const row = el(
+      'label',
+      `flex min-w-0 cursor-pointer items-start gap-3 rounded-md px-3 py-2 hover:bg-surface-raised ${HAS_FOCUS_RING}`,
+      input,
+      el(
+        'span',
+        'flex min-w-0 flex-col',
+        el('span', 'truncate text-sm text-contrast', label),
+        el('span', 'text-xs text-tertiary-light', details),
+      ),
+    );
+    row.dataset.testid = `${id}-option`;
+    return row;
   };
+  const group = (title, ...rows) =>
+    el(
+      'fieldset',
+      'flex min-w-0 flex-col gap-0.5',
+      el('legend', 'px-3 pt-3 pb-1 text-xs font-semibold uppercase text-tertiary-light', title),
+      ...rows,
+    );
   const groups = voiceGroups();
-  const known = groups.some(([, voices]) => voices.some(([name]) => name === settings.voice));
-  const select = el(
-    'select',
-    SELECT_CLASS,
-    option('', 'Automatic (best available)'),
-    ...(settings.voice && !known
-      ? [option(settings.voice, `${settings.voice} (not on this device)`)]
-      : []),
-    ...groups.map(([group, voices]) => {
-      const optgroup = el('optgroup', '', ...voices.map(([name, text]) => option(name, text)));
-      optgroup.label = group;
-      return optgroup;
-    }),
+  const known = groups.some(([, voices]) => voices.some(({ name }) => name === settings.voice));
+  const automatic = automaticLabel();
+  // Long lists scroll, as voices can number in the dozens.
+  const box = el(
+    'div',
+    'flex min-w-0 max-w-2xl flex-col rounded-lg border border-control bg-base-secondary p-1',
+    option('', 'Automatic', automatic ? `Best for your region: ${automatic}` : 'Your browser picks'),
+    ...(settings.voice && !known ? [option(settings.voice, settings.voice, 'Not on this device')] : []),
+    ...groups.map(([title, voices]) =>
+      group(title, ...voices.map(({ name, label, details }) => option(name, label, details))),
+    ),
   );
-  select.id = id;
-  select.dataset.testid = `${id}-select`;
-  select.value = settings.voice;
-  select.setAttribute('aria-describedby', `${id}-hint`);
-  select.addEventListener('change', () => {
-    onChange({ ...settings, [item.key]: select.value });
-    previewVoice(select.value);
+  box.style.maxHeight = '22rem';
+  box.style.overflowY = 'auto';
+  const list = el('fieldset', 'flex min-w-0 flex-col gap-2', el('legend', 'mb-2 text-sm', item.label), box);
+  list.dataset.testid = `${id}-list`;
+  list.setAttribute('aria-describedby', `${id}-hint`);
+  const picked = () => options.find((input) => input.checked)?.value ?? settings.voice;
+  const highlight = () => {
+    for (const input of options) input.closest('label').classList.toggle('bg-tertiary', input.checked);
+  };
+  highlight();
+  list.addEventListener('change', () => {
+    highlight();
+    onChange({ ...settings, [item.key]: picked() });
+    previewVoice(picked());
   });
-  const label = el('label', 'w-fit text-sm', item.label);
-  label.htmlFor = id;
   const hint = el('p', 'text-xs leading-relaxed text-tertiary-light', item.description);
   hint.id = `${id}-hint`;
-  const preview = textButton('voice-preview', 'Preview', () => previewVoice(select.value));
+  const preview = textButton('voice-preview', 'Preview', () => previewVoice(picked()));
   // Without speech, there's nothing to pick or hear.
   const problem = speechProblem();
   if (problem) {
-    select.disabled = true;
+    list.disabled = true;
     preview.hidden = true;
     hint.textContent = problem;
   }
-  return el(
-    'div',
-    'flex min-w-0 flex-col gap-2',
-    label,
-    el('div', 'flex min-w-0 items-center gap-3', select, preview),
-    hint,
-  );
+  return el('div', 'flex min-w-0 flex-col gap-2', list, preview, hint);
 }
 
 function buildSwitch(item, onChange) {

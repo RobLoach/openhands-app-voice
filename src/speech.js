@@ -9,11 +9,11 @@ import { settings, SWITCHES } from './settings.js';
 // Only English voices so far.
 const LANGUAGE = 'en';
 const QUALITY_LABELS = {
-  veryLow: 'very low',
-  low: 'low',
-  normal: 'normal',
-  high: 'high',
-  veryHigh: 'very high',
+  veryLow: 'Very low quality',
+  low: 'Low quality',
+  normal: 'Normal quality',
+  high: 'High quality',
+  veryHigh: 'Very high quality',
 };
 
 // A choice's value, e.g. Reading speed's rate.
@@ -69,31 +69,37 @@ const regionName = (language) => {
   }
 };
 
-// Readium's label for a voice it rates, or else the browser's name, which
-// Readium shortens, e.g. espeak's "English (America)" to "English".
-const describe = (voice) =>
-  [
-    voice.quality ? voice.label : nameOf(voice),
-    QUALITY_LABELS[voice.quality],
-    voice.offlineAvailability === false && 'online',
+// A voice as the Voice setting lists it: Readium's label for a voice it
+// rates, or else the browser's name, which Readium shortens, e.g. espeak's
+// "English (America)" to "English", and its quality and whether it's online.
+const describe = (voice) => ({
+  name: nameOf(voice),
+  label: voice.quality ? voice.label : nameOf(voice),
+  details: [
+    QUALITY_LABELS[voice.quality] ?? 'Not rated',
+    voice.offlineAvailability === false && 'Online',
   ]
     .filter(Boolean)
-    .join(' · ');
+    .join(' · '),
+});
 
 // The Voice setting's choices: rated voices by region, the best region
-// first, then the rest, each as [name, description].
+// first, then the rest.
 export function voiceGroups() {
   const groups = new Map();
   for (const voice of ranked) {
     const group = voice.quality ? regionName(voice.language) : 'Other voices';
     if (!groups.has(group)) groups.set(group, []);
-    groups.get(group).push([nameOf(voice), describe(voice)]);
+    groups.get(group).push(describe(voice));
   }
   const other = groups.get('Other voices');
   groups.delete('Other voices');
   if (other) groups.set('Other voices', other);
   return [...groups];
 }
+
+// The voice Automatic reads with, by its label, if Readium has picked one.
+export const automaticLabel = () => (automatic ? describe(automatic).label : null);
 
 // The Voice setting's voice, or else the one Readium picks, or none, for the
 // browser to choose.
