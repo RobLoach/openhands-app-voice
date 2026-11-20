@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "openhands-app-voice",
+  "display_name": "Voice",
+  "version": "0.1.0",
+  "description": "Talk with the agent: read its replies aloud, listen again, hands-free, read aloud buttons and spoken commands.",
+  "entrypoint": "extension.js",
+  "contributes": {
+    "pages": [
+      {
+        "id": "settings",
+        "title": "Voice",
+        "path": "/settings",
+        "nav_label": "Voice",
+        "description": "Turn Voice features on and off, and pick a voice."
+      }
+    ]
+  }
+}

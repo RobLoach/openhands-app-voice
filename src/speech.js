@@ -1,0 +1,125 @@
+// Reading aloud with the browser's voices: the Voice and Reading speed
+// settings, with Readium Speech finding, rating and ranking the voices.
+
+import { WebSpeechVoiceManager } from '@readium/speech';
+import { canvasLanguage } from './canvas.js';
+import { settings, SWITCHES } from './settings.js';
+
+// Only English voices so far.
+const LANGUAGE = 'en';
+const QUALITY_LABELS = {
+  veryLow: 'very low',
+  low: 'low',
+  normal: 'normal',
+  high: 'high',
+  veryHigh: 'very high',
+};
+
+const SPEEDS = SWITCHES.find(({ key }) => key === 'readingSpeed').options;
+const readingRate = () => SPEEDS.find(([value]) => value === settings.readingSpeed)?.[2] ?? 1;
+
+// What Readium found, once it has: the voices, best first, the one it
+// picks for your region, and its sample sentence. Until then, the browser
+// picks.
+let loading = null;
+let manager = null;
+let ranked = [];
+let automatic = null;
+let sample = 'Hello, my name is {name} and I am an English voice.';
+
+// Readium reads the browser's voices once, as soon as it has some, which
+// Chrome only gives after the page loads.
+export function loadVoices() {
+  loading ??= WebSpeechVoiceManager.initialize({ languages: [LANGUAGE] })
+    .then(async (found) => {
+      const voices = found.getVoices({
+        languages: LANGUAGE,
+        excludeNovelty: true,
+        excludeVeryLowQuality: true,
+        removeDuplicates: true,
+      });
+      ranked = await found.sortVoicesByQuality(voices);
+      const region = /^en-/i.test(window.navigator.language) ? window.navigator.language : 'en-US';
+      automatic = await found.getDefaultVoice([region, LANGUAGE], ranked);
+      sample = found.getTestUtterance(LANGUAGE) || sample;
+      manager = found;
+    })
+    .catch(() => {});
+  return loading;
+}
+
+// The browser's own voice for one of Readium's, by its name there.
+const nameOf = (voice) => voice.originalName ?? voice.name;
+const browserVoice = (name) =>
+  (window.speechSynthesis?.getVoices?.() ?? []).find((voice) => voice.name === name) ?? null;
+
+const regionName = (language) => {
+  try {
+    return new Intl.DisplayNames(['en'], { type: 'language', languageDisplay: 'standard' }).of(
+      language,
+    );
+  } catch {
+    return language;
+  }
+};
+
+// Readium's label for a voice it rates, or else the browser's name, which
+// Readium shortens, e.g. espeak's "English (America)" to "English".
+const describe = (voice) =>
+  [
+    voice.quality ? voice.label : nameOf(voice),
+    QUALITY_LABELS[voice.quality],
+    voice.offlineAvailability === false && 'online',
+  ]
+    .filter(Boolean)
+    .join(' · ');
+
+// The Voice setting's choices: rated voices by region, the best region
+// first, then the rest, each as [name, description].
+export function voiceGroups() {
+  const groups = new Map();
+  for (const voice of ranked) {
+    const group = voice.quality ? regionName(voice.language) : 'Other voices';
+    if (!groups.has(group)) groups.set(group, []);
+    groups.get(group).push([nameOf(voice), describe(voice)]);
+  }
+  const other = groups.get('Other voices');
+  groups.delete('Other voices');
+  if (other) groups.set('Other voices', other);
+  return [...groups];
+}
+
+// The Voice setting's voice, or else the one Readium picks, or none, for the
+// browser to choose.
+export function chosenVoice(name = settings.voice) {
+  return (
+    (name && browserVoice(name)) ||
+    (automatic && manager?.convertToSpeechSynthesisVoice(automatic)) ||
+    null
+  );
+}
+
+// Queues the sentences to be read with the chosen voice and speed, then runs
+// onDone once the last is. Cancelling the queue skips onDone.
+export function read(sentences, onDone, name) {
+  const synth = window.speechSynthesis;
+  const voice = chosenVoice(name);
+  synth.cancel();
+  sentences.forEach((sentence, index) => {
+    const utterance = new window.SpeechSynthesisUtterance(sentence);
+    utterance.lang = voice?.lang ?? canvasLanguage();
+    if (voice) utterance.voice = voice;
+    utterance.rate = readingRate();
+    if (index === sentences.length - 1) utterance.onend = onDone;
+    synth.speak(utterance);
+  });
+}
+
+// Readium's sample sentence in a voice, by its name, or the chosen one.
+export function previewVoice(name) {
+  const voice = chosenVoice(name);
+  const label = voice
+    ? (ranked.find((item) => nameOf(item) === voice.name)?.label ?? voice.name)
+    : 'your browser';
+  read([sample.replace('{name}', label)], null, name);
+}
