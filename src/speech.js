@@ -32,11 +32,37 @@ let ranked = [];
 let automatics = { all: null, onDevice: null };
 let sample = 'Hello, my name is {name} and I am an English voice.';
 
+// While Readium waits for the browser's voices, it sets speechSynthesis's
+// onvoiceschanged itself, replacing whatever Canvas or another app had
+// there. The app keeps what was there before Readium first set it, and
+// Readium's own, which it sets at once as it's asked.
+let handlers = null;
+
+function initialize() {
+  const synth = window.speechSynthesis;
+  const before = synth?.onvoiceschanged ?? null;
+  handlers ??= { original: before, readium: null };
+  const found = WebSpeechVoiceManager.initialize({ languages: [LANGUAGE] });
+  if (synth && synth.onvoiceschanged !== before) handlers.readium = synth.onvoiceschanged;
+  return found;
+}
+
+// Puts back what onvoiceschanged was before Readium, as the app is
+// disposed, but only while Readium's is still there: one set since is
+// someone else's, and theirs to keep.
+export function restoreVoicesHandler() {
+  const synth = window.speechSynthesis;
+  if (synth && handlers?.readium && synth.onvoiceschanged === handlers.readium) {
+    synth.onvoiceschanged = handlers.original;
+  }
+  handlers = null;
+}
+
 // Readium reads the browser's voices once, as soon as it has some, which
 // Chrome only gives after the page loads.
 export function loadVoices() {
   asked = true;
-  loading ??= WebSpeechVoiceManager.initialize({ languages: [LANGUAGE] })
+  loading ??= initialize()
     .then(async (found) => {
       // Readium gives up waiting after 10 seconds with no voices, and keeps
       // that, so it's made to start afresh next time.

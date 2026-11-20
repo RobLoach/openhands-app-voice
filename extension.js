@@ -4441,11 +4441,37 @@ let ranked = [];
 let automatics = { all: null, onDevice: null };
 let sample = 'Hello, my name is {name} and I am an English voice.';
 
+// While Readium waits for the browser's voices, it sets speechSynthesis's
+// onvoiceschanged itself, replacing whatever Canvas or another app had
+// there. The app keeps what was there before Readium first set it, and
+// Readium's own, which it sets at once as it's asked.
+let handlers = null;
+
+function initialize() {
+  const synth = window.speechSynthesis;
+  const before = synth?.onvoiceschanged ?? null;
+  handlers ??= { original: before, readium: null };
+  const found = A.initialize({ languages: [LANGUAGE] });
+  if (synth && synth.onvoiceschanged !== before) handlers.readium = synth.onvoiceschanged;
+  return found;
+}
+
+// Puts back what onvoiceschanged was before Readium, as the app is
+// disposed, but only while Readium's is still there: one set since is
+// someone else's, and theirs to keep.
+function restoreVoicesHandler() {
+  const synth = window.speechSynthesis;
+  if (synth && handlers?.readium && synth.onvoiceschanged === handlers.readium) {
+    synth.onvoiceschanged = handlers.original;
+  }
+  handlers = null;
+}
+
 // Readium reads the browser's voices once, as soon as it has some, which
 // Chrome only gives after the page loads.
 function loadVoices() {
   asked = true;
-  loading ??= A.initialize({ languages: [LANGUAGE] })
+  loading ??= initialize()
     .then(async (found) => {
       // Readium gives up waiting after 10 seconds with no voices, and keeps
       // that, so it's made to start afresh next time.
@@ -5613,6 +5639,7 @@ function activate(host) {
   // Before anything starts, as Canvas throws for a page its copy of the
   // manifest doesn't declare.
   const unregisterSettings = host.registerPage(SETTINGS_PAGE, settingsView.mount);
+  const unwatchVoices = watchVoices(() => settingsView.voicesFound());
   const features = [
     watchCustomizeMenu(host),
     sidebarLinks(host.extension.name),
@@ -5628,7 +5655,10 @@ function activate(host) {
       refresh() {
         if (settings.voiceChat || settings.readAloud) loadVoices();
       },
-      dispose: watchVoices(() => settingsView.voicesFound()),
+      dispose() {
+        unwatchVoices();
+        restoreVoicesHandler();
+      },
     },
   ];
   function each(method, ...args) {

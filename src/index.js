@@ -10,7 +10,7 @@ import { STORAGE_KEY } from './storage.js';
 import { loadSettings, saveSettings, settings } from './settings.js';
 import { settingsPage } from './pages.js';
 import { SETTINGS_PAGE, sidebarLinks, watchCustomizeMenu } from './customize.js';
-import { loadVoices, watchVoices } from './speech.js';
+import { loadVoices, restoreVoicesHandler, watchVoices } from './speech.js';
 import { voiceChat } from './voice.js';
 import { readAloudButtons } from './read-aloud.js';
 import { keyboardShortcut } from './shortcut.js';
@@ -39,6 +39,7 @@ export function activate(host) {
   // Before anything starts, as Canvas throws for a page its copy of the
   // manifest doesn't declare.
   const unregisterSettings = host.registerPage(SETTINGS_PAGE, settingsView.mount);
+  const unwatchVoices = watchVoices(() => settingsView.voicesFound());
   const features = [
     watchCustomizeMenu(host),
     sidebarLinks(host.extension.name),
@@ -54,7 +55,10 @@ export function activate(host) {
       refresh() {
         if (settings.voiceChat || settings.readAloud) loadVoices();
       },
-      dispose: watchVoices(() => settingsView.voicesFound()),
+      dispose() {
+        unwatchVoices();
+        restoreVoicesHandler();
+      },
     },
   ];
   function each(method, ...args) {

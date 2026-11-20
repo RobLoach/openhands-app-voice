@@ -101,6 +101,38 @@ test('lists voices the browser finds after the page loads', async (t) => {
   ]);
 });
 
+// Readium sets speechSynthesis.onvoiceschanged while it waits for voices.
+async function voicesHandlerAfterDispose(t, original) {
+  const { page } = await start(t, {
+    settings: { readAloud: true },
+    before: (page) => {
+      page.window.speechSynthesis.onvoiceschanged = original;
+    },
+  });
+  const synth = page.window.speechSynthesis;
+  assert.equal(typeof synth.onvoiceschanged, 'function');
+  assert.notEqual(synth.onvoiceschanged, original);
+  page.dispose();
+  return synth.onvoiceschanged;
+}
+
+test("puts back the page's onvoiceschanged handler Readium replaced, as the app is disposed", async (t) => {
+  const canvas = () => {};
+  assert.equal(await voicesHandlerAfterDispose(t, canvas), canvas);
+});
+
+test('leaves no onvoiceschanged handler, as the app is disposed, where there was none', async (t) => {
+  assert.equal(await voicesHandlerAfterDispose(t, null), null);
+});
+
+test('keeps an onvoiceschanged handler set after Readium, as the app is disposed', async (t) => {
+  const { page } = await start(t, { settings: { readAloud: true } });
+  const later = () => {};
+  page.window.speechSynthesis.onvoiceschanged = later;
+  page.dispose();
+  assert.equal(page.window.speechSynthesis.onvoiceschanged, later);
+});
+
 test('keeps a voice this device does not have', async (t) => {
   const page = await settingsPage(t, { voice: 'Karen' });
 
