@@ -49,7 +49,7 @@ export const SWITCHES = [
     group: 'Reading aloud',
     label: 'On-device voices only',
     description:
-      "Only use voices that run on this device, so what's read aloud never goes to Google or Microsoft.",
+      "Only read aloud with voices that run on this device, and only recognise what you say to Canvas's mic on it, so neither goes to Google or Microsoft.",
     default: true,
   },
   {

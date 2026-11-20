@@ -123,7 +123,7 @@ const SWITCHES = [
     group: 'Reading aloud',
     label: 'On-device voices only',
     description:
-      "Only use voices that run on this device, so what's read aloud never goes to Google or Microsoft.",
+      "Only read aloud with voices that run on this device, and only recognise what you say to Canvas's mic on it, so neither goes to Google or Microsoft.",
     default: true,
   },
   {
@@ -421,6 +421,120 @@ function customizeLayout(host, header, content) {
   );
   root.setAttribute(OWN_ATTR, '');
   return root;
+}
+
+// On-device voices only, for Canvas's mic: what you say is recognised on this
+// device too, or not at all. Without a Voice input server, Canvas's mic uses
+// the browser's own speech recognition, which sends what you say to Google
+// unless asked to process it locally, as Chrome 139 and later can.
+
+
+// The browser's speech recognition, by both its names, which Canvas looks up
+// each time its mic starts.
+const NAMES = ['SpeechRecognition', 'webkitSpeechRecognition'];
+
+// Canvas's Voice input settings, which send what you say to your own server
+// instead of the browser's speech recognition when they have a URL.
+const VOICE_INPUT_KEY = 'openhands-transcription-endpoint';
+
+function voiceInputServer() {
+  try {
+    return !!JSON.parse(localStorage.getItem(VOICE_INPUT_KEY))?.baseUrl?.trim();
+  } catch {
+    return false;
+  }
+}
+
+// The language Canvas's mic listens for, which the browser takes from the
+// page unless told: your region's, when it's the same language.
+function recognitionLanguage() {
+  const page = document.documentElement.lang || 'en';
+  const yours = window.navigator.language ?? '';
+  return yours.split('-')[0] === page.split('-')[0] && yours.includes('-') ? yours : page;
+}
+
+// The originals the wrapped ones replace, by name, while they do.
+const originals = new Map();
+const recognition = () => {
+  const name = NAMES.find((key) => originals.has(key) || window[key]);
+  return name ? (originals.get(name) ?? window[name]) : null;
+};
+
+// The browser's speech recognition, made to start only on this device.
+function onDeviceOnly(Recognition) {
+  return class extends Recognition {
+    start(...args) {
+      if (!('processLocally' in this)) {
+        throw new Error("This browser can't recognise speech on this device.");
+      }
+      this.processLocally = true;
+      if (!this.lang) this.lang = recognitionLanguage();
+      return super.start(...args);
+    }
+  };
+}
+
+function onDeviceRecognition() {
+  function apply(on) {
+    for (const name of NAMES) {
+      if (on && !originals.has(name) && window[name]) {
+        originals.set(name, window[name]);
+        window[name] = onDeviceOnly(window[name]);
+      } else if (!on && originals.has(name)) {
+        window[name] = originals.get(name);
+        originals.delete(name);
+      }
+    }
+  }
+  return {
+    refresh: () => apply(settings.onDeviceOnly),
+    dispose: () => apply(false),
+  };
+}
+
+const languageName = (language) => {
+  try {
+    return new Intl.DisplayNames(['en'], { type: 'language' }).of(language);
+  } catch {
+    return language;
+  }
+};
+
+const VOICE_INPUT = "A Voice input server, under Canvas's Settings, keeps it on your network.";
+
+// What happens to what you say to Canvas's mic, for the settings page, and
+// how to have it recognised on this device, when the browser can once it
+// downloads the language.
+async function recognitionStatus() {
+  if (voiceInputServer()) {
+    return { text: "Canvas's mic sends what you say to your Voice input server, under Canvas's Settings." };
+  }
+  const Recognition = recognition();
+  if (!Recognition) {
+    return {
+      text: `Your browser has no speech recognition of its own, so Canvas's mic needs a Voice input server. ${VOICE_INPUT}`,
+    };
+  }
+  if (!('processLocally' in Recognition.prototype) || !Recognition.available) {
+    return {
+      text: `Your browser can only recognise speech online, so Canvas's mic is blocked. ${VOICE_INPUT}`,
+    };
+  }
+  const language = recognitionLanguage();
+  const options = { langs: [language], processLocally: true };
+  const state = await Promise.resolve(Recognition.available(options)).catch(() => 'unavailable');
+  if (state === 'available') {
+    return { text: "Canvas's mic recognises what you say on this device." };
+  }
+  if (state === 'downloadable' || state === 'downloading') {
+    return {
+      text: `Canvas's mic is blocked until your browser downloads ${languageName(language)} speech recognition, to recognise what you say on this device.`,
+      install: () => Recognition.install(options),
+    };
+  }
+  return {
+    text: `Your browser can't recognise ${languageName(language)} on this device, so Canvas's mic is blocked. ${VOICE_INPUT}`,
+  };
 }
 
 const isString = obj => typeof obj === 'string';
@@ -4585,6 +4699,31 @@ function buildSwitch(item, onChange) {
   return block;
 }
 
+// What happens to what you say to Canvas's mic while On-device voices only
+// is on, found out after it's drawn, with a button to download the
+// language when the browser can recognise it on this device once it has.
+function recognitionNote() {
+  const text = el('p', 'text-xs leading-relaxed text-tertiary-light');
+  text.dataset.testid = 'voice-recognition-status';
+  text.setAttribute('aria-live', 'polite');
+  const note = el('div', 'flex min-w-0 flex-col gap-2', text);
+  async function show() {
+    const { text: status, install } = await recognitionStatus();
+    text.textContent = status;
+    note.querySelector('button')?.remove();
+    if (!install) return;
+    const button = textButton('voice-recognition-install', 'Download', async () => {
+      button.disabled = true;
+      text.textContent = 'Downloading…';
+      await Promise.resolve(install()).catch(() => {});
+      show();
+    });
+    note.append(button);
+  }
+  show();
+  return note;
+}
+
 // The app's settings page, as declared in canvas-extension.json, which Canvas
 // serves under /extensions/<app name>/ and the app links from Customize's
 // menu: the switches under their groups, and a button putting every one
@@ -4605,9 +4744,10 @@ function settingsPage(host, onChange) {
     const groups = SWITCH_GROUPS.map((group) =>
       pageSection(
         group,
-        ...SWITCHES.filter((item) => item.group === group).map((item) =>
+        ...SWITCHES.filter((item) => item.group === group).flatMap((item) => [
           (item.voices ? buildVoiceChoice : item.options ? buildChoice : buildSwitch)(item, onChange),
-        ),
+          ...(item.key === 'onDeviceOnly' && settings.onDeviceOnly ? [recognitionNote()] : []),
+        ]),
       ),
     );
     const reset = textButton('voice-reset-settings', 'Reset settings', () => {
@@ -5266,6 +5406,7 @@ function activate(host) {
     settingsView,
     voiceChat(host),
     keyboardShortcut(),
+    onDeviceRecognition(),
     // Readium finds the voices ahead of time, so reading starts at once.
     {
       refresh() {

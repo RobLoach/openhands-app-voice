@@ -5,6 +5,7 @@ import { customizeLayout } from './customize.js';
 import { STORAGE_KEY } from './storage.js';
 import { settings, SWITCH_GROUPS, SWITCHES } from './settings.js';
 import { speechProblem } from './audio.js';
+import { recognitionStatus } from './recognition.js';
 import { automaticDetails, loadVoices, previewVoice, unlistedVoice, voiceGroups } from './speech.js';
 
 // Class strings mirror Canvas's ToggleSwitchVisual (src/ui/toggle-switch.tsx)
@@ -165,6 +166,31 @@ function buildSwitch(item, onChange) {
   return block;
 }
 
+// What happens to what you say to Canvas's mic while On-device voices only
+// is on, found out after it's drawn, with a button to download the
+// language when the browser can recognise it on this device once it has.
+function recognitionNote() {
+  const text = el('p', 'text-xs leading-relaxed text-tertiary-light');
+  text.dataset.testid = 'voice-recognition-status';
+  text.setAttribute('aria-live', 'polite');
+  const note = el('div', 'flex min-w-0 flex-col gap-2', text);
+  async function show() {
+    const { text: status, install } = await recognitionStatus();
+    text.textContent = status;
+    note.querySelector('button')?.remove();
+    if (!install) return;
+    const button = textButton('voice-recognition-install', 'Download', async () => {
+      button.disabled = true;
+      text.textContent = 'Downloading…';
+      await Promise.resolve(install()).catch(() => {});
+      show();
+    });
+    note.append(button);
+  }
+  show();
+  return note;
+}
+
 // The app's settings page, as declared in canvas-extension.json, which Canvas
 // serves under /extensions/<app name>/ and the app links from Customize's
 // menu: the switches under their groups, and a button putting every one
@@ -185,9 +211,10 @@ export function settingsPage(host, onChange) {
     const groups = SWITCH_GROUPS.map((group) =>
       pageSection(
         group,
-        ...SWITCHES.filter((item) => item.group === group).map((item) =>
+        ...SWITCHES.filter((item) => item.group === group).flatMap((item) => [
           (item.voices ? buildVoiceChoice : item.options ? buildChoice : buildSwitch)(item, onChange),
-        ),
+          ...(item.key === 'onDeviceOnly' && settings.onDeviceOnly ? [recognitionNote()] : []),
+        ]),
       ),
     );
     const reset = textButton('voice-reset-settings', 'Reset settings', () => {
