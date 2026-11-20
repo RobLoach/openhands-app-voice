@@ -5112,12 +5112,14 @@ function voiceChat(host) {
   }
 
   // Browsers only let a page speak after a click or key press on it, and
-  // Safari only from one, so the first press of the mic says nothing.
+  // Safari only from one, so the first press of the mic says nothing, in the
+  // voice replies will be read in: never an online one while On-device voices
+  // only is on.
   function onPointerDown(event) {
     if (unlocked || !settings.voiceChat || !event.target?.closest?.(MIC$1)) return;
     if (speechProblem()) return;
     unlocked = true;
-    window.speechSynthesis.speak(new window.SpeechSynthesisUtterance(''));
+    read(['']);
   }
 
   // A key press ends the turn, unless it's while you're talking, as dictation

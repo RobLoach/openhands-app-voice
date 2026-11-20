@@ -21,7 +21,12 @@ const CHAT = `
 const mic = (page) => page.document.querySelector('[data-testid="chat-dictation-button"]');
 const listening = (page) => mic(page).getAttribute('aria-pressed') === 'true';
 
-async function voiceChat(t, settings = { voiceChat: true }) {
+// A voice on this device to read with.
+const ON_DEVICE = [
+  { name: 'English (America)', lang: 'en-US', voiceURI: 'en-us', localService: true, default: true },
+];
+
+async function voiceChat(t, settings = { voiceChat: true }, voices = ON_DEVICE) {
   const { page, host } = await start(t, {
     path: `/conversations/${A}`,
     body: CHAT,
@@ -29,11 +34,8 @@ async function voiceChat(t, settings = { voiceChat: true }) {
     statuses: { [A]: 'finished' },
     turns: { [A]: { user: 'm1', leaf: 'e1' } },
     finalResponse: 'Done. All **tests** pass.',
-    // A voice on this device to read with.
     before: (page) => {
-      page.voices = [
-        { name: 'English (America)', lang: 'en-US', voiceURI: 'en-us', localService: true, default: true },
-      ];
+      page.voices = voices;
     },
   });
   page.sent = [];
@@ -410,4 +412,25 @@ test('listens again without a chime while the Listening chime is off', async (t)
 
   assert.deepEqual(page.tones, []);
   assert.equal(listening(page), true);
+});
+
+// The first press of the mic, which lets Safari speak afterwards.
+const pressMic = (page) =>
+  mic(page).dispatchEvent(new page.window.MouseEvent('pointerdown', { bubbles: true }));
+
+test('lets the browser speak on the first press of the mic, in a voice on this device', async (t) => {
+  const { page } = await voiceChat(t);
+  pressMic(page);
+
+  assert.deepEqual(page.utterances, ['']);
+  assert.equal(page.spoken[0].voice.name, 'English (America)');
+});
+
+test('says nothing on the first press of the mic when only online voices could', async (t) => {
+  const { page } = await voiceChat(t, { voiceChat: true }, [
+    { name: 'Google US English', lang: 'en-US', voiceURI: 'Google US English', localService: false },
+  ]);
+  pressMic(page);
+
+  assert.deepEqual(page.utterances, []);
 });
