@@ -111,9 +111,11 @@ test('keeps a voice this device does not have', async (t) => {
   );
 });
 
-test('saves the voice and previews it as soon as it is picked', async (t) => {
+test('saves the voice as soon as it is picked, and previews it once it settles', async (t) => {
   const page = await settingsPage(t);
   pick(page, 'Daniel');
+  assert.deepEqual(page.utterances, []);
+  await page.wait(400);
   const highlighted = [
     ...page.document.querySelectorAll('[data-testid="voice-voice-option"].bg-tertiary'),
   ];
@@ -125,6 +127,32 @@ test('saves the voice and previews it as soon as it is picked', async (t) => {
   );
   assert.deepEqual(page.utterances, ['Hello, my name is Daniel and I am an English voice.']);
   assert.equal(page.spoken[0].voice, DANIEL);
+});
+
+test('previews only the last voice when the pick changes quickly, as with arrow keys', async (t) => {
+  const page = await settingsPage(t, ONLINE);
+  for (const { name } of [EMMA, SAMANTHA, DANIEL]) {
+    pick(page, name);
+    await page.wait(100);
+  }
+  assert.equal(
+    JSON.parse(page.window.localStorage.getItem('openhands-voice:settings')).voice,
+    'Daniel',
+  );
+  await page.wait(400);
+
+  assert.deepEqual(page.utterances, ['Hello, my name is Daniel and I am an English voice.']);
+});
+
+test('keeps focus on a voice when the page redraws', async (t) => {
+  const page = await settingsPage(t);
+  const radio = () =>
+    page.document.querySelector('[data-testid="voice-voice-radio"][value="Daniel"]');
+  radio().focus();
+  await page.changeSettings({ voiceChat: true });
+
+  assert.equal(page.document.activeElement, radio());
+  assert.ok(radio().isConnected);
 });
 
 test('Preview reads the picked voice again', async (t) => {

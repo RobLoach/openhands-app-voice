@@ -4674,10 +4674,17 @@ function buildChoice(item, onChange) {
   return el('div', 'flex min-w-0 flex-col gap-2', label, select, hint);
 }
 
+// How long a picked voice waits before reading its sample, so arrowing
+// through the list reads only the one you stop on.
+const SAMPLE_DELAY_MS = 400;
+let sampleTimer = 0;
+const cancelSample = () => clearTimeout(sampleTimer);
+
 // The browser's voices as a list to pick from, each with its quality and
 // whether it's online underneath, under their region, with Automatic first
 // and a saved voice this device doesn't have kept as it is. Picking one
-// reads a sample in it, as does the button below.
+// saves it at once and, once you've settled on it, reads a sample in it, as
+// does the button below.
 function buildVoiceChoice(item, onChange) {
   const id = `voice-${item.key}`;
   const options = [];
@@ -4685,6 +4692,7 @@ function buildVoiceChoice(item, onChange) {
     const input = el('input', 'mt-1 shrink-0 cursor-pointer');
     input.type = 'radio';
     input.name = id;
+    input.dataset.testid = `${id}-radio`;
     input.value = value;
     input.checked = value === settings.voice;
     options.push(input);
@@ -4738,7 +4746,8 @@ function buildVoiceChoice(item, onChange) {
   list.addEventListener('change', () => {
     highlight();
     onChange({ ...settings, [item.key]: picked() });
-    previewVoice(picked());
+    cancelSample();
+    sampleTimer = setTimeout(() => previewVoice(picked()), SAMPLE_DELAY_MS);
   });
   const hint = el('p', 'text-xs leading-relaxed text-tertiary-light', item.description);
   hint.id = `${id}-hint`;
@@ -4843,11 +4852,14 @@ function settingsPage(host, onChange) {
   let onDeviceOnly = null;
 
   // Redraws the page, keeping focus where it was, e.g. on a switch just
-  // turned.
+  // turned, or on a voice, whose radios share a test id and differ by value.
+  // A sample still waiting to be read is dropped.
   function render() {
     if (!list) return;
+    cancelSample();
     onDeviceOnly = settings.onDeviceOnly;
-    const focused = list.contains(document.activeElement) && document.activeElement.dataset.testid;
+    const active = document.activeElement;
+    const focused = list.contains(active) && active.dataset.testid;
     const groups = SWITCH_GROUPS.map((group) =>
       pageSection(
         group,
@@ -4862,7 +4874,9 @@ function settingsPage(host, onChange) {
       render();
     });
     list.replaceChildren(...canvasWarning(), ...groups, reset);
-    if (focused) list.querySelector(`[data-testid="${focused}"]`)?.focus();
+    if (!focused) return;
+    const matches = [...list.querySelectorAll(`[data-testid="${focused}"]`)];
+    (matches.find((match) => match.value === active.value) ?? matches[0])?.focus();
   }
 
   function mount({ container }) {
@@ -4884,6 +4898,7 @@ function settingsPage(host, onChange) {
     // Canvas may clean up a mount after the next one has started.
     return () => {
       if (list === own) list = null;
+      cancelSample();
       root.remove();
     };
   }
@@ -4896,6 +4911,7 @@ function settingsPage(host, onChange) {
     onStorage(key) {
       if (key === STORAGE_KEY) render();
     },
+    dispose: cancelSample,
   };
 }
 
