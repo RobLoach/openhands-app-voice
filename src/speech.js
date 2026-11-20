@@ -160,22 +160,34 @@ export function chosenVoice(name = settings.voice) {
   );
 }
 
-// What's queued to be read. Chrome forgets to say an utterance ended once
-// nothing refers to it, so they're kept until the next read.
+// What's queued to be read, and what to tell whoever asked for it if it's
+// stopped first. Chrome forgets to say an utterance ended once nothing
+// refers to it, so they're kept until the next read.
 let queued = [];
+let reader = null;
 
-// Queues the sentences to be read with the chosen voice and speed, then runs
-// onDone once the last is read or fails, at once for none. Cancelling the
-// queue skips onDone.
-export function read(sentences, onDone, name) {
+// Stops what's being read, telling whoever asked for it.
+export function stopSpeaking() {
+  const stopped = reader;
+  reader = null;
+  queued = [];
+  const synth = window.speechSynthesis;
+  if (synth?.speaking || synth?.pending) synth.cancel();
+  stopped?.onStopped?.();
+}
+
+// Queues the sentences to be read with the chosen voice, or the one named,
+// and speed, after stopping what's being read. onDone runs once the last is
+// read or fails, at once for none; onStopped if it's stopped first, e.g. by
+// another read.
+export function read(sentences, { onDone, onStopped, name } = {}) {
+  stopSpeaking();
   const voice = speechProblem() ? null : chosenVoice(name);
   // Nothing on this device can read it, and the browser's choice may not be.
-  if (speechProblem() || (!voice && settings.onDeviceOnly)) {
+  if (speechProblem() || (!voice && settings.onDeviceOnly) || !sentences.length) {
     onDone?.();
     return;
   }
-  const synth = window.speechSynthesis;
-  synth.cancel();
   queued = sentences.map((sentence) => {
     const utterance = new window.SpeechSynthesisUtterance(sentence);
     utterance.lang = voice?.lang ?? canvasLanguage();
@@ -184,16 +196,19 @@ export function read(sentences, onDone, name) {
     utterance.volume = volume();
     return utterance;
   });
-  const last = queued.at(-1);
-  if (!last) {
+  const mine = { onStopped };
+  reader = mine;
+  const done = () => {
+    if (reader !== mine) return;
+    reader = null;
     onDone?.();
-    return;
-  }
-  last.onend = () => onDone?.();
-  last.onerror = (event) => {
-    if (event?.error !== 'canceled' && event?.error !== 'interrupted') onDone?.();
   };
-  for (const utterance of queued) synth.speak(utterance);
+  const last = queued.at(-1);
+  last.onend = done;
+  last.onerror = (event) => {
+    if (event?.error !== 'canceled' && event?.error !== 'interrupted') done();
+  };
+  for (const utterance of queued) window.speechSynthesis.speak(utterance);
 }
 
 // Readium's sample sentence in a voice, by its name, or the chosen one.
@@ -202,5 +217,5 @@ export function previewVoice(name) {
   const label = voice
     ? (ranked.find((item) => nameOf(item) === voice.name)?.label ?? voice.name)
     : 'your browser';
-  read([sample.replace('{name}', label)], null, name);
+  read([sample.replace('{name}', label)], { name });
 }

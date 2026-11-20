@@ -4569,22 +4569,34 @@ function chosenVoice(name = settings.voice) {
   );
 }
 
-// What's queued to be read. Chrome forgets to say an utterance ended once
-// nothing refers to it, so they're kept until the next read.
+// What's queued to be read, and what to tell whoever asked for it if it's
+// stopped first. Chrome forgets to say an utterance ended once nothing
+// refers to it, so they're kept until the next read.
 let queued = [];
+let reader = null;
 
-// Queues the sentences to be read with the chosen voice and speed, then runs
-// onDone once the last is read or fails, at once for none. Cancelling the
-// queue skips onDone.
-function read(sentences, onDone, name) {
+// Stops what's being read, telling whoever asked for it.
+function stopSpeaking() {
+  const stopped = reader;
+  reader = null;
+  queued = [];
+  const synth = window.speechSynthesis;
+  if (synth?.speaking || synth?.pending) synth.cancel();
+  stopped?.onStopped?.();
+}
+
+// Queues the sentences to be read with the chosen voice, or the one named,
+// and speed, after stopping what's being read. onDone runs once the last is
+// read or fails, at once for none; onStopped if it's stopped first, e.g. by
+// another read.
+function read(sentences, { onDone, onStopped, name } = {}) {
+  stopSpeaking();
   const voice = speechProblem() ? null : chosenVoice(name);
   // Nothing on this device can read it, and the browser's choice may not be.
-  if (speechProblem() || (!voice && settings.onDeviceOnly)) {
+  if (speechProblem() || (!voice && settings.onDeviceOnly) || !sentences.length) {
     onDone?.();
     return;
   }
-  const synth = window.speechSynthesis;
-  synth.cancel();
   queued = sentences.map((sentence) => {
     const utterance = new window.SpeechSynthesisUtterance(sentence);
     utterance.lang = voice?.lang ?? canvasLanguage();
@@ -4593,16 +4605,19 @@ function read(sentences, onDone, name) {
     utterance.volume = volume();
     return utterance;
   });
-  const last = queued.at(-1);
-  if (!last) {
+  const mine = { onStopped };
+  reader = mine;
+  const done = () => {
+    if (reader !== mine) return;
+    reader = null;
     onDone?.();
-    return;
-  }
-  last.onend = () => onDone?.();
-  last.onerror = (event) => {
-    if (event?.error !== 'canceled' && event?.error !== 'interrupted') onDone?.();
   };
-  for (const utterance of queued) synth.speak(utterance);
+  const last = queued.at(-1);
+  last.onend = done;
+  last.onerror = (event) => {
+    if (event?.error !== 'canceled' && event?.error !== 'interrupted') done();
+  };
+  for (const utterance of queued) window.speechSynthesis.speak(utterance);
 }
 
 // Readium's sample sentence in a voice, by its name, or the chosen one.
@@ -4611,7 +4626,7 @@ function previewVoice(name) {
   const label = voice
     ? (ranked.find((item) => nameOf(item) === voice.name)?.label ?? voice.name)
     : 'your browser';
-  read([sample.replace('{name}', label)], null, name);
+  read([sample.replace('{name}', label)], { name });
 }
 
 // The settings page and the switches it shows.
@@ -4884,60 +4899,7 @@ function settingsPage(host, onChange) {
   };
 }
 
-// Replies are Markdown, which is read out as raw text. Strip the syntax and
-// cut on a word boundary without splitting an emoji.
-function plainText(markdown, max = 200) {
-  const text = markdown
-    .replace(/```[\s\S]*?(?:```|$)/g, ' ')
-    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/^\s*([-*_])(?:\s*\1){2,}\s*$/gm, ' ')
-    .replace(/^\s{0,3}(?:#{1,6}|>|[-*+]|\d+[.)])\s+/gm, '')
-    .replace(/\*+|~~|`+/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-  const chars = Array.from(text);
-  if (chars.length <= max) return text;
-  const cut = chars.slice(0, max).join('');
-  const space = cut.lastIndexOf(' ');
-  return `${(space > cut.length / 2 ? cut.slice(0, space) : cut).trimEnd()}…`;
-}
-
-// Voice chat, Hands-free and Read aloud buttons: after you speak a message
-// with Canvas's mic, send it, read the agent's reply aloud and listen again,
-// stop the mic once you stop talking, and read any of the agent's messages.
-
-
-const READ_ALOUD_ATTR = 'data-voice-read-aloud';
-
-// A run's statuses while it goes.
-const ACTIVE_STATUSES = new Set(['running', 'waiting_for_confirmation']);
-
-// How often to ask the Agent Server whether the reply is in, and how long to
-// wait for what you said to reach the message box.
-const REPLY_CHECK_MS = 2000;
-const SEND_CHECK_MS = 100;
-const SEND_TIMEOUT_MS = 3000;
-const TRANSCRIBE_TIMEOUT_MS = 30000;
-
-// Hands-free listens to the mic's level every LEVEL_MS: once you've talked
-// for SPEECH_MS, a pause of SILENCE_MS stops the mic, as does saying nothing
-// for QUIET_MS.
-const LEVEL_MS = 50;
-const SPEECH_MS = 250;
-const SILENCE_MS = 1500;
-const QUIET_MS = 10000;
-const MIN_LEVEL = 0.015;
-
-// Replies are cut to this many characters, and read a sentence at a time,
-// as Chrome stops reading a long utterance after about 15 seconds.
-const MAX_SPOKEN = 1500;
-
-// What's said instead of a reply.
-const SAY = {
-  waiting_for_confirmation: 'The agent needs your confirmation.',
-  error: 'The agent stopped with an error.',
-  stuck: 'The agent got stuck.',
-};
+// Spoken commands: things you can say to Voice chat instead of a message.
 
 // Things you can say instead of a message, as what Canvas heard, without
 // punctuation, gives them.
@@ -4965,55 +4927,21 @@ const commandFor = (text) =>
       .trim()
   ] ?? null;
 
-// A speaker, as Canvas draws its message actions' icons.
-const SPEAKER_ICON =
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>';
+// Hands-free: stops Canvas's mic once you stop talking, from the mic's
+// level on a second stream, as Canvas's own recognition gives no sign until
+// it's stopped.
 
-const findMic = () => document.querySelector(MIC);
-const pressed = (mic) => mic?.getAttribute('aria-pressed') === 'true';
-const busy = (mic) => mic?.getAttribute('aria-busy') === 'true';
+// Hands-free listens to the mic's level every LEVEL_MS: once you've talked
+// for SPEECH_MS, a pause of SILENCE_MS stops the mic, as does saying nothing
+// for QUIET_MS.
+const LEVEL_MS = 50;
+const SPEECH_MS = 250;
+const SILENCE_MS = 1500;
+const QUIET_MS = 10000;
+const MIN_LEVEL = 0.015;
 
-// The send button beside the mic, as there may be other message boxes.
-function sendButton(mic) {
-  for (let node = mic?.parentElement; node; node = node.parentElement) {
-    const button = node.querySelector(SEND);
-    if (button) return button;
-  }
-  return null;
-}
-
-// Text split into sentences in Canvas's language, or in one go for a
-// language the browser doesn't know.
-function sentencesOf(text) {
-  let segments;
-  try {
-    segments = [...new Intl.Segmenter(canvasLanguage(), { granularity: 'sentence' }).segment(text)];
-  } catch {
-    segments = [{ segment: text }];
-  }
-  return segments.map(({ segment }) => segment.trim()).filter(Boolean);
-}
-
-// A reply as speech: Markdown stripped and code left on screen.
-const spokenSentences = (markdown) =>
-  sentencesOf(
-    plainText(markdown.replace(/```[\s\S]*?(?:```|$)/g, ' The code is in the chat. '), MAX_SPOKEN),
-  );
-
-// One of the agent's messages on the page as speech, read in full, with
-// paragraphs, items and cells as separate sentences.
-function messageSentences(article) {
-  const copy = article.cloneNode(true);
-  for (const node of copy.querySelectorAll(':scope > div.absolute, button')) node.remove();
-  for (const code of copy.querySelectorAll('pre')) code.replaceWith(' The code is in the chat. ');
-  for (const block of copy.querySelectorAll('p, li, h1, h2, h3, h4, h5, h6, td, th, blockquote')) {
-    block.append('\n');
-  }
-  return copy.textContent.split(/\n+/).flatMap((line) => sentencesOf(line.replace(/\s+/g, ' ')));
-}
-
-// Stops the mic after you stop talking, from its level on a second stream:
-// Canvas's own recognition gives no sign until it's stopped.
+// Listens for you to stop talking, then calls onSilence, until stopped by
+// what it returns.
 function silenceDetector(onSilence) {
   let stopped = false;
   let stream = null;
@@ -5082,6 +5010,97 @@ function silenceDetector(onSilence) {
   return stop;
 }
 
+// Replies are Markdown, which is read out as raw text. Strip the syntax and
+// cut on a word boundary without splitting an emoji.
+function plainText(markdown, max = 200) {
+  const text = markdown
+    .replace(/```[\s\S]*?(?:```|$)/g, ' ')
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/^\s*([-*_])(?:\s*\1){2,}\s*$/gm, ' ')
+    .replace(/^\s{0,3}(?:#{1,6}|>|[-*+]|\d+[.)])\s+/gm, '')
+    .replace(/\*+|~~|`+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const chars = Array.from(text);
+  if (chars.length <= max) return text;
+  const cut = chars.slice(0, max).join('');
+  const space = cut.lastIndexOf(' ');
+  return `${(space > cut.length / 2 ? cut.slice(0, space) : cut).trimEnd()}…`;
+}
+
+// Text as speech: split into sentences, a reply's Markdown stripped and its
+// code left on screen, and the agent's messages on the page read in full.
+
+
+// Replies are cut to this many characters, and read a sentence at a time,
+// as Chrome stops reading a long utterance after about 15 seconds.
+const MAX_SPOKEN = 1500;
+
+// Text split into sentences in Canvas's language, or in one go for a
+// language the browser doesn't know.
+function sentencesOf(text) {
+  let segments;
+  try {
+    segments = [...new Intl.Segmenter(canvasLanguage(), { granularity: 'sentence' }).segment(text)];
+  } catch {
+    segments = [{ segment: text }];
+  }
+  return segments.map(({ segment }) => segment.trim()).filter(Boolean);
+}
+
+// A reply as speech: Markdown stripped and code left on screen.
+const spokenSentences = (markdown) =>
+  sentencesOf(
+    plainText(markdown.replace(/```[\s\S]*?(?:```|$)/g, ' The code is in the chat. '), MAX_SPOKEN),
+  );
+
+// One of the agent's messages on the page as speech, read in full, with
+// paragraphs, items and cells as separate sentences.
+function messageSentences(article) {
+  const copy = article.cloneNode(true);
+  for (const node of copy.querySelectorAll(':scope > div.absolute, button')) node.remove();
+  for (const code of copy.querySelectorAll('pre')) code.replaceWith(' The code is in the chat. ');
+  for (const block of copy.querySelectorAll('p, li, h1, h2, h3, h4, h5, h6, td, th, blockquote')) {
+    block.append('\n');
+  }
+  return copy.textContent.split(/\n+/).flatMap((line) => sentencesOf(line.replace(/\s+/g, ' ')));
+}
+
+// Voice chat and Hands-free: after you speak a message with Canvas's mic,
+// send it, read the agent's reply aloud and listen again, and stop the mic
+// once you stop talking.
+
+
+// A run's statuses while it goes.
+const ACTIVE_STATUSES = new Set(['running', 'waiting_for_confirmation']);
+
+// How often to ask the Agent Server whether the reply is in, and how long to
+// wait for what you said to reach the message box.
+const REPLY_CHECK_MS = 2000;
+const SEND_CHECK_MS = 100;
+const SEND_TIMEOUT_MS = 3000;
+const TRANSCRIBE_TIMEOUT_MS = 30000;
+
+// What's said instead of a reply.
+const SAY = {
+  waiting_for_confirmation: 'The agent needs your confirmation.',
+  error: 'The agent stopped with an error.',
+  stuck: 'The agent got stuck.',
+};
+
+const findMic = () => document.querySelector(MIC);
+const pressed = (mic) => mic?.getAttribute('aria-pressed') === 'true';
+const busy = (mic) => mic?.getAttribute('aria-busy') === 'true';
+
+// The send button beside the mic, as there may be other message boxes.
+function sendButton(mic) {
+  for (let node = mic?.parentElement; node; node = node.parentElement) {
+    const button = node.querySelector(SEND);
+    if (button) return button;
+  }
+  return null;
+}
+
 // A turn goes listening → sending → waiting → speaking, then listens again
 // by pressing the mic. Pressing a key, leaving the conversation or turning
 // Voice chat off ends it. Each step that waits checks the turn is still the
@@ -5101,27 +5120,19 @@ function voiceChat(host) {
   let timer = 0;
   let stopDetector = null;
   let unlocked = false;
-  // The screen's wake lock while a turn goes, as a promise of it, and the
-  // message a Read aloud button is reading.
+  // The screen's wake lock while a turn goes, as a promise of it.
   let wakeLock = null;
-  let reading = null;
 
-  const on = () => settings.voiceChat || settings.handsFree || settings.readAloud;
+  const on = () => settings.voiceChat || settings.handsFree;
   const at = (stage) => turn?.stage === stage;
 
+  // Ends the turn, and stops whatever's read aloud, such as its reply.
   function end() {
     turn = null;
     clearTimeout(timer);
     timer = 0;
     letSleep();
-    stopReading();
-  }
-
-  function stopReading() {
-    if (reading) setReading(null);
-    if (window.speechSynthesis?.speaking || window.speechSynthesis?.pending) {
-      window.speechSynthesis.cancel();
-    }
+    stopSpeaking();
   }
 
   // Phones sleep, and stop listening, after a while without a touch.
@@ -5273,7 +5284,8 @@ function voiceChat(host) {
   }
 
   // Reads the sentences, then, after a reply, listens again if you're still
-  // looking at the conversation. end() cancels what's left.
+  // looking at the conversation. Reading something else, such as with a Read
+  // aloud button, ends the turn.
   function speak(sentences, again) {
     const done = () => (again ? listenAgain() : end());
     if (!sentences.length || speechProblem()) {
@@ -5282,8 +5294,13 @@ function voiceChat(host) {
     }
     const current = turn;
     current.stage = 'speaking';
-    read(sentences, () => {
-      if (turn === current) done();
+    read(sentences, {
+      onDone: () => {
+        if (turn === current) done();
+      },
+      onStopped: () => {
+        if (turn === current) end();
+      },
     });
   }
 
@@ -5305,49 +5322,6 @@ function voiceChat(host) {
     timer = setTimeout(press, CHIME_MS);
   }
 
-  // A Read aloud button reads its message, or stops when it's reading, which
-  // ends any turn, as does pressing the mic while it reads.
-  function setReading(article) {
-    for (const button of document.querySelectorAll(`[${READ_ALOUD_ATTR}]`)) {
-      const on = button.closest(AGENT_MESSAGE) === article;
-      button.setAttribute('aria-label', on ? 'Stop reading' : 'Read aloud');
-      button.classList.toggle('text-contrast', on);
-    }
-    reading = article;
-  }
-
-  function onReadAloud(article) {
-    if (reading === article) {
-      stopReading();
-      return;
-    }
-    end();
-    if (speechProblem()) return;
-    setReading(article);
-    read(messageSentences(article), () => {
-      if (reading === article) setReading(null);
-    });
-  }
-
-  function addReadAloud() {
-    for (const article of document.querySelectorAll(AGENT_MESSAGE)) {
-      const actions = article.querySelector(':scope > div.absolute');
-      if (!actions || actions.querySelector(`[${READ_ALOUD_ATTR}]`)) continue;
-      const button = el('button', 'button-base p-1 cursor-pointer');
-      button.type = 'button';
-      button.setAttribute(OWN_ATTR, '');
-      button.setAttribute(READ_ALOUD_ATTR, '');
-      button.setAttribute('aria-label', reading === article ? 'Stop reading' : 'Read aloud');
-      button.innerHTML = SPEAKER_ICON;
-      button.addEventListener('click', () => onReadAloud(article));
-      actions.prepend(button);
-    }
-  }
-
-  function removeReadAloud() {
-    for (const button of document.querySelectorAll(`[${READ_ALOUD_ATTR}]`)) button.remove();
-  }
-
   // Browsers only let a page speak after a click or key press on it, and
   // Safari only from one, so the first press of the mic says nothing, in the
   // voice replies will be read in: never an online one while Keep voice on
@@ -5360,9 +5334,8 @@ function voiceChat(host) {
   }
 
   // A key press ends the turn, unless it's while you're talking, as dictation
-  // takes keys too. Esc stops a Read aloud button.
+  // takes keys too.
   function onKeyDown(event) {
-    if (reading && event.key === 'Escape') stopReading();
     if (!at('waiting') && !at('speaking')) return;
     if (['Shift', 'Control', 'Alt', 'Meta'].includes(event.key)) return;
     end();
@@ -5412,21 +5385,100 @@ function voiceChat(host) {
       listen(on());
       if (!settings.handsFree) stopListening();
       if (!settings.voiceChat && turn) end();
-      if (settings.readAloud) addReadAloud();
-      else {
-        if (reading) stopReading();
-        removeReadAloud();
-      }
     },
     onDomChange() {
-      if (!listening) return;
-      onMicChange();
-      if (settings.readAloud) addReadAloud();
+      if (listening) onMicChange();
     },
     dispose() {
       listen(false);
-      removeReadAloud();
       closeChimes();
+    },
+  };
+}
+
+// Read aloud buttons: a button beside the copy button on the agent's
+// messages that reads the message aloud, or stops reading it, as Esc does.
+// Anything else read aloud, such as a Voice chat reply, stops it too.
+
+
+const READ_ALOUD_ATTR = 'data-voice-read-aloud';
+
+// A speaker, as Canvas draws its message actions' icons.
+const SPEAKER_ICON =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>';
+
+const buttons = () => document.querySelectorAll(`[${READ_ALOUD_ATTR}]`);
+
+function readAloudButtons() {
+  // The message being read.
+  let reading = null;
+  let listening = false;
+
+  // Shows which message is being read on its button.
+  function setReading(article) {
+    for (const button of buttons()) {
+      const on = button.closest(AGENT_MESSAGE) === article;
+      button.setAttribute('aria-label', on ? 'Stop reading' : 'Read aloud');
+      button.classList.toggle('text-contrast', on);
+    }
+    reading = article;
+  }
+
+  function onReadAloud(article) {
+    if (reading === article) {
+      stopSpeaking();
+      return;
+    }
+    const done = () => {
+      if (reading === article) setReading(null);
+    };
+    setReading(article);
+    read(messageSentences(article), { onDone: done, onStopped: done });
+  }
+
+  function add() {
+    for (const article of document.querySelectorAll(AGENT_MESSAGE)) {
+      const actions = article.querySelector(':scope > div.absolute');
+      if (!actions || actions.querySelector(`[${READ_ALOUD_ATTR}]`)) continue;
+      const button = el('button', 'button-base p-1 cursor-pointer');
+      button.type = 'button';
+      button.setAttribute(OWN_ATTR, '');
+      button.setAttribute(READ_ALOUD_ATTR, '');
+      button.setAttribute('aria-label', reading === article ? 'Stop reading' : 'Read aloud');
+      button.innerHTML = SPEAKER_ICON;
+      button.addEventListener('click', () => onReadAloud(article));
+      actions.prepend(button);
+    }
+  }
+
+  function remove() {
+    if (reading) stopSpeaking();
+    for (const button of buttons()) button.remove();
+  }
+
+  function onKeyDown(event) {
+    if (reading && event.key === 'Escape') stopSpeaking();
+  }
+
+  function listen(next) {
+    if (next === listening) return;
+    listening = next;
+    if (next) window.addEventListener('keydown', onKeyDown, true);
+    else window.removeEventListener('keydown', onKeyDown, true);
+  }
+
+  return {
+    refresh() {
+      listen(settings.readAloud);
+      if (settings.readAloud) add();
+      else remove();
+    },
+    onDomChange() {
+      if (settings.readAloud) add();
+    },
+    dispose() {
+      listen(false);
+      remove();
     },
   };
 }
@@ -5488,6 +5540,7 @@ function activate(host) {
     sidebarLinks(host.extension.name),
     settingsView,
     voiceChat(host),
+    readAloudButtons(),
     keyboardShortcut(),
     onDeviceRecognition(),
     watchCanvas(),

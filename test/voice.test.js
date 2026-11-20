@@ -434,3 +434,27 @@ test('says nothing on the first press of the mic when only online voices could',
 
   assert.deepEqual(page.utterances, []);
 });
+
+test('a Read aloud button ends the turn whose reply it talks over', async (t) => {
+  const { page, host } = await voiceChat(t, { voiceChat: true, readAloud: true });
+  await say(page, 'Run the tests');
+  await reply(page, host);
+  page.document.querySelector('[data-voice-read-aloud]').click();
+  await page.finishSpeaking();
+  await page.wait(1000);
+
+  assert.equal(listening(page), false);
+  assert.equal(page.wakeLocks, 0);
+});
+
+test("a reply read aloud resets the Read aloud button it talks over", async (t) => {
+  const { page, host } = await voiceChat(t, { voiceChat: true, readAloud: true });
+  await say(page, 'Run the tests');
+  const button = page.document.querySelector('[data-voice-read-aloud]');
+  button.click();
+  assert.equal(button.getAttribute('aria-label'), 'Stop reading');
+
+  await reply(page, host);
+  assert.equal(button.getAttribute('aria-label'), 'Read aloud');
+  assert.deepEqual(page.utterances.slice(-2), ['Done.', 'All tests pass.']);
+});

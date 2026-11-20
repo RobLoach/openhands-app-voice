@@ -12,6 +12,7 @@ import { settingsPage } from './pages.js';
 import { SETTINGS_PAGE, sidebarLinks, watchCustomizeMenu } from './customize.js';
 import { loadVoices } from './speech.js';
 import { voiceChat } from './voice.js';
+import { readAloudButtons } from './read-aloud.js';
 import { keyboardShortcut } from './shortcut.js';
 import { onDeviceRecognition } from './recognition.js';
 import { watchCanvas } from './compat.js';
@@ -43,6 +44,7 @@ export function activate(host) {
     sidebarLinks(host.extension.name),
     settingsView,
     voiceChat(host),
+    readAloudButtons(),
     keyboardShortcut(),
     onDeviceRecognition(),
     watchCanvas(),
