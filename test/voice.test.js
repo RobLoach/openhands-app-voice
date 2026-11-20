@@ -344,3 +344,24 @@ test('Read aloud buttons reset for a message with nothing to read', async (t) =>
   assert.deepEqual(page.utterances, []);
   assert.equal(button.getAttribute('aria-label'), 'Read aloud');
 });
+
+test("waits to send until it knows your last message, so it knows the reply", async (t) => {
+  const { page, host } = await voiceChat(t);
+  const request = host.agentServer.request;
+  let release;
+  const slow = new Promise((resolve) => (release = resolve));
+  host.agentServer.request = async (options) => {
+    if (options.path.startsWith('/api/conversations?')) await slow;
+    return request(options);
+  };
+  await say(page, 'Run the tests');
+  assert.deepEqual(page.sent, []);
+
+  release();
+  await flush();
+  await page.wait(100);
+  assert.deepEqual(page.sent, ['Run the tests']);
+  host.agentServer.request = request;
+  await reply(page, host);
+  assert.deepEqual(page.utterances, ['Done.', 'All tests pass.']);
+});

@@ -4627,10 +4627,12 @@ function voiceChat(host) {
       const waited = Date.now() - started;
       const text = composer?.textContent.trim();
       const command = text && !busy(mic) && commandFor(text);
+      // Your last message before this one tells its reply from the last.
+      const known = turn.baseline !== undefined;
       if (command) {
         clearComposer(composer);
         runCommand(command);
-      } else if (text && send && !send.disabled && !busy(mic)) {
+      } else if (text && known && send && !send.disabled && !busy(mic)) {
         send.click();
         turn.stage = 'waiting';
         timer = setTimeout(checkReply, REPLY_CHECK_MS);
