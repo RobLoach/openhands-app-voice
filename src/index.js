@@ -14,6 +14,7 @@ import { loadVoices } from './speech.js';
 import { voiceChat } from './voice.js';
 import { keyboardShortcut } from './shortcut.js';
 import { onDeviceRecognition } from './recognition.js';
+import { watchCanvas } from './compat.js';
 
 // The running copy's dispose, on the page's window. Canvas disposes an app
 // before activating it again; should a copy still be running anyway, the new
@@ -44,6 +45,7 @@ export function activate(host) {
     voiceChat(host),
     keyboardShortcut(),
     onDeviceRecognition(),
+    watchCanvas(),
     // Readium finds the voices ahead of time, so reading starts at once.
     {
       refresh() {

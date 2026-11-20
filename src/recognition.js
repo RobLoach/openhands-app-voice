@@ -3,23 +3,12 @@
 // the browser's own speech recognition, which sends what you say to Google
 // unless asked to process it locally, as Chrome 139 and later can.
 
+import { voiceInputServer } from './canvas.js';
 import { settings } from './settings.js';
 
 // The browser's speech recognition, by both its names, which Canvas looks up
 // each time its mic starts.
 const NAMES = ['SpeechRecognition', 'webkitSpeechRecognition'];
-
-// Canvas's Voice input settings, which send what you say to your own server
-// instead of the browser's speech recognition when they have a URL.
-const VOICE_INPUT_KEY = 'openhands-transcription-endpoint';
-
-export function voiceInputServer() {
-  try {
-    return !!JSON.parse(localStorage.getItem(VOICE_INPUT_KEY))?.baseUrl?.trim();
-  } catch {
-    return false;
-  }
-}
 
 // The language Canvas's mic listens for, which the browser takes from the
 // page unless told: your region's, when it's the same language.

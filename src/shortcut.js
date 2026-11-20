@@ -1,9 +1,8 @@
 // Keyboard shortcut: Alt+V presses Canvas's mic, from the message box too, on
 // any keyboard layout, unless one of Canvas's dialogs is open.
 
+import { MIC } from './canvas.js';
 import { settings } from './settings.js';
-
-const MIC = '[data-testid="chat-dictation-button"]';
 
 export function keyboardShortcut() {
   function onKeyDown(event) {

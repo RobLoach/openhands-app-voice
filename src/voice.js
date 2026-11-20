@@ -4,18 +4,20 @@
 
 import { CHIME_MS, closeChimes, playChime, speechProblem } from './audio.js';
 import { el, OWN_ATTR } from './dom.js';
-import { canvasLanguage, conversationKey, openConversationId } from './canvas.js';
+import {
+  AGENT_MESSAGE,
+  canvasLanguage,
+  COMPOSER,
+  conversationKey,
+  MIC,
+  openConversationId,
+  SEND,
+  STOP,
+} from './canvas.js';
 import { plainText } from './markdown.js';
 import { settings } from './settings.js';
 import { read, volume } from './speech.js';
 
-// Canvas's mic, which says it's recording with aria-pressed and starting or
-// transcribing with aria-busy, and puts what you said in the message box.
-const MIC = '[data-testid="chat-dictation-button"]';
-const COMPOSER = '[data-testid="chat-input"]';
-const SEND = '[data-testid="submit-button"]';
-const STOP = '[data-testid="stop-button"]';
-const AGENT_MESSAGE = 'article[data-testid="agent-message"]';
 const READ_ALOUD_ATTR = 'data-voice-read-aloud';
 
 // A run's statuses while it goes.

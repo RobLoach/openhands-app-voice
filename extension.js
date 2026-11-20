@@ -3,6 +3,8 @@
 // What this app keeps in the browser's localStorage.
 
 const STORAGE_KEY = 'openhands-voice:settings';
+// The parts of Canvas this app couldn't find, for the settings page.
+const CANVAS_KEY = 'openhands-voice:canvas';
 
 function readJson(key, fallback) {
   try {
@@ -255,7 +257,7 @@ const pageSection = (title, ...children) =>
   el('section', 'flex min-w-0 flex-col gap-3', el('h3', 'text-base font-semibold text-foreground', title), ...children);
 
 // What this app reads from Canvas's page: the open conversation, its
-// language and base path.
+// language and base path, and the parts of Canvas it works with.
 
 const CONVERSATION_PATH = /\/conversations\/([0-9a-f-]{32,36})(?:\/|$)/i;
 
@@ -277,6 +279,33 @@ function canvasBase() {
     .href;
 }
 
+// Canvas's parts this app works with, by their test ids, which an OpenHands
+// update may change, so they're all here, and compat.js checks the ones that
+// should always be there are. Its mic says it's recording with aria-pressed
+// and starting or transcribing with aria-busy, and puts what you said in the
+// message box, beside its send and stop buttons.
+const MIC = '[data-testid="chat-dictation-button"]';
+const COMPOSER = '[data-testid="chat-input"]';
+const SEND = '[data-testid="submit-button"]';
+const STOP = '[data-testid="stop-button"]';
+const AGENT_MESSAGE = 'article[data-testid="agent-message"]';
+// Apps in Customize's menu, in its desktop sidebar and its compact menu, and
+// the pages that have that menu.
+const CUSTOMIZE_APPS = '[data-testid="sidebar-extensions-/apps"]';
+const CUSTOMIZE_PAGE = /\/(?:customize|mcp|skills|plugins|apps)\/?$/;
+
+// Canvas's Voice input settings, which send what you say to your own server
+// instead of the browser's speech recognition when they have a URL.
+const VOICE_INPUT_KEY = 'openhands-transcription-endpoint';
+
+function voiceInputServer() {
+  try {
+    return !!JSON.parse(localStorage.getItem(VOICE_INPUT_KEY))?.baseUrl?.trim();
+  } catch {
+    return false;
+  }
+}
+
 // Customize's menu: the settings page goes under Apps there, as Canvas has
 // no way for an app to add a page under Customize, and its own sidebar link
 // is hidden. The settings page repeats the menu beside its switches.
@@ -288,9 +317,6 @@ const SIDEBAR_STYLE_ID = 'openhands-voice-sidebar';
 const MENU_TESTID = 'sidebar-extensions-voice';
 // Extras, another app, puts its own link right after Apps.
 const EXTRAS_TESTID = 'sidebar-extensions-extras';
-
-// Customize's pages, whose menu gets the settings page's link.
-const CUSTOMIZE_PAGE = /\/(?:customize|mcp|skills|plugins|apps)\/?$/;
 
 // Class strings mirror Canvas's sidebarNavRowClassName() and
 // SIDEBAR_ROW_INTERACTIVE_CLASS (sidebar-layout.ts), and its Customize menu
@@ -379,7 +405,7 @@ function watchCustomizeMenu(host) {
   const ours = () => document.querySelectorAll(`[data-testid="${MENU_TESTID}"]`);
   function place() {
     if (!CUSTOMIZE_PAGE.test(location.pathname)) return;
-    for (const apps of document.querySelectorAll('[data-testid="sidebar-extensions-/apps"]')) {
+    for (const apps of document.querySelectorAll(CUSTOMIZE_APPS)) {
       if (apps.parentElement.querySelector(`[data-testid="${MENU_TESTID}"]`)) continue;
       const link = navLink(host, path, 'Voice', NAV_ICONS.voice, false);
       link.dataset.testid = MENU_TESTID;
@@ -432,18 +458,6 @@ function customizeLayout(host, header, content) {
 // The browser's speech recognition, by both its names, which Canvas looks up
 // each time its mic starts.
 const NAMES = ['SpeechRecognition', 'webkitSpeechRecognition'];
-
-// Canvas's Voice input settings, which send what you say to your own server
-// instead of the browser's speech recognition when they have a URL.
-const VOICE_INPUT_KEY = 'openhands-transcription-endpoint';
-
-function voiceInputServer() {
-  try {
-    return !!JSON.parse(localStorage.getItem(VOICE_INPUT_KEY))?.baseUrl?.trim();
-  } catch {
-    return false;
-  }
-}
 
 // The language Canvas's mic listens for, which the browser takes from the
 // page unless told: your region's, when it's the same language.
@@ -534,6 +548,67 @@ async function recognitionStatus() {
   }
   return {
     text: `Your browser can't recognise ${languageName(language)} on this device, so Canvas's mic is blocked. ${VOICE_INPUT}`,
+  };
+}
+
+// Telling when Canvas has changed: a while after you open a conversation, or
+// a Customize page, it checks the parts of Canvas this app works with that
+// should be there are. The settings page warns about any that weren't, until
+// a later check finds them. The stop button and the agent's messages only
+// show at times, so they aren't checked.
+
+
+// How long Canvas has to draw a page before it's checked.
+const CHECK_MS = 3000;
+
+// Canvas only shows its mic when it can transcribe what you say: with the
+// browser's speech recognition, or a Voice input server.
+const micExpected = () =>
+  !!(window.SpeechRecognition || window.webkitSpeechRecognition) || voiceInputServer();
+
+const PARTS = [
+  { key: 'composer', name: 'message box', selector: COMPOSER, page: 'conversation' },
+  { key: 'send', name: 'send button', selector: SEND, page: 'conversation' },
+  { key: 'mic', name: 'mic', selector: MIC, page: 'conversation', expected: micExpected },
+  { key: 'menu', name: 'Customize menu', selector: CUSTOMIZE_APPS, page: 'customize' },
+];
+
+const pageKind = () =>
+  openConversationId() ? 'conversation' : CUSTOMIZE_PAGE.test(location.pathname) ? 'customize' : null;
+
+// The parts of Canvas the last checks didn't find, by name.
+function canvasProblems() {
+  const missing = readJson(CANVAS_KEY, {});
+  return PARTS.filter((part) => missing?.[part.key]).map((part) => part.name);
+}
+
+function watchCanvas() {
+  let checkedPath = null;
+  let timer = 0;
+
+  function check() {
+    const page = pageKind();
+    const missing = { ...readJson(CANVAS_KEY, {}) };
+    for (const part of PARTS.filter((item) => item.page === page)) {
+      const found = !!document.querySelector(part.selector) || (part.expected && !part.expected());
+      if (found) delete missing[part.key];
+      else missing[part.key] = true;
+    }
+    writeJson(CANVAS_KEY, Object.keys(missing).length ? missing : null);
+  }
+
+  // Once per page you open, as Canvas re-renders the chat as a run goes.
+  function onPage() {
+    if (location.pathname === checkedPath) return;
+    checkedPath = location.pathname;
+    clearTimeout(timer);
+    timer = pageKind() ? setTimeout(check, CHECK_MS) : 0;
+  }
+
+  return {
+    refresh: onPage,
+    onDomChange: onPage,
+    dispose: () => clearTimeout(timer),
   };
 }
 
@@ -4725,6 +4800,22 @@ function recognitionNote() {
   return note;
 }
 
+// A warning that this version of Canvas may not be supported, naming the
+// parts of it the app couldn't find, when there are any.
+function canvasWarning() {
+  const missing = canvasProblems();
+  if (!missing.length) return [];
+  const names = new Intl.ListFormat('en', { type: 'conjunction' }).format(missing);
+  const warning = el(
+    'p',
+    'rounded-lg border border-status-error/40 px-4 py-3 text-sm text-contrast',
+    `This version of Canvas may not be supported: Voice couldn't find its ${names} the last time it looked, so features that need ${missing.length > 1 ? 'them' : 'it'} may not work.`,
+  );
+  warning.dataset.testid = 'voice-canvas-warning';
+  warning.setAttribute('role', 'status');
+  return [warning];
+}
+
 // The app's settings page, as declared in canvas-extension.json, which Canvas
 // serves under /extensions/<app name>/ and the app links from Customize's
 // menu: the switches under their groups, and a button putting every one
@@ -4755,7 +4846,7 @@ function settingsPage(host, onChange) {
       onChange(null);
       render();
     });
-    list.replaceChildren(...groups, reset);
+    list.replaceChildren(...canvasWarning(), ...groups, reset);
     if (focused) list.querySelector(`[data-testid="${focused}"]`)?.focus();
   }
 
@@ -4816,13 +4907,6 @@ function plainText(markdown, max = 200) {
 // stop the mic once you stop talking, and read any of the agent's messages.
 
 
-// Canvas's mic, which says it's recording with aria-pressed and starting or
-// transcribing with aria-busy, and puts what you said in the message box.
-const MIC$1 = '[data-testid="chat-dictation-button"]';
-const COMPOSER = '[data-testid="chat-input"]';
-const SEND = '[data-testid="submit-button"]';
-const STOP = '[data-testid="stop-button"]';
-const AGENT_MESSAGE = 'article[data-testid="agent-message"]';
 const READ_ALOUD_ATTR = 'data-voice-read-aloud';
 
 // A run's statuses while it goes.
@@ -4885,7 +4969,7 @@ const commandFor = (text) =>
 const SPEAKER_ICON =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>';
 
-const findMic = () => document.querySelector(MIC$1);
+const findMic = () => document.querySelector(MIC);
 const pressed = (mic) => mic?.getAttribute('aria-pressed') === 'true';
 const busy = (mic) => mic?.getAttribute('aria-busy') === 'true';
 
@@ -5269,7 +5353,7 @@ function voiceChat(host) {
   // voice replies will be read in: never an online one while Keep voice on
   // this device is on.
   function onPointerDown(event) {
-    if (unlocked || !settings.voiceChat || !event.target?.closest?.(MIC$1)) return;
+    if (unlocked || !settings.voiceChat || !event.target?.closest?.(MIC)) return;
     if (speechProblem()) return;
     unlocked = true;
     read(['']);
@@ -5351,8 +5435,6 @@ function voiceChat(host) {
 // any keyboard layout, unless one of Canvas's dialogs is open.
 
 
-const MIC = '[data-testid="chat-dictation-button"]';
-
 function keyboardShortcut() {
   function onKeyDown(event) {
     if (!settings.keyboardShortcut || event.defaultPrevented || event.isComposing) return;
@@ -5408,6 +5490,7 @@ function activate(host) {
     voiceChat(host),
     keyboardShortcut(),
     onDeviceRecognition(),
+    watchCanvas(),
     // Readium finds the voices ahead of time, so reading starts at once.
     {
       refresh() {

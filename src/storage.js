@@ -1,6 +1,8 @@
 // What this app keeps in the browser's localStorage.
 
 export const STORAGE_KEY = 'openhands-voice:settings';
+// The parts of Canvas this app couldn't find, for the settings page.
+export const CANVAS_KEY = 'openhands-voice:canvas';
 
 export function readJson(key, fallback) {
   try {

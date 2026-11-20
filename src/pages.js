@@ -6,6 +6,7 @@ import { STORAGE_KEY } from './storage.js';
 import { settings, SWITCH_GROUPS, SWITCHES } from './settings.js';
 import { speechProblem } from './audio.js';
 import { recognitionStatus } from './recognition.js';
+import { canvasProblems } from './compat.js';
 import { automaticDetails, loadVoices, previewVoice, unlistedVoice, voiceGroups } from './speech.js';
 
 // Class strings mirror Canvas's ToggleSwitchVisual (src/ui/toggle-switch.tsx)
@@ -191,6 +192,22 @@ function recognitionNote() {
   return note;
 }
 
+// A warning that this version of Canvas may not be supported, naming the
+// parts of it the app couldn't find, when there are any.
+function canvasWarning() {
+  const missing = canvasProblems();
+  if (!missing.length) return [];
+  const names = new Intl.ListFormat('en', { type: 'conjunction' }).format(missing);
+  const warning = el(
+    'p',
+    'rounded-lg border border-status-error/40 px-4 py-3 text-sm text-contrast',
+    `This version of Canvas may not be supported: Voice couldn't find its ${names} the last time it looked, so features that need ${missing.length > 1 ? 'them' : 'it'} may not work.`,
+  );
+  warning.dataset.testid = 'voice-canvas-warning';
+  warning.setAttribute('role', 'status');
+  return [warning];
+}
+
 // The app's settings page, as declared in canvas-extension.json, which Canvas
 // serves under /extensions/<app name>/ and the app links from Customize's
 // menu: the switches under their groups, and a button putting every one
@@ -221,7 +238,7 @@ export function settingsPage(host, onChange) {
       onChange(null);
       render();
     });
-    list.replaceChildren(...groups, reset);
+    list.replaceChildren(...canvasWarning(), ...groups, reset);
     if (focused) list.querySelector(`[data-testid="${focused}"]`)?.focus();
   }
 

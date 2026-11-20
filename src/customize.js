@@ -3,7 +3,7 @@
 // is hidden. The settings page repeats the menu beside its switches.
 
 import { el, OWN_ATTR, removeElement, setStyle } from './dom.js';
-import { canvasBase } from './canvas.js';
+import { canvasBase, CUSTOMIZE_APPS, CUSTOMIZE_PAGE } from './canvas.js';
 
 export const SETTINGS_PAGE = 'settings';
 export const pageHref = (name, page) => `/extensions/${name}/${page}`;
@@ -11,9 +11,6 @@ const SIDEBAR_STYLE_ID = 'openhands-voice-sidebar';
 const MENU_TESTID = 'sidebar-extensions-voice';
 // Extras, another app, puts its own link right after Apps.
 const EXTRAS_TESTID = 'sidebar-extensions-extras';
-
-// Customize's pages, whose menu gets the settings page's link.
-const CUSTOMIZE_PAGE = /\/(?:customize|mcp|skills|plugins|apps)\/?$/;
 
 // Class strings mirror Canvas's sidebarNavRowClassName() and
 // SIDEBAR_ROW_INTERACTIVE_CLASS (sidebar-layout.ts), and its Customize menu
@@ -102,7 +99,7 @@ export function watchCustomizeMenu(host) {
   const ours = () => document.querySelectorAll(`[data-testid="${MENU_TESTID}"]`);
   function place() {
     if (!CUSTOMIZE_PAGE.test(location.pathname)) return;
-    for (const apps of document.querySelectorAll('[data-testid="sidebar-extensions-/apps"]')) {
+    for (const apps of document.querySelectorAll(CUSTOMIZE_APPS)) {
       if (apps.parentElement.querySelector(`[data-testid="${MENU_TESTID}"]`)) continue;
       const link = navLink(host, path, 'Voice', NAV_ICONS.voice, false);
       link.dataset.testid = MENU_TESTID;
