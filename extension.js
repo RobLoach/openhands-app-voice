@@ -4086,20 +4086,34 @@ function chosenVoice(name = settings.voice) {
   );
 }
 
+// What's queued to be read. Chrome forgets to say an utterance ended once
+// nothing refers to it, so they're kept until the next read.
+let queued = [];
+
 // Queues the sentences to be read with the chosen voice and speed, then runs
-// onDone once the last is. Cancelling the queue skips onDone.
+// onDone once the last is read or fails, at once for none. Cancelling the
+// queue skips onDone.
 function read(sentences, onDone, name) {
   const synth = window.speechSynthesis;
   const voice = chosenVoice(name);
   synth.cancel();
-  sentences.forEach((sentence, index) => {
+  queued = sentences.map((sentence) => {
     const utterance = new window.SpeechSynthesisUtterance(sentence);
     utterance.lang = voice?.lang ?? canvasLanguage();
     if (voice) utterance.voice = voice;
     utterance.rate = readingRate();
-    if (index === sentences.length - 1) utterance.onend = onDone;
-    synth.speak(utterance);
+    return utterance;
   });
+  const last = queued.at(-1);
+  if (!last) {
+    onDone?.();
+    return;
+  }
+  last.onend = () => onDone?.();
+  last.onerror = (event) => {
+    if (event?.error !== 'canceled' && event?.error !== 'interrupted') onDone?.();
+  };
+  for (const utterance of queued) synth.speak(utterance);
 }
 
 // Readium's sample sentence in a voice, by its name, or the chosen one.

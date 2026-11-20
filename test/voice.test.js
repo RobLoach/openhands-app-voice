@@ -322,3 +322,25 @@ test('Read aloud buttons go when turned off', async (t) => {
 
   assert.equal(readAloud(page), null);
 });
+
+test('listens again when the last sentence fails to be read', async (t) => {
+  const { page, host } = await voiceChat(t);
+  await say(page, 'Run the tests');
+  await reply(page, host);
+  const last = page.window.speechSynthesis.queue.at(-1);
+  page.window.speechSynthesis.queue = [];
+  last.onerror({ error: 'synthesis-failed' });
+  await flush();
+
+  assert.equal(listening(page), true);
+});
+
+test('Read aloud buttons reset for a message with nothing to read', async (t) => {
+  const { page } = await voiceChat(t, { readAloud: true });
+  page.document.querySelector('article > div:not(.absolute)').replaceChildren();
+  const button = page.document.querySelector('[data-voice-read-aloud]');
+  button.click();
+
+  assert.deepEqual(page.utterances, []);
+  assert.equal(button.getAttribute('aria-label'), 'Read aloud');
+});
