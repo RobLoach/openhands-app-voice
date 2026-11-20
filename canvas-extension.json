@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "openhands-app-voice",
   "display_name": "Voice",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Talk with the agent: read its replies aloud, listen again, hands-free, read aloud buttons and spoken commands.",
   "entrypoint": "extension.js",
   "contributes": {

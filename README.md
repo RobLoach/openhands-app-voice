@@ -25,7 +25,7 @@ An [OpenHands](https://www.openhands.dev/) Agent Canvas app to talk with the age
 
 ## Install
 
-Voice needs a local Agent Server, as Canvas doesn't offer apps on OpenHands Cloud backends.
+Voice is checked against Agent Canvas with OpenHands Agent Server 1.59. It needs a local Agent Server, as Canvas doesn't offer apps on OpenHands Cloud backends.
 
 1. Visit **Customize > Apps** (`/apps`)
 2. Click **Add app** at the top right
