@@ -9,7 +9,7 @@ const switchFor = (page, key) =>
 const stored = (page) =>
   JSON.parse(page.window.localStorage.getItem('openhands-voice:settings'));
 
-test('lists every switch under its group, off at first', async (t) => {
+test('lists every switch under its group, off at first but one', async (t) => {
   const page = setupPage(t, { url: SETTINGS_URL });
   await openSettings(page);
 
@@ -19,6 +19,8 @@ test('lists every switch under its group, off at first', async (t) => {
     assert.equal(switchFor(page, key).checked, false, key);
     assert.ok(page.document.getElementById(`voice-${key}-hint`).textContent, key);
   }
+  // But for On-device voices only, which keeps what's read on this device.
+  assert.equal(switchFor(page, 'onDeviceOnly').checked, true);
 });
 
 test('saves a switch, and Reset settings puts them all back', async (t) => {

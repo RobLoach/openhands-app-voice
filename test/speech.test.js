@@ -43,6 +43,10 @@ async function readMessage(t, settings, voices = VOICES) {
   return page.spoken[0];
 }
 
+// Online voices, like Emma and Google's, are only listed and used with On-device
+// voices only off.
+const ONLINE = { onDeviceOnly: false };
+
 const settingsPage = async (t, settings) => {
   const page = setupPage(t, {
     url: 'https://canvas.test/extensions/openhands-app-voice/settings',
@@ -66,7 +70,7 @@ const pick = (page, name) =>
 const AUTOMATIC = ['Automatic', 'Your browser picks'];
 
 test("lists the browser's English voices, the rated ones by region, best first, with their quality, without novelty ones", async (t) => {
-  const page = await settingsPage(t);
+  const page = await settingsPage(t, ONLINE);
 
   assert.deepEqual(voiceChoices(page), [
     ['Automatic', 'Best for your region: Emma'],
@@ -130,8 +134,8 @@ test('Preview reads the picked voice again', async (t) => {
   assert.deepEqual(page.utterances, ['Hello, my name is Daniel and I am an English voice.']);
 });
 
-test('reads with the best rated voice by default', async (t) => {
-  const utterance = await readMessage(t, {});
+test('reads with the best rated voice', async (t) => {
+  const utterance = await readMessage(t, ONLINE);
 
   assert.equal(utterance.voice, EMMA);
   assert.equal(utterance.rate, 1);
@@ -140,7 +144,7 @@ test('reads with the best rated voice by default', async (t) => {
 
 test("picks the best voice Chrome preloads, over the system's", async (t) => {
   const google = voice('Google US English', 'en-US', { localService: false });
-  const utterance = await readMessage(t, {}, [ESPEAK, DANIEL, google]);
+  const utterance = await readMessage(t, ONLINE, [ESPEAK, DANIEL, google]);
 
   assert.equal(utterance.voice, google);
 });
@@ -160,7 +164,7 @@ test('reads at the chosen volume', async (t) => {
 });
 
 test('falls back to the best rated voice when the chosen one is missing', async (t) => {
-  const utterance = await readMessage(t, { voice: 'Karen' });
+  const utterance = await readMessage(t, { ...ONLINE, voice: 'Karen' });
 
   assert.equal(utterance.voice, EMMA);
 });
@@ -231,4 +235,49 @@ test('finds the voices again after failing to', async (t) => {
     ['Automatic', 'Best for your region: Daniel'],
     ['English (United Kingdom)', [['Daniel', 'Low quality']]],
   ]);
+});
+
+test('lists only on-device voices by default', async (t) => {
+  const page = await settingsPage(t);
+
+  assert.deepEqual(voiceChoices(page), [
+    ['Automatic', 'Best for your region: Samantha'],
+    ['English (United States)', [['Samantha', 'Normal quality']]],
+    ['English (United Kingdom)', [['Daniel', 'Low quality']]],
+    ['Other voices', [['English (America)', 'Not rated']]],
+  ]);
+});
+
+test('reads with the best on-device voice by default', async (t) => {
+  const utterance = await readMessage(t, {});
+
+  assert.equal(utterance.voice, SAMANTHA);
+});
+
+test('skips a chosen online voice while On-device voices only is on', async (t) => {
+  const utterance = await readMessage(t, { voice: EMMA.name });
+
+  assert.equal(utterance.voice, SAMANTHA);
+});
+
+test("doesn't pick Chrome's online voice by default", async (t) => {
+  const google = voice('Google US English', 'en-US', { localService: false });
+  const utterance = await readMessage(t, {}, [ESPEAK, google]);
+
+  assert.equal(utterance.voice, ESPEAK);
+});
+
+test('lists online voices as soon as On-device voices only is turned off', async (t) => {
+  const page = await settingsPage(t);
+  const toggle = page.document.querySelector('[data-testid="voice-onDeviceOnly-switch"]');
+  assert.equal(toggle.checked, true);
+  toggle.focus();
+  toggle.click();
+  await flush();
+
+  assert.deepEqual(voiceChoices(page)[0], ['Automatic', 'Best for your region: Emma']);
+  assert.equal(
+    page.document.activeElement.dataset.testid,
+    'voice-onDeviceOnly-switch',
+  );
 });

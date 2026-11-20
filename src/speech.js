@@ -22,12 +22,12 @@ const chosen = (key) =>
 export const volume = () => chosen('volume');
 
 // What Readium found, once it has: the voices, best first, the one it
-// picks for your region, and its sample sentence. Until then, the browser
-// picks.
+// picks for your region among them all and among those on this device, and
+// its sample sentence. Until then, the browser picks.
 let loading = null;
 let manager = null;
 let ranked = [];
-let automatic = null;
+let automatics = { all: null, onDevice: null };
 let sample = 'Hello, my name is {name} and I am an English voice.';
 
 // Readium reads the browser's voices once, as soon as it has some, which
@@ -43,7 +43,8 @@ export function loadVoices() {
       });
       ranked = await found.sortVoicesByQuality(voices);
       const region = /^en-/i.test(window.navigator.language) ? window.navigator.language : 'en-US';
-      automatic = await found.getDefaultVoice([region, LANGUAGE], ranked);
+      const pick = (voices) => found.getDefaultVoice([region, LANGUAGE], voices);
+      automatics = { all: await pick(ranked), onDevice: await pick(ranked.filter(onDevice)) };
       sample = found.getTestUtterance(LANGUAGE) || sample;
       manager = found;
     })
@@ -53,6 +54,14 @@ export function loadVoices() {
     });
   return loading;
 }
+
+// Online voices send what they read to Google or Microsoft, which On-device
+// voices only leaves out. Readium's voices and the browser's own say so
+// differently.
+const isOnline = (voice) => voice.offlineAvailability === false || voice.localService === false;
+const onDevice = (voice) => !isOnline(voice);
+const usable = () => (settings.onDeviceOnly ? ranked.filter(onDevice) : ranked);
+const automatic = () => automatics[settings.onDeviceOnly ? 'onDevice' : 'all'];
 
 // The browser's own voice for one of Readium's, by its name there.
 const nameOf = (voice) => voice.originalName ?? voice.name;
@@ -77,7 +86,7 @@ const describe = (voice) => ({
   label: voice.quality ? voice.label : nameOf(voice),
   details: [
     QUALITY_LABELS[voice.quality] ?? 'Not rated',
-    voice.offlineAvailability === false && 'Online',
+    isOnline(voice) && 'Online',
   ]
     .filter(Boolean)
     .join(' · '),
@@ -87,7 +96,7 @@ const describe = (voice) => ({
 // first, then the rest.
 export function voiceGroups() {
   const groups = new Map();
-  for (const voice of ranked) {
+  for (const voice of usable()) {
     const group = voice.quality ? regionName(voice.language) : 'Other voices';
     if (!groups.has(group)) groups.set(group, []);
     groups.get(group).push(describe(voice));
@@ -99,14 +108,15 @@ export function voiceGroups() {
 }
 
 // The voice Automatic reads with, by its label, if Readium has picked one.
-export const automaticLabel = () => (automatic ? describe(automatic).label : null);
+export const automaticLabel = () => (automatic() ? describe(automatic()).label : null);
 
-// The Voice setting's voice, or else the one Readium picks, or none, for the
-// browser to choose.
+// The Voice setting's voice, but an online one while On-device voices only
+// is on, or else the one Readium picks, or none, for the browser to choose.
 export function chosenVoice(name = settings.voice) {
+  const saved = name && browserVoice(name);
   return (
-    (name && browserVoice(name)) ||
-    (automatic && manager?.convertToSpeechSynthesisVoice(automatic)) ||
+    (saved && (onDevice(saved) || !settings.onDeviceOnly) && saved) ||
+    (automatic() && manager?.convertToSpeechSynthesisVoice(automatic())) ||
     null
   );
 }
