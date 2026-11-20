@@ -170,8 +170,15 @@ function buildSwitch(item, onChange) {
 export function settingsPage(host, onChange) {
   let list = null;
 
+  // The voices listed depend on On-device voices only, as last drawn.
+  let onDeviceOnly = null;
+
+  // Redraws the page, keeping focus where it was, e.g. on a switch just
+  // turned.
   function render() {
     if (!list) return;
+    onDeviceOnly = settings.onDeviceOnly;
+    const focused = list.contains(document.activeElement) && document.activeElement.dataset.testid;
     const groups = SWITCH_GROUPS.map((group) =>
       pageSection(
         group,
@@ -185,6 +192,7 @@ export function settingsPage(host, onChange) {
       render();
     });
     list.replaceChildren(...groups, reset);
+    if (focused) list.querySelector(`[data-testid="${focused}"]`)?.focus();
   }
 
   function mount({ container }) {
@@ -212,6 +220,9 @@ export function settingsPage(host, onChange) {
 
   return {
     mount,
+    refresh() {
+      if (settings.onDeviceOnly !== onDeviceOnly) render();
+    },
     onStorage(key) {
       if (key === STORAGE_KEY) render();
     },

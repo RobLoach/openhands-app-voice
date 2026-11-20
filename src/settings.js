@@ -45,6 +45,14 @@ export const SWITCHES = [
     check: speechProblem,
   },
   {
+    key: 'onDeviceOnly',
+    group: 'Reading aloud',
+    label: 'On-device voices only',
+    description:
+      "Only use voices that run on this device, so what's read aloud never goes to Google or Microsoft.",
+    default: true,
+  },
+  {
     key: 'voice',
     group: 'Reading aloud',
     label: 'Voice',
