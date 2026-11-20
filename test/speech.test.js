@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { flush, openSettings, setupPage, start } from './helpers.js';
+import { fakeHost, flush, mountPage, openSettings, setupPage, start } from './helpers.js';
 
 // The browser's voices, as getVoices() gives them.
 const voice = (name, lang, { voiceURI = name, localService = true } = {}) => ({
@@ -166,4 +166,46 @@ test('lists Reading speed under Reading aloud', async (t) => {
     [...select.options].map((option) => option.textContent),
     ['0.75×', '1×', '1.25×', '1.5×', '1.75×', '2×'],
   );
+});
+
+test("offers no voices when the browser can't read aloud", async (t) => {
+  const page = setupPage(t, {
+    url: 'https://canvas.test/extensions/openhands-app-voice/settings',
+  });
+  delete page.window.speechSynthesis;
+  await openSettings(page);
+  const select = page.document.querySelector('[data-testid="voice-voice-select"]');
+
+  assert.equal(select.disabled, true);
+  assert.equal(
+    page.document.getElementById('voice-voice-hint').textContent,
+    "Your browser can't read text aloud.",
+  );
+});
+
+test('finds the voices again after failing to', async (t) => {
+  const page = setupPage(t, {
+    url: 'https://canvas.test/extensions/openhands-app-voice/settings',
+  });
+  // A voice Readium can't read at first, once it has started finding them.
+  let fail = true;
+  const flaky = {
+    ...DANIEL,
+    get name() {
+      if (fail) throw new Error('Not ready');
+      return DANIEL.name;
+    },
+  };
+  page.voices = [flaky];
+  const host = fakeHost();
+  await openSettings(page, host);
+  assert.deepEqual(voiceChoices(page), ['Automatic (best available)']);
+
+  fail = false;
+  page.document.querySelector('[data-voice-own]').remove();
+  await mountPage(page, host, 'settings');
+  assert.deepEqual(voiceChoices(page), [
+    'Automatic (best available)',
+    ['English (United Kingdom)', ['Daniel · low']],
+  ]);
 });

@@ -2,6 +2,7 @@
 // settings, with Readium Speech finding, rating and ranking the voices.
 
 import { WebSpeechVoiceManager } from '@readium/speech';
+import { speechProblem } from './audio.js';
 import { canvasLanguage } from './canvas.js';
 import { settings, SWITCHES } from './settings.js';
 
@@ -44,7 +45,10 @@ export function loadVoices() {
       sample = found.getTestUtterance(LANGUAGE) || sample;
       manager = found;
     })
-    .catch(() => {});
+    // Try again next time, e.g. as the settings page opens.
+    .catch(() => {
+      loading = null;
+    });
   return loading;
 }
 
@@ -107,6 +111,10 @@ let queued = [];
 // onDone once the last is read or fails, at once for none. Cancelling the
 // queue skips onDone.
 export function read(sentences, onDone, name) {
+  if (speechProblem()) {
+    onDone?.();
+    return;
+  }
   const synth = window.speechSynthesis;
   const voice = chosenVoice(name);
   synth.cancel();

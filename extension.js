@@ -4031,7 +4031,10 @@ function loadVoices() {
       sample = found.getTestUtterance(LANGUAGE) || sample;
       manager = found;
     })
-    .catch(() => {});
+    // Try again next time, e.g. as the settings page opens.
+    .catch(() => {
+      loading = null;
+    });
   return loading;
 }
 
@@ -4094,6 +4097,10 @@ let queued = [];
 // onDone once the last is read or fails, at once for none. Cancelling the
 // queue skips onDone.
 function read(sentences, onDone, name) {
+  if (speechProblem()) {
+    onDone?.();
+    return;
+  }
   const synth = window.speechSynthesis;
   const voice = chosenVoice(name);
   synth.cancel();
@@ -4208,6 +4215,13 @@ function buildVoiceChoice(item, onChange) {
   const hint = el('p', 'text-xs leading-relaxed text-tertiary-light', item.description);
   hint.id = `${id}-hint`;
   const preview = textButton('voice-preview', 'Preview', () => previewVoice(select.value));
+  // Without speech, there's nothing to pick or hear.
+  const problem = speechProblem();
+  if (problem) {
+    select.disabled = true;
+    preview.hidden = true;
+    hint.textContent = problem;
+  }
   return el(
     'div',
     'flex min-w-0 flex-col gap-2',

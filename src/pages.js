@@ -3,6 +3,7 @@
 import { el, HAS_FOCUS_RING, OWN_ATTR, pageHeader, pageSection, textButton } from './dom.js';
 import { STORAGE_KEY } from './storage.js';
 import { settings, SWITCH_GROUPS, SWITCHES } from './settings.js';
+import { speechProblem } from './audio.js';
 import { loadVoices, previewVoice, voiceGroups } from './speech.js';
 
 // Class strings mirror Canvas's ToggleSwitchVisual (src/ui/toggle-switch.tsx)
@@ -85,6 +86,13 @@ function buildVoiceChoice(item, onChange) {
   const hint = el('p', 'text-xs leading-relaxed text-tertiary-light', item.description);
   hint.id = `${id}-hint`;
   const preview = textButton('voice-preview', 'Preview', () => previewVoice(select.value));
+  // Without speech, there's nothing to pick or hear.
+  const problem = speechProblem();
+  if (problem) {
+    select.disabled = true;
+    preview.hidden = true;
+    hint.textContent = problem;
+  }
   return el(
     'div',
     'flex min-w-0 flex-col gap-2',
