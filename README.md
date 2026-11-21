@@ -19,7 +19,8 @@ An [OpenHands](https://www.openhands.dev/) Agent Canvas app to talk with the age
 | :-- | :-- |
 | **Read aloud buttons** | Adds a button beside the copy button on the agent's messages that reads the message aloud, or stops reading it. <kbd>Esc</kbd> stops it too. |
 | **Keep voice on this device** | On by default. Keeps your voice on your device: what's read aloud only uses voices that run on it, and what you say to Canvas's mic is only recognised on it, so neither goes to Google or Microsoft. With no voice on your device to read with, nothing is read. Voices count as online when the browser says so, or when they're named as Microsoft's online ones, have network ids, or are Google's without a local id. Without a **Voice input** server, Canvas's mic uses your browser's speech recognition, which this asks to work on your device: Chrome 139 and later can, once it downloads the language, which the settings page offers to do. Elsewhere Canvas's mic is blocked. Turn it off for the online voices, such as Edge's "Natural" ones and Chrome's Google voices, which often sound better. |
-| **Voice** | Which of your browser's English voices reads aloud. **Automatic** picks the best one for your region, as [Readium Speech](https://github.com/readium/speech) rates them. The list groups them by region, best first, with each one's quality and whether it sends what it reads online underneath, hides novelty voices, and reads a sample in each voice you pick, which **Preview** plays again. |
+| **Read with** | **Browser**, the default, reads aloud with your browser's voices. **Speech server** reads with a [speech server](#speech-server) of your own instead, such as [Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI), for natural voices that keep what's read on your network. Its address and API key, if it has one, go underneath; the key is kept for the tab only, in `sessionStorage`. When the server can't be reached, or fails, your browser's voices read instead, and the settings page says why. |
+| **Voice** | With **Speech server**, which of the server's voices reads aloud, from its list. Otherwise, which of your browser's English voices reads aloud. **Automatic** picks the best one for your region, as [Readium Speech](https://github.com/readium/speech) rates them. The list groups them by region, best first, with each one's quality and whether it sends what it reads online underneath, hides novelty voices, and reads a sample in each voice you pick, which **Preview** plays again. |
 | **Reading speed** | How fast replies and messages are read, from 0.75× to 2×. |
 | **Volume** | How loud replies, messages and the listening chime are, from 25% to 100% of your device's volume. |
 
@@ -39,6 +40,39 @@ Voice is checked against Agent Canvas with OpenHands Agent Server 1.59. It needs
 
 Voice chat uses Canvas's own mic. Without a **Voice input** server under Canvas's **Settings**, it uses your browser's speech recognition: with **Keep voice on this device** on, only Chrome 139 and later's on-device recognition, and otherwise, in Chrome, Google's. A [Whisper-compatible server](https://github.com/hwdsl2/scribecrate) of your own, under **Settings > Voice input**, keeps it on your network and works in Firefox too.
 
+### Speech server
+
+**Read with** > **Speech server** works with servers that have OpenAI's speech API: `POST /v1/audio/speech` to read each sentence, and `GET /v1/audio/voices` to list voices, as [Kokoro-FastAPI](https://github.com/remsky/Kokoro-FastAPI) does. It can run beside a Whisper server for **Voice input**, with Docker:
+
+```yaml
+# compose.yaml
+services:
+  kokoro:
+    image: ghcr.io/remsky/kokoro-fastapi-cpu:latest
+  caddy:
+    image: caddy:2
+    ports:
+      - "8880:8880"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+```
+
+Canvas runs in your browser, which only lets it ask another address for speech when that answers with CORS headers, so a reverse proxy such as [Caddy](https://caddyserver.com/) adds them:
+
+```
+# Caddyfile
+:8880 {
+	header Access-Control-Allow-Origin "*"
+	header Access-Control-Allow-Headers "Authorization, Content-Type"
+	header Access-Control-Allow-Methods "GET, POST, OPTIONS"
+	@preflight method OPTIONS
+	respond @preflight 204
+	reverse_proxy kokoro:8880
+}
+```
+
+Run `docker compose up -d`, then enter `http://localhost:8880/v1` as the **Speech server** under **Customize > Voice**. Swap `*` for Canvas's address to only let Canvas use it. Browsers block an `http://` server from an `https://` Canvas, unless it's on `localhost`, so serve it over HTTPS then.
+
 ## Development
 
 - The app's source is in [`src/`](src), one module per feature, from [`src/index.js`](src/index.js). Canvas loads an app from one file, so `npm run build` bundles them, and [Readium Speech](https://github.com/readium/speech), with Rollup into [`extension.js`](extension.js), which is checked in. `npm test` builds it first, and CI checks it matches `src/`.
@@ -46,7 +80,7 @@ Voice chat uses Canvas's own mic. Without a **Voice input** server under Canvas'
 - The settings page is an app page, which Canvas serves at `/extensions/openhands-app-voice/settings`, as it has no way for an app to add a page under Customize. The app adds the settings page to Customize's menu itself, after [Extras](https://github.com/RobLoach/agent-canvas-app-extras)' when that's installed too, and hides its own sidebar link.
 - Canvas has no app API for its mic, chat or menus. The app works with Canvas's markup directly (its mic, message box, send and stop buttons, the agent's messages and Customize's menu), by the test ids in [`src/canvas.js`](src/canvas.js), so an OpenHands update that changes them can break a feature. A few seconds after you open a conversation or a Customize page, the app checks the ones that should be there are (the message box, send button, mic and Customize's menu), and the settings page warns about any it couldn't find.
 - To keep Canvas's mic on your device, Keep voice on this device replaces the browser's `SpeechRecognition` and `webkitSpeechRecognition` with ones that start with `processLocally` set, or not at all where it can't be, while it's on. It reads Canvas's Voice input settings from `localStorage` (`openhands-transcription-endpoint`) to tell when Canvas sends what you say to your own server instead.
-- Settings, and the parts of Canvas the app couldn't find, are kept in the browser's `localStorage`, under `openhands-voice:settings` and `:canvas`, so they're per browser rather than per backend.
+- Settings, and the parts of Canvas the app couldn't find, are kept in the browser's `localStorage`, under `openhands-voice:settings` and `:canvas`, so they're per browser rather than per backend. The speech server's API key is kept in `sessionStorage` instead, under `openhands-voice:speech-server-key`.
 - While Voice chat waits for a reply, it asks the Agent Server about that one conversation every 2 seconds. Hands-free opens a second stream from the mic to hear when you've stopped talking, as Canvas's mic gives no sign of it.
 
 ### Tests

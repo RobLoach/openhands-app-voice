@@ -8,6 +8,13 @@ import { speechProblem } from './audio.js';
 import { recognitionStatus } from './recognition.js';
 import { canvasProblems } from './compat.js';
 import { automaticDetails, loadVoices, previewVoice, unlistedVoice, voiceGroups } from './speech.js';
+import {
+  loadServerVoices,
+  serverKey,
+  serverProblem,
+  serverVoices,
+  setServerKey,
+} from './speech-server.js';
 
 // Class strings mirror Canvas's ToggleSwitchVisual (src/ui/toggle-switch.tsx)
 // so the switch picks up the same compiled Tailwind styles. The checkbox it
@@ -57,12 +64,27 @@ const SAMPLE_DELAY_MS = 400;
 let sampleTimer = 0;
 const cancelSample = () => clearTimeout(sampleTimer);
 
-// The browser's voices as a list to pick from, each with its quality and
-// whether it's online underneath, under their region, with Automatic first
-// and a saved voice this device doesn't have kept as it is. Picking one
-// saves it at once and, once you've settled on it, reads a sample in it, as
-// does the button below.
+// The speech server's voices, as the Voice setting lists them while it's
+// picked, in one group, and what Automatic reads with.
+function serverChoices() {
+  const voices = serverVoices();
+  const automatic = voices.length ? `The server's first voice: ${voices[0]}` : 'No voices from the server';
+  return {
+    groups: voices.length ? [['Speech server', voices.map((name) => ({ name, label: name, details: '' }))]] : [],
+    automatic: serverProblem() ? "Your browser's voices, until the server answers" : automatic,
+    unlisted: (name) => ({ label: name, details: 'Not on this server' }),
+  };
+}
+
+// The browser's voices, or the speech server's, as a list to pick from, each
+// with its quality and whether it's online underneath, under their region,
+// with Automatic first and a saved voice this device doesn't have kept as it
+// is. Picking one saves it at once and, once you've settled on it, reads a
+// sample in it, as does the button below.
 function buildVoiceChoice(item, onChange) {
+  const choices = item.server
+    ? serverChoices()
+    : { groups: voiceGroups(), automatic: automaticDetails(), unlisted: unlistedVoice };
   const id = `voice-${item.key}`;
   const options = [];
   const option = (value, label, details) => {
@@ -71,7 +93,7 @@ function buildVoiceChoice(item, onChange) {
     input.name = id;
     input.dataset.testid = `${id}-radio`;
     input.value = value;
-    input.checked = value === settings.voice;
+    input.checked = value === settings[item.key];
     options.push(input);
     const row = el(
       'label',
@@ -95,17 +117,18 @@ function buildVoiceChoice(item, onChange) {
       ...rows,
     );
   const unlisted = (name) => {
-    const { label, details } = unlistedVoice(name);
+    const { label, details } = choices.unlisted(name);
     return option(name, label, details);
   };
-  const groups = voiceGroups();
-  const known = groups.some(([, voices]) => voices.some(({ name }) => name === settings.voice));
+  const { groups } = choices;
+  const saved = settings[item.key];
+  const known = groups.some(([, voices]) => voices.some(({ name }) => name === saved));
   // Long lists scroll, as voices can number in the dozens.
   const box = el(
     'div',
     'flex min-w-0 max-w-2xl flex-col rounded-lg border border-control bg-base-secondary p-1',
-    option('', 'Automatic', automaticDetails()),
-    ...(settings.voice && !known ? [unlisted(settings.voice)] : []),
+    option('', 'Automatic', choices.automatic),
+    ...(saved && !known ? [unlisted(saved)] : []),
     ...groups.map(([title, voices]) =>
       group(title, ...voices.map(({ name, label, details }) => option(name, label, details))),
     ),
@@ -115,7 +138,7 @@ function buildVoiceChoice(item, onChange) {
   const list = el('fieldset', 'flex min-w-0 flex-col gap-2', el('legend', 'mb-2 text-sm', item.label), box);
   list.dataset.testid = `${id}-list`;
   list.setAttribute('aria-describedby', `${id}-hint`);
-  const picked = () => options.find((input) => input.checked)?.value ?? settings.voice;
+  const picked = () => options.find((input) => input.checked)?.value ?? settings[item.key];
   const highlight = () => {
     for (const input of options) input.closest('label').classList.toggle('bg-tertiary', input.checked);
   };
@@ -130,13 +153,50 @@ function buildVoiceChoice(item, onChange) {
   hint.id = `${id}-hint`;
   const preview = textButton('voice-preview', 'Preview', () => previewVoice(picked()));
   // Without speech, there's nothing to pick or hear.
-  const problem = speechProblem();
+  const problem = !item.server && speechProblem();
   if (problem) {
     list.disabled = true;
     preview.hidden = true;
     hint.textContent = problem;
   }
   return el('div', 'flex min-w-0 flex-col gap-2', list, preview, hint);
+}
+
+// A text box under its label, saved as it changes.
+function textField(id, label, value, onSave) {
+  const input = el('input', SELECT_CLASS.replace(' cursor-pointer', ''));
+  input.id = id;
+  input.dataset.testid = id;
+  input.value = value;
+  input.addEventListener('change', () => onSave(input.value.trim()));
+  const text = el('label', 'w-fit text-sm', label);
+  text.htmlFor = id;
+  return [input, el('div', 'flex min-w-0 flex-col gap-2', text, input)];
+}
+
+// The speech server's address and API key, and why it can't be used, if
+// it can't. The key stays in this tab only.
+function buildServerFields(item, onChange, onKey) {
+  const id = `voice-${item.key}`;
+  const [address, addressField] = textField(id, item.label, settings[item.key], (value) =>
+    onChange({ ...settings, [item.key]: value }),
+  );
+  address.type = 'url';
+  address.placeholder = 'http://localhost:8880/v1';
+  address.setAttribute('aria-describedby', `${id}-hint`);
+  const [key, keyField] = textField(`${id}-key`, 'API key', serverKey(), (value) => {
+    setServerKey(value);
+    onKey();
+  });
+  key.type = 'password';
+  key.autocomplete = 'off';
+  const hint = el('p', 'text-xs leading-relaxed text-tertiary-light', item.description);
+  hint.id = `${id}-hint`;
+  const status = el('p', 'text-xs leading-relaxed text-contrast', serverProblem() ?? '');
+  status.dataset.testid = `${id}-status`;
+  status.setAttribute('role', 'status');
+  status.hidden = !serverProblem();
+  return el('div', 'flex min-w-0 flex-col gap-3', addressField, keyField, hint, status);
 }
 
 function buildSwitch(item, onChange) {
@@ -225,8 +285,18 @@ function canvasWarning() {
 export function settingsPage(host, onChange) {
   let list = null;
 
-  // The voices listed depend on Keep voice on this device, as last drawn.
-  let onDeviceOnly = null;
+  // The voices listed depend on Keep voice on this device, and Read with
+  // and the speech server, as last drawn.
+  let drawn = null;
+  const drawnFor = () =>
+    [settings.onDeviceOnly, settings.readWith, settings.speechServer].join('\n');
+
+  // The speech server's voices, asked for again with force, e.g. with a new
+  // key, then drawn.
+  const loadServer = (options) =>
+    loadServerVoices(options).then(() => {
+      if (list) render();
+    });
 
   // Redraws the page, keeping focus where it was, e.g. on a switch just
   // turned, or on a voice, whose radios share a test id and differ by value.
@@ -234,14 +304,16 @@ export function settingsPage(host, onChange) {
   function render() {
     if (!list) return;
     cancelSample();
-    onDeviceOnly = settings.onDeviceOnly;
+    drawn = drawnFor();
     const active = document.activeElement;
     const focused = list.contains(active) && active.dataset.testid;
     const groups = SWITCH_GROUPS.map((group) =>
       pageSection(
         group,
-        ...SWITCHES.filter((item) => item.group === group).flatMap((item) => [
-          (item.voices ? buildVoiceChoice : item.options ? buildChoice : buildSwitch)(item, onChange),
+        ...SWITCHES.filter((item) => item.group === group && (item.shown?.() ?? true)).flatMap((item) => [
+          item.text
+            ? buildServerFields(item, onChange, () => loadServer({ force: true }))
+            : (item.voices ? buildVoiceChoice : item.options ? buildChoice : buildSwitch)(item, onChange),
           ...(item.key === 'onDeviceOnly' && settings.onDeviceOnly ? [recognitionNote()] : []),
         ]),
       ),
@@ -262,7 +334,7 @@ export function settingsPage(host, onChange) {
       host,
       pageHeader(
         'Voice',
-        "Talk with the agent and hear its replies, with your browser's voices. Settings are kept in this browser.",
+        "Talk with the agent and hear its replies, with your browser's voices or a speech server of your own. Settings are kept in this browser.",
       ),
       own,
     );
@@ -272,6 +344,7 @@ export function settingsPage(host, onChange) {
     loadVoices().then(() => {
       if (list === own) render();
     });
+    loadServer({ force: true });
     // Canvas may clean up a mount after the next one has started.
     return () => {
       if (list === own) list = null;
@@ -283,7 +356,9 @@ export function settingsPage(host, onChange) {
   return {
     mount,
     refresh() {
-      if (settings.onDeviceOnly !== onDeviceOnly) render();
+      if (drawnFor() === drawn) return;
+      render();
+      loadServer();
     },
     onStorage(key) {
       if (key === STORAGE_KEY) render();

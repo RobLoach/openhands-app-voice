@@ -552,3 +552,48 @@ test("a reply read aloud resets the Read aloud button it talks over", async (t) 
   assert.equal(button.getAttribute('aria-label'), 'Read aloud');
   assert.deepEqual(page.utterances.slice(-2), ['Done.', 'All tests pass.']);
 });
+
+const SERVER = { readWith: 'server', speechServer: 'http://tts.test:8880/v1' };
+
+test('reads replies through the speech server, at the chosen speed and volume, then listens again once the last ends', async (t) => {
+  const { page, host } = await voiceChat(t, {
+    voiceChat: true,
+    ...SERVER,
+    serverVoice: 'bf_emma',
+    readingSpeed: '1.25',
+    volume: '0.5',
+  });
+  await say(page, 'Run the tests');
+  await reply(page, host);
+
+  assert.deepEqual(page.utterances, []);
+  const sentence = (input) => ({
+    model: 'tts-1',
+    input,
+    voice: 'bf_emma',
+    speed: 1.25,
+    response_format: 'mp3',
+    volume: 0.5,
+  });
+  assert.deepEqual(page.played, [sentence('Done.')]);
+  const speech = page.server.requests.filter(({ method }) => method === 'POST');
+  assert.ok(speech.every(({ url }) => url === 'http://tts.test:8880/v1/audio/speech'));
+
+  await page.finishPlaying();
+  assert.deepEqual(page.played, [sentence('Done.'), sentence('All tests pass.')]);
+  assert.equal(listening(page), false);
+  await page.finishPlaying();
+  assert.equal(listening(page), true);
+});
+
+test("reads replies with the browser's voices when the speech server can't be reached, then listens again", async (t) => {
+  const { page, host } = await voiceChat(t, { voiceChat: true, ...SERVER });
+  page.server.down = true;
+  await say(page, 'Run the tests');
+  await reply(page, host);
+
+  assert.deepEqual(page.played, []);
+  assert.deepEqual(page.utterances, ['Done.', 'All tests pass.']);
+  await page.finishSpeaking();
+  assert.equal(listening(page), true);
+});

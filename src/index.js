@@ -11,6 +11,7 @@ import { loadSettings, saveSettings, settings } from './settings.js';
 import { settingsPage } from './pages.js';
 import { SETTINGS_PAGE, sidebarLinks, watchCustomizeMenu } from './customize.js';
 import { loadVoices, restoreVoicesHandler, watchVoices } from './speech.js';
+import { closeServerAudio, loadServerVoices, watchServer } from './speech-server.js';
 import { voiceChat } from './voice.js';
 import { readAloudButtons } from './read-aloud.js';
 import { keyboardShortcut } from './shortcut.js';
@@ -40,6 +41,8 @@ export function activate(host) {
   // manifest doesn't declare.
   const unregisterSettings = host.registerPage(SETTINGS_PAGE, settingsView.mount);
   const unwatchVoices = watchVoices(() => settingsView.voicesFound());
+  // The settings page says when the speech server fails, or works again.
+  const unwatchServer = watchServer(() => settingsView.voicesFound());
   const features = [
     watchCustomizeMenu(host),
     sidebarLinks(host.extension.name),
@@ -50,14 +53,20 @@ export function activate(host) {
     onDeviceRecognition(),
     watchCanvas(),
     // Readium finds the voices ahead of time, so reading starts at once, and
-    // any the browser finds later, which the settings page then lists.
+    // any the browser finds later, which the settings page then lists, and
+    // the speech server's, when it's picked.
     {
       refresh() {
-        if (settings.voiceChat || settings.readAloud) loadVoices();
+        if (settings.voiceChat || settings.readAloud) {
+          loadVoices();
+          loadServerVoices();
+        }
       },
       dispose() {
         unwatchVoices();
+        unwatchServer();
         restoreVoicesHandler();
+        closeServerAudio();
       },
     },
   ];

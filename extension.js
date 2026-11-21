@@ -80,7 +80,9 @@ async function requestMic() {
 
 
 // A switch with options is a choice between them instead, starting at its
-// default, and one with voices a choice of the browser's voices, by name.
+// default, one with voices a choice of the browser's voices, by name, or the
+// speech server's, with server, and one with text a box to type in. shown()
+// says whether the settings page shows it now.
 // check() says why a switch can't work, e.g. after a permission was revoked;
 // enable(), which defaults to check(), may also ask the browser for what it
 // needs. The settings page lists them under their group, in this order.
@@ -129,6 +131,27 @@ const SWITCHES = [
     default: true,
   },
   {
+    key: 'readWith',
+    group: 'Reading aloud',
+    label: 'Read with',
+    description:
+      "Your browser's voices, or a speech server of your own, with OpenAI's API, such as Kokoro-FastAPI, which keeps what's read on your network.",
+    options: [
+      ['browser', 'Browser'],
+      ['server', 'Speech server'],
+    ],
+    default: 'browser',
+  },
+  {
+    key: 'speechServer',
+    group: 'Reading aloud',
+    label: 'Speech server',
+    description: "Your speech server's address, e.g. http://localhost:8880/v1, and its API key, if it has one, which is kept in this tab only.",
+    text: true,
+    default: '',
+    shown: () => settings.readWith === 'server',
+  },
+  {
     key: 'voice',
     group: 'Reading aloud',
     label: 'Voice',
@@ -136,6 +159,17 @@ const SWITCHES = [
       "Which of your browser's English voices reads aloud. Voices marked online send what they read to Google or Microsoft.",
     voices: true,
     default: '',
+    shown: () => settings.readWith !== 'server',
+  },
+  {
+    key: 'serverVoice',
+    group: 'Reading aloud',
+    label: 'Voice',
+    description: "Which of your speech server's voices reads aloud.",
+    voices: true,
+    server: true,
+    default: '',
+    shown: () => settings.readWith === 'server',
   },
   {
     key: 'readingSpeed',
@@ -183,7 +217,7 @@ function loadSettings() {
       const value = stored?.[item.key];
       const valid = item.options
         ? item.options.some(([option]) => option === value)
-        : typeof value === (item.voices ? 'string' : 'boolean');
+        : typeof value === (item.voices || item.text ? 'string' : 'boolean');
       return [item.key, valid ? value : DEFAULT_SETTINGS[item.key]];
     }),
   );
@@ -4411,8 +4445,208 @@ const ko = [
 ], Co = ["abbreviation", "biblioref", "glossref", "noteref", "pagebreak"], Ro = ["biblioref", "glossref"], Io = ["audio", "video", "image", "figure", "math", "table", "cover"], Po = ["cell", "rowheader"], Ao = ["separator"]; new Set(Co); new Set(Io); new Set(Po); new Set(Ao); new Set(Ro);
 new Set(ko);
 
+// Reading aloud with a speech server of your own, one with OpenAI's API such
+// as Kokoro-FastAPI: its voices from GET /v1/audio/voices, and each sentence
+// from POST /v1/audio/speech, played in turn through an AudioContext.
+
+
+// The server's API key, kept for this tab only, out of localStorage, as
+// Canvas keeps its Voice input key.
+const KEY_STORAGE = 'openhands-voice:speech-server-key';
+function serverKey() {
+  try {
+    return window.sessionStorage.getItem(KEY_STORAGE) ?? '';
+  } catch {
+    return '';
+  }
+}
+function setServerKey(key) {
+  try {
+    if (key) window.sessionStorage.setItem(KEY_STORAGE, key);
+    else window.sessionStorage.removeItem(KEY_STORAGE);
+  } catch {
+    // Then it's not kept.
+  }
+}
+
+// Whether Speech server is picked, with an address.
+const usingServer = () => settings.readWith === 'server' && !!settings.speechServer.trim();
+
+// The server's address for a path, e.g. http://localhost:8880 or
+// http://localhost:8880/v1 for /v1/audio/speech.
+const endpoint = (path) =>
+  `${settings.speechServer.trim().replace(/\/+$/, '').replace(/\/v1$/, '')}/v1/audio/${path}`;
+
+async function request(path, init = {}) {
+  const key = serverKey();
+  const headers = { ...init.headers, ...(key ? { Authorization: `Bearer ${key}` } : {}) };
+  let response;
+  try {
+    response = await window.fetch(endpoint(path), { ...init, headers });
+  } catch {
+    throw new Error(`Couldn't reach ${settings.speechServer.trim()}`);
+  }
+  if (!response.ok) throw new Error(`The speech server answered ${response.status}`);
+  return response;
+}
+
+// The server's voices, by name, for the address they're from, and why it
+// last failed, if it did, which the settings page says, and whoever watches
+// hears of.
+let voices$J = [];
+let voicesFor = null;
+let loading$1 = null;
+let problem = null;
+let onChange = () => {};
+
+const serverVoices = () => (voicesFor === settings.speechServer ? voices$J : []);
+const serverProblem = () => (usingServer() ? problem : null);
+function watchServer(callback) {
+  onChange = callback;
+  return () => {
+    onChange = () => {};
+  };
+}
+
+function setProblem(next) {
+  if (next === problem) return;
+  problem = next;
+  onChange();
+}
+const failed = (error) =>
+  setProblem(`${error.message}, so your browser's voices read aloud instead.`);
+
+// Kokoro-FastAPI lists {"voices": ["af_heart", …]}; others list voices as
+// objects, or by themselves.
+const voiceNames = (body) =>
+  (Array.isArray(body) ? body : (body?.voices ?? body?.data ?? []))
+    .map((voice) => (typeof voice === 'string' ? voice : (voice?.id ?? voice?.voice_id ?? voice?.name)))
+    .filter((name) => typeof name === 'string' && name);
+
+// Asks the server for its voices, once per address, or again with force,
+// e.g. as the settings page opens.
+function loadServerVoices({ force = false } = {}) {
+  if (!usingServer()) return Promise.resolve();
+  const address = settings.speechServer;
+  if (!force && (voicesFor === address || loading$1?.address === address)) return loading$1?.promise ?? Promise.resolve();
+  const promise = request('voices')
+    .then((response) => response.json())
+    .then(
+      (body) => {
+        voices$J = voiceNames(body);
+        voicesFor = address;
+        setProblem(null);
+      },
+      (error) => {
+        voices$J = [];
+        voicesFor = address;
+        failed(error);
+      },
+    )
+    .finally(() => {
+      if (loading$1?.promise === promise) loading$1 = null;
+    });
+  loading$1 = { address, promise };
+  return promise;
+}
+
+// The voice to read with: the one named, or picked, or the server's first.
+// OpenAI's own voice names are understood by Kokoro-FastAPI too.
+const voiceFor = (name) => name || settings.serverVoice || serverVoices()[0] || 'alloy';
+
+// The AudioContext replies play through, made, or woken, as you click, as
+// browsers only let a page play sound after one.
+let context = null;
+function wakeServerAudio() {
+  const Context = window.AudioContext ?? window.webkitAudioContext;
+  if (!Context) return null;
+  context ??= new Context();
+  context.resume?.();
+  return context;
+}
+function closeServerAudio() {
+  Promise.resolve(context?.close?.()).catch(() => {});
+  context = null;
+}
+
+// Plays the sentences in the voice, speed and volume given, fetching each
+// one while the one before plays. onDone runs once the last has played;
+// onFailed with the sentences not yet played, if the server fails first.
+// Returns what stops it.
+function playOnServer(sentences, { name, rate, volume, onDone, onFailed }) {
+  const audio = wakeServerAudio();
+  let stopped = false;
+  let source = null;
+  if (!audio) {
+    onFailed(sentences);
+    return () => {};
+  }
+  const fetched = new Map();
+  const fetchSentence = (index) => {
+    if (!fetched.has(index)) {
+      const body = {
+        model: 'tts-1',
+        input: sentences[index],
+        voice: voiceFor(name),
+        speed: rate,
+        response_format: 'mp3',
+      };
+      fetched.set(
+        index,
+        request('speech', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        })
+          .then((response) => response.arrayBuffer())
+          .then((data) => audio.decodeAudioData(data)),
+      );
+      // Unplayed ones don't fail on their own.
+      fetched.get(index).catch(() => {});
+    }
+    return fetched.get(index);
+  };
+  const play = async (index) => {
+    if (index >= sentences.length) {
+      onDone();
+      return;
+    }
+    let buffer;
+    try {
+      buffer = await fetchSentence(index);
+    } catch (error) {
+      if (stopped) return;
+      failed(error);
+      onFailed(sentences.slice(index));
+      return;
+    }
+    if (stopped) return;
+    setProblem(null);
+    if (index + 1 < sentences.length) fetchSentence(index + 1);
+    source = audio.createBufferSource();
+    source.buffer = buffer;
+    const gain = audio.createGain();
+    gain.gain.value = volume;
+    source.connect(gain).connect(audio.destination);
+    source.onended = () => {
+      if (!stopped) play(index + 1);
+    };
+    source.start();
+  };
+  play(0);
+  return () => {
+    stopped = true;
+    try {
+      source?.stop();
+    } catch {
+      // It had ended.
+    }
+  };
+}
+
 // Reading aloud with the browser's voices: the Voice and Reading speed
-// settings, with Readium Speech finding, rating and ranking the voices.
+// settings, with Readium Speech finding, rating and ranking the voices; or
+// with a speech server of your own, falling back to the browser's voices.
 
 
 // Only English voices so far.
@@ -4671,12 +4905,15 @@ function chosenVoice(name = settings.voice) {
 // refers to it, so they're kept until the next read.
 let queued = [];
 let reader = null;
+let stopServer = null;
 
 // Stops what's being read, telling whoever asked for it.
 function stopSpeaking() {
   const stopped = reader;
   reader = null;
   queued = [];
+  stopServer?.();
+  stopServer = null;
   const synth = window.speechSynthesis;
   if (synth?.speaking || synth?.pending) synth.cancel();
   stopped?.onStopped?.();
@@ -4688,9 +4925,39 @@ function stopSpeaking() {
 // another read.
 function read(sentences, { onDone, onStopped, name } = {}) {
   stopSpeaking();
+  // As you click, e.g. the mic's first press, so replies can play later.
+  if (usingServer()) wakeServerAudio();
+  const spoken = sentences.filter((sentence) => sentence.trim());
+  if (usingServer() && spoken.length) {
+    const mine = { onStopped };
+    reader = mine;
+    stopServer = playOnServer(spoken, {
+      name,
+      rate: chosen('readingSpeed'),
+      volume: volume(),
+      onDone: () => {
+        if (reader !== mine) return;
+        reader = null;
+        stopServer = null;
+        onDone?.();
+      },
+      // The rest is read by the browser, for the same reader.
+      onFailed: (rest) => {
+        if (reader !== mine) return;
+        stopServer = null;
+        readWithBrowser(rest, mine, onDone);
+      },
+    });
+    return;
+  }
+  readWithBrowser(sentences, { onStopped }, onDone, name);
+}
+
+function readWithBrowser(sentences, mine, onDone, name) {
   const voice = speechProblem() ? null : chosenVoice(name);
   // Nothing on this device can read it, and the browser's choice may not be.
   if (speechProblem() || (!voice && settings.onDeviceOnly) || !sentences.length) {
+    if (reader === mine) reader = null;
     onDone?.();
     return;
   }
@@ -4702,7 +4969,6 @@ function read(sentences, { onDone, onStopped, name } = {}) {
     utterance.volume = volume();
     return utterance;
   });
-  const mine = { onStopped };
   reader = mine;
   const done = () => {
     if (reader !== mine) return;
@@ -4719,6 +4985,10 @@ function read(sentences, { onDone, onStopped, name } = {}) {
 
 // Readium's sample sentence in a voice, by its name, or the chosen one.
 function previewVoice(name) {
+  if (usingServer()) {
+    read([sample.replace('{name}', name || 'your speech server')], { name });
+    return;
+  }
   const voice = chosenVoice(name);
   const known = voice && ranked.find((item) => nameOf(item) === voice.name);
   const label = known ? labelOf(known) : (voice?.name ?? 'your browser');
@@ -4776,12 +5046,27 @@ const SAMPLE_DELAY_MS = 400;
 let sampleTimer = 0;
 const cancelSample = () => clearTimeout(sampleTimer);
 
-// The browser's voices as a list to pick from, each with its quality and
-// whether it's online underneath, under their region, with Automatic first
-// and a saved voice this device doesn't have kept as it is. Picking one
-// saves it at once and, once you've settled on it, reads a sample in it, as
-// does the button below.
+// The speech server's voices, as the Voice setting lists them while it's
+// picked, in one group, and what Automatic reads with.
+function serverChoices() {
+  const voices = serverVoices();
+  const automatic = voices.length ? `The server's first voice: ${voices[0]}` : 'No voices from the server';
+  return {
+    groups: voices.length ? [['Speech server', voices.map((name) => ({ name, label: name, details: '' }))]] : [],
+    automatic: serverProblem() ? "Your browser's voices, until the server answers" : automatic,
+    unlisted: (name) => ({ label: name, details: 'Not on this server' }),
+  };
+}
+
+// The browser's voices, or the speech server's, as a list to pick from, each
+// with its quality and whether it's online underneath, under their region,
+// with Automatic first and a saved voice this device doesn't have kept as it
+// is. Picking one saves it at once and, once you've settled on it, reads a
+// sample in it, as does the button below.
 function buildVoiceChoice(item, onChange) {
+  const choices = item.server
+    ? serverChoices()
+    : { groups: voiceGroups(), automatic: automaticDetails(), unlisted: unlistedVoice };
   const id = `voice-${item.key}`;
   const options = [];
   const option = (value, label, details) => {
@@ -4790,7 +5075,7 @@ function buildVoiceChoice(item, onChange) {
     input.name = id;
     input.dataset.testid = `${id}-radio`;
     input.value = value;
-    input.checked = value === settings.voice;
+    input.checked = value === settings[item.key];
     options.push(input);
     const row = el(
       'label',
@@ -4814,17 +5099,18 @@ function buildVoiceChoice(item, onChange) {
       ...rows,
     );
   const unlisted = (name) => {
-    const { label, details } = unlistedVoice(name);
+    const { label, details } = choices.unlisted(name);
     return option(name, label, details);
   };
-  const groups = voiceGroups();
-  const known = groups.some(([, voices]) => voices.some(({ name }) => name === settings.voice));
+  const { groups } = choices;
+  const saved = settings[item.key];
+  const known = groups.some(([, voices]) => voices.some(({ name }) => name === saved));
   // Long lists scroll, as voices can number in the dozens.
   const box = el(
     'div',
     'flex min-w-0 max-w-2xl flex-col rounded-lg border border-control bg-base-secondary p-1',
-    option('', 'Automatic', automaticDetails()),
-    ...(settings.voice && !known ? [unlisted(settings.voice)] : []),
+    option('', 'Automatic', choices.automatic),
+    ...(saved && !known ? [unlisted(saved)] : []),
     ...groups.map(([title, voices]) =>
       group(title, ...voices.map(({ name, label, details }) => option(name, label, details))),
     ),
@@ -4834,7 +5120,7 @@ function buildVoiceChoice(item, onChange) {
   const list = el('fieldset', 'flex min-w-0 flex-col gap-2', el('legend', 'mb-2 text-sm', item.label), box);
   list.dataset.testid = `${id}-list`;
   list.setAttribute('aria-describedby', `${id}-hint`);
-  const picked = () => options.find((input) => input.checked)?.value ?? settings.voice;
+  const picked = () => options.find((input) => input.checked)?.value ?? settings[item.key];
   const highlight = () => {
     for (const input of options) input.closest('label').classList.toggle('bg-tertiary', input.checked);
   };
@@ -4849,13 +5135,50 @@ function buildVoiceChoice(item, onChange) {
   hint.id = `${id}-hint`;
   const preview = textButton('voice-preview', 'Preview', () => previewVoice(picked()));
   // Without speech, there's nothing to pick or hear.
-  const problem = speechProblem();
+  const problem = !item.server && speechProblem();
   if (problem) {
     list.disabled = true;
     preview.hidden = true;
     hint.textContent = problem;
   }
   return el('div', 'flex min-w-0 flex-col gap-2', list, preview, hint);
+}
+
+// A text box under its label, saved as it changes.
+function textField(id, label, value, onSave) {
+  const input = el('input', SELECT_CLASS.replace(' cursor-pointer', ''));
+  input.id = id;
+  input.dataset.testid = id;
+  input.value = value;
+  input.addEventListener('change', () => onSave(input.value.trim()));
+  const text = el('label', 'w-fit text-sm', label);
+  text.htmlFor = id;
+  return [input, el('div', 'flex min-w-0 flex-col gap-2', text, input)];
+}
+
+// The speech server's address and API key, and why it can't be used, if
+// it can't. The key stays in this tab only.
+function buildServerFields(item, onChange, onKey) {
+  const id = `voice-${item.key}`;
+  const [address, addressField] = textField(id, item.label, settings[item.key], (value) =>
+    onChange({ ...settings, [item.key]: value }),
+  );
+  address.type = 'url';
+  address.placeholder = 'http://localhost:8880/v1';
+  address.setAttribute('aria-describedby', `${id}-hint`);
+  const [key, keyField] = textField(`${id}-key`, 'API key', serverKey(), (value) => {
+    setServerKey(value);
+    onKey();
+  });
+  key.type = 'password';
+  key.autocomplete = 'off';
+  const hint = el('p', 'text-xs leading-relaxed text-tertiary-light', item.description);
+  hint.id = `${id}-hint`;
+  const status = el('p', 'text-xs leading-relaxed text-contrast', serverProblem() ?? '');
+  status.dataset.testid = `${id}-status`;
+  status.setAttribute('role', 'status');
+  status.hidden = !serverProblem();
+  return el('div', 'flex min-w-0 flex-col gap-3', addressField, keyField, hint, status);
 }
 
 function buildSwitch(item, onChange) {
@@ -4944,8 +5267,18 @@ function canvasWarning() {
 function settingsPage(host, onChange) {
   let list = null;
 
-  // The voices listed depend on Keep voice on this device, as last drawn.
-  let onDeviceOnly = null;
+  // The voices listed depend on Keep voice on this device, and Read with
+  // and the speech server, as last drawn.
+  let drawn = null;
+  const drawnFor = () =>
+    [settings.onDeviceOnly, settings.readWith, settings.speechServer].join('\n');
+
+  // The speech server's voices, asked for again with force, e.g. with a new
+  // key, then drawn.
+  const loadServer = (options) =>
+    loadServerVoices(options).then(() => {
+      if (list) render();
+    });
 
   // Redraws the page, keeping focus where it was, e.g. on a switch just
   // turned, or on a voice, whose radios share a test id and differ by value.
@@ -4953,14 +5286,16 @@ function settingsPage(host, onChange) {
   function render() {
     if (!list) return;
     cancelSample();
-    onDeviceOnly = settings.onDeviceOnly;
+    drawn = drawnFor();
     const active = document.activeElement;
     const focused = list.contains(active) && active.dataset.testid;
     const groups = SWITCH_GROUPS.map((group) =>
       pageSection(
         group,
-        ...SWITCHES.filter((item) => item.group === group).flatMap((item) => [
-          (item.voices ? buildVoiceChoice : item.options ? buildChoice : buildSwitch)(item, onChange),
+        ...SWITCHES.filter((item) => item.group === group && (item.shown?.() ?? true)).flatMap((item) => [
+          item.text
+            ? buildServerFields(item, onChange, () => loadServer({ force: true }))
+            : (item.voices ? buildVoiceChoice : item.options ? buildChoice : buildSwitch)(item, onChange),
           ...(item.key === 'onDeviceOnly' && settings.onDeviceOnly ? [recognitionNote()] : []),
         ]),
       ),
@@ -4981,7 +5316,7 @@ function settingsPage(host, onChange) {
       host,
       pageHeader(
         'Voice',
-        "Talk with the agent and hear its replies, with your browser's voices. Settings are kept in this browser.",
+        "Talk with the agent and hear its replies, with your browser's voices or a speech server of your own. Settings are kept in this browser.",
       ),
       own,
     );
@@ -4991,6 +5326,7 @@ function settingsPage(host, onChange) {
     loadVoices().then(() => {
       if (list === own) render();
     });
+    loadServer({ force: true });
     // Canvas may clean up a mount after the next one has started.
     return () => {
       if (list === own) list = null;
@@ -5002,7 +5338,9 @@ function settingsPage(host, onChange) {
   return {
     mount,
     refresh() {
-      if (settings.onDeviceOnly !== onDeviceOnly) render();
+      if (drawnFor() === drawn) return;
+      render();
+      loadServer();
     },
     onStorage(key) {
       if (key === STORAGE_KEY) render();
@@ -5687,6 +6025,8 @@ function activate(host) {
   // manifest doesn't declare.
   const unregisterSettings = host.registerPage(SETTINGS_PAGE, settingsView.mount);
   const unwatchVoices = watchVoices(() => settingsView.voicesFound());
+  // The settings page says when the speech server fails, or works again.
+  const unwatchServer = watchServer(() => settingsView.voicesFound());
   const features = [
     watchCustomizeMenu(host),
     sidebarLinks(host.extension.name),
@@ -5697,14 +6037,20 @@ function activate(host) {
     onDeviceRecognition(),
     watchCanvas(),
     // Readium finds the voices ahead of time, so reading starts at once, and
-    // any the browser finds later, which the settings page then lists.
+    // any the browser finds later, which the settings page then lists, and
+    // the speech server's, when it's picked.
     {
       refresh() {
-        if (settings.voiceChat || settings.readAloud) loadVoices();
+        if (settings.voiceChat || settings.readAloud) {
+          loadVoices();
+          loadServerVoices();
+        }
       },
       dispose() {
         unwatchVoices();
+        unwatchServer();
         restoreVoicesHandler();
+        closeServerAudio();
       },
     },
   ];
