@@ -4,7 +4,9 @@ import { readJson, STORAGE_KEY, writeJson } from './storage.js';
 import { requestMic, speechProblem } from './audio.js';
 
 // A switch with options is a choice between them instead, starting at its
-// default, and one with voices a choice of the browser's voices, by name.
+// default, one with voices a choice of the browser's voices, by name, or the
+// speech server's, with server, and one with text a box to type in. shown()
+// says whether the settings page shows it now.
 // check() says why a switch can't work, e.g. after a permission was revoked;
 // enable(), which defaults to check(), may also ask the browser for what it
 // needs. The settings page lists them under their group, in this order.
@@ -53,6 +55,27 @@ export const SWITCHES = [
     default: true,
   },
   {
+    key: 'readWith',
+    group: 'Reading aloud',
+    label: 'Read with',
+    description:
+      "Your browser's voices, or a speech server of your own, with OpenAI's API, such as Kokoro-FastAPI, which keeps what's read on your network.",
+    options: [
+      ['browser', 'Browser'],
+      ['server', 'Speech server'],
+    ],
+    default: 'browser',
+  },
+  {
+    key: 'speechServer',
+    group: 'Reading aloud',
+    label: 'Speech server',
+    description: "Your speech server's address, e.g. http://localhost:8880/v1, and its API key, if it has one, which is kept in this tab only.",
+    text: true,
+    default: '',
+    shown: () => settings.readWith === 'server',
+  },
+  {
     key: 'voice',
     group: 'Reading aloud',
     label: 'Voice',
@@ -60,6 +83,17 @@ export const SWITCHES = [
       "Which of your browser's English voices reads aloud. Voices marked online send what they read to Google or Microsoft.",
     voices: true,
     default: '',
+    shown: () => settings.readWith !== 'server',
+  },
+  {
+    key: 'serverVoice',
+    group: 'Reading aloud',
+    label: 'Voice',
+    description: "Which of your speech server's voices reads aloud.",
+    voices: true,
+    server: true,
+    default: '',
+    shown: () => settings.readWith === 'server',
   },
   {
     key: 'readingSpeed',
@@ -107,7 +141,7 @@ export function loadSettings() {
       const value = stored?.[item.key];
       const valid = item.options
         ? item.options.some(([option]) => option === value)
-        : typeof value === (item.voices ? 'string' : 'boolean');
+        : typeof value === (item.voices || item.text ? 'string' : 'boolean');
       return [item.key, valid ? value : DEFAULT_SETTINGS[item.key]];
     }),
   );

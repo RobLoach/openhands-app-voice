@@ -47,6 +47,24 @@ export function setupPage(
     tones: [],
     // Screen wake locks held.
     wakeLocks: 0,
+    // A speech server with OpenAI's API, its voices as it lists them, the
+    // requests it's had, whether it's down, and the sentences it's read and
+    // played, with what they were asked for in and at what volume.
+    server: { voices: { voices: ['af_heart', 'bf_emma'] }, requests: [], down: false, status: 200 },
+    played: [],
+    playing: null,
+  };
+
+  window.fetch = async (url, init = {}) => {
+    page.server.requests.push({ url, method: init.method ?? 'GET', headers: init.headers ?? {} });
+    if (page.server.down) throw new TypeError('Failed to fetch');
+    const ok = page.server.status < 400;
+    return {
+      ok,
+      status: page.server.status,
+      json: async () => page.server.voices,
+      arrayBuffer: async () => JSON.parse(init.body),
+    };
   };
 
   Object.defineProperty(window.document, 'hidden', { get: () => page.hidden });
@@ -89,6 +107,29 @@ export function setupPage(
     }
     createMediaStreamSource() {
       return { connect: (node) => node };
+    }
+    // The speech server's audio, which the fake server's answers stand for.
+    async decodeAudioData(data) {
+      return data;
+    }
+    createBufferSource() {
+      const source = {
+        buffer: null,
+        onended: null,
+        connect(gainNode) {
+          source.gainNode = gainNode;
+          return gainNode;
+        },
+        start() {
+          page.played.push({ ...source.buffer, volume: source.gainNode.gain.value });
+          page.playing = source;
+        },
+        stop() {
+          if (page.playing === source) page.playing = null;
+          source.onended?.();
+        },
+      };
+      return source;
     }
   };
 
@@ -197,6 +238,13 @@ export function setupPage(
       page.voices = voices;
       window.speechSynthesis.onvoiceschanged?.();
       window.dispatchEvent(new window.Event('speech-voiceschanged'));
+      await flush();
+    },
+    // The speech server's sentence playing ends.
+    async finishPlaying() {
+      const source = page.playing;
+      page.playing = null;
+      source?.onended?.();
       await flush();
     },
     async finishSpeaking() {

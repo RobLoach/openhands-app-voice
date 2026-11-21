@@ -1,10 +1,12 @@
 // Reading aloud with the browser's voices: the Voice and Reading speed
-// settings, with Readium Speech finding, rating and ranking the voices.
+// settings, with Readium Speech finding, rating and ranking the voices; or
+// with a speech server of your own, falling back to the browser's voices.
 
 import { WebSpeechVoiceManager } from '@readium/speech';
 import { speechProblem } from './audio.js';
 import { canvasLanguage } from './canvas.js';
 import { settings, SWITCHES } from './settings.js';
+import { playOnServer, usingServer, wakeServerAudio } from './speech-server.js';
 
 // Only English voices so far.
 const LANGUAGE = 'en';
@@ -262,12 +264,15 @@ export function chosenVoice(name = settings.voice) {
 // refers to it, so they're kept until the next read.
 let queued = [];
 let reader = null;
+let stopServer = null;
 
 // Stops what's being read, telling whoever asked for it.
 export function stopSpeaking() {
   const stopped = reader;
   reader = null;
   queued = [];
+  stopServer?.();
+  stopServer = null;
   const synth = window.speechSynthesis;
   if (synth?.speaking || synth?.pending) synth.cancel();
   stopped?.onStopped?.();
@@ -279,9 +284,39 @@ export function stopSpeaking() {
 // another read.
 export function read(sentences, { onDone, onStopped, name } = {}) {
   stopSpeaking();
+  // As you click, e.g. the mic's first press, so replies can play later.
+  if (usingServer()) wakeServerAudio();
+  const spoken = sentences.filter((sentence) => sentence.trim());
+  if (usingServer() && spoken.length) {
+    const mine = { onStopped };
+    reader = mine;
+    stopServer = playOnServer(spoken, {
+      name,
+      rate: chosen('readingSpeed'),
+      volume: volume(),
+      onDone: () => {
+        if (reader !== mine) return;
+        reader = null;
+        stopServer = null;
+        onDone?.();
+      },
+      // The rest is read by the browser, for the same reader.
+      onFailed: (rest) => {
+        if (reader !== mine) return;
+        stopServer = null;
+        readWithBrowser(rest, mine, onDone);
+      },
+    });
+    return;
+  }
+  readWithBrowser(sentences, { onStopped }, onDone, name);
+}
+
+function readWithBrowser(sentences, mine, onDone, name) {
   const voice = speechProblem() ? null : chosenVoice(name);
   // Nothing on this device can read it, and the browser's choice may not be.
   if (speechProblem() || (!voice && settings.onDeviceOnly) || !sentences.length) {
+    if (reader === mine) reader = null;
     onDone?.();
     return;
   }
@@ -293,7 +328,6 @@ export function read(sentences, { onDone, onStopped, name } = {}) {
     utterance.volume = volume();
     return utterance;
   });
-  const mine = { onStopped };
   reader = mine;
   const done = () => {
     if (reader !== mine) return;
@@ -310,6 +344,10 @@ export function read(sentences, { onDone, onStopped, name } = {}) {
 
 // Readium's sample sentence in a voice, by its name, or the chosen one.
 export function previewVoice(name) {
+  if (usingServer()) {
+    read([sample.replace('{name}', name || 'your speech server')], { name });
+    return;
+  }
   const voice = chosenVoice(name);
   const known = voice && ranked.find((item) => nameOf(item) === voice.name);
   const label = known ? labelOf(known) : (voice?.name ?? 'your browser');
